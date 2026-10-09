@@ -17,6 +17,19 @@ const PAGES = [
   "demo/flyer.html",
 ];
 const PORT = 8123;
+const IN_CI = Boolean(process.env.GITHUB_ACTIONS);
+
+// In GitHub Actions, also report each problem as an annotation so it shows
+// up on the run summary page without opening the full log.
+function annotate(message) {
+  if (IN_CI) console.log(`::error::${message.replace(/\n/g, " ")}`);
+}
+
+process.on("unhandledRejection", (error) => {
+  annotate(`Test script crashed: ${error?.stack || error}`);
+  console.error(error);
+  process.exit(1);
+});
 const VIEWPORTS = [
   { name: "desktop", width: 1280, height: 900 },
   { name: "phone", width: 390, height: 844 },
@@ -49,8 +62,13 @@ for (const viewport of VIEWPORTS) {
     for (const problem of problems) {
       console.log(`        ${problem.id}: ${problem.help}`);
       for (const node of problem.nodes.slice(0, 3)) console.log(`          at ${node.target.join(" ")}`);
+      const where = problem.nodes.slice(0, 3).map((node) => node.target.join(" ")).join(" | ");
+      annotate(`${label}: ${problem.id} (${problem.help}) at ${where}`);
     }
-    for (const error of errors.splice(0)) console.log(`        script error: ${error}`);
+    for (const error of errors.splice(0)) {
+      console.log(`        script error: ${error}`);
+      annotate(`${label}: script error: ${error}`);
+    }
   }
   await page.close();
 }
