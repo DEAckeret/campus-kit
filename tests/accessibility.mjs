@@ -41,7 +41,9 @@ const browser = await chromium.launch();
 let failures = 0;
 
 for (const viewport of VIEWPORTS) {
-  const page = await browser.newPage({ viewport });
+  // axe-core/playwright requires pages created from a browser context
+  const context = await browser.newContext({ viewport });
+  const page = await context.newPage();
   const errors = [];
   page.on("pageerror", (error) => errors.push(error.message));
 
@@ -70,7 +72,7 @@ for (const viewport of VIEWPORTS) {
       annotate(`${label}: script error: ${error}`);
     }
   }
-  await page.close();
+  await context.close();
 }
 
 await browser.close();
