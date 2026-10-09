@@ -33,7 +33,7 @@ Everything you need to change is written in CAPITAL LETTERS. Use your editor's s
 
 A few things to watch:
 
-- **Change the page title near the very top.** It's the line that starts with `<title>`. Keep the ` | Larkspur College` ending.
+- **Change the page title near the very top.** It's the line that starts with `<title>`. Keep the ` | College of the Sleeping Giant` ending.
 - **Change the description just below it.** Search engines show this under your page's link.
 - **Update the breadcrumb.** Replace `_template.html` with your new file name, and `PROGRAM NAME` with your program's name.
 - **Only change the words between the tags,** not the tags themselves. For example, in `<dd>44</dd>`, change only `44`.
@@ -73,4 +73,4 @@ If you're submitting your change through GitHub, the automatic checks will also 
 
 ## Need help?
 
-Contact the web team at web@larkspur.example. (This is a demo address; Larkspur College is fictional.)
+Contact the web team at web@sleepinggiant.example. (This is a demo address; College of the Sleeping Giant is fictional.)

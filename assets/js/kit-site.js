@@ -14,7 +14,8 @@ document.querySelectorAll(".sg-example").forEach((example) => {
   pre.tabIndex = 0; // lets keyboard users scroll wide code
   pre.setAttribute("aria-label", "HTML for this example");
   const code = document.createElement("code");
-  code.textContent = lines.map((line) => line.slice(indent)).join("\n");
+  // innerHTML writes boolean attributes as hidden=""; show them the way people write them
+  code.textContent = lines.map((line) => line.slice(indent)).join("\n").replace(/=""/g, "");
   pre.append(code);
   example.after(pre);
 });

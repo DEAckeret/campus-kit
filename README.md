@@ -42,4 +42,4 @@ The tests need Playwright's Chromium the first time: `npx playwright install chr
 
 ## License
 
-MIT. Larkspur College and everyone at it are fictional.
+MIT. College of the Sleeping Giant and everyone at it are fictional.

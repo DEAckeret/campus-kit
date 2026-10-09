@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Larkspur College | A small college in the mountains</title>
-  <meta name="description" content="Larkspur College is a fictional small liberal arts college used to demonstrate the Campus Kit design system.">
-  <link rel="icon" href="../assets/img/larkspur-mark.svg" type="image/svg+xml">
+  <title>College of the Sleeping Giant | A small college in the mountains</title>
+  <meta name="description" content="College of the Sleeping Giant is a fictional small liberal arts college used to demonstrate the Campus Kit design system.">
+  <link rel="icon" href="../assets/img/giant-mark.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;1,7..72,500&family=Public+Sans:wght@400;600;700&display=swap">
@@ -18,8 +18,14 @@
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
 
-  <section class="alert-banner" aria-label="Campus notice">
-    <p class="wrap">Spring registration opens November 3. <a href="events.html">See advising sessions</a>.</p>
+  <section class="alert-banner" aria-label="Campus notice" data-dismissible>
+    <div class="wrap alert-banner__inner">
+      <p>Spring registration opens November 3. <a href="events.html">See advising sessions</a>.</p>
+      <button class="alert-banner__close" type="button" hidden>
+        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span class="visually-hidden">Close this notice</span>
+      </button>
+    </div>
   </section>
 
   <header class="site-header">
@@ -34,8 +40,8 @@
     </nav>
     <div class="site-header__main wrap">
       <a class="wordmark" href="index.html">
-        <img src="../assets/img/larkspur-mark.svg" alt="" width="36" height="43">
-        Larkspur College
+        <img src="../assets/img/giant-mark.svg" alt="" width="64" height="24">
+        College of the Sleeping Giant
       </a>
       <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="main-nav">Menu</button>
       <nav class="main-nav" id="main-nav" aria-label="Main">
@@ -55,7 +61,7 @@
     <section class="hero has-ridge" aria-labelledby="hero-title">
       <div class="wrap">
         <h1 id="hero-title">Learn where the trail starts at the edge of campus.</h1>
-        <p class="lede">Larkspur is a college of 1,400 students in a mountain town, with classes small enough that your professors know how you write.</p>
+        <p class="lede">Sleeping Giant is a college of 1,400 students in a mountain town, with classes small enough that your professors know how you write.</p>
         <form class="finder" action="programs.html" method="get" aria-label="Program search">
           <label for="finder-q">Find a major, minor or certificate</label>
           <div class="finder__row">
@@ -76,7 +82,7 @@
           </li>
           <li>
             <h3><a href="#">Transfer your credits</a></h3>
-            <p>Send us an unofficial transcript and an advisor will map your credits to a Larkspur degree.</p>
+            <p>Send us an unofficial transcript and an advisor will map your credits to a Sleeping Giant degree.</p>
           </li>
           <li>
             <h3><a href="#">Visit campus</a></h3>
@@ -88,7 +94,7 @@
 
     <section class="section section--mist" aria-labelledby="facts-title">
       <div class="wrap">
-        <h2 id="facts-title">Larkspur in numbers</h2>
+        <h2 id="facts-title">Sleeping Giant in numbers</h2>
         <dl class="facts">
           <div><dt>Students</dt><dd>1,400</dd></div>
           <div><dt>Student-to-faculty ratio</dt><dd>11 to 1</dd></div>
@@ -140,7 +146,7 @@
           </blockquote>
           <footer>Maya Okafor, biology major, class of 2027</footer>
         </figure>
-        <p><a href="news/article.html">Read how Larkspur students are tracking river health</a></p>
+        <p><a href="news/article.html">Read how Sleeping Giant students are tracking river health</a></p>
       </div>
     </section>
   </main>
@@ -149,10 +155,10 @@
     <div class="wrap">
       <div class="site-footer__grid">
         <div>
-          <h2>Larkspur College</h2>
+          <h2>College of the Sleeping Giant</h2>
           <address class="contact">
             1200 College Avenue<br>
-            Larkspur, MT 59000<br>
+            Pine Hollow, MT 59000<br>
             <a href="tel:+14065550100">(406) 555-0100</a>
           </address>
         </div>
@@ -173,7 +179,7 @@
           </ul>
         </nav>
       </div>
-      <p class="site-footer__legal">Larkspur College is a fictional school. This site is a demo of <a href="../index.html">Campus Kit</a>.</p>
+      <p class="site-footer__legal">College of the Sleeping Giant is a fictional school. This site is a demo of <a href="../index.html">Campus Kit</a>.</p>
     </div>
   </footer>
 </body>

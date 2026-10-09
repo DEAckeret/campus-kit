@@ -8,8 +8,8 @@
   /* ---- Color: brand ---------------------------------------------------- */
   --color-spruce: #1f5c4a;        /* primary: links, buttons, header */
   --color-spruce-dark: #164536;   /* hover / pressed states */
-  --color-larkspur: #4f43c2;      /* accent: highlights, focus ring */
-  --color-larkspur-tint: #ecebfa;
+  --color-violet: #4f43c2;      /* accent: highlights, focus ring */
+  --color-violet-tint: #ecebfa;
   --color-gold: #e8b23a;          /* athletics + "new" markers; never for text on white */
   --color-gold-tint: #fbf1d9;
 

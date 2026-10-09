@@ -19,14 +19,14 @@ Campus Kit is a proof-of-concept project: it is built **entirely by AI** for Dus
 - **Accessible to WCAG 2.2 AA:** one `h1` per page, no skipped heading levels, labeled form fields, visible focus, text contrast of at least 4.5 to 1 (measure it, don't guess), and no horizontal scrolling at 390px.
 - **Copy is plain and specific.** Sentence case, active voice, buttons say what happens. Write for a prospective student or a non-technical staff member. No marketing filler.
 - **Design restraint.** The ridgeline is the one signature motif; don't add competing decoration. Prefer lists and rows over identical card grids. No all-caps labels.
-- **Nothing tied to a real college.** Larkspur College and everyone at it are fictional. Use `.example` email domains and 555 phone numbers.
+- **Nothing tied to a real college.** College of the Sleeping Giant and everyone at it are fictional. Use `.example` email domains and 555 phone numbers.
 - **Don't add tracking code, third-party scripts, or anything that collects data.**
 
 ## File map
 
 - `index.html`: the project page recruiters land on
 - `styleguide.html`: every token and component, with copyable HTML
-- `demo/`: the Larkspur College demo site
+- `demo/`: the College of the Sleeping Giant demo site
 - `demo/programs/_template.html`: commented template for new program pages
 - `assets/css/tokens.css`: colors, type, spacing (the only file to change when rebranding)
 - `assets/css/base.css`, `components.css`, `print.css`: site styles

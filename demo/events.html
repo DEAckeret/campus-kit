@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Events and athletics | Larkspur College</title>
-  <meta name="description" content="Upcoming events, performances and games at Larkspur College.">
-  <link rel="icon" href="../assets/img/larkspur-mark.svg" type="image/svg+xml">
+  <title>Events and athletics | College of the Sleeping Giant</title>
+  <meta name="description" content="Upcoming events, performances and games at College of the Sleeping Giant.">
+  <link rel="icon" href="../assets/img/giant-mark.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;1,7..72,500&family=Public+Sans:wght@400;600;700&display=swap">
@@ -19,8 +19,14 @@
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
 
-  <section class="alert-banner" aria-label="Campus notice">
-    <p class="wrap">Spring registration opens November 3. <a href="events.html">See advising sessions</a>.</p>
+  <section class="alert-banner" aria-label="Campus notice" data-dismissible>
+    <div class="wrap alert-banner__inner">
+      <p>Spring registration opens November 3. <a href="events.html">See advising sessions</a>.</p>
+      <button class="alert-banner__close" type="button" hidden>
+        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span class="visually-hidden">Close this notice</span>
+      </button>
+    </div>
   </section>
 
   <header class="site-header">
@@ -35,8 +41,8 @@
     </nav>
     <div class="site-header__main wrap">
       <a class="wordmark" href="index.html">
-        <img src="../assets/img/larkspur-mark.svg" alt="" width="36" height="43">
-        Larkspur College
+        <img src="../assets/img/giant-mark.svg" alt="" width="64" height="24">
+        College of the Sleeping Giant
       </a>
       <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="main-nav">Menu</button>
       <nav class="main-nav" id="main-nav" aria-label="Main">
@@ -161,10 +167,10 @@
     <div class="wrap">
       <div class="site-footer__grid">
         <div>
-          <h2>Larkspur College</h2>
+          <h2>College of the Sleeping Giant</h2>
           <address class="contact">
             1200 College Avenue<br>
-            Larkspur, MT 59000<br>
+            Pine Hollow, MT 59000<br>
             <a href="tel:+14065550100">(406) 555-0100</a>
           </address>
         </div>
@@ -185,7 +191,7 @@
           </ul>
         </nav>
       </div>
-      <p class="site-footer__legal">Larkspur College is a fictional school. This site is a demo of <a href="../index.html">Campus Kit</a>.</p>
+      <p class="site-footer__legal">College of the Sleeping Giant is a fictional school. This site is a demo of <a href="../index.html">Campus Kit</a>.</p>
     </div>
   </footer>
 </body>

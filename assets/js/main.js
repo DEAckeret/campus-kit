@@ -18,6 +18,45 @@ document.querySelectorAll("[data-nav-toggle]").forEach((button) => {
   });
 });
 
+/* ---- Closable alert banners ----------------------------------------------
+   Markup: <section class="alert-banner" data-dismissible> with a
+   <button class="alert-banner__close" hidden> inside. The button stays hidden
+   without JavaScript. Closing is remembered in this browser until the notice
+   text changes, so a new notice always shows.
+   ------------------------------------------------------------------------- */
+document.querySelectorAll("[data-dismissible]").forEach((banner) => {
+  const button = banner.querySelector(".alert-banner__close");
+  if (!button) return;
+  const message = banner.querySelector("p")?.textContent.trim() || "";
+  const key = `campus-kit:closed-notice:${message}`;
+  // Style guide examples close for the page view only
+  const remember = !banner.closest(".sg-example");
+
+  let closed = false;
+  try {
+    closed = remember && window.localStorage.getItem(key) === "1";
+  } catch {
+    /* storage unavailable (private browsing, blocked cookies): just show it */
+  }
+  if (closed) {
+    banner.hidden = true;
+    return;
+  }
+
+  button.hidden = false;
+  button.addEventListener("click", () => {
+    banner.hidden = true;
+    try {
+      if (remember) window.localStorage.setItem(key, "1");
+    } catch {
+      /* closing still works for this page view */
+    }
+    // Send keyboard focus somewhere sensible instead of losing it
+    const next = document.querySelector(".site-header a, main a, main");
+    if (next) next.focus();
+  });
+});
+
 /* ---- Filterable lists ----------------------------------------------------
    Markup contract:
      <form data-filter="LIST_ID">  holds inputs with name="q" (text search)

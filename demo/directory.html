@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Faculty and staff directory | Larkspur College</title>
-  <meta name="description" content="Find contact information for Larkspur College faculty and staff.">
-  <link rel="icon" href="../assets/img/larkspur-mark.svg" type="image/svg+xml">
+  <title>Faculty and staff directory | College of the Sleeping Giant</title>
+  <meta name="description" content="Find contact information for College of the Sleeping Giant faculty and staff.">
+  <link rel="icon" href="../assets/img/giant-mark.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;1,7..72,500&family=Public+Sans:wght@400;600;700&display=swap">
@@ -19,8 +19,14 @@
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
 
-  <section class="alert-banner" aria-label="Campus notice">
-    <p class="wrap">Spring registration opens November 3. <a href="events.html">See advising sessions</a>.</p>
+  <section class="alert-banner" aria-label="Campus notice" data-dismissible>
+    <div class="wrap alert-banner__inner">
+      <p>Spring registration opens November 3. <a href="events.html">See advising sessions</a>.</p>
+      <button class="alert-banner__close" type="button" hidden>
+        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span class="visually-hidden">Close this notice</span>
+      </button>
+    </div>
   </section>
 
   <header class="site-header">
@@ -35,8 +41,8 @@
     </nav>
     <div class="site-header__main wrap">
       <a class="wordmark" href="index.html">
-        <img src="../assets/img/larkspur-mark.svg" alt="" width="36" height="43">
-        Larkspur College
+        <img src="../assets/img/giant-mark.svg" alt="" width="64" height="24">
+        College of the Sleeping Giant
       </a>
       <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="main-nav">Menu</button>
       <nav class="main-nav" id="main-nav" aria-label="Main">
@@ -95,7 +101,7 @@
             <div>
               <h3>Dr. Priya Raman</h3>
               <p class="person__role">Professor and chair, Biology</p>
-              <p><a href="mailto:praman@larkspur.example">praman@larkspur.example</a></p>
+              <p><a href="mailto:praman@sleepinggiant.example">praman@sleepinggiant.example</a></p>
               <p><a href="tel:+14065550142">(406) 555-0142</a></p>
             </div>
           </li>
@@ -104,7 +110,7 @@
             <div>
               <h3>Dr. Thomas Whitehorse</h3>
               <p class="person__role">Associate professor, Biology</p>
-              <p><a href="mailto:twhitehorse@larkspur.example">twhitehorse@larkspur.example</a></p>
+              <p><a href="mailto:twhitehorse@sleepinggiant.example">twhitehorse@sleepinggiant.example</a></p>
               <p><a href="tel:+14065550147">(406) 555-0147</a></p>
             </div>
           </li>
@@ -113,7 +119,7 @@
             <div>
               <h3>Jenna Lindqvist</h3>
               <p class="person__role">Director of admission</p>
-              <p><a href="mailto:jlindqvist@larkspur.example">jlindqvist@larkspur.example</a></p>
+              <p><a href="mailto:jlindqvist@sleepinggiant.example">jlindqvist@sleepinggiant.example</a></p>
               <p><a href="tel:+14065550110">(406) 555-0110</a></p>
             </div>
           </li>
@@ -122,7 +128,7 @@
             <div>
               <h3>Marcus Chen</h3>
               <p class="person__role">Transfer admission counselor</p>
-              <p><a href="mailto:mchen@larkspur.example">mchen@larkspur.example</a></p>
+              <p><a href="mailto:mchen@sleepinggiant.example">mchen@sleepinggiant.example</a></p>
               <p><a href="tel:+14065550113">(406) 555-0113</a></p>
             </div>
           </li>
@@ -131,7 +137,7 @@
             <div>
               <h3>Sara Bighorn</h3>
               <p class="person__role">Head coach, women's soccer</p>
-              <p><a href="mailto:sbighorn@larkspur.example">sbighorn@larkspur.example</a></p>
+              <p><a href="mailto:sbighorn@sleepinggiant.example">sbighorn@sleepinggiant.example</a></p>
               <p><a href="tel:+14065550170">(406) 555-0170</a></p>
             </div>
           </li>
@@ -140,7 +146,7 @@
             <div>
               <h3>Alex Ortega</h3>
               <p class="person__role">Director of marketing</p>
-              <p><a href="mailto:aortega@larkspur.example">aortega@larkspur.example</a></p>
+              <p><a href="mailto:aortega@sleepinggiant.example">aortega@sleepinggiant.example</a></p>
               <p><a href="tel:+14065550125">(406) 555-0125</a></p>
             </div>
           </li>
@@ -149,7 +155,7 @@
             <div>
               <h3>Riley Kowalski</h3>
               <p class="person__role">Web and graphic designer</p>
-              <p><a href="mailto:rkowalski@larkspur.example">rkowalski@larkspur.example</a></p>
+              <p><a href="mailto:rkowalski@sleepinggiant.example">rkowalski@sleepinggiant.example</a></p>
               <p><a href="tel:+14065550127">(406) 555-0127</a></p>
             </div>
           </li>
@@ -158,7 +164,7 @@
             <div>
               <h3>Dr. Hannah Abbott</h3>
               <p class="person__role">Director, School of Nursing</p>
-              <p><a href="mailto:habbott@larkspur.example">habbott@larkspur.example</a></p>
+              <p><a href="mailto:habbott@sleepinggiant.example">habbott@sleepinggiant.example</a></p>
               <p><a href="tel:+14065550160">(406) 555-0160</a></p>
             </div>
           </li>
@@ -167,7 +173,7 @@
             <div>
               <h3>Diane Foster</h3>
               <p class="person__role">Registrar</p>
-              <p><a href="mailto:registrar@larkspur.example">registrar@larkspur.example</a></p>
+              <p><a href="mailto:registrar@sleepinggiant.example">registrar@sleepinggiant.example</a></p>
               <p><a href="tel:+14065550131">(406) 555-0131</a></p>
             </div>
           </li>
@@ -180,10 +186,10 @@
     <div class="wrap">
       <div class="site-footer__grid">
         <div>
-          <h2>Larkspur College</h2>
+          <h2>College of the Sleeping Giant</h2>
           <address class="contact">
             1200 College Avenue<br>
-            Larkspur, MT 59000<br>
+            Pine Hollow, MT 59000<br>
             <a href="tel:+14065550100">(406) 555-0100</a>
           </address>
         </div>
@@ -204,7 +210,7 @@
           </ul>
         </nav>
       </div>
-      <p class="site-footer__legal">Larkspur College is a fictional school. This site is a demo of <a href="../index.html">Campus Kit</a>.</p>
+      <p class="site-footer__legal">College of the Sleeping Giant is a fictional school. This site is a demo of <a href="../index.html">Campus Kit</a>.</p>
     </div>
   </footer>
 </body>

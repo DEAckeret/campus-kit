@@ -73,7 +73,7 @@ a:hover {
 
 /* One focus style for everything that can take keyboard focus */
 :focus-visible {
-  outline: 3px solid var(--color-larkspur);
+  outline: 3px solid var(--color-violet);
   outline-offset: 3px;
   border-radius: 2px;
 }

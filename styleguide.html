@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Style guide | Campus Kit</title>
   <meta name="description" content="Every color, type size and component in Campus Kit, with HTML you can copy.">
-  <link rel="icon" href="assets/img/larkspur-mark.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/giant-mark.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;1,7..72,500&family=Public+Sans:wght@400;600;700&display=swap">
@@ -13,8 +13,9 @@
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/kit-site.css">
-  <script src="assets/js/main.js" defer></script>
   <script src="assets/js/kit-site.js" defer></script>
+  <!-- kit-site.js runs first so code samples show the markup before main.js changes it -->
+  <script src="assets/js/main.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -47,13 +48,13 @@
         <p>Colors are set once in <code>assets/css/tokens.css</code>. To rebrand the kit, change the values there and every page updates. Contrast ratios are measured against white.</p>
         <ul class="swatches">
           <li><span class="swatch" style="background: var(--color-spruce)"></span><strong>Spruce</strong><code>--color-spruce</code><span>#1f5c4a, 7.8:1. Links, buttons, header.</span></li>
-          <li><span class="swatch" style="background: var(--color-larkspur)"></span><strong>Larkspur</strong><code>--color-larkspur</code><span>#4f43c2, 7.2:1. Focus rings and accents.</span></li>
+          <li><span class="swatch" style="background: var(--color-violet)"></span><strong>Violet</strong><code>--color-violet</code><span>#4f43c2, 7.2:1. Focus rings and accents.</span></li>
           <li><span class="swatch" style="background: var(--color-gold)"></span><strong>Gold</strong><code>--color-gold</code><span>#e8b23a. Athletics and highlights. Never use for text on white.</span></li>
           <li><span class="swatch" style="background: var(--color-ink)"></span><strong>Ink</strong><code>--color-ink</code><span>#1b2430, 15.6:1. Body text.</span></li>
           <li><span class="swatch" style="background: var(--color-ink-muted)"></span><strong>Ink, muted</strong><code>--color-ink-muted</code><span>#4a5564, 7.6:1. Captions and secondary text.</span></li>
           <li><span class="swatch swatch--light" style="background: var(--color-sky)"></span><strong>Sky</strong><code>--color-sky</code><span>#dce8f2. Tags and soft fills.</span></li>
           <li><span class="swatch swatch--light" style="background: var(--color-mist)"></span><strong>Mist</strong><code>--color-mist</code><span>#f2f4f7. Quiet section backgrounds.</span></li>
-          <li><span class="swatch swatch--light" style="background: var(--color-larkspur-tint)"></span><strong>Larkspur tint</strong><code>--color-larkspur-tint</code><span>#ecebfa. Callout boxes.</span></li>
+          <li><span class="swatch swatch--light" style="background: var(--color-violet-tint)"></span><strong>Violet tint</strong><code>--color-violet-tint</code><span>#ecebfa. Callout boxes.</span></li>
         </ul>
       </div>
     </section>
@@ -151,7 +152,7 @@
     <div>
       <h3>Alex Ortega</h3>
       <p class="person__role">Director of marketing</p>
-      <p><a href="mailto:aortega@larkspur.example">aortega@larkspur.example</a></p>
+      <p><a href="mailto:aortega@sleepinggiant.example">aortega@sleepinggiant.example</a></p>
     </div>
   </li>
 </ul>
@@ -173,10 +174,16 @@
 
         <article class="sg-component" aria-labelledby="c-alert">
           <h3 id="c-alert">Alert banner</h3>
-          <p>Sits above the site header. Use the urgent version only for closures and emergencies, and remove it when the notice is over.</p>
+          <p>Sits above the site header. Use the urgent version only for closures and emergencies, and remove it when the notice is over. Visitors can close a notice; it stays closed on that device until the notice text changes. The close button appears only when JavaScript is running.</p>
           <div class="sg-example">
-<section class="alert-banner alert-banner--urgent" aria-label="Campus notice">
-  <p class="wrap">Campus is closed today because of snow. Classes will meet online.</p>
+<section class="alert-banner alert-banner--urgent" aria-label="Campus notice" data-dismissible>
+  <div class="wrap alert-banner__inner">
+    <p>Campus is closed today because of snow. Classes will meet online.</p>
+    <button class="alert-banner__close" type="button" hidden>
+      <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <span class="visually-hidden">Close this notice</span>
+    </button>
+  </div>
 </section>
           </div>
         </article>
