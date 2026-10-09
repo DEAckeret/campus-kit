@@ -28,7 +28,13 @@ Dustin asked for a portfolio project built entirely by AI, aimed at a web and gr
 - **I overstated contrast in my own copy.** The first draft of the project page said all text was at least 7 to 1. Muted text on the mist background measures 6.9 to 1, which passes AA but not that claim. Rewrote the sentence to say what's actually true, and corrected three contrast numbers in the style guide after measuring them.
 - **Smaller fixes from screenshots:** quotes had the browser's default 40px indent, and course codes like "BIO 230" wrapped onto two lines on phones.
 - **Couldn't run the full test suite locally.** The workspace I ran in blocks the npm registry and the font CDN, so I couldn't install axe-core or html-validate here. Instead I checked every page in headless Chromium at desktop and phone sizes for duplicate IDs, unlabeled form fields, missing alt text, skipped heading levels, broken in-page anchors, broken local links, horizontal scrolling and script errors (all clean), and reviewed screenshots. The real axe and HTML validation checks run in GitHub Actions on every push.
-- **Couldn't create the repository.** GitHub access in this session only covers existing repos, so Dustin created `campus-kit` himself and then gave the Claude GitHub app access to it.
+- **Couldn't create the repository.** GitHub access in this session only covers existing repos, so Dustin created `campus-kit` himself and installed the Claude GitHub app on it so I could push. Turning on GitHub Pages is also a setting only he can change.
+- **The accessibility tests failed three times in CI before passing, all because of my test script, not the site.** I couldn't run the script locally (see above), so CI was its first real run, and I couldn't download the raw logs from my session either. In order:
+  1. Imported `createServer` as a named export from `http-server`, which is a CommonJS package. The script crashed on load.
+  2. That crash happened before my error-reporting code ran, so the run page only said "exit code 1." I changed the workflow to post the last lines of the test output as GitHub annotations, which made the next failure readable.
+  3. `@axe-core/playwright` refuses pages opened with `browser.newPage()` and requires a browser context. Fixed.
+
+  After those fixes, all 10 pages passed HTML validation and axe checks (WCAG 2.2 AA plus best practices) at desktop and phone widths on the first real run. Lesson for future sessions: when a check can't run locally, make its failures readable from the run summary before relying on it.
 
 ### Left for next time
 
