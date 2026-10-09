@@ -1,0 +1,66 @@
+/* ==========================================================================
+   Campus Kit — design tokens
+   Every color, size and space in the kit comes from this file.
+   To rebrand the kit for a different school, change the values here only.
+   ========================================================================== */
+
+:root {
+  /* ---- Color: brand ---------------------------------------------------- */
+  --color-spruce: #1f5c4a;        /* primary: links, buttons, header */
+  --color-spruce-dark: #164536;   /* hover / pressed states */
+  --color-larkspur: #4f43c2;      /* accent: highlights, focus ring */
+  --color-larkspur-tint: #ecebfa;
+  --color-gold: #e8b23a;          /* athletics + "new" markers; never for text on white */
+  --color-gold-tint: #fbf1d9;
+
+  /* ---- Color: neutrals ------------------------------------------------- */
+  --color-ink: #1b2430;           /* body text — 15.6:1 on white */
+  --color-ink-muted: #4a5564;     /* secondary text — 7.6:1 on white */
+  --color-line: #d5dbe3;
+  --color-mist: #f2f4f7;          /* quiet section background */
+  --color-paper: #ffffff;
+  --color-sky: #dce8f2;
+
+  /* ---- Color: feedback ------------------------------------------------- */
+  --color-alert: #a3261b;
+  --color-alert-tint: #fbe9e7;
+  --color-success: #1e6b3a;
+
+  /* ---- Type ------------------------------------------------------------ */
+  --font-display: "Literata", Georgia, "Times New Roman", serif;
+  --font-body: "Public Sans", "Segoe UI", Roboto, Arial, sans-serif;
+
+  /* Modular scale, ratio 1.25 (major third), fluid at the top end */
+  --step--1: 0.875rem;
+  --step-0: 1.0625rem;  /* 17px body */
+  --step-1: 1.25rem;
+  --step-2: 1.5625rem;
+  --step-3: clamp(1.75rem, 1.4rem + 1.4vw, 1.95rem);
+  --step-4: clamp(2rem, 1.5rem + 2.2vw, 2.45rem);
+  --step-5: clamp(2.4rem, 1.6rem + 3.6vw, 3.6rem);
+
+  --leading-tight: 1.15;
+  --leading-body: 1.6;
+  --measure: 66ch;      /* comfortable line length for body copy */
+
+  /* ---- Space (4px base) ------------------------------------------------ */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+  --space-9: 6rem;
+
+  /* ---- Shape ----------------------------------------------------------- */
+  --radius-small: 3px;   /* inputs, tags */
+  --radius-large: 10px;  /* media, callouts */
+  --page-max: 72rem;
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+
+  /* ---- The ridgeline: the kit's one signature motif -------------------- */
+  /* A mountain-ridge edge used to close the hero and the footer.          */
+  --ridge-height: clamp(28px, 4vw, 56px);
+}

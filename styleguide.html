@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Style guide | Campus Kit</title>
+  <meta name="description" content="Every color, type size and component in Campus Kit, with HTML you can copy.">
+  <link rel="icon" href="assets/img/larkspur-mark.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;1,7..72,500&family=Public+Sans:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/kit-site.css">
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/kit-site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="sg-header">
+    <div class="wrap sg-header__inner">
+      <a class="sg-home" href="index.html">Campus Kit</a>
+      <nav aria-label="Style guide sections">
+        <ul>
+          <li><a href="#color">Color</a></li>
+          <li><a href="#type">Type</a></li>
+          <li><a href="#components">Components</a></li>
+          <li><a href="demo/index.html">Demo site</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="page-header">
+      <div class="wrap">
+        <h1>Style guide</h1>
+        <p class="lede">The building blocks of every Campus Kit page. Each example shows the HTML underneath it, so you can copy a component into a new page and it will look right.</p>
+      </div>
+    </div>
+
+    <section class="section" id="color" aria-labelledby="color-title">
+      <div class="wrap">
+        <h2 id="color-title">Color</h2>
+        <p>Colors are set once in <code>assets/css/tokens.css</code>. To rebrand the kit, change the values there and every page updates. Contrast ratios are measured against white.</p>
+        <ul class="swatches">
+          <li><span class="swatch" style="background: var(--color-spruce)"></span><strong>Spruce</strong><code>--color-spruce</code><span>#1f5c4a, 7.8:1. Links, buttons, header.</span></li>
+          <li><span class="swatch" style="background: var(--color-larkspur)"></span><strong>Larkspur</strong><code>--color-larkspur</code><span>#4f43c2, 7.2:1. Focus rings and accents.</span></li>
+          <li><span class="swatch" style="background: var(--color-gold)"></span><strong>Gold</strong><code>--color-gold</code><span>#e8b23a. Athletics and highlights. Never use for text on white.</span></li>
+          <li><span class="swatch" style="background: var(--color-ink)"></span><strong>Ink</strong><code>--color-ink</code><span>#1b2430, 15.6:1. Body text.</span></li>
+          <li><span class="swatch" style="background: var(--color-ink-muted)"></span><strong>Ink, muted</strong><code>--color-ink-muted</code><span>#4a5564, 7.6:1. Captions and secondary text.</span></li>
+          <li><span class="swatch swatch--light" style="background: var(--color-sky)"></span><strong>Sky</strong><code>--color-sky</code><span>#dce8f2. Tags and soft fills.</span></li>
+          <li><span class="swatch swatch--light" style="background: var(--color-mist)"></span><strong>Mist</strong><code>--color-mist</code><span>#f2f4f7. Quiet section backgrounds.</span></li>
+          <li><span class="swatch swatch--light" style="background: var(--color-larkspur-tint)"></span><strong>Larkspur tint</strong><code>--color-larkspur-tint</code><span>#ecebfa. Callout boxes.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section--mist" id="type" aria-labelledby="type-title">
+      <div class="wrap">
+        <h2 id="type-title">Type</h2>
+        <p>Headings use <strong>Literata</strong>, a book serif designed for long reading on screens. Body text uses <strong>Public Sans</strong>, a neutral sans-serif built for government and public-service sites. Sizes follow a 1.25 ratio.</p>
+        <div class="type-scale">
+          <p class="type-sample"><span class="type-sample__label">Heading 1, step 5</span><span style="font-family: var(--font-display); font-size: var(--step-5); font-weight: 500; line-height: 1.1">Learn by doing</span></p>
+          <p class="type-sample"><span class="type-sample__label">Heading 2, step 4</span><span style="font-family: var(--font-display); font-size: var(--step-4); font-weight: 500; line-height: 1.1">What you'll study</span></p>
+          <p class="type-sample"><span class="type-sample__label">Heading 3, step 2</span><span style="font-family: var(--font-display); font-size: var(--step-2); font-weight: 600">Sample courses</span></p>
+          <p class="type-sample"><span class="type-sample__label">Lede, step 1</span><span style="font-size: var(--step-1); color: var(--color-ink-muted)">An introductory sentence that sets up the page.</span></p>
+          <p class="type-sample"><span class="type-sample__label">Body, step 0 (17px)</span><span>Body copy is set at 17 pixels with generous line spacing, and lines stop at about 66 characters so they stay easy to read.</span></p>
+          <p class="type-sample"><span class="type-sample__label">Small, step −1</span><span style="font-size: var(--step--1)">Captions, dates and metadata.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="components" aria-labelledby="components-title">
+      <div class="wrap">
+        <h2 id="components-title">Components</h2>
+        <p>Copy the HTML under any example. Components that filter or open menus need <code>assets/js/main.js</code> on the page, and still work as plain lists without it.</p>
+
+        <article class="sg-component" aria-labelledby="c-buttons">
+          <h3 id="c-buttons">Buttons</h3>
+          <p>Use a solid button for the main action on a page and a quiet button for everything else. Button text says what happens: "Request a meeting," not "Submit."</p>
+          <div class="sg-example">
+<p><a class="button" href="#">Request a meeting</a> <a class="button button--quiet" href="#">See all events</a></p>
+          </div>
+        </article>
+
+        <article class="sg-component" aria-labelledby="c-facts">
+          <h3 id="c-facts">Key facts</h3>
+          <p>Three or four numbers that answer a visitor's first questions. Keep each label short.</p>
+          <div class="sg-example">
+<dl class="facts">
+  <div><dt>Degree</dt><dd>B.S. or B.A.</dd></div>
+  <div><dt>Credits in the major</dt><dd>44</dd></div>
+  <div><dt>Students in research</dt><dd>72%</dd></div>
+</dl>
+          </div>
+        </article>
+
+        <article class="sg-component" aria-labelledby="c-programs">
+          <h3 id="c-programs">Program list</h3>
+          <p>One row per program: name, one sentence, and the ways to study it. Add <code>tag--new</code> for programs in their first year.</p>
+          <div class="sg-example">
+<ul class="program-list">
+  <li data-school="science" data-level="minor certificate">
+    <a href="#">Data science</a>
+    <p>Statistics and programming for any major, from economics to ecology.</p>
+    <ul class="tag-list"><li class="tag">Minor</li><li class="tag">Certificate</li><li class="tag tag--new">New</li></ul>
+  </li>
+</ul>
+          </div>
+        </article>
+
+        <article class="sg-component" aria-labelledby="c-events">
+          <h3 id="c-events">Event</h3>
+          <p>Add <code>event--athletics</code> to give game days a gold date block. The <code>data-category</code> value controls which filter shows the event.</p>
+          <div class="sg-example">
+<ul class="event-list">
+  <li class="event event--athletics" data-category="athletics">
+    <p class="event__date"><span>Oct</span><strong>18</strong></p>
+    <div>
+      <h3><a href="#">Women's soccer vs. Copper Basin</a></h3>
+      <p class="event__meta">Saturday, 1 p.m., Aspen Field</p>
+      <p>Senior day. Free for students with an ID.</p>
+    </div>
+  </li>
+</ul>
+          </div>
+        </article>
+
+        <article class="sg-component" aria-labelledby="c-callout">
+          <h3 id="c-callout">Callout</h3>
+          <p>One per page, for the single next step you want a visitor to take.</p>
+          <div class="sg-example">
+<section class="callout" aria-labelledby="callout-example">
+  <h2 id="callout-example">Talk with an advisor</h2>
+  <p>Get a sample four-year plan built around your interests.</p>
+  <p><a class="button" href="#">Request a meeting</a></p>
+</section>
+          </div>
+        </article>
+
+        <article class="sg-component" aria-labelledby="c-person">
+          <h3 id="c-person">Person</h3>
+          <p>Directory entries. The initials circle is decorative, so it is hidden from screen readers.</p>
+          <div class="sg-example">
+<ul class="people">
+  <li class="person" data-dept="marketing">
+    <span class="person__initials" aria-hidden="true">AO</span>
+    <div>
+      <h3>Alex Ortega</h3>
+      <p class="person__role">Director of marketing</p>
+      <p><a href="mailto:aortega@larkspur.example">aortega@larkspur.example</a></p>
+    </div>
+  </li>
+</ul>
+          </div>
+        </article>
+
+        <article class="sg-component" aria-labelledby="c-quote">
+          <h3 id="c-quote">Pull quote</h3>
+          <p>A student, alum or faculty voice. Always include who said it.</p>
+          <div class="sg-example">
+<figure class="pull-quote">
+  <blockquote>
+    <p>“My senior project on trout habitat turned into my first job with the state wildlife agency.”</p>
+  </blockquote>
+  <footer>Daniel Reyes, class of 2024</footer>
+</figure>
+          </div>
+        </article>
+
+        <article class="sg-component" aria-labelledby="c-alert">
+          <h3 id="c-alert">Alert banner</h3>
+          <p>Sits above the site header. Use the urgent version only for closures and emergencies, and remove it when the notice is over.</p>
+          <div class="sg-example">
+<section class="alert-banner alert-banner--urgent" aria-label="Campus notice">
+  <p class="wrap">Campus is closed today because of snow. Classes will meet online.</p>
+</section>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="site-footer__legal">Campus Kit is an open-source starter kit for college and nonprofit websites. <a href="index.html">About the project</a>.</p>
+    </div>
+  </footer>
+</body>
+</html>

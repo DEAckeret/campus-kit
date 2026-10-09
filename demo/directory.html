@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Faculty and staff directory | Larkspur College</title>
+  <meta name="description" content="Find contact information for Larkspur College faculty and staff.">
+  <link rel="icon" href="../assets/img/larkspur-mark.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;1,7..72,500&family=Public+Sans:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/print.css">
+  <script src="../assets/js/main.js" defer></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <section class="alert-banner" aria-label="Campus notice">
+    <p class="wrap">Spring registration opens November 3. <a href="events.html">See advising sessions</a>.</p>
+  </section>
+
+  <header class="site-header">
+    <nav class="site-header__utility" aria-label="Quick links">
+      <ul class="wrap">
+        <li><a href="directory.html">Directory</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="#">Library</a></li>
+        <li><a href="#">Students</a></li>
+        <li><a href="#">Faculty &amp; staff</a></li>
+      </ul>
+    </nav>
+    <div class="site-header__main wrap">
+      <a class="wordmark" href="index.html">
+        <img src="../assets/img/larkspur-mark.svg" alt="" width="36" height="43">
+        Larkspur College
+      </a>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="main-nav">Menu</button>
+      <nav class="main-nav" id="main-nav" aria-label="Main">
+        <ul>
+          <li><a href="programs.html">Academics</a></li>
+          <li><a href="#">Admission</a></li>
+          <li><a href="#">Cost &amp; aid</a></li>
+          <li><a href="#">Campus life</a></li>
+          <li><a href="events.html">Athletics</a></li>
+          <li><a href="#">Give</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="page-header">
+      <div class="wrap">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="directory.html" aria-current="page">Directory</a></li>
+          </ol>
+        </nav>
+        <h1>Faculty and staff directory</h1>
+        <p class="lede">Search by name, title or department. For general questions, call the front desk at <a href="tel:+14065550100">(406) 555-0100</a>.</p>
+      </div>
+    </div>
+
+    <section class="section" aria-labelledby="list-title">
+      <div class="wrap">
+        <h2 id="list-title" class="visually-hidden">People</h2>
+        <form class="filters" data-filter="people-list" aria-label="Search the directory">
+          <div class="field">
+            <label for="q">Name or title</label>
+            <input id="q" name="q" type="search" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="dept">Department</label>
+            <select id="dept" name="dept">
+              <option value="">All departments</option>
+              <option value="admission">Admission</option>
+              <option value="athletics">Athletics</option>
+              <option value="biology">Biology</option>
+              <option value="marketing">Marketing and communications</option>
+              <option value="nursing">Nursing</option>
+              <option value="registrar">Registrar</option>
+            </select>
+          </div>
+        </form>
+        <p class="result-count" data-filter-count="people-list" data-noun="person" data-plural="people" aria-live="polite"></p>
+
+        <ul class="people" id="people-list">
+          <li class="person" data-dept="biology">
+            <span class="person__initials" aria-hidden="true">PR</span>
+            <div>
+              <h3>Dr. Priya Raman</h3>
+              <p class="person__role">Professor and chair, Biology</p>
+              <p><a href="mailto:praman@larkspur.example">praman@larkspur.example</a></p>
+              <p><a href="tel:+14065550142">(406) 555-0142</a></p>
+            </div>
+          </li>
+          <li class="person" data-dept="biology">
+            <span class="person__initials" aria-hidden="true">TW</span>
+            <div>
+              <h3>Dr. Thomas Whitehorse</h3>
+              <p class="person__role">Associate professor, Biology</p>
+              <p><a href="mailto:twhitehorse@larkspur.example">twhitehorse@larkspur.example</a></p>
+              <p><a href="tel:+14065550147">(406) 555-0147</a></p>
+            </div>
+          </li>
+          <li class="person" data-dept="admission">
+            <span class="person__initials" aria-hidden="true">JL</span>
+            <div>
+              <h3>Jenna Lindqvist</h3>
+              <p class="person__role">Director of admission</p>
+              <p><a href="mailto:jlindqvist@larkspur.example">jlindqvist@larkspur.example</a></p>
+              <p><a href="tel:+14065550110">(406) 555-0110</a></p>
+            </div>
+          </li>
+          <li class="person" data-dept="admission">
+            <span class="person__initials" aria-hidden="true">MC</span>
+            <div>
+              <h3>Marcus Chen</h3>
+              <p class="person__role">Transfer admission counselor</p>
+              <p><a href="mailto:mchen@larkspur.example">mchen@larkspur.example</a></p>
+              <p><a href="tel:+14065550113">(406) 555-0113</a></p>
+            </div>
+          </li>
+          <li class="person" data-dept="athletics">
+            <span class="person__initials" aria-hidden="true">SB</span>
+            <div>
+              <h3>Sara Bighorn</h3>
+              <p class="person__role">Head coach, women's soccer</p>
+              <p><a href="mailto:sbighorn@larkspur.example">sbighorn@larkspur.example</a></p>
+              <p><a href="tel:+14065550170">(406) 555-0170</a></p>
+            </div>
+          </li>
+          <li class="person" data-dept="marketing">
+            <span class="person__initials" aria-hidden="true">AO</span>
+            <div>
+              <h3>Alex Ortega</h3>
+              <p class="person__role">Director of marketing</p>
+              <p><a href="mailto:aortega@larkspur.example">aortega@larkspur.example</a></p>
+              <p><a href="tel:+14065550125">(406) 555-0125</a></p>
+            </div>
+          </li>
+          <li class="person" data-dept="marketing">
+            <span class="person__initials" aria-hidden="true">RK</span>
+            <div>
+              <h3>Riley Kowalski</h3>
+              <p class="person__role">Web and graphic designer</p>
+              <p><a href="mailto:rkowalski@larkspur.example">rkowalski@larkspur.example</a></p>
+              <p><a href="tel:+14065550127">(406) 555-0127</a></p>
+            </div>
+          </li>
+          <li class="person" data-dept="nursing">
+            <span class="person__initials" aria-hidden="true">HA</span>
+            <div>
+              <h3>Dr. Hannah Abbott</h3>
+              <p class="person__role">Director, School of Nursing</p>
+              <p><a href="mailto:habbott@larkspur.example">habbott@larkspur.example</a></p>
+              <p><a href="tel:+14065550160">(406) 555-0160</a></p>
+            </div>
+          </li>
+          <li class="person" data-dept="registrar">
+            <span class="person__initials" aria-hidden="true">DF</span>
+            <div>
+              <h3>Diane Foster</h3>
+              <p class="person__role">Registrar</p>
+              <p><a href="mailto:registrar@larkspur.example">registrar@larkspur.example</a></p>
+              <p><a href="tel:+14065550131">(406) 555-0131</a></p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="site-footer__grid">
+        <div>
+          <h2>Larkspur College</h2>
+          <address class="contact">
+            1200 College Avenue<br>
+            Larkspur, MT 59000<br>
+            <a href="tel:+14065550100">(406) 555-0100</a>
+          </address>
+        </div>
+        <nav aria-labelledby="footer-explore">
+          <h2 id="footer-explore">Explore</h2>
+          <ul>
+            <li><a href="programs.html">Academic programs</a></li>
+            <li><a href="events.html">Events and athletics</a></li>
+            <li><a href="directory.html">Faculty and staff directory</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="footer-help">
+          <h2 id="footer-help">Help</h2>
+          <ul>
+            <li><a href="#">Accessibility</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Report a website problem</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="site-footer__legal">Larkspur College is a fictional school. This site is a demo of <a href="../index.html">Campus Kit</a>.</p>
+    </div>
+  </footer>
+</body>
+</html>

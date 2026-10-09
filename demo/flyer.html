@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Event flyer: Printmaking and place | Larkspur College</title>
+  <meta name="description" content="A print-ready letter-size event flyer built with the same tokens as the website.">
+  <link rel="icon" href="../assets/img/larkspur-mark.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;1,7..72,500&family=Public+Sans:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <style>
+    /* Flyer layout: one US letter page. Edit the text in <main>; the layout adapts. */
+    @page { size: letter; margin: 0; }
+
+    body { background: var(--color-mist); }
+
+    .flyer-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      align-items: center;
+      justify-content: space-between;
+      padding-block: var(--space-4);
+    }
+    .flyer-toolbar p { margin: 0; color: var(--color-ink-muted); font-size: var(--step--1); }
+
+    .flyer {
+      width: 8.5in;
+      height: 11in;
+      max-width: 100%;
+      margin: 0 auto var(--space-8);
+      background: var(--color-paper);
+      box-shadow: 0 1px 3px rgb(27 36 48 / 0.15), 0 12px 32px rgb(27 36 48 / 0.12);
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      overflow: hidden;
+    }
+    @media (max-width: 9in) {
+      .flyer { height: auto; }
+    }
+
+    .flyer__top {
+      --ridge-color: var(--color-paper);
+      background: var(--color-spruce);
+      color: var(--color-paper);
+      padding: 0.7in 0.7in calc(0.5in + var(--ridge-height));
+    }
+    .flyer__series { font-weight: 600; color: var(--color-gold-tint); margin-bottom: 0.25in; }
+    .flyer__top h1 {
+      font-size: clamp(2.6rem, 8vw, 4.4rem);
+      line-height: 1.02;
+      max-width: 11ch;
+      margin: 0;
+    }
+
+    .flyer__body {
+      padding: 0.45in 0.7in;
+      display: grid;
+      grid-template-columns: 1fr 2.4in;
+      gap: 0.5in;
+      align-content: start;
+    }
+    @media (max-width: 40rem) {
+      .flyer__body { grid-template-columns: 1fr; }
+    }
+    .flyer__body p { font-size: 1.15rem; }
+    .flyer__when {
+      border-left: 3px solid var(--color-larkspur);
+      padding-left: 0.2in;
+      margin: 0;
+    }
+    .flyer__when dt { font-size: var(--step--1); color: var(--color-ink-muted); }
+    .flyer__when dd { margin: 0 0 0.18in; font-family: var(--font-display); font-size: 1.35rem; font-weight: 600; line-height: 1.2; }
+
+    .flyer__bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.3in;
+      padding: 0.35in 0.7in;
+      border-top: 1px solid var(--color-line);
+      font-size: var(--step--1);
+    }
+    .flyer__bottom p { margin: 0; }
+    .flyer__bottom .wordmark { color: var(--color-spruce); font-size: 1.3rem; }
+
+    @media print {
+      body { background: none; }
+      .flyer-toolbar { display: none; }
+      .flyer { margin: 0; box-shadow: none; width: 8.5in; height: 11in; }
+      .flyer__top, .flyer__series { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <header class="flyer-toolbar wrap">
+    <p><a href="events.html">Back to events</a>. This flyer uses the same colors and type as the website and prints on US letter paper.</p>
+    <button class="button" type="button" onclick="window.print()">Print this flyer</button>
+  </header>
+
+  <main class="flyer" aria-label="Event flyer">
+    <header class="flyer__top has-ridge">
+      <p class="flyer__series">Hollis Gallery visiting artist series</p>
+      <h1>Printmaking and place</h1>
+    </header>
+
+    <section class="flyer__body">
+      <div>
+        <p>Woodcut artist June Halvorsen carves the rivers and ranch roads of the northern Rockies into blocks as large as a door. She'll talk about how a landscape changes when you have to cut every line of it by hand.</p>
+        <p>Stay after for a reception and a live printing demonstration in the studio next door.</p>
+      </div>
+      <dl class="flyer__when">
+        <dt>When</dt>
+        <dd>Thursday, October 23<br>7 p.m.</dd>
+        <dt>Where</dt>
+        <dd>Hollis Gallery, Fine Arts Building</dd>
+        <dt>Cost</dt>
+        <dd>Free and open to everyone</dd>
+      </dl>
+    </section>
+
+    <footer class="flyer__bottom">
+      <span class="wordmark">
+        <img src="../assets/img/larkspur-mark.svg" alt="" width="30" height="36">
+        Larkspur College
+      </span>
+      <p>Questions or accessibility requests: (406) 555-0188<br>larkspur.example/events</p>
+    </footer>
+  </main>
+</body>
+</html>

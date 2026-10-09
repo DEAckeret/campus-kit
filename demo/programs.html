@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Academic programs | Larkspur College</title>
+  <meta name="description" content="Browse majors, minors and certificates at Larkspur College.">
+  <link rel="icon" href="../assets/img/larkspur-mark.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;1,7..72,500&family=Public+Sans:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/print.css">
+  <script src="../assets/js/main.js" defer></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <section class="alert-banner" aria-label="Campus notice">
+    <p class="wrap">Spring registration opens November 3. <a href="events.html">See advising sessions</a>.</p>
+  </section>
+
+  <header class="site-header">
+    <nav class="site-header__utility" aria-label="Quick links">
+      <ul class="wrap">
+        <li><a href="directory.html">Directory</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="#">Library</a></li>
+        <li><a href="#">Students</a></li>
+        <li><a href="#">Faculty &amp; staff</a></li>
+      </ul>
+    </nav>
+    <div class="site-header__main wrap">
+      <a class="wordmark" href="index.html">
+        <img src="../assets/img/larkspur-mark.svg" alt="" width="36" height="43">
+        Larkspur College
+      </a>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="main-nav">Menu</button>
+      <nav class="main-nav" id="main-nav" aria-label="Main">
+        <ul>
+          <li><a href="programs.html" aria-current="page">Academics</a></li>
+          <li><a href="#">Admission</a></li>
+          <li><a href="#">Cost &amp; aid</a></li>
+          <li><a href="#">Campus life</a></li>
+          <li><a href="events.html">Athletics</a></li>
+          <li><a href="#">Give</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="page-header">
+      <div class="wrap">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="programs.html" aria-current="page">Academic programs</a></li>
+          </ol>
+        </nav>
+        <h1>Academic programs</h1>
+        <p class="lede">Every major can be finished in four years, and most pair well with a minor in a second field.</p>
+      </div>
+    </div>
+
+    <section class="section" aria-labelledby="list-title">
+      <div class="wrap">
+        <h2 id="list-title" class="visually-hidden">Program list</h2>
+        <form class="filters" data-filter="program-list" aria-label="Filter programs">
+          <div class="field">
+            <label for="q">Search by name or topic</label>
+            <input id="q" name="q" type="search" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="school">School</label>
+            <select id="school" name="school">
+              <option value="">All schools</option>
+              <option value="arts">Arts and humanities</option>
+              <option value="science">Natural sciences</option>
+              <option value="health">Health professions</option>
+              <option value="business">Business and society</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="level">Program type</label>
+            <select id="level" name="level">
+              <option value="">All types</option>
+              <option value="major">Major</option>
+              <option value="minor">Minor</option>
+              <option value="certificate">Certificate</option>
+            </select>
+          </div>
+        </form>
+        <p class="result-count" data-filter-count="program-list" data-noun="program" aria-live="polite"></p>
+
+        <ul class="program-list" id="program-list">
+          <li data-school="science" data-level="major minor">
+            <a href="programs/biology.html">Biology</a>
+            <p>Field ecology, molecular biology and pre-health tracks, with research from the first year.</p>
+            <ul class="tag-list"><li class="tag">Major</li><li class="tag">Minor</li></ul>
+          </li>
+          <li data-school="science" data-level="major minor">
+            <a href="#">Chemistry</a>
+            <p>ACS-aligned coursework and summer lab positions paid by the college.</p>
+            <ul class="tag-list"><li class="tag">Major</li><li class="tag">Minor</li></ul>
+          </li>
+          <li data-school="science" data-level="major">
+            <a href="#">Environmental science</a>
+            <p>Watershed and forest studies on the college's 300-acre field station.</p>
+            <ul class="tag-list"><li class="tag">Major</li></ul>
+          </li>
+          <li data-school="science" data-level="minor certificate">
+            <a href="#">Data science</a>
+            <p>Statistics and programming for any major, from economics to ecology.</p>
+            <ul class="tag-list"><li class="tag">Minor</li><li class="tag">Certificate</li><li class="tag tag--new">New</li></ul>
+          </li>
+          <li data-school="health" data-level="major">
+            <a href="#">Nursing (BSN)</a>
+            <p>Clinical rotations at three regional hospitals and a 98% licensure pass rate.</p>
+            <ul class="tag-list"><li class="tag">Major</li></ul>
+          </li>
+          <li data-school="health" data-level="major minor">
+            <a href="#">Public health</a>
+            <p>Community health, epidemiology and rural health policy.</p>
+            <ul class="tag-list"><li class="tag">Major</li><li class="tag">Minor</li></ul>
+          </li>
+          <li data-school="health" data-level="major">
+            <a href="#">Exercise science</a>
+            <p>Prepares students for physical therapy, athletic training and coaching.</p>
+            <ul class="tag-list"><li class="tag">Major</li></ul>
+          </li>
+          <li data-school="arts" data-level="major minor">
+            <a href="#">English and creative writing</a>
+            <p>Workshops, a student-run literary journal and a visiting writers series.</p>
+            <ul class="tag-list"><li class="tag">Major</li><li class="tag">Minor</li></ul>
+          </li>
+          <li data-school="arts" data-level="major minor">
+            <a href="#">Studio art</a>
+            <p>Printmaking, ceramics and painting, with a senior show in the Hollis Gallery.</p>
+            <ul class="tag-list"><li class="tag">Major</li><li class="tag">Minor</li></ul>
+          </li>
+          <li data-school="arts" data-level="minor certificate">
+            <a href="#">Graphic design</a>
+            <p>Typography, branding and web design for print and screen.</p>
+            <ul class="tag-list"><li class="tag">Minor</li><li class="tag">Certificate</li></ul>
+          </li>
+          <li data-school="arts" data-level="major minor">
+            <a href="#">History</a>
+            <p>Archival research with the regional historical society.</p>
+            <ul class="tag-list"><li class="tag">Major</li><li class="tag">Minor</li></ul>
+          </li>
+          <li data-school="business" data-level="major minor">
+            <a href="#">Business administration</a>
+            <p>Accounting, marketing and management, with an internship in every degree plan.</p>
+            <ul class="tag-list"><li class="tag">Major</li><li class="tag">Minor</li></ul>
+          </li>
+          <li data-school="business" data-level="major">
+            <a href="#">Communication studies</a>
+            <p>Media writing, public relations and digital storytelling.</p>
+            <ul class="tag-list"><li class="tag">Major</li></ul>
+          </li>
+          <li data-school="business" data-level="certificate">
+            <a href="#">Nonprofit leadership</a>
+            <p>Grant writing, volunteer management and board governance.</p>
+            <ul class="tag-list"><li class="tag">Certificate</li></ul>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="site-footer__grid">
+        <div>
+          <h2>Larkspur College</h2>
+          <address class="contact">
+            1200 College Avenue<br>
+            Larkspur, MT 59000<br>
+            <a href="tel:+14065550100">(406) 555-0100</a>
+          </address>
+        </div>
+        <nav aria-labelledby="footer-explore">
+          <h2 id="footer-explore">Explore</h2>
+          <ul>
+            <li><a href="programs.html">Academic programs</a></li>
+            <li><a href="events.html">Events and athletics</a></li>
+            <li><a href="directory.html">Faculty and staff directory</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="footer-help">
+          <h2 id="footer-help">Help</h2>
+          <ul>
+            <li><a href="#">Accessibility</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Report a website problem</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="site-footer__legal">Larkspur College is a fictional school. This site is a demo of <a href="../index.html">Campus Kit</a>.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,40 @@
+/* ==========================================================================
+   Campus Kit — print styles
+   Any page prints cleanly: navigation and footers drop away, links show
+   their address, and colors fall back to ink on paper.
+   ========================================================================== */
+
+@media print {
+  @page { margin: 0.6in; }
+
+  body { font-size: 11pt; color: #000; background: #fff; }
+
+  .site-header__utility,
+  .main-nav,
+  .nav-toggle,
+  .skip-link,
+  .alert-banner,
+  .filters,
+  .finder,
+  .site-footer,
+  .no-print { display: none !important; }
+
+  .site-header,
+  .hero { background: none; color: #000; }
+  .hero .lede { color: #333; }
+  .has-ridge::after { display: none; }
+  .has-ridge { padding-bottom: 0; }
+
+  .section { padding-block: 12pt; }
+  h1, h2, h3 { break-after: avoid; }
+  li, tr, .event, .person { break-inside: avoid; }
+
+  /* Show where links go, except for in-page and javascript links */
+  main a[href^="http"]::after,
+  main a[href^="/"]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    font-weight: 400;
+    color: #444;
+  }
+}

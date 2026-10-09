@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Larkspur College | A small college in the mountains</title>
+  <meta name="description" content="Larkspur College is a fictional small liberal arts college used to demonstrate the Campus Kit design system.">
+  <link rel="icon" href="../assets/img/larkspur-mark.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;1,7..72,500&family=Public+Sans:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/print.css">
+  <script src="../assets/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <section class="alert-banner" aria-label="Campus notice">
+    <p class="wrap">Spring registration opens November 3. <a href="events.html">See advising sessions</a>.</p>
+  </section>
+
+  <header class="site-header">
+    <nav class="site-header__utility" aria-label="Quick links">
+      <ul class="wrap">
+        <li><a href="directory.html">Directory</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="#">Library</a></li>
+        <li><a href="#">Students</a></li>
+        <li><a href="#">Faculty &amp; staff</a></li>
+      </ul>
+    </nav>
+    <div class="site-header__main wrap">
+      <a class="wordmark" href="index.html">
+        <img src="../assets/img/larkspur-mark.svg" alt="" width="36" height="43">
+        Larkspur College
+      </a>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="main-nav">Menu</button>
+      <nav class="main-nav" id="main-nav" aria-label="Main">
+        <ul>
+          <li><a href="programs.html">Academics</a></li>
+          <li><a href="#">Admission</a></li>
+          <li><a href="#">Cost &amp; aid</a></li>
+          <li><a href="#">Campus life</a></li>
+          <li><a href="events.html">Athletics</a></li>
+          <li><a href="#">Give</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero has-ridge" aria-labelledby="hero-title">
+      <div class="wrap">
+        <h1 id="hero-title">Learn where the trail starts at the edge of campus.</h1>
+        <p class="lede">Larkspur is a college of 1,400 students in a mountain town, with classes small enough that your professors know how you write.</p>
+        <form class="finder" action="programs.html" method="get" aria-label="Program search">
+          <label for="finder-q">Find a major, minor or certificate</label>
+          <div class="finder__row">
+            <input id="finder-q" name="q" type="search" placeholder="Try “nursing” or “data”" autocomplete="off">
+            <button class="button button--on-dark" type="submit">Search programs</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="paths-title">
+      <div class="wrap">
+        <h2 id="paths-title">Where would you like to start?</h2>
+        <ul class="pathways">
+          <li>
+            <h3><a href="#">Apply as a first-year student</a></h3>
+            <p>Applications for next fall are open. No essay fee, and you hear back within three weeks.</p>
+          </li>
+          <li>
+            <h3><a href="#">Transfer your credits</a></h3>
+            <p>Send us an unofficial transcript and an advisor will map your credits to a Larkspur degree.</p>
+          </li>
+          <li>
+            <h3><a href="#">Visit campus</a></h3>
+            <p>Tours run weekdays at 10 and 2, with a class visit and lunch in the dining hall.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section--mist" aria-labelledby="facts-title">
+      <div class="wrap">
+        <h2 id="facts-title">Larkspur in numbers</h2>
+        <dl class="facts">
+          <div><dt>Students</dt><dd>1,400</dd></div>
+          <div><dt>Student-to-faculty ratio</dt><dd>11 to 1</dd></div>
+          <div><dt>Majors and minors</dt><dd>48</dd></div>
+          <div><dt>Students receiving aid</dt><dd>97%</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="events-title">
+      <div class="wrap">
+        <h2 id="events-title">Coming up on campus</h2>
+        <ul class="event-list">
+          <li class="event">
+            <p class="event__date"><span>Oct</span><strong>14</strong></p>
+            <div>
+              <h3><a href="events.html">Fall open house</a></h3>
+              <p class="event__meta">9 a.m. to 3 p.m., Admission Center</p>
+              <p>Tour campus, sit in on a class and meet with financial aid.</p>
+            </div>
+          </li>
+          <li class="event event--athletics">
+            <p class="event__date"><span>Oct</span><strong>18</strong></p>
+            <div>
+              <h3><a href="events.html">Women's soccer vs. Copper Basin</a></h3>
+              <p class="event__meta">1 p.m., Aspen Field</p>
+              <p>Senior day. Free for students with an ID.</p>
+            </div>
+          </li>
+          <li class="event">
+            <p class="event__date"><span>Oct</span><strong>23</strong></p>
+            <div>
+              <h3><a href="events.html">Visiting artist talk: Printmaking and place</a></h3>
+              <p class="event__meta">7 p.m., Hollis Gallery</p>
+              <p>Open to the public, with a reception after the talk.</p>
+            </div>
+          </li>
+        </ul>
+        <p><a class="button button--quiet" href="events.html">See all events</a></p>
+      </div>
+    </section>
+
+    <section class="section section--mist" aria-labelledby="story-title">
+      <div class="wrap">
+        <h2 id="story-title">From the newsroom</h2>
+        <figure class="pull-quote">
+          <blockquote>
+            <p>“I got to run my own water-quality study as a sophomore. At a big school I'd still have been washing glassware.”</p>
+          </blockquote>
+          <footer>Maya Okafor, biology major, class of 2027</footer>
+        </figure>
+        <p><a href="news/article.html">Read how Larkspur students are tracking river health</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="site-footer__grid">
+        <div>
+          <h2>Larkspur College</h2>
+          <address class="contact">
+            1200 College Avenue<br>
+            Larkspur, MT 59000<br>
+            <a href="tel:+14065550100">(406) 555-0100</a>
+          </address>
+        </div>
+        <nav aria-labelledby="footer-explore">
+          <h2 id="footer-explore">Explore</h2>
+          <ul>
+            <li><a href="programs.html">Academic programs</a></li>
+            <li><a href="events.html">Events and athletics</a></li>
+            <li><a href="directory.html">Faculty and staff directory</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="footer-help">
+          <h2 id="footer-help">Help</h2>
+          <ul>
+            <li><a href="#">Accessibility</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Report a website problem</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="site-footer__legal">Larkspur College is a fictional school. This site is a demo of <a href="../index.html">Campus Kit</a>.</p>
+    </div>
+  </footer>
+</body>
+</html>

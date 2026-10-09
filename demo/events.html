@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Events and athletics | Larkspur College</title>
+  <meta name="description" content="Upcoming events, performances and games at Larkspur College.">
+  <link rel="icon" href="../assets/img/larkspur-mark.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;1,7..72,500&family=Public+Sans:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/print.css">
+  <script src="../assets/js/main.js" defer></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <section class="alert-banner" aria-label="Campus notice">
+    <p class="wrap">Spring registration opens November 3. <a href="events.html">See advising sessions</a>.</p>
+  </section>
+
+  <header class="site-header">
+    <nav class="site-header__utility" aria-label="Quick links">
+      <ul class="wrap">
+        <li><a href="directory.html">Directory</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="#">Library</a></li>
+        <li><a href="#">Students</a></li>
+        <li><a href="#">Faculty &amp; staff</a></li>
+      </ul>
+    </nav>
+    <div class="site-header__main wrap">
+      <a class="wordmark" href="index.html">
+        <img src="../assets/img/larkspur-mark.svg" alt="" width="36" height="43">
+        Larkspur College
+      </a>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="main-nav">Menu</button>
+      <nav class="main-nav" id="main-nav" aria-label="Main">
+        <ul>
+          <li><a href="programs.html">Academics</a></li>
+          <li><a href="#">Admission</a></li>
+          <li><a href="#">Cost &amp; aid</a></li>
+          <li><a href="#">Campus life</a></li>
+          <li><a href="events.html">Athletics</a></li>
+          <li><a href="#">Give</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="page-header">
+      <div class="wrap">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="events.html" aria-current="page">Events</a></li>
+          </ol>
+        </nav>
+        <h1>Events and athletics</h1>
+        <p class="lede">Most events are free and open to the public. Bring a friend.</p>
+      </div>
+    </div>
+
+    <section class="section" aria-labelledby="list-title">
+      <div class="wrap">
+        <h2 id="list-title" class="visually-hidden">Upcoming events</h2>
+        <form class="filters" data-filter="event-list" aria-label="Filter events">
+          <div class="field">
+            <label for="category">Type of event</label>
+            <select id="category" name="category">
+              <option value="">All events</option>
+              <option value="admission">Admission and visits</option>
+              <option value="academic">Talks and academics</option>
+              <option value="arts">Arts and performances</option>
+              <option value="athletics">Athletics</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="q">Search events</label>
+            <input id="q" name="q" type="search" autocomplete="off">
+          </div>
+        </form>
+        <p class="result-count" data-filter-count="event-list" data-noun="event" aria-live="polite"></p>
+
+        <ul class="event-list" id="event-list">
+          <li class="event" data-category="admission">
+            <p class="event__date"><span>Oct</span><strong>14</strong></p>
+            <div>
+              <h3><a href="#">Fall open house</a></h3>
+              <p class="event__meta">Tuesday, 9 a.m. to 3 p.m., Admission Center</p>
+              <p>Tour campus, sit in on a class and meet with financial aid. Lunch is on us.</p>
+            </div>
+          </li>
+          <li class="event event--athletics" data-category="athletics">
+            <p class="event__date"><span>Oct</span><strong>18</strong></p>
+            <div>
+              <h3><a href="#">Women's soccer vs. Copper Basin</a></h3>
+              <p class="event__meta">Saturday, 1 p.m., Aspen Field</p>
+              <p>Senior day. Free for students with an ID.</p>
+            </div>
+          </li>
+          <li class="event event--athletics" data-category="athletics">
+            <p class="event__date"><span>Oct</span><strong>18</strong></p>
+            <div>
+              <h3><a href="#">Football vs. Big Timber State</a></h3>
+              <p class="event__meta">Saturday, 6 p.m., Ridgeview Stadium</p>
+              <p>Homecoming game. Tailgate starts at 3 in the north lot.</p>
+            </div>
+          </li>
+          <li class="event" data-category="academic">
+            <p class="event__date"><span>Oct</span><strong>21</strong></p>
+            <div>
+              <h3><a href="#">Spring advising sessions</a></h3>
+              <p class="event__meta">Tuesday, drop in from 10 a.m. to 4 p.m., Student Success Center</p>
+              <p>Build your spring schedule with an advisor before registration opens November 3.</p>
+            </div>
+          </li>
+          <li class="event" data-category="arts">
+            <p class="event__date"><span>Oct</span><strong>23</strong></p>
+            <div>
+              <h3><a href="#">Visiting artist talk: Printmaking and place</a></h3>
+              <p class="event__meta">Thursday, 7 p.m., Hollis Gallery</p>
+              <p>Open to the public, with a reception after the talk. <a href="flyer.html">Print the event flyer</a>.</p>
+            </div>
+          </li>
+          <li class="event" data-category="academic">
+            <p class="event__date"><span>Oct</span><strong>28</strong></p>
+            <div>
+              <h3><a href="#">Undergraduate research poster session</a></h3>
+              <p class="event__meta">Tuesday, 4 p.m., Simms Science Center atrium</p>
+              <p>Forty student projects, from river ecology to rural economics.</p>
+            </div>
+          </li>
+          <li class="event" data-category="arts">
+            <p class="event__date"><span>Nov</span><strong>1</strong></p>
+            <div>
+              <h3><a href="#">Fall choir concert</a></h3>
+              <p class="event__meta">Saturday, 7:30 p.m., St. Brigid Chapel</p>
+              <p>Free tickets at the door. Seating is first come, first served.</p>
+            </div>
+          </li>
+          <li class="event" data-category="admission">
+            <p class="event__date"><span>Nov</span><strong>7</strong></p>
+            <div>
+              <h3><a href="#">Transfer student info night</a></h3>
+              <p class="event__meta">Friday, 6 p.m., online</p>
+              <p>Learn how your credits transfer and ask questions live.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="site-footer__grid">
+        <div>
+          <h2>Larkspur College</h2>
+          <address class="contact">
+            1200 College Avenue<br>
+            Larkspur, MT 59000<br>
+            <a href="tel:+14065550100">(406) 555-0100</a>
+          </address>
+        </div>
+        <nav aria-labelledby="footer-explore">
+          <h2 id="footer-explore">Explore</h2>
+          <ul>
+            <li><a href="programs.html">Academic programs</a></li>
+            <li><a href="events.html">Events and athletics</a></li>
+            <li><a href="directory.html">Faculty and staff directory</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="footer-help">
+          <h2 id="footer-help">Help</h2>
+          <ul>
+            <li><a href="#">Accessibility</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Report a website problem</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="site-footer__legal">Larkspur College is a fictional school. This site is a demo of <a href="../index.html">Campus Kit</a>.</p>
+    </div>
+  </footer>
+</body>
+</html>

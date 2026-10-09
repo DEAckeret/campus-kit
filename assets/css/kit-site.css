@@ -1,0 +1,148 @@
+/* ==========================================================================
+   Campus Kit — styles for the project's own pages (index.html, styleguide.html)
+   Not needed on a school website built with the kit.
+   ========================================================================== */
+
+/* ---- Project header ----------------------------------------------------- */
+.sg-header {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+.sg-header__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-5);
+  padding-block: var(--space-4);
+}
+.sg-header a { color: inherit; text-decoration: none; }
+.sg-header a:hover { text-decoration: underline; }
+.sg-header :focus-visible { outline-color: var(--color-gold); }
+.sg-home { font-family: var(--font-display); font-size: var(--step-1); font-weight: 600; }
+.sg-header ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: none;
+}
+.sg-header li + li { margin: 0; }
+
+code,
+pre {
+  font-family: ui-monospace, "Cascadia Code", Consolas, "Liberation Mono", monospace;
+  font-size: 0.875em;
+}
+:not(pre) > code {
+  background: var(--color-mist);
+  padding: 0.1em 0.35em;
+  border-radius: var(--radius-small);
+}
+
+/* ---- Swatches ----------------------------------------------------------- */
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: var(--space-6) var(--space-5);
+  list-style: none;
+  padding: 0;
+  margin: var(--space-6) 0 0;
+  max-width: none;
+}
+.swatches li { margin: 0; display: grid; gap: var(--space-1); font-size: var(--step--1); }
+.swatches strong { font-size: var(--step-0); }
+.swatches span:last-child { color: var(--color-ink-muted); }
+.swatch {
+  display: block;
+  height: 4.5rem;
+  border-radius: var(--radius-large);
+  margin-bottom: var(--space-2);
+}
+.swatch--light { box-shadow: inset 0 0 0 1px var(--color-line); }
+
+/* ---- Type scale --------------------------------------------------------- */
+.type-scale { margin-top: var(--space-6); }
+.type-sample {
+  display: grid;
+  grid-template-columns: 11rem 1fr;
+  gap: var(--space-5);
+  align-items: baseline;
+  padding-block: var(--space-4);
+  border-bottom: 1px solid var(--color-line);
+  margin: 0;
+  max-width: none;
+}
+.type-sample__label { font-size: var(--step--1); color: var(--color-ink-muted); }
+@media (max-width: 40rem) {
+  .type-sample { grid-template-columns: 1fr; gap: var(--space-1); }
+}
+
+/* ---- Component examples ------------------------------------------------- */
+.sg-component {
+  margin-top: var(--space-7);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-line);
+}
+.sg-component > h3 { font-family: var(--font-body); font-weight: 700; }
+.sg-example {
+  padding: var(--space-6);
+  border: 1px solid var(--color-line);
+  border-bottom: 0;
+  border-radius: var(--radius-large) var(--radius-large) 0 0;
+}
+.sg-example > *:last-child { margin-bottom: 0; }
+.sg-code {
+  margin: 0;
+  padding: var(--space-5);
+  background: var(--color-ink);
+  color: #e6ebf1;
+  border-radius: 0 0 var(--radius-large) var(--radius-large);
+  overflow-x: auto;
+  line-height: 1.5;
+  max-width: none;
+}
+
+/* ---- Project landing page ----------------------------------------------- */
+.kit-hero {
+  background: var(--color-spruce);
+  color: var(--color-paper);
+  padding-top: var(--space-9);
+}
+.kit-hero h1 { max-width: 15ch; }
+.kit-hero .lede { color: rgb(255 255 255 / 0.88); }
+.kit-hero a:not(.button) { color: inherit; }
+.kit-hero :focus-visible { outline-color: var(--color-gold); }
+.kit-hero__actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-6); }
+.kit-hero .button--quiet { color: var(--color-paper); border-color: rgb(255 255 255 / 0.6); }
+.kit-hero .button--quiet:hover { background: rgb(255 255 255 / 0.1); color: var(--color-paper); }
+
+.page-index {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: none;
+  border-top: 1px solid var(--color-line);
+}
+.page-index li {
+  display: grid;
+  grid-template-columns: minmax(12rem, 18rem) 1fr;
+  gap: var(--space-2) var(--space-6);
+  padding-block: var(--space-4);
+  border-bottom: 1px solid var(--color-line);
+  margin: 0;
+}
+.page-index a { font-weight: 700; }
+.page-index p { margin: 0; color: var(--color-ink-muted); }
+@media (max-width: 40rem) {
+  .page-index li { grid-template-columns: 1fr; }
+}
+
+.ai-note {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--space-6) var(--space-7);
+}
+.ai-note h3 { font-family: var(--font-body); font-size: var(--step-1); font-weight: 700; }

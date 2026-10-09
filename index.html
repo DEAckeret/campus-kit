@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Campus Kit | Website templates for small colleges</title>
+  <meta name="description" content="Campus Kit is an accessible HTML and CSS design system and page-template kit for small college and nonprofit websites. Built entirely by AI as a proof of concept.">
+  <link rel="icon" href="assets/img/larkspur-mark.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;1,7..72,500&family=Public+Sans:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/kit-site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="sg-header">
+    <div class="wrap sg-header__inner">
+      <a class="sg-home" href="index.html">Campus Kit</a>
+      <nav aria-label="Project">
+        <ul>
+          <li><a href="demo/index.html">Demo site</a></li>
+          <li><a href="styleguide.html">Style guide</a></li>
+          <li><a href="https://github.com/DEAckeret/campus-kit">Code on GitHub</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="kit-hero has-ridge" aria-labelledby="title">
+      <div class="wrap">
+        <h1 id="title">Website templates for small colleges that a small team can keep up.</h1>
+        <p class="lede">Campus Kit is a hand-written HTML and CSS design system with ready-made pages for programs, events, news and staff directories. It's accessible, prints cleanly, and needs no build tools.</p>
+        <div class="kit-hero__actions">
+          <a class="button button--on-dark" href="demo/index.html">Open the demo college</a>
+          <a class="button button--quiet" href="styleguide.html">Read the style guide</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="pages-title">
+      <div class="wrap">
+        <h2 id="pages-title">What's in the kit</h2>
+        <p>Each page is shown on Larkspur College, a made-up school, so you can see the templates with realistic content.</p>
+        <ul class="page-index">
+          <li><a href="demo/index.html">Home page</a><p>A program search in the hero, three paths for new students, key facts, upcoming events and a featured story.</p></li>
+          <li><a href="demo/programs.html">Program finder</a><p>Every major, minor and certificate, filterable by school and type. Linking to <code>programs.html?q=nursing</code> opens a filtered list.</p></li>
+          <li><a href="demo/programs/biology.html">Program page</a><p>The template a department fills in: overview, outcomes, a course table, careers, and a sidebar with the advisor contact.</p></li>
+          <li><a href="demo/events.html">Events and athletics</a><p>A filterable calendar list. Game days get a gold date block.</p></li>
+          <li><a href="demo/directory.html">Staff directory</a><p>Search people by name, title or department.</p></li>
+          <li><a href="demo/news/article.html">News story</a><p>An article layout with an accessible chart and a pull quote.</p></li>
+          <li><a href="demo/flyer.html">Print flyer</a><p>A letter-size event flyer made from the same colors and type, so print and web stay on brand together.</p></li>
+          <li><a href="demo/programs/_template.html">Blank program template</a><p>A commented starting file for adding a new program page.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section--mist" aria-labelledby="team-title">
+      <div class="wrap">
+        <h2 id="team-title">Made for the people who run the site</h2>
+        <div class="ai-note">
+          <div>
+            <h3>Easy to hand off</h3>
+            <p>A <a href="https://github.com/DEAckeret/campus-kit/blob/main/docs/adding-a-program-page.md">step-by-step guide</a> walks faculty and staff through adding a page, written for people who don't code.</p>
+          </div>
+          <div>
+            <h3>Accessible by default</h3>
+            <p>Built to WCAG 2.2 AA: a skip link, visible keyboard focus, labeled forms, and text colors that pass AA contrast with room to spare (body text is 15.6 to 1). Every change is checked automatically.</p>
+          </div>
+          <div>
+            <h3>One file to rebrand</h3>
+            <p>Colors, fonts and spacing live in <code>tokens.css</code>. Change them once and every page, including the print flyer, follows.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="ai-title">
+      <div class="wrap">
+        <h2 id="ai-title">Built entirely by AI</h2>
+        <p>This project is an experiment by <a href="https://github.com/DEAckeret">Dustin Ackeret</a>. Every line of code, every page, and every word of copy was written by Claude, an AI model, working from Dustin's direction. Dustin chose the goal, reviewed the results, and decided what to build next.</p>
+        <p>Claude returns on a schedule to build the next item on the <a href="https://github.com/DEAckeret/campus-kit/blob/main/ROADMAP.md">roadmap</a>, and each session records what it built, what it got wrong and what it decided in the <a href="https://github.com/DEAckeret/campus-kit/blob/main/BUILD_LOG.md">build log</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="site-footer__legal">Campus Kit is open source under the MIT license. Larkspur College and everyone at it are fictional.</p>
+    </div>
+  </footer>
+</body>
+</html>
