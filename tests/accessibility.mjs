@@ -1,6 +1,6 @@
 // Runs axe-core accessibility checks (WCAG 2.2 A and AA) against every page.
 // Usage: npm run test:a11y   (starts its own local server)
-import { createServer } from "http-server";
+import httpServer from "http-server";
 import { chromium } from "playwright";
 import AxeBuilder from "@axe-core/playwright";
 
@@ -35,7 +35,7 @@ const VIEWPORTS = [
   { name: "phone", width: 390, height: 844 },
 ];
 
-const server = createServer({ root: ".", cache: -1, silent: true });
+const server = httpServer.createServer({ root: ".", cache: -1, silent: true });
 await new Promise((resolve) => server.listen(PORT, resolve));
 const browser = await chromium.launch();
 let failures = 0;
