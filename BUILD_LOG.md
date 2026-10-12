@@ -4,6 +4,42 @@ Every AI work session on Campus Kit adds an entry here, newest first. Each entry
 
 ---
 
+## Session 3: October 11, 2026 (three roadmap items)
+
+**Built by:** Claude (Opus 5.5). Dustin asked for more progress while he worked on something else, so I took the first three roadmap items in one session instead of one.
+
+### What I built and decided
+
+- **Shared header and footer.** The campus notice, header and footer now live in `partials/header.html` and `partials/footer.html`. `scripts/includes.mjs` (Node built-ins only, no dependencies) copies them into every demo page between `<!-- include: ... -->` and `<!-- /include -->` markers. The output stays plain HTML, so pages still open straight from disk and nothing runs in the visitor's browser.
+  - `{{root}}` fills in `""` or `"../"` per page, so the same partial works from `demo/` and its subfolders.
+  - `section="..."` on the marker sets `aria-current="page"` on that menu link. A name that matches no link stops the build with a one-line message listing the valid names.
+  - `npm run build` updates pages; `npm run check:includes` changes nothing and fails if any page is out of date. CI runs the check first, before installing anything, so it fails fast.
+  - New staff guide: `docs/changing-the-header-and-footer.md`. The program-page guide and the template's comment now say not to edit between the markers.
+- **Admission page (`demo/apply.html`).** Four steps as a real numbered list, a deadlines table, a cost snapshot (published cost, average aid, cost after aid, with the breakdown underneath), and one call to action, "Start your application." I kept a single call to action, as the roadmap asked; on phones it lands after the content, where the reader has just finished the steps.
+  - New **Steps** component: an `<ol>` with CSS-counter numbers and a line joining them, so screen readers still announce "list, 4 items."
+  - New **Note** style for small print under figures or tables.
+  - The home page's "Apply as a first-year student" and "Transfer your credits" links now go here instead of `#`.
+- **Team page (`demo/athletics/womens-soccer.html`).** Season record, a schedule with results and upcoming games, a roster table, a "Next home game" callout and a coach contact. I chose women's soccer because the events page already features its senior day.
+  - Results are spelled out ("Won," "Lost," "Tied") and only "Won" is colored, so nothing depends on color. Conference games are marked in text.
+  - Roster names are row headers (`<th scope="row">`), so screen readers announce the player with each cell.
+  - New athletics accents: `page-header--athletics`, `facts--athletics`, `callout--athletics` and a highlighted `schedule__next` row. Gold is only used for borders and tints, never text on white.
+  - The main menu's "Athletics" link now goes to this page, and the events page links the soccer game to it.
+- Added Steps and Athletics accents to the style guide, both new pages to the project page, README and the accessibility test list.
+
+### What went wrong
+
+- **The new team page scrolled sideways on phones (404px wide at 390px).** The schedule table sits in a scrolling wrapper, but the page's one-column phone layout used `1fr`, which won't shrink below its content. Fixed at the cause: the phone layout is now `minmax(0, 1fr)`, which the desktop layout already used. This would have hit any program page with a wide course table too.
+- **Scores wrapped onto two lines on phones** ("3–" over "0"). The result column no longer wraps.
+- **Headings after paragraphs and tables sat too close** on the admission page; the main column now adds space above each section heading. This also spaces out the biology page slightly.
+- **The pages had already drifted before this session**, which is the problem the includes solve: two program pages marked "Academics" as current and the others didn't. Every page now gets it from the same place.
+- **Couldn't run `npm test` here again.** This workspace still blocks the npm registry. I ran the include check with Node, and checked all 12 pages in headless Chromium at 1280px and 390px for duplicate IDs, one `h1`, skipped heading levels, labels, alt text, broken anchors and local links, horizontal scrolling and script errors (all clean), plus the menu with JavaScript off. I measured the new text colors: spruce on white 7.8 to 1, muted text on the gold tint 6.7 to 1, spruce on the gold tint 7.0 to 1. HTML validation and axe run in CI.
+
+### Left for next time
+
+The giving page is next. "Cost & aid," "Campus life" and "Give" in the menu are still `#` links until those pages exist.
+
+---
+
 ## Session 2: October 9, 2026 (changes Dustin asked for)
 
 **Built by:** Claude (Opus 5.5), from three requests Dustin made after reviewing the live site.

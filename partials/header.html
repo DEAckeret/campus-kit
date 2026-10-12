@@ -1,0 +1,49 @@
+<!--
+  Shared header for every demo page: skip link, campus notice and site header.
+  Edit this file, then run `npm run build` to copy it into every page.
+
+  Placeholders the build script fills in for each page:
+    {{root}}           path from the page back to demo/ ("" or "../")
+    {{current:NAME}}   becomes aria-current="page" on the page's own section
+                       (set with section="NAME" on the page's include marker)
+-->
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<section class="alert-banner" aria-label="Campus notice" data-dismissible>
+  <div class="wrap alert-banner__inner">
+    <p>Spring registration opens November 3. <a href="{{root}}events.html">See advising sessions</a>.</p>
+    <button class="alert-banner__close" type="button" hidden>
+      <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <span class="visually-hidden">Close this notice</span>
+    </button>
+  </div>
+</section>
+
+<header class="site-header">
+  <nav class="site-header__utility" aria-label="Quick links">
+    <ul class="wrap">
+      <li><a href="{{root}}directory.html"{{current:directory}}>Directory</a></li>
+      <li><a href="{{root}}events.html"{{current:events}}>Events</a></li>
+      <li><a href="#">Library</a></li>
+      <li><a href="#">Students</a></li>
+      <li><a href="#">Faculty &amp; staff</a></li>
+    </ul>
+  </nav>
+  <div class="site-header__main wrap">
+    <a class="wordmark" href="{{root}}index.html">
+      <img src="{{root}}../assets/img/giant-mark.svg" alt="" width="64" height="24">
+      College of the Sleeping Giant
+    </a>
+    <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="main-nav">Menu</button>
+    <nav class="main-nav" id="main-nav" aria-label="Main">
+      <ul>
+        <li><a href="{{root}}programs.html"{{current:academics}}>Academics</a></li>
+        <li><a href="{{root}}apply.html"{{current:admission}}>Admission</a></li>
+        <li><a href="#">Cost &amp; aid</a></li>
+        <li><a href="#">Campus life</a></li>
+        <li><a href="{{root}}athletics/womens-soccer.html"{{current:athletics}}>Athletics</a></li>
+        <li><a href="#">Give</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

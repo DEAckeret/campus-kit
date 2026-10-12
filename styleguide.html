@@ -130,6 +130,47 @@
           </div>
         </article>
 
+        <article class="sg-component" aria-labelledby="c-steps">
+          <h3 id="c-steps">Steps</h3>
+          <p>For a process that has to happen in order, like applying or registering. It's a real numbered list, so screen readers announce how many steps there are. Keep it to five steps or fewer, and start each heading with a verb.</p>
+          <div class="sg-example">
+<ol class="steps">
+  <li>
+    <h4>Fill out the application</h4>
+    <p>Use our free online application or the Common App.</p>
+  </li>
+  <li>
+    <h4>Send your high school transcript</h4>
+    <p>Ask your counselor to email it to admission@sleepinggiant.example.</p>
+  </li>
+</ol>
+          </div>
+        </article>
+
+        <article class="sg-component" aria-labelledby="c-athletics">
+          <h3 id="c-athletics">Athletics accents</h3>
+          <p>Gold marks athletics. Add <code>facts--athletics</code>, <code>callout--athletics</code> or <code>page-header--athletics</code> on team pages. In a schedule, spell out each result ("Won," "Lost," "Tied") so it doesn't depend on color, and give the next game the <code>schedule__next</code> row.</p>
+          <div class="sg-example">
+<dl class="facts facts--athletics">
+  <div><dt>Overall record</dt><dd>7–2–1</dd></div>
+  <div><dt>Conference record</dt><dd>4–1–0</dd></div>
+</dl>
+<div class="table-wrap" tabindex="0">
+  <table class="schedule">
+    <caption>Recent games</caption>
+    <thead>
+      <tr><th scope="col">Date</th><th scope="col">Opponent</th><th scope="col">Result or time</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Oct. 10</td><td>Tamarack University <span class="conf">Conf.</span></td><td><span class="result result--win">Won</span> 1–0</td></tr>
+      <tr><td>Sept. 27</td><td>Bear Paw College <span class="conf">Conf.</span></td><td><span class="result result--loss">Lost</span> 0–1</td></tr>
+      <tr class="schedule__next"><td>Oct. 18</td><td>Copper Basin <span class="conf">Conf.</span></td><td>1 p.m. <strong>Next game</strong></td></tr>
+    </tbody>
+  </table>
+</div>
+          </div>
+        </article>
+
         <article class="sg-component" aria-labelledby="c-callout">
           <h3 id="c-callout">Callout</h3>
           <p>One per page, for the single next step you want a visitor to take.</p>

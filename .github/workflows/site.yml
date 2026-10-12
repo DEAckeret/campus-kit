@@ -22,6 +22,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Shared header and footer are up to date
+        run: npm run check:includes
       - run: npm install --no-fund --no-audit
       - run: npx playwright install --with-deps chromium
       - name: Validate HTML

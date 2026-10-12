@@ -37,6 +37,7 @@ A few things to watch:
 - **Change the description just below it.** Search engines show this under your page's link.
 - **Update the breadcrumb.** Replace `_template.html` with your new file name, and `PROGRAM NAME` with your program's name.
 - **Only change the words between the tags,** not the tags themselves. For example, in `<dd>44</dd>`, change only `44`.
+- **Leave the header and footer alone.** They sit between `<!-- include: ... -->` and `<!-- /include -->` markers and are filled in from shared files, so edits there get overwritten. To change the menu for every page, see [Changing the menu, header or footer](changing-the-header-and-footer.md).
 
 ## Step 3: Add or remove courses
 

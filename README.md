@@ -15,7 +15,9 @@ Campus Kit is a hand-written HTML and CSS design system with ready-made pages fo
 | [Home](https://deackeret.github.io/campus-kit/demo/) | Program search in the hero, paths for new students, key facts, events, a featured story |
 | [Program finder](https://deackeret.github.io/campus-kit/demo/programs.html) | Every program, filterable by school and type; `?q=nursing` links open a filtered list |
 | [Program page](https://deackeret.github.io/campus-kit/demo/programs/biology.html) | The template a department fills in: overview, outcomes, course table, careers, contact |
+| [How to apply](https://deackeret.github.io/campus-kit/demo/apply.html) | Admission page: numbered steps, deadlines table, cost snapshot, one call to action |
 | [Events and athletics](https://deackeret.github.io/campus-kit/demo/events.html) | Filterable event list, with gold date blocks for game days |
+| [Team page](https://deackeret.github.io/campus-kit/demo/athletics/womens-soccer.html) | Season schedule with spelled-out results, roster table, gold athletics accents |
 | [Staff directory](https://deackeret.github.io/campus-kit/demo/directory.html) | Search by name, title or department |
 | [News story](https://deackeret.github.io/campus-kit/demo/news/article.html) | Article layout with an accessible SVG chart |
 | [Print flyer](https://deackeret.github.io/campus-kit/demo/flyer.html) | US letter event flyer built from the same tokens as the site |
@@ -26,7 +28,8 @@ Campus Kit is a hand-written HTML and CSS design system with ready-made pages fo
 - **Progressive enhancement.** Every page works with JavaScript off. A small dependency-free script collapses the mobile menu and filters lists, announcing result counts to screen readers.
 - **Accessibility.** Skip link, visible focus on everything, labeled forms, real tables with captions and headers, a chart with a text description, and measured contrast (body text is 15.6 to 1).
 - **Automated checks.** Every push runs HTML validation and axe-core accessibility tests at desktop and phone widths in GitHub Actions, then deploys to GitHub Pages only if they pass.
-- **Docs for the people who maintain it.** [Adding a program page](docs/adding-a-program-page.md) walks a non-technical staff member through creating a page from the [commented template](demo/programs/_template.html).
+- **One shared header and footer.** They live in [`partials/`](partials/). A tiny dependency-free script (`npm run build`) copies them into every page as plain HTML, and CI fails if a page falls out of date.
+- **Docs for the people who maintain it.** [Adding a program page](docs/adding-a-program-page.md) walks a non-technical staff member through creating a page from the [commented template](demo/programs/_template.html), and [changing the menu](docs/changing-the-header-and-footer.md) covers the shared header and footer.
 
 ## Run it locally
 
@@ -35,7 +38,8 @@ Open `index.html` in a browser, or serve the folder:
 ```bash
 npm install
 npm run serve       # http://localhost:8080
-npm test            # HTML validation + accessibility checks
+npm run build       # copy partials/ into every demo page
+npm test            # include check, HTML validation, accessibility checks
 ```
 
 The tests need Playwright's Chromium the first time: `npx playwright install chromium`.

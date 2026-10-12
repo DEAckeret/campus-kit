@@ -354,7 +354,7 @@
   align-items: start;
 }
 @media (max-width: 56rem) {
-  .with-sidebar { grid-template-columns: 1fr; gap: var(--space-6); }
+  .with-sidebar { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
 }
 .sidebar > * + * { margin-top: var(--space-6); }
 
@@ -552,6 +552,79 @@ th:last-child { padding-right: 0; }
   max-width: none;
 }
 
+/* ---- Steps: a numbered sequence (applying, registering) ----------------- */
+/* A real <ol>, so screen readers announce "list, 4 items" and the order.
+   The numbers are drawn with a CSS counter; a line joins them. */
+.steps {
+  list-style: none;
+  padding: 0;
+  counter-reset: step;
+  margin-bottom: var(--space-5);
+}
+.steps > li {
+  counter-increment: step;
+  position: relative;
+  padding: 0 0 var(--space-5) calc(var(--space-7) + var(--space-2));
+  margin: 0;
+}
+.steps > li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--space-7);
+  height: var(--space-7);
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-spruce);
+  color: var(--color-paper);
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  font-weight: 600;
+}
+.steps > li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: calc(var(--space-7) / 2 - 1px);
+  top: var(--space-7);
+  bottom: 0;
+  width: 2px;
+  background: var(--color-line);
+}
+.steps h3,
+.steps h4 { font-family: var(--font-display); font-weight: 600; font-size: var(--step-1); margin-bottom: var(--space-2); padding-top: var(--space-2); }
+.steps p:last-child { margin-bottom: 0; }
+
+/* ---- Athletics accents -------------------------------------------------- */
+/* Gold marks athletics across the kit (game-day dates, team pages).
+   Gold is never used for text on white; it's only borders and tints. */
+.page-header--athletics { border-bottom: 4px solid var(--color-gold); }
+.facts--athletics div { border-left-color: var(--color-gold); }
+.callout--athletics { background: var(--color-gold-tint); }
+
+/* Schedule: results are spelled out, so nothing relies on color alone */
+.result {
+  display: inline-block;
+  min-width: 3.25em;
+  font-weight: 700;
+}
+.result--win { color: var(--color-spruce); }
+.result--loss,
+.result--tie { color: var(--color-ink-muted); }
+.conf {
+  font-size: var(--step--1);
+  color: var(--color-ink-muted);
+  white-space: nowrap;
+}
+.schedule__next td { background: var(--color-gold-tint); }
+.schedule td:last-child { white-space: nowrap; }
+.schedule__next strong { display: block; }
+tbody th { font-weight: 600; }
+
+/* ---- Note: small print under a table or figures ------------------------- */
+.note { font-size: var(--step--1); color: var(--color-ink-muted); }
+
 /* ---- Small fixes for nested lists and sidebars -------------------------- */
 .tag-list li + li { margin: 0; }
 .sidebar > section:not(.callout) h2 {
@@ -560,6 +633,8 @@ th:last-child { padding-right: 0; }
   font-weight: 700;
   margin-bottom: var(--space-2);
 }
-.facts + h2 { margin-top: var(--space-7); }
+.facts + h2,
+.with-sidebar > div > h2:not(:first-child) { margin-top: var(--space-7); }
+.facts + .note { margin-top: var(--space-4); }
 tbody td:first-child { white-space: nowrap; }
 .site-footer__legal:only-child { margin-top: 0; padding-top: 0; border-top: 0; }

@@ -17,6 +17,7 @@
 </head>
 
 <body>
+  <!-- include: header section="academics" -->
   <a class="skip-link" href="#main">Skip to main content</a>
 
   <section class="alert-banner" aria-label="Campus notice" data-dismissible>
@@ -48,15 +49,16 @@
       <nav class="main-nav" id="main-nav" aria-label="Main">
         <ul>
           <li><a href="../programs.html" aria-current="page">Academics</a></li>
-          <li><a href="#">Admission</a></li>
+          <li><a href="../apply.html">Admission</a></li>
           <li><a href="#">Cost &amp; aid</a></li>
           <li><a href="#">Campus life</a></li>
-          <li><a href="../events.html">Athletics</a></li>
+          <li><a href="../athletics/womens-soccer.html">Athletics</a></li>
           <li><a href="#">Give</a></li>
         </ul>
       </nav>
     </div>
   </header>
+  <!-- /include -->
 
   <!-- ====================================================================
        PROGRAM PAGE TEMPLATE
@@ -66,6 +68,8 @@
        3. Delete any section you don't need. Keep the headings in order:
           one h1, then h2s, then h3s under them.
        4. Add the new page to demo/programs.html so people can find it.
+       5. Don't edit between the include markers above and below. The header
+          and footer come from partials/ (see docs/changing-the-header-and-footer.md).
        Full instructions: docs/adding-a-program-page.md
        ==================================================================== -->
   <main id="main">
@@ -163,6 +167,7 @@
     </div>
   </main>
 
+  <!-- include: footer -->
   <footer class="site-footer">
     <div class="wrap">
       <div class="site-footer__grid">
@@ -178,6 +183,7 @@
           <h2 id="footer-explore">Explore</h2>
           <ul>
             <li><a href="../programs.html">Academic programs</a></li>
+            <li><a href="../apply.html">How to apply</a></li>
             <li><a href="../events.html">Events and athletics</a></li>
             <li><a href="../directory.html">Faculty and staff directory</a></li>
           </ul>
@@ -194,5 +200,6 @@
       <p class="site-footer__legal">College of the Sleeping Giant is a fictional school. This site is a demo of <a href="../../index.html">Campus Kit</a>.</p>
     </div>
   </footer>
+  <!-- /include -->
 </body>
 </html>
