@@ -4,6 +4,35 @@ Every AI work session on Campus Kit adds an entry here, newest first. Each entry
 
 ---
 
+## Session 4: October 12, 2026 (giving page)
+
+**Built by:** Claude (Opus 5.5), in a scheduled session with nobody watching, so decisions below are mine and open to Dustin's review.
+
+### What I built and decided
+
+- **Giving page (`demo/give.html`).** An Advancement page with four parts: progress on a scholarship campaign, giving levels, a donor story, and other ways to give. The sidebar has one call to action ("Give online"), an on-this-page list and the Advancement office contact.
+  - The campaign is "Open Doors": $5 million for scholarships by June 30, 2028, with $3.42 million raised. I tied it to scholarships for students from rural towns so the page has one clear reason to give instead of a list of funds.
+  - The donor story is Ruth Ann Kessler, a fictional 1989 nursing graduate who arrived with a $600 scholarship and now funds one. A story with a specific number in it does more than general praise of giving.
+  - A note says when the totals were last updated, so a stale number is obvious to the staff member who maintains it.
+- **New Progress meter component.** A real `<progress>` element with a visible `<label>`, as the roadmap asked. In Chromium's accessibility tree it is a progress bar named "$3.42 million raised of our $5 million goal" with a value out of 5,000,000, which screen readers read as 68 percent. The amounts are also written out in text, and the percentage, donor count and end date sit under the bar, so nothing depends on seeing the bar. I chose `<progress>` over `role="meter"` because it needs no ARIA and works the same with JavaScript off.
+  - The bar is spruce on a mist track with a muted-ink border so the full length of the goal is visible. Fill against track measures 7.1 to 1 and the border against white 7.6 to 1, well above the 3 to 1 needed for graphics.
+  - The print stylesheet keeps the fill, since browsers drop background colors when printing.
+- **New Giving levels component.** Rows, not cards: amount on the left, level name and what the gift pays for on the right. Each level names something concrete (a semester of textbooks, a summer research stipend). The level name comes first in the HTML so it's read first; on phones the amount sits under the name. The amount is spruce on white, 7.8 to 1.
+- The **"Give" menu link** now goes to the new page (changed once in `partials/header.html` and copied to every page with `npm run build`). Added both components to the style guide, the page to the project page, README and the accessibility test list.
+
+### What went wrong
+
+- **The style guide example didn't match the page.** Inside the style guide, the level names are `h4` (the component's section is already an `h3`), and `h4` defaults to the body font, so the names showed up in bold sans-serif instead of the serif used on the giving page. I caught it in the 1280px screenshot and made the component set its own heading font for both `h3` and `h4`.
+- **My own check script cried wolf at first.** The link check fetched every local link from inside the page, and those requests were cancelled when the script moved to the next page, which reported every link on every page as failed. The links were fine; I filtered out the cancelled check requests and reran.
+- **Couldn't run `npm test` here again.** The npm registry returned a 403 from this workspace's network policy. Instead I ran the include check with Node and checked all 13 pages in headless Chromium at 1280px and 390px for one `h1`, skipped heading levels, duplicate IDs, unlabeled fields, missing alt text, broken in-page anchors and local links, horizontal scrolling and script errors (all clean). I also checked the menu with JavaScript off. HTML validation and axe run in CI.
+
+### Left for next time
+
+- **For Dustin:** on phones the "Give online" button comes after the whole page, the same choice as the admission page. For giving, a donor who already knows they want to give has to scroll a long way. A short "Give online" link near the top for phones would fix that but makes a second call to action. I left it as one for consistency; say the word if you'd rather have it.
+- The 404 page is next. "Cost & aid" and "Campus life" in the menu are still `#` links.
+
+---
+
 ## Session 3: October 11, 2026 (three roadmap items)
 
 **Built by:** Claude (Opus 5.5). Dustin asked for more progress while he worked on something else, so I took the first three roadmap items in one session instead of one.

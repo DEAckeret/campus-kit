@@ -171,6 +171,40 @@
           </div>
         </article>
 
+        <article class="sg-component" aria-labelledby="c-meter">
+          <h3 id="c-meter">Progress meter</h3>
+          <p>For a fundraising campaign or any goal with a total. It's a real <code>&lt;progress&gt;</code> element with a visible label, so screen readers announce the label and the percentage. Always write the amounts out in text as well, and update the date in the note when the numbers change.</p>
+          <div class="sg-example">
+<div class="meter">
+  <label class="meter__label" for="sg-meter"><strong>$3.42 million</strong> raised of our $5 million goal</label>
+  <progress class="meter__bar" id="sg-meter" max="5000000" value="3420000">68%</progress>
+  <ul class="meter__details">
+    <li>68% of the goal</li>
+    <li>1,284 donors so far</li>
+  </ul>
+</div>
+          </div>
+        </article>
+
+        <article class="sg-component" aria-labelledby="c-levels">
+          <h3 id="c-levels">Giving levels</h3>
+          <p>Rows that pair an amount with what it pays for. Name something concrete a gift does at each level, like a semester of textbooks, rather than just a title. On phones the amount moves under the level name.</p>
+          <div class="sg-example">
+<ul class="levels">
+  <li>
+    <h4>Trailhead</h4>
+    <p class="levels__amount">$250 to $999</p>
+    <p>Buys a semester of textbooks for a first-generation student.</p>
+  </li>
+  <li>
+    <h4>Summit</h4>
+    <p class="levels__amount">$1,000 to $4,999</p>
+    <p>Pays a student's stipend for a summer research project.</p>
+  </li>
+</ul>
+          </div>
+        </article>
+
         <article class="sg-component" aria-labelledby="c-callout">
           <h3 id="c-callout">Callout</h3>
           <p>One per page, for the single next step you want a visitor to take.</p>

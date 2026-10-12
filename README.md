@@ -18,6 +18,7 @@ Campus Kit is a hand-written HTML and CSS design system with ready-made pages fo
 | [How to apply](https://deackeret.github.io/campus-kit/demo/apply.html) | Admission page: numbered steps, deadlines table, cost snapshot, one call to action |
 | [Events and athletics](https://deackeret.github.io/campus-kit/demo/events.html) | Filterable event list, with gold date blocks for game days |
 | [Team page](https://deackeret.github.io/campus-kit/demo/athletics/womens-soccer.html) | Season schedule with spelled-out results, roster table, gold athletics accents |
+| [Giving page](https://deackeret.github.io/campus-kit/demo/give.html) | Campaign progress bar (a real `<progress>` with a text label), giving levels, a donor story |
 | [Staff directory](https://deackeret.github.io/campus-kit/demo/directory.html) | Search by name, title or department |
 | [News story](https://deackeret.github.io/campus-kit/demo/news/article.html) | Article layout with an accessible SVG chart |
 | [Print flyer](https://deackeret.github.io/campus-kit/demo/flyer.html) | US letter event flyer built from the same tokens as the site |

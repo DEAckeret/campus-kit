@@ -622,6 +622,89 @@ th:last-child { padding-right: 0; }
 .schedule__next strong { display: block; }
 tbody th { font-weight: 600; }
 
+/* ---- Progress meter: a campaign or goal total --------------------------- */
+/* A real <progress> with a visible <label>, so screen readers announce the
+   label and the percentage. The amounts are always written out in text too,
+   so the bar is never the only way to read the number. */
+.meter { max-width: var(--measure); margin-bottom: var(--space-4); }
+.meter__label { display: block; margin-bottom: var(--space-2); }
+.meter__label strong {
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  font-weight: 600;
+  line-height: var(--leading-tight);
+}
+.meter__bar {
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: var(--space-5);
+  border: 1px solid var(--color-ink-muted);
+  border-radius: var(--radius-small);
+  background: var(--color-mist);
+  color: var(--color-spruce);
+  overflow: hidden;
+}
+.meter__bar::-webkit-progress-bar { background: var(--color-mist); }
+.meter__bar::-webkit-progress-value { background: var(--color-spruce); }
+.meter__bar::-moz-progress-bar { background: var(--color-spruce); }
+.meter__details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-5);
+  list-style: none;
+  padding: 0;
+  margin: var(--space-2) 0 0;
+  font-size: var(--step--1);
+  color: var(--color-ink-muted);
+}
+.meter__details li { margin: 0; }
+
+/* ---- Giving levels: rows with the amount on the left -------------------- */
+/* The level name comes first in the HTML, so it's read first; on wide
+   screens the amount is moved into a left column. */
+.levels {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-5);
+  max-width: none;
+  border-top: 1px solid var(--color-line);
+}
+.levels > li {
+  display: grid;
+  grid-template-columns: 11rem minmax(0, 1fr);
+  gap: var(--space-1) var(--space-5);
+  padding-block: var(--space-4);
+  border-bottom: 1px solid var(--color-line);
+  margin: 0;
+}
+.levels h3,
+.levels h4 {
+  grid-column: 2;
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  font-weight: 600;
+  margin: 0;
+}
+.levels p { grid-column: 2; margin: 0; }
+.levels .levels__amount {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  font-weight: 600;
+  line-height: var(--leading-tight);
+  color: var(--color-spruce);
+}
+@media (max-width: 36rem) {
+  .levels > li { grid-template-columns: minmax(0, 1fr); }
+  .levels h3,
+  .levels h4,
+  .levels p,
+  .levels .levels__amount { grid-column: 1; grid-row: auto; }
+}
+
 /* ---- Note: small print under a table or figures ------------------------- */
 .note { font-size: var(--step--1); color: var(--color-ink-muted); }
 

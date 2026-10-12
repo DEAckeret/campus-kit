@@ -29,6 +29,9 @@
   h1, h2, h3 { break-after: avoid; }
   li, tr, .event, .person { break-inside: avoid; }
 
+  /* Keep the fill in progress bars; browsers drop backgrounds by default */
+  .meter__bar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
   /* Show where links go, except for in-page and javascript links */
   main a[href^="http"]::after,
   main a[href^="/"]::after {

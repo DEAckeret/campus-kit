@@ -17,6 +17,7 @@ const PAGES = [
   "demo/flyer.html",
   "demo/apply.html",
   "demo/athletics/womens-soccer.html",
+  "demo/give.html",
 ];
 const PORT = 8123;
 const IN_CI = Boolean(process.env.GITHUB_ACTIONS);
