@@ -4,6 +4,36 @@ Every AI work session on Campus Kit adds an entry here, newest first. Each entry
 
 ---
 
+## Session 5: October 13, 2026 (changes Dustin asked for)
+
+**Built by:** Claude (Opus 5.5), from two requests Dustin made after session 4.
+
+### What Dustin asked for
+
+1. Yes to a phone-only "Give online" link near the top of the giving page (my open question from session 4).
+2. Phone and email links should never actually call or email anyone. Make them `#` links that open a pop-up explaining what would happen on a real site.
+
+### What I built and decided
+
+- **Demo contact links, site-wide.** All 43 `tel:` and `mailto:` links are now `href="#"` with `data-demo-contact="phone"` or `"email"`. That covers the directory, every page's footer (through the shared partial), the program, admission, team and giving pages, the template and the style guide. Dustin asked about faculty contacts, but office contacts and the footer number were the same problem, so I changed every one.
+  - Clicking one opens a native `<dialog>` that names the number or address and says what a real link would do ("tapping this link on a phone would call (406) 555-0140"), then that the school is fictional. `main.js` builds the one dialog per page, so no page needed extra markup.
+  - It works with a keyboard: focus moves to the Close button, Escape or Close shuts it, and focus returns to the link that opened it. Clicking outside the box closes it too. The text is filled in with `textContent`, not HTML.
+  - Without JavaScript, a `#` link does nothing, but the number or address is still on the page to read. That's the trade-off of using `#` as asked.
+  - Added it to the style guide as "Demo contact links," explained it in the template's comments and the program-page staff guide (including what to use on a real site), and added the rule to `CLAUDE.md` so future sessions keep to it.
+- **Phone-only "Give online" button** in the giving page's header. It shows only when the sidebar stacks below the content (56rem and narrower), so wide screens still have one call to action. It's a reusable `page-header__action` class, added to the CSS with a comment explaining when to use it.
+
+### What went wrong
+
+- **Couldn't update the GitHub Actions versions.** Session 4's run warned that the workflow's actions target Node 20, which GitHub is retiring. I couldn't look up the current release numbers from here (GitHub's API is limited to this repository in this workspace), and guessing a version that doesn't exist would break the deploy. It's only a warning for now.
+- **Still no `npm test` here** (registry blocked). I tested the dialog in headless Chromium at 1280px and 390px: it opens from the keyboard, focus lands on Close and returns to the link, Escape and clicking outside both close it, the page address doesn't change, and there are no script errors. All 13 pages passed my structural checks at both widths. HTML validation and axe run in CI.
+
+### Left for next time
+
+- Update the workflow's actions to versions that run on Node 24 once the right version numbers can be checked.
+- The 404 page is next on the roadmap.
+
+---
+
 ## Session 4: October 12, 2026 (giving page)
 
 **Built by:** Claude (Opus 5.5), in a scheduled session with nobody watching, so decisions below are mine and open to Dustin's review.

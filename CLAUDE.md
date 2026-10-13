@@ -20,6 +20,7 @@ Campus Kit is a proof-of-concept project: it is built **entirely by AI** for Dus
 - **Copy is plain and specific.** Sentence case, active voice, buttons say what happens. Write for a prospective student or a non-technical staff member. No marketing filler.
 - **Design restraint.** The ridgeline is the one signature motif; don't add competing decoration. Prefer lists and rows over identical card grids. No all-caps labels.
 - **Nothing tied to a real college.** College of the Sleeping Giant and everyone at it are fictional. Use `.example` email domains and 555 phone numbers.
+- **Contact links never call or email anyone.** Dustin's rule: write every phone number and email address as `<a href="#" data-demo-contact="phone">` or `data-demo-contact="email"`, never `tel:` or `mailto:`. Clicking one opens a note (built by `main.js`) explaining what a real link would do.
 - **Don't add tracking code, third-party scripts, or anything that collects data.**
 
 ## File map

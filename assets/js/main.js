@@ -111,3 +111,52 @@ document.querySelectorAll("[data-filter]").forEach((form) => {
   });
   apply();
 });
+
+/* ---- Demo contact links --------------------------------------------------
+   College of the Sleeping Giant is fictional, so its phone numbers and email
+   addresses don't go anywhere. In the demo they're written as
+     <a href="#" data-demo-contact="phone">(406) 555-0140</a>
+     <a href="#" data-demo-contact="email">giving@sleepinggiant.example</a>
+   and clicking one opens a short note explaining what a real link would do.
+   On a real site, use href="tel:+1..." and href="mailto:..." instead and
+   leave out data-demo-contact.
+   ------------------------------------------------------------------------- */
+const demoContacts = document.querySelectorAll("[data-demo-contact]");
+if (demoContacts.length && typeof HTMLDialogElement === "function") {
+  const dialog = document.createElement("dialog");
+  dialog.className = "demo-dialog";
+  dialog.setAttribute("aria-labelledby", "demo-dialog-title");
+  dialog.innerHTML =
+    '<h2 id="demo-dialog-title"></h2><p data-demo-text></p><p data-demo-why></p>' +
+    '<form method="dialog"><button class="button" type="submit">Close</button></form>';
+  document.body.append(dialog);
+  const title = dialog.querySelector("h2");
+  const text = dialog.querySelector("[data-demo-text]");
+  const why = dialog.querySelector("[data-demo-why]");
+  let opener = null;
+
+  demoContacts.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      const contact = link.textContent.trim();
+      if (link.dataset.demoContact === "email") {
+        title.textContent = "This email address is just for the demo";
+        text.textContent = `On a real college website, this link would open your email app with a new message to ${contact}.`;
+        why.textContent = "College of the Sleeping Giant is a fictional school, so there's no inbox to reach.";
+      } else {
+        title.textContent = "This phone number is just for the demo";
+        text.textContent = `On a real college website, tapping this link on a phone would call ${contact}.`;
+        why.textContent = "College of the Sleeping Giant is a fictional school, so this demo doesn't place calls.";
+      }
+      opener = link;
+      dialog.showModal();
+    });
+  });
+
+  // Clicking the dimmed area outside the box closes it too
+  dialog.addEventListener("click", (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  // Put keyboard focus back on the link that opened it
+  dialog.addEventListener("close", () => opener?.focus());
+}

@@ -705,6 +705,30 @@ tbody th { font-weight: 600; }
   .levels .levels__amount { grid-column: 1; grid-row: auto; }
 }
 
+/* ---- Demo contact note -------------------------------------------------- */
+/* The pop-up that explains a demo phone number or email address. main.js
+   builds it; see "Demo contact links" there and in the style guide. */
+.demo-dialog {
+  width: min(30rem, calc(100vw - 2 * var(--gutter)));
+  padding: var(--space-6);
+  border: 0;
+  border-top: 6px solid var(--color-spruce);
+  border-radius: var(--radius-large);
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+.demo-dialog::backdrop { background: rgb(27 36 48 / 0.6); }
+.demo-dialog h2 { font-size: var(--step-2); margin-bottom: var(--space-3); }
+.demo-dialog form { margin-top: var(--space-5); }
+
+/* ---- Page-header action: a phone-only shortcut to the main action ------- */
+/* For long pages where the sidebar's call to action ends up at the bottom
+   on phones. Hidden once the sidebar sits beside the content. */
+.page-header__action { margin: var(--space-5) 0 0; }
+@media (min-width: 56.0625rem) {
+  .page-header__action { display: none; }
+}
+
 /* ---- Note: small print under a table or figures ------------------------- */
 .note { font-size: var(--step--1); color: var(--color-ink-muted); }
 
