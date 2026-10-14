@@ -147,6 +147,25 @@
           </div>
         </article>
 
+        <article class="sg-component" aria-labelledby="c-table">
+          <h3 id="c-table">Table</h3>
+          <p>For information people compare across rows, like courses or deadlines. Always give the table a <code>&lt;caption&gt;</code> and column headers. The <code>&lt;section class="table-wrap"&gt;</code> wrapper scrolls sideways when the table is wider than a phone screen. <code>tabindex="0"</code> lets keyboard users scroll it, and <code>aria-labelledby</code> pointing at the caption's <code>id</code> makes it a named region, so screen readers announce "Required core courses, region" instead of an unnamed group. Each caption needs its own <code>id</code>.</p>
+          <div class="sg-example">
+<section class="table-wrap" tabindex="0" aria-labelledby="sg-courses-caption">
+  <table>
+    <caption id="sg-courses-caption">Required core courses</caption>
+    <thead>
+      <tr><th scope="col">Course</th><th scope="col">Title</th><th scope="col">Credits</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>BIO 121</td><td>Cells, genes and evolution</td><td>4</td></tr>
+      <tr><td>BIO 230</td><td>Genetics</td><td>4</td></tr>
+    </tbody>
+  </table>
+</section>
+          </div>
+        </article>
+
         <article class="sg-component" aria-labelledby="c-athletics">
           <h3 id="c-athletics">Athletics accents</h3>
           <p>Gold marks athletics. Add <code>facts--athletics</code>, <code>callout--athletics</code> or <code>page-header--athletics</code> on team pages. In a schedule, spell out each result ("Won," "Lost," "Tied") so it doesn't depend on color, and give the next game the <code>schedule__next</code> row.</p>
@@ -155,9 +174,9 @@
   <div><dt>Overall record</dt><dd>7–2–1</dd></div>
   <div><dt>Conference record</dt><dd>4–1–0</dd></div>
 </dl>
-<div class="table-wrap" tabindex="0">
+<section class="table-wrap" tabindex="0" aria-labelledby="sg-games-caption">
   <table class="schedule">
-    <caption>Recent games</caption>
+    <caption id="sg-games-caption">Recent games</caption>
     <thead>
       <tr><th scope="col">Date</th><th scope="col">Opponent</th><th scope="col">Result or time</th></tr>
     </thead>
@@ -167,7 +186,7 @@
       <tr class="schedule__next"><td>Oct. 18</td><td>Copper Basin <span class="conf">Conf.</span></td><td>1 p.m. <strong>Next game</strong></td></tr>
     </tbody>
   </table>
-</div>
+</section>
           </div>
         </article>
 

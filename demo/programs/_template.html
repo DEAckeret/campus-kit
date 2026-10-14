@@ -110,9 +110,15 @@
           </ul>
 
           <h2 id="courses">Sample courses</h2>
-          <div class="table-wrap" tabindex="0">
+          <!-- Tables: keep the <section class="table-wrap"> wrapper exactly as written.
+               tabindex="0" lets keyboard users scroll a wide table on a phone, and
+               aria-labelledby makes the wrapper a named region, so screen readers announce
+               the caption ("Required core courses, region") when focus lands on it.
+               For a second table, copy the whole wrapper and give the new <caption> its own
+               id, then put that same id in the wrapper's aria-labelledby. -->
+          <section class="table-wrap" tabindex="0" aria-labelledby="core-courses-caption">
             <table>
-              <caption>Required core courses</caption>
+              <caption id="core-courses-caption">Required core courses</caption>
               <thead>
                 <tr><th scope="col">Course</th><th scope="col">Title</th><th scope="col">Credits</th><th scope="col">Usually taken</th></tr>
               </thead>
@@ -122,7 +128,7 @@
                 <tr><td>ABC 201</td><td>COURSE TITLE</td><td>3</td><td>Second year</td></tr>
               </tbody>
             </table>
-          </div>
+          </section>
 
           <h2 id="careers">After graduation</h2>
           <p>WHERE GRADUATES WORK OR CONTINUE THEIR STUDIES.</p>

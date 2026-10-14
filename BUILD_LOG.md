@@ -4,6 +4,30 @@ Every AI work session on Campus Kit adds an entry here, newest first. Each entry
 
 ---
 
+## Session 6: October 14, 2026 (named scrolling tables)
+
+**Built by:** Claude (Opus 5.5), in a scheduled session with nobody watching, so decisions below are mine and open to Dustin's review.
+
+### What I built and decided
+
+- **Every scrolling table now has a name.** All six table wrappers (biology courses, application deadlines, the soccer schedule and roster, the program template and the style guide example) point `aria-labelledby` at their table's `<caption>`, which now has an `id`. In Chromium's accessibility tree each one is a region named after its caption, for example "2026 women's soccer schedule." A screen reader user who tabs to a table hears what it is before scrolling it.
+- **I used `<section>` instead of `<div role="region">`.** The roadmap asked for `role="region"`, but a `<section>` with `aria-labelledby` is a region in HTML already, with the same role and the same name, and needs no ARIA. It's also how the rest of the site names its regions (the campus notice, sidebar boxes). Just as practical: the HTML validator's recommended rules include one that flags ARIA roles with a native element, and I believe `region` is on its list. I couldn't run the validator here to be sure, so I chose the version I knew would pass. No CSS targets the wrapper by element, so nothing looks different.
+- **New Table entry in the style guide,** with a course-table example that explains `tabindex`, the caption `id` and `aria-labelledby` in plain words. The athletics schedule example uses the same pattern.
+- **The program template's comment** now explains the wrapper and says what to change when adding a second table. The staff guide (`docs/adding-a-program-page.md`) says the same in its "Add or remove courses" step, since two tables can't share an `id`.
+
+### What went wrong
+
+- **I first wrote it the way the roadmap said** (`<div role="region">`) and only then checked the validator config and remembered its prefer-native rule. I switched every wrapper before committing rather than push a likely failing build.
+- **Still no `npm test` here.** The npm registry is blocked by this workspace's network policy (403 at the proxy). Instead I checked all 13 pages in headless Chromium at 1280px and 390px for one `h1`, skipped heading levels, duplicate IDs, `aria-labelledby` targets that don't exist, every `.table-wrap` being a focusable section named by its own caption, missing alt text, horizontal scrolling and script errors (all clean). I read the region names from the browser's accessibility tree and looked at screenshots of the soccer schedule with keyboard focus at both widths and the new style guide entry. HTML validation and axe run in CI.
+
+### Left for next time
+
+- **For Dustin:** the roadmap wording says `role="region"`; the build uses a named `<section>`, which screen readers treat the same way. If you'd rather have the literal `role="region"`, it's a one-line change per table, but the validator may need a rule exception.
+- The Node 20 warning on the workflow's actions is still open (version numbers can't be looked up from here).
+- The zoom and text-spacing check is next.
+
+---
+
 ## Session 5: October 13, 2026 (changes Dustin asked for)
 
 **Built by:** Claude (Opus 5.5), from two requests Dustin made after session 4.

@@ -44,6 +44,8 @@ A few things to watch:
 
 Each course is one line that starts with `<tr>`. To add a course, copy a whole line and paste it below, then change the text. To remove one, delete its whole line.
 
+If you need a second table, copy everything from `<section class="table-wrap"` down to its closing `</section>`. Then give the new table's `<caption>` a different `id`, such as `id="elective-courses-caption"`, and put the same name in that wrapper's `aria-labelledby`. That's how a screen reader knows what to call the table. Two tables on one page can't share an `id`.
+
 ## Step 4: Delete what you don't need
 
 Don't have a student quote? Delete everything from `<figure class="pull-quote">` down to `</figure>`, including those two lines.
