@@ -3,22 +3,8 @@
 import httpServer from "http-server";
 import { chromium } from "playwright";
 import AxeBuilder from "@axe-core/playwright";
+import { PAGES } from "./pages.mjs";
 
-const PAGES = [
-  "index.html",
-  "styleguide.html",
-  "demo/index.html",
-  "demo/programs.html",
-  "demo/programs/biology.html",
-  "demo/programs/_template.html",
-  "demo/events.html",
-  "demo/directory.html",
-  "demo/news/article.html",
-  "demo/flyer.html",
-  "demo/apply.html",
-  "demo/athletics/womens-soccer.html",
-  "demo/give.html",
-];
 const PORT = 8123;
 const IN_CI = Boolean(process.env.GITHUB_ACTIONS);
 

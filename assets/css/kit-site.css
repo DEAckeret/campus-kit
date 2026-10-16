@@ -45,7 +45,7 @@ pre {
 /* ---- Swatches ----------------------------------------------------------- */
 .swatches {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));
   gap: var(--space-6) var(--space-5);
   list-style: none;
   padding: 0;
@@ -142,7 +142,7 @@ pre {
 
 .ai-note {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
   gap: var(--space-6) var(--space-7);
 }
 .ai-note h3 { font-family: var(--font-body); font-size: var(--step-1); font-weight: 700; }

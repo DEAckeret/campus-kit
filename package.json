@@ -11,7 +11,8 @@
     "check:includes": "node scripts/includes.mjs --check",
     "lint:html": "html-validate \"*.html\" \"demo/**/*.html\"",
     "test:a11y": "node tests/accessibility.mjs",
-    "test": "npm run check:includes && npm run lint:html && npm run test:a11y"
+    "test:zoom": "node tests/zoom.mjs",
+    "test": "npm run check:includes && npm run lint:html && npm run test:a11y && npm run test:zoom"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.10.0",

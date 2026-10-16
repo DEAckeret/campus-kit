@@ -28,7 +28,7 @@ Campus Kit is a hand-written HTML and CSS design system with ready-made pages fo
 - **Design tokens.** All colors, type sizes and spacing live in [`assets/css/tokens.css`](assets/css/tokens.css). Rebranding the kit means editing one file.
 - **Progressive enhancement.** Every page works with JavaScript off. A small dependency-free script collapses the mobile menu and filters lists, announcing result counts to screen readers.
 - **Accessibility.** Skip link, visible focus on everything, labeled forms, real tables with captions and headers, a chart with a text description, and measured contrast (body text is 15.6 to 1).
-- **Automated checks.** Every push runs HTML validation and axe-core accessibility tests at desktop and phone widths in GitHub Actions, then deploys to GitHub Pages only if they pass.
+- **Automated checks.** Every push runs HTML validation, axe-core accessibility tests at desktop and phone widths, and zoom and text-spacing checks (200% and 400% zoom, WCAG 1.4.12 spacing) in GitHub Actions, then deploys to GitHub Pages only if they pass.
 - **One shared header and footer.** They live in [`partials/`](partials/). A tiny dependency-free script (`npm run build`) copies them into every page as plain HTML, and CI fails if a page falls out of date.
 - **Docs for the people who maintain it.** [Adding a program page](docs/adding-a-program-page.md) walks a non-technical staff member through creating a page from the [commented template](demo/programs/_template.html), and [changing the menu](docs/changing-the-header-and-footer.md) covers the shared header and footer.
 
@@ -40,7 +40,7 @@ Open `index.html` in a browser, or serve the folder:
 npm install
 npm run serve       # http://localhost:8080
 npm run build       # copy partials/ into every demo page
-npm test            # include check, HTML validation, accessibility checks
+npm test            # include check, HTML validation, accessibility, zoom and text-spacing checks
 ```
 
 The tests need Playwright's Chromium the first time: `npx playwright install chromium`.

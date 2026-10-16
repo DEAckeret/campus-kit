@@ -22,6 +22,9 @@ body {
   line-height: var(--leading-body);
   color: var(--color-ink);
   background: var(--color-paper);
+  /* A word too long for its line (an email address, a web address) breaks
+     instead of pushing the page sideways when text is zoomed or spaced out */
+  overflow-wrap: break-word;
 }
 
 img,
@@ -64,6 +67,13 @@ a {
   color: var(--color-spruce);
   text-decoration-thickness: 1px;
   text-underline-offset: 0.18em;
+}
+
+/* Email and web addresses are one long "word". Let them break anywhere, so
+   rows and columns that hold them can still shrink at 400% zoom. */
+a[data-demo-contact],
+a[href^="mailto:"] {
+  overflow-wrap: anywhere;
 }
 
 a:hover {

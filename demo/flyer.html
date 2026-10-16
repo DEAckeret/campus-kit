@@ -28,19 +28,22 @@
     }
     .flyer-toolbar p { margin: 0; color: var(--color-ink-muted); font-size: var(--step--1); }
 
+    /* On screen the page is at least letter height and grows if text is
+       zoomed or spaced out, so nothing gets cut off. Print fixes it at 11in. */
     .flyer {
       width: 8.5in;
-      height: 11in;
+      min-height: 11in;
       max-width: 100%;
       margin: 0 auto var(--space-8);
       background: var(--color-paper);
       box-shadow: 0 1px 3px rgb(27 36 48 / 0.15), 0 12px 32px rgb(27 36 48 / 0.12);
       display: grid;
       grid-template-rows: auto 1fr auto;
+      grid-template-columns: minmax(0, 1fr);
       overflow: hidden;
     }
     @media (max-width: 9in) {
-      .flyer { height: auto; }
+      .flyer { min-height: 0; }
     }
 
     .flyer__top {
@@ -51,7 +54,7 @@
     }
     .flyer__series { font-weight: 600; color: var(--color-gold-tint); margin-bottom: 0.25in; }
     .flyer__top h1 {
-      font-size: clamp(2.6rem, 8vw, 4.4rem);
+      font-size: clamp(var(--step-4), 8vw, 4.4rem);
       line-height: 1.02;
       max-width: 11ch;
       margin: 0;
@@ -65,7 +68,12 @@
       align-content: start;
     }
     @media (max-width: 40rem) {
-      .flyer__body { grid-template-columns: 1fr; }
+      .flyer__body { grid-template-columns: minmax(0, 1fr); }
+      /* Phones and high zoom: the page's own gutter instead of print margins */
+      .flyer__top { padding: var(--space-7) var(--gutter) calc(var(--space-6) + var(--ridge-height)); }
+      .flyer__body,
+      .flyer__bottom { padding-inline: var(--gutter); }
+      .flyer__bottom { flex-wrap: wrap; }
     }
     .flyer__body p { font-size: 1.15rem; }
     .flyer__when {

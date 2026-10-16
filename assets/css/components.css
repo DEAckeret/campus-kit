@@ -260,7 +260,7 @@
 /* ---- Pathways: the three ways into the site ----------------------------- */
 .pathways {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
   gap: var(--space-6) var(--space-7);
   list-style: none;
   padding: 0;
@@ -337,7 +337,7 @@
 /* ---- Key facts ---------------------------------------------------------- */
 .facts {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(10rem, 100%), 1fr));
   gap: var(--space-5);
   margin: 0;
   max-width: none;
@@ -473,13 +473,16 @@ th:last-child { padding-right: 0; }
   background: var(--color-paper);
   color: var(--color-ink);
   min-width: 14rem;
+  max-width: 100%;
 }
+/* A long option or label wraps the field instead of widening the page */
+.field { max-width: 100%; }
 .result-count { font-size: var(--step--1); color: var(--color-ink-muted); }
 
 /* ---- People directory --------------------------------------------------- */
 .people {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(17rem, 100%), 1fr));
   gap: var(--space-6) var(--space-6);
   list-style: none;
   padding: 0;
@@ -487,6 +490,7 @@ th:last-child { padding-right: 0; }
   max-width: none;
 }
 .person { display: flex; gap: var(--space-4); margin: 0; }
+.person > div { min-width: 0; }
 .person[hidden] { display: none; }
 .person__initials {
   flex: none;
@@ -533,7 +537,7 @@ th:last-child { padding-right: 0; }
 .site-footer :focus-visible { outline-color: var(--color-gold); }
 .site-footer__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(13rem, 100%), 1fr));
   gap: var(--space-6);
 }
 .site-footer h2 {

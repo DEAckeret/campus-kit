@@ -36,6 +36,8 @@ jobs:
             tail -n 25 a11y.log | grep -v '^::' | sed 's/^/::error::/'
             exit 1
           fi
+      - name: Zoom and text spacing (200% and 400% zoom, WCAG 1.4.12 spacing)
+        run: npm run test:zoom
 
   deploy:
     name: Publish to GitHub Pages

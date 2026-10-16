@@ -4,6 +4,55 @@ Every AI work session on Campus Kit adds an entry here, newest first. Each entry
 
 ---
 
+## Session 7: October 16, 2026 (zoom and text-spacing check)
+
+**Built by:** Claude (Opus 5.5), in a scheduled session with nobody watching, so decisions below are mine and open to Dustin's review.
+
+### How I tested
+
+All 13 pages, in headless Chromium, under six conditions. Browser zoom shrinks the window in CSS pixels, so I tested zoom by window size, which is how WCAG 1.4.10 defines it:
+
+- **200% zoom:** a 1280 × 900 window at 200% is 640 × 450.
+- **400% zoom:** the same window at 400% is 320 × 225 (the 320px reflow width in WCAG 1.4.10).
+- **200% text size only:** 1280px wide with the browser's font-size setting doubled (16px to 32px), for WCAG 1.4.4.
+- **Text spacing** (WCAG 1.4.12: line height 1.5, letter spacing 0.12em, word spacing 0.16em, 2em after paragraphs) at 1280px, 390px and 320px.
+
+On every page with a Menu button, I checked again with the menu open. A page failed if it scrolled sideways, if anything stuck out past the right edge (outside a scrolling table or code sample, which 1.4.10 allows), if text was cut off in a box that hides overflow, or if text from two elements overlapped.
+
+### What I found and fixed
+
+Before the fixes, 25 page and condition pairs failed. After them, all pass.
+
+- **Long email addresses pushed pages sideways.** An address like twhitehorse@sleepinggiant.example is one long "word" that can't wrap. It broke the directory at 200% zoom, at 400% and at 200% text size, and broke the admission, biology, soccer and style guide pages at 400% zoom or with text spacing. Fixes:
+  - Every body text now breaks a word that is too long for its line (`overflow-wrap: break-word` on `body`).
+  - Contact links (`data-demo-contact` and real `mailto:` links) can break anywhere (`overflow-wrap: anywhere`), so the rows and columns holding them can shrink.
+  - The text column in each directory entry can now shrink beside the initials (`min-width: 0`).
+- **Grids had a minimum width that could be wider than the screen.** Every auto-filling grid (directory, pathways, key facts, footer, style guide swatches, project page) used a fixed minimum like `minmax(17rem, 1fr)`. At 200% text size, 17rem is 544px. Each one is now `minmax(min(17rem, 100%), 1fr)`, so a column never gets wider than its container. Normal sizes look the same; I compared screenshots at 1280px and 390px.
+- **The directory's department menu** was too wide at 320px with text spacing, because a select is as wide as its longest option. Form fields now stop at the width of their container.
+- **The flyer cut off its own text.** On wide screens it was a fixed 11 inches tall with overflow hidden, so at 200% text size about 40% of it was cut off. At 400% zoom its print margins (0.7 inch on each side) and headline pushed it past the edge. On screen it is now at least 11 inches tall and grows to fit the text; on phones and at high zoom it uses the page's gutter instead of print margins, and the bottom row wraps. Print still sets it to exactly 11 inches. I printed it to PDF before and after the change, and both came out as one page.
+
+Nothing overlapped and nothing was cut off on any page except the flyer. The header, menu, tables, steps, giving levels and progress meter all reflowed cleanly.
+
+### The checks now run on every push
+
+I turned the test into `tests/zoom.mjs` (`npm run test:zoom`) and added it to `npm test` and the workflow, so a new page that breaks at 400% zoom fails the build. I left out the overlap check: it depends on exact font sizes, and CI loads the real web fonts while this workspace can't, so it could fail on one and pass on the other. The page list moved to `tests/pages.mjs` so both test files share it; `CLAUDE.md` and the README say so.
+
+I ran the new script against the old CSS to make sure it catches the problems: it found the same 25 failures.
+
+### What went wrong
+
+- **My first text-size screenshots were wrong.** Playwright's full-page screenshot quietly resets the font-size setting, so the 200% text screenshots after the first page showed normal-size text. The pass or fail results weren't affected (the first run had no screenshots and found the flyer problem), but I only noticed because one screenshot looked too small. The script now sets the font size again before each page and reports if it's not applied. For the screenshots, I doubled the root font size in CSS instead.
+- **Still no `npm test` here.** The npm registry is blocked in this workspace. I ran `tests/zoom.mjs` with a globally installed Playwright and a small stand-in for `http-server` (not committed). HTML validation and axe run only in CI, and this is the first CI run of the zoom test, so watch that run.
+- **The demo contact note scrolls at 400% zoom.** At 320 × 225 the note is taller than the window, and focus lands on Close at the bottom, so the heading starts scrolled out of view. It can be scrolled with arrow keys or touch and nothing is cut off, so it passes, but it's not ideal. Moving focus to the note itself would fix it; I left it for a later session to keep this one to the roadmap item.
+
+### Left for next time
+
+- The contact note focus, above.
+- The Node 20 warning on the workflow's actions is still open.
+- The screen reader pass is Dustin's. The 404 page is the next AI item.
+
+---
+
 ## Session 6: October 14, 2026 (named scrolling tables)
 
 **Built by:** Claude (Opus 5.5), in a scheduled session with nobody watching, so decisions below are mine and open to Dustin's review.
