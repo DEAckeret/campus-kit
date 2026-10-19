@@ -113,6 +113,46 @@
           </div>
         </article>
 
+        <article class="sg-component" aria-labelledby="c-links">
+          <h3 id="c-links">Link list</h3>
+          <p>The same rows as the program list, for any list of pages with one line about each, like the popular pages on the "page not found" page. Say where the link goes, not "Click here."</p>
+          <div class="sg-example">
+<ul class="link-list">
+  <li>
+    <a href="#">How to apply</a>
+    <p>Four steps, deadlines and what a year costs, for first-year students.</p>
+  </li>
+  <li>
+    <a href="#">Faculty and staff directory</a>
+    <p>Find someone's email address, phone number and department.</p>
+  </li>
+</ul>
+          </div>
+        </article>
+
+        <article class="sg-component" aria-labelledby="c-search">
+          <h3 id="c-search">Search box</h3>
+          <p>The home page's program search, for a white or mist background: add <code>finder--light</code>. It sends the words to the program finder as <code>programs.html?q=…</code>, so it works without JavaScript. On narrow screens the button moves under the box.</p>
+          <div class="sg-example">
+<form class="finder finder--light" action="demo/programs.html" method="get" aria-label="Program search">
+  <label for="sg-search-q">Find a major, minor or certificate</label>
+  <div class="finder__row">
+    <input id="sg-search-q" name="q" type="search" autocomplete="off">
+    <button class="button" type="submit">Search programs</button>
+  </div>
+</form>
+          </div>
+        </article>
+
+        <article class="sg-component" aria-labelledby="c-missing">
+          <h3 id="c-missing">Missing address</h3>
+          <p>For the "page not found" page. With JavaScript on, the first line shows the address the visitor tried, and the second shows the page on this site that linked to it, so they can copy both into a report. Nothing is sent anywhere. Without JavaScript, or when there's nothing to show, the lines stay hidden. Long addresses break anywhere instead of widening the page.</p>
+          <div class="sg-example">
+<p class="missing-address" data-missing-address hidden>The address you tried:<br><code></code></p>
+<p class="missing-address" data-missing-referrer hidden>The page with the link:<br><code></code></p>
+          </div>
+        </article>
+
         <article class="sg-component" aria-labelledby="c-events">
           <h3 id="c-events">Event</h3>
           <p>Add <code>event--athletics</code> to give game days a gold date block. The <code>data-category</code> value controls which filter shows the event.</p>

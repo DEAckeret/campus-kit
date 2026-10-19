@@ -191,6 +191,17 @@
   border-radius: var(--radius-small);
   color: var(--color-ink);
 }
+/* On a white or mist background (the 404 page), the box needs an edge */
+.finder--light input {
+  border: 1px solid var(--color-ink-muted);
+  background: var(--color-paper);
+}
+.finder--light { margin-block: 0 var(--space-7); }
+@media (max-width: 30rem) {
+  /* Stack the box and button when the row gets too narrow for both */
+  .finder--light .finder__row { flex-wrap: wrap; }
+  .finder--light .finder__row input { flex-basis: 100%; }
+}
 
 /* Page header for interior pages: quieter than the hero */
 .page-header {
@@ -279,7 +290,9 @@
 
 /* ---- Program list ------------------------------------------------------- */
 /* Rows, not cards: people scan a list of programs top to bottom. */
-.program-list {
+/* .link-list uses the same rows for any list of links with one line each */
+.program-list,
+.link-list {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -287,7 +300,8 @@
   border-top: 1px solid var(--color-line);
 }
 /* ">" keeps these row styles off the tags nested inside each row */
-.program-list > li {
+.program-list > li,
+.link-list > li {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: var(--space-1) var(--space-5);
@@ -296,14 +310,17 @@
   border-bottom: 1px solid var(--color-line);
   margin: 0;
 }
-.program-list a {
+.program-list a,
+.link-list a {
   font-family: var(--font-display);
   font-size: var(--step-1);
   font-weight: 600;
   text-decoration: none;
 }
-.program-list a:hover { text-decoration: underline; }
-.program-list p { grid-column: 1; margin: 0; color: var(--color-ink-muted); font-size: var(--step--1); }
+.program-list a:hover,
+.link-list a:hover { text-decoration: underline; }
+.program-list p,
+.link-list p { grid-column: 1; margin: 0; color: var(--color-ink-muted); font-size: var(--step--1); }
 .program-list .tag-list { grid-column: 2; grid-row: 1 / span 2; }
 .program-list [hidden] { display: none; }
 
@@ -723,6 +740,13 @@ tbody th { font-weight: 600; }
 }
 .demo-dialog::backdrop { background: rgb(27 36 48 / 0.6); }
 .demo-dialog h2 { font-size: var(--step-2); margin-bottom: var(--space-3); }
+/* The note's heading takes focus when it opens, so it reads from the top.
+   It isn't a control, so it needs no focus ring. */
+.demo-dialog h2:focus { outline: none; }
+
+/* ---- Missing address (404 page) ----------------------------------------- */
+/* A long web address breaks anywhere instead of widening the page */
+.missing-address code { overflow-wrap: anywhere; }
 .demo-dialog form { margin-top: var(--space-5); }
 
 /* ---- Page-header action: a phone-only shortcut to the main action ------- */

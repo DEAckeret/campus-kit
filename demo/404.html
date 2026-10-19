@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found | College of the Sleeping Giant</title>
+  <meta name="description" content="The page you were looking for isn't here. Search our programs, try a popular page, or tell the web team about the broken link.">
+  <!-- Keep the "not found" page itself out of search results -->
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="../assets/img/giant-mark.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;1,7..72,500&family=Public+Sans:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/print.css">
+  <script src="../assets/js/main.js" defer></script>
+</head>
+
+<!--
+  The "page not found" page.
+  The web server shows this page whenever someone asks for an address that
+  doesn't exist, at whatever address they typed. On GitHub Pages, the deploy
+  step copies it to the top of the site as 404.html and rewrites its links
+  so they work from any folder (scripts/site-404.mjs). Edit this file, not
+  the copy.
+-->
+<body>
+  <!-- include: header -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <section class="alert-banner" aria-label="Campus notice" data-dismissible>
+    <div class="wrap alert-banner__inner">
+      <p>Spring registration opens November 3. <a href="events.html">See advising sessions</a>.</p>
+      <button class="alert-banner__close" type="button" hidden>
+        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span class="visually-hidden">Close this notice</span>
+      </button>
+    </div>
+  </section>
+
+  <header class="site-header">
+    <nav class="site-header__utility" aria-label="Quick links">
+      <ul class="wrap">
+        <li><a href="directory.html">Directory</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="#">Library</a></li>
+        <li><a href="#">Students</a></li>
+        <li><a href="#">Faculty &amp; staff</a></li>
+      </ul>
+    </nav>
+    <div class="site-header__main wrap">
+      <a class="wordmark" href="index.html">
+        <img src="../assets/img/giant-mark.svg" alt="" width="64" height="24">
+        College of the Sleeping Giant
+      </a>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="main-nav">Menu</button>
+      <nav class="main-nav" id="main-nav" aria-label="Main">
+        <ul>
+          <li><a href="programs.html">Academics</a></li>
+          <li><a href="apply.html">Admission</a></li>
+          <li><a href="#">Cost &amp; aid</a></li>
+          <li><a href="#">Campus life</a></li>
+          <li><a href="athletics/womens-soccer.html">Athletics</a></li>
+          <li><a href="give.html">Give</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!-- /include -->
+
+  <main id="main">
+    <div class="page-header">
+      <div class="wrap">
+        <h1>We can't find that page</h1>
+        <p class="lede">It may have moved, or the address may have a typo. These are the quickest ways to find what you came for.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="wrap with-sidebar">
+        <div>
+          <h2 id="search-title">Search our programs</h2>
+          <form class="finder finder--light" action="programs.html" method="get" aria-labelledby="search-title">
+            <label for="missing-q">Find a major, minor or certificate</label>
+            <div class="finder__row">
+              <input id="missing-q" name="q" type="search" placeholder="Try “nursing” or “data”" autocomplete="off">
+              <button class="button" type="submit">Search programs</button>
+            </div>
+          </form>
+
+          <h2 id="popular-title">Popular pages</h2>
+          <ul class="link-list">
+            <li>
+              <a href="apply.html">How to apply</a>
+              <p>Four steps, deadlines and what a year costs, for first-year students.</p>
+            </li>
+            <li>
+              <a href="programs.html">Academic programs</a>
+              <p>Every major, minor and certificate, sorted by school.</p>
+            </li>
+            <li>
+              <a href="events.html">Events and campus visits</a>
+              <p>Tours, advising sessions, talks and games this semester.</p>
+            </li>
+            <li>
+              <a href="directory.html">Faculty and staff directory</a>
+              <p>Find someone's email address, phone number and department.</p>
+            </li>
+            <li>
+              <a href="athletics/womens-soccer.html">Women's soccer</a>
+              <p>This season's schedule, results and roster.</p>
+            </li>
+            <li>
+              <a href="give.html">Give</a>
+              <p>The Open Doors scholarship campaign and ways to give.</p>
+            </li>
+            <li>
+              <a href="index.html">Home page</a>
+              <p>Start over from the front door.</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sidebar">
+          <section class="callout" aria-labelledby="report-title">
+            <h2 id="report-title">Tell us about the broken link</h2>
+            <p>If a link on our site sent you here, email the web team and we'll fix it. Tell us the address you tried and the page the link was on.</p>
+            <!-- main.js fills in and shows these two lines. Without JavaScript they stay hidden. -->
+            <p class="missing-address" data-missing-address hidden>The address you tried:<br><code></code></p>
+            <p class="missing-address" data-missing-referrer hidden>The page with the link:<br><code></code></p>
+            <p><a href="#" data-demo-contact="email">web@sleepinggiant.example</a></p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- include: footer -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="site-footer__grid">
+        <div>
+          <h2>College of the Sleeping Giant</h2>
+          <address class="contact">
+            1200 College Avenue<br>
+            Pine Hollow, MT 59000<br>
+            <a href="#" data-demo-contact="phone">(406) 555-0100</a>
+          </address>
+        </div>
+        <nav aria-labelledby="footer-explore">
+          <h2 id="footer-explore">Explore</h2>
+          <ul>
+            <li><a href="programs.html">Academic programs</a></li>
+            <li><a href="apply.html">How to apply</a></li>
+            <li><a href="events.html">Events and athletics</a></li>
+            <li><a href="directory.html">Faculty and staff directory</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="footer-help">
+          <h2 id="footer-help">Help</h2>
+          <ul>
+            <li><a href="#">Accessibility</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Report a website problem</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="site-footer__legal">College of the Sleeping Giant is a fictional school. This site is a demo of <a href="../index.html">Campus Kit</a>.</p>
+    </div>
+  </footer>
+  <!-- /include -->
+</body>
+</html>

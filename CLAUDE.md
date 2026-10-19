@@ -33,6 +33,8 @@ Campus Kit is a proof-of-concept project: it is built **entirely by AI** for Dus
 - `assets/css/base.css`, `components.css`, `print.css`: site styles
 - `assets/css/kit-site.css`, `assets/js/kit-site.js`: only for the project page and style guide
 - `docs/`: guides for non-technical editors
+- `scripts/includes.mjs`: copies the shared header and footer into demo pages (`npm run build`)
+- `scripts/site-404.mjs`: the deploy step's copy of `demo/404.html` as the site-wide 404 page
 - `tests/pages.mjs`: the list of pages the checks visit; add every new page to it
 - `tests/accessibility.mjs`: axe checks
 - `tests/zoom.mjs`: 200% and 400% zoom, 200% text size and text-spacing checks

@@ -127,7 +127,7 @@ if (demoContacts.length && typeof HTMLDialogElement === "function") {
   dialog.className = "demo-dialog";
   dialog.setAttribute("aria-labelledby", "demo-dialog-title");
   dialog.innerHTML =
-    '<h2 id="demo-dialog-title"></h2><p data-demo-text></p><p data-demo-why></p>' +
+    '<h2 id="demo-dialog-title" tabindex="-1"></h2><p data-demo-text></p><p data-demo-why></p>' +
     '<form method="dialog"><button class="button" type="submit">Close</button></form>';
   document.body.append(dialog);
   const title = dialog.querySelector("h2");
@@ -150,6 +150,9 @@ if (demoContacts.length && typeof HTMLDialogElement === "function") {
       }
       opener = link;
       dialog.showModal();
+      // Start at the heading, not the Close button, so the note reads from
+      // the top even when it's taller than the window (400% zoom)
+      title.focus();
     });
   });
 
@@ -159,4 +162,24 @@ if (demoContacts.length && typeof HTMLDialogElement === "function") {
   });
   // Put keyboard focus back on the link that opened it
   dialog.addEventListener("close", () => opener?.focus());
+}
+
+/* ---- Missing address (404 page) ------------------------------------------
+   Markup: <p data-missing-address hidden>…<code></code></p> and
+           <p data-missing-referrer hidden>…<code></code></p>
+   Shows the address the visitor tried, and the page on this site that
+   linked to it, so they can copy both into a report. Nothing is sent
+   anywhere. Without JavaScript both lines stay hidden.
+   ------------------------------------------------------------------------- */
+const showAddress = (selector, address) => {
+  const line = document.querySelector(selector);
+  const code = line?.querySelector("code");
+  if (!line || !code || !address) return;
+  code.textContent = address;
+  line.hidden = false;
+};
+showAddress("[data-missing-address]", window.location.href);
+// Only a page on this same site counts; other sites' links aren't ours to fix
+if (document.referrer.startsWith(`${window.location.origin}/`)) {
+  showAddress("[data-missing-referrer]", document.referrer);
 }

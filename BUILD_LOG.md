@@ -4,6 +4,52 @@ Every AI work session on Campus Kit adds an entry here, newest first. Each entry
 
 ---
 
+## Session 8: October 19, 2026 (404 page)
+
+**Built by:** Claude (Opus 5.5), in a scheduled session with nobody watching, so decisions below are mine and open to Dustin's review.
+
+### What I built
+
+- **A "page not found" page** at `demo/404.html`, with the shared header and footer. It says plainly what happened ("We can't find that page"), then offers three ways out: a program search, a list of seven popular pages with one line about each, and a box for telling the web team about the broken link.
+- **It's the real 404 for the whole site.** GitHub Pages shows `/404.html` for any address that doesn't exist, so the deploy step now copies the demo page there. Any mistyped address under `deackeret.github.io/campus-kit/` shows it.
+- **The page shows the address the visitor tried** and, if they came from another page on this site, the page with the broken link, so they can copy both into their email. This runs in the visitor's browser only; nothing is sent or stored. Without JavaScript both lines stay hidden and the text still tells people what to include.
+- **Two new components in the style guide:** a *link list* (the program list's rows, for any list of pages) and a *search box* for light backgrounds (`finder--light`, the home page's program search with a visible edge, stacking on narrow screens). The *missing address* lines have a short entry too.
+- Added the page to `tests/pages.mjs`, the project page and the README, and the two scripts to the file map in `CLAUDE.md`.
+
+### What I decided and why
+
+- **Relative links break on a 404 page, so the deploy copy rewrites them.** GitHub Pages shows the 404 page at whatever address was asked for. At `/campus-kit/demo/programs/old/page.html`, a link to `apply.html` or `../assets/css/base.css` points to the wrong folder, and the page would load without its styles. A `<base>` tag would fix the paths but also turn every `href="#"` and the skip link into links to another page. Instead, a small script (`scripts/site-404.mjs`, built-in Node modules only) copies `demo/404.html` and turns each relative link into a full path like `/campus-kit/demo/apply.html`. The path comes from `actions/configure-pages`, so it keeps working if Dustin moves the site to a custom domain. Editors change `demo/404.html` only; the copy is never committed.
+- **The search box searches programs, not the whole site.** The site search page is a later roadmap item, and the program finder is the only search there is. The box sends the words to `programs.html?q=…`, the same way the home page does, and the heading says "Search our programs" so it doesn't promise more. When the site search page is built, that session should point this form at it.
+- **Reporting is an email link, not a form.** A form would collect data, which the project rules rule out, and the demo has no inbox anyway. The email address uses `data-demo-contact` like every other address. The "page with the link" line only appears for pages on this site, because a broken link on someone else's site isn't ours to fix.
+- **The page asks search engines not to list it** (`<meta name="robots" content="noindex">`). It has no breadcrumbs, since it isn't part of the site's structure.
+
+### A small fix along the way
+
+- **The demo contact note now starts at its heading.** Session 7 found that at 400% zoom the note is taller than the window and focus landed on Close at the bottom, so the heading started out of view. Focus now moves to the note's heading when it opens (and still returns to the link when it closes). The heading has no focus ring, because it isn't a control.
+
+### How I checked it
+
+- `node scripts/includes.mjs --check` passes, and `tests/zoom.mjs` passes on all 14 pages under all six conditions, menu open included.
+- In headless Chromium I built a copy of the deployed site with the generated `404.html` and loaded a missing address three folders deep. It returned status 404 with all styles, the script and the logo loading, and no failed requests. At 1280px and 390px, with JavaScript on and off: one `h1`, no skipped heading levels, no duplicate IDs, every field labeled, every `aria-labelledby` target present, no sideways scrolling.
+- Clicking a broken link from the home page showed both the address tried and the page with the link. Searching "nursing" opened the program finder filtered to one program. Opening the email note put focus on its heading, and Escape put it back on the link.
+- I looked at screenshots of the page at 1280px and 390px and of the new style guide entries. The long address breaks inside the callout instead of widening it.
+- The search box's edge is `--color-ink-muted` on white, 7.6 to 1, above the 3 to 1 needed for a form field's border.
+
+### What went wrong
+
+- **Still no `npm test` here.** The npm registry is blocked in this workspace (403 at the proxy), so HTML validation and axe ran only in CI. I ran the zoom test with the globally installed Playwright and `http-server`, linked into a `node_modules` folder that git ignores.
+- **I first wrote the "on narrow screens, stack the button" rule for every search box,** which would have changed the home page's hero search on phones. I caught it before testing and limited it to `finder--light`.
+- **The deploy step can't be tested before it runs.** I ran the script locally with the same arguments, but the `base_path` output from `configure-pages` is only known in the real deploy, so the first deploy is the real test. After it, `https://deackeret.github.io/campus-kit/demo/no-such-page.html` should show the styled page.
+
+### Left for next time
+
+- When the site search page is built, point the 404 search at it and rename the heading.
+- The footer's "Report a website problem" link still goes nowhere. The accessibility statement and "report a problem" page item will give it a home.
+- The Node 20 warning on the workflow's actions is still open.
+- The screen reader pass is Dustin's. The site performance report is the next AI item.
+
+---
+
 ## Session 7: October 16, 2026 (zoom and text-spacing check)
 
 **Built by:** Claude (Opus 5.5), in a scheduled session with nobody watching, so decisions below are mine and open to Dustin's review.

@@ -21,6 +21,7 @@ Campus Kit is a hand-written HTML and CSS design system with ready-made pages fo
 | [Giving page](https://deackeret.github.io/campus-kit/demo/give.html) | Campaign progress bar (a real `<progress>` with a text label), giving levels, a donor story |
 | [Staff directory](https://deackeret.github.io/campus-kit/demo/directory.html) | Search by name, title or department |
 | [News story](https://deackeret.github.io/campus-kit/demo/news/article.html) | Article layout with an accessible SVG chart |
+| [Page not found](https://deackeret.github.io/campus-kit/demo/404.html) | Program search, popular pages, and the address the visitor tried, ready to report. Shown at any [missing address](https://deackeret.github.io/campus-kit/demo/no-such-page.html) |
 | [Print flyer](https://deackeret.github.io/campus-kit/demo/flyer.html) | US letter event flyer built from the same tokens as the site |
 
 ## How it's built
