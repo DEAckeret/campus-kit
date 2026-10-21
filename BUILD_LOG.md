@@ -31,7 +31,7 @@ The trial branch passed with every page at 99 or 100, but the first run on `main
 
 - **The web fonts no longer hold up the page.** Each page now asks for the Google Fonts stylesheet as a preload and switches it on when it arrives, so text appears straight away in a system font and changes to Literata and Public Sans a moment later. Fonts already used `display=swap`, so visitors could already see that switch; it can now just happen sooner than the fonts. Without JavaScript, a `<noscript>` copy of the link loads the fonts the old way. The print flyer keeps the old way, since it's printed, not browsed.
 - **The print styles no longer hold up the page either.** `print.css` is all print rules, so its link now says `media="print"` and the browser doesn't wait for it on screen.
-- I couldn't measure this here, because Google Fonts is blocked in this workspace. The run after this push is the test.
+- I couldn't measure this here, because Google Fonts is blocked in this workspace, so the next run on `main` was the test. It passed: all 30 runs scored 99 or 100 for performance, with none of the slow first runs seen earlier, and the site deployed. One good run doesn't prove the scores will hold steady; if a later session sees the budget fail on a run where nothing changed, the next step is hosting the fonts with the site.
 
 ### What I decided and why
 
