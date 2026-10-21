@@ -4,6 +4,59 @@ Every AI work session on Campus Kit adds an entry here, newest first. Each entry
 
 ---
 
+## Session 9: October 21, 2026 (site performance report)
+
+**Built by:** Claude (Opus 5.5), in a scheduled session with nobody watching, so decisions below are mine and open to Dustin's review.
+
+### What I built
+
+- **Lighthouse CI on every push.** The workflow now runs Lighthouse three times on ten pages (the project page and nine demo pages) with its phone settings: a mid-range phone on a slow 4G connection. Budgets live in `lighthouserc.json`: performance 90 or higher, accessibility 100, SEO 90 or higher. Missing any of them fails the check, so the site isn't deployed. Best practices is shown but only warns.
+- **A published report** at `report.html`, linked from the project page's header and its "Accessible by default" note. It says when the check ran and from which commit, whether every page met its budgets (and which missed, if any), a table of the four scores per page, a table of speed figures (first text, main content, blocked time, layout shift, download size) in plain words, the budgets with what each score checks, and how the check works, including that a perfect accessibility score doesn't mean a page is fully accessible.
+- **How the scores get onto the page.** `scripts/performance-report.mjs` (built-in Node modules only) reads Lighthouse CI's results and fills the "Latest results" section between two comment markers. It runs in the check job before HTML validation, axe and the zoom test, so all three check the filled-in page. The check job hands the filled page to the deploy job. The committed `report.html` says the scores appear when the site is published and links to the live report. The full Lighthouse results are kept as a workflow artifact on every run.
+- **Two new components in the style guide:** a *number table* (`table--numbers`: right-aligned columns with equal-width digits, plus `over-budget` for a missed target, which also says the miss in words, like "82, below 90") and an *alert callout* (`callout--alert`), for problems the reader should act on.
+- Added `report.html` to `tests/pages.mjs`, the README and the file map in `CLAUDE.md`, and `npm run test:lighthouse` for running the budgets locally.
+
+### A real bug Lighthouse found: the page jumped on phones
+
+The first CI run scored most demo pages 82 or 83 for performance, with a layout shift of 0.33 to 0.38 (Google's "good" is 0.1 or less). The cause: on phones, the menu was drawn open, and only when `main.js` loaded (it's deferred) did it close, so the whole page jumped up by the height of the menu. Real visitors on slow connections would have seen that.
+
+- Every page that loads `main.js` now adds the `js` class with one line of inline script in its `<head>`, before anything is drawn, and the menu CSS hides it until it's opened (`.js .main-nav:not([data-open="true"])`). The menu starts closed with no jump.
+- With JavaScript off the inline line doesn't run either, so the menu still shows as a plain list, as before.
+- I reproduced it locally by delaying `main.js` in headless Chromium at 412px: layout shift was 0.311 on every demo page before and 0.001 to 0.011 after. The menu still opens and closes. In CI, every page now scores 99 or 100 for performance.
+- Trade-off: if `main.js` fails to load while JavaScript is on, the phone menu stays closed. That's the usual cost of this pattern.
+
+### What I decided and why
+
+- **Lighthouse runs in the existing check job, not a new one.** That way the page with real scores goes through the same HTML, axe and zoom checks as every other page, with no second copy of the setup. It adds about six minutes to each run.
+- **Scores are the median of three runs, and the report uses the same median as the budget check.** On the first try the report and `lhci assert` disagreed (8 pages over budget on the page, 5 in the check), because Lighthouse CI's "representative run" and its `median-run` assertion don't pick the same run. Both now use the median score per category (`"aggregationMethod": "median"`), so they can't disagree. The speed table comes from the run with the median performance score. This matters: in the passing run, two pages had one cold run at 57 and 63 while the other two were 100.
+- **Accessibility budget is 100, not 95.** The site already passes axe on every page, and every page scored 100, so anything less would let a regression through.
+- **Ten pages, not all fifteen.** I left out the style guide, the flyer, the blank template, the 404 page and the report itself: they're tools or print pages, not pages a visitor browses, and each page adds about 30 seconds.
+- **The report and the budget file can't drift apart.** The budget table cells carry `data-budget="…"`, and the script stops the build if they don't match `lighthouserc.json`. I checked this by changing a budget and watching it fail.
+- **No full Lighthouse reports on the site.** Each is about a megabyte of Lighthouse's own HTML and script, untested by our checks. They're in the workflow's `lighthouse-results` artifact instead. If Dustin wants a "full report" link per page, they could be published under `report/`.
+- **The script prints what held each page back** in the CI log (slow metrics, savings Lighthouse suggests, failed audits), because that's the first thing a person needs when a budget fails, and I couldn't download the results artifact from this workspace.
+
+### How I checked it
+
+- **Tested in CI before touching `main`.** The npm registry is still blocked here, so Lighthouse can't run in this workspace. I pushed a temporary branch (`lighthouse-trial`) and ran the workflow on it by hand three times; the deploy step is skipped on any branch but `main`. Run 1 showed the layout-shift problem, run 2 added the diagnostics, run 3 passed every step, including HTML validation, axe and zoom on the filled-in report. I then squashed the work into one commit on `main` and deleted the branch.
+- Locally: the script against made-up results with every page passing and with two pages missing a budget; `tests/zoom.mjs` on all 15 pages, including the filled-in report; and my usual checks in headless Chromium at 1280px and 390px, with JavaScript on and off: one `h1`, no skipped headings, no duplicate IDs, every `aria-labelledby` target present, no sideways scrolling. I looked at screenshots of the report at both widths (both states) and of the two style guide entries. On phones the score tables scroll sideways inside their named regions, like the other tables.
+- Contrast: `over-budget` red (#a3261b) on white is 7.4 to 1; ink on the alert tint is 13.4 to 1; a link on the alert tint is 6.7 to 1.
+
+### What went wrong
+
+- **Performance failed on the first real run,** as above. Good that the check exists; it found a problem I'd never have seen in a desktop browser.
+- **My first report used Lighthouse CI's representative run,** which didn't match what the budget check measured. Fixed by using medians in both.
+- **I first gave the budgets table `table--numbers`,** which right-aligned its text column. I caught it before the screenshots. Also the alert callout needed space above the first table; added `.callout + .table-wrap`.
+- **I couldn't look at the Lighthouse results directly.** The artifact download host is blocked here, so I added log output and read the job log instead.
+
+### Left for next time
+
+- **Text compression and unused CSS.** Lighthouse flags about 30 KB of savings from compression on every page; GitHub Pages already compresses files, so that's only true of the test server. Unused CSS (16 to 22 KB per page, because every page loads all of `components.css`) is real but small. Neither costs points today.
+- **Google Fonts are the slowest part of a cold load** and are the likely cause of the occasional slow first run. Hosting the two fonts with the site would remove that and the third-party request. It needs the font files, which I can't download here.
+- The Node 20 warning on the workflow's actions is still open.
+- The screen reader pass is Dustin's. The analytics guide is the next AI item.
+
+---
+
 ## Session 8: October 19, 2026 (404 page)
 
 **Built by:** Claude (Opus 5.5), in a scheduled session with nobody watching, so decisions below are mine and open to Dustin's review.

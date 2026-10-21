@@ -27,6 +27,7 @@ Campus Kit is a proof-of-concept project: it is built **entirely by AI** for Dus
 
 - `index.html`: the project page recruiters land on
 - `styleguide.html`: every token and component, with copyable HTML
+- `report.html`: the site performance report; CI fills in its "Latest results" section
 - `demo/`: the College of the Sleeping Giant demo site
 - `demo/programs/_template.html`: commented template for new program pages
 - `assets/css/tokens.css`: colors, type, spacing (the only file to change when rebranding)
@@ -35,6 +36,8 @@ Campus Kit is a proof-of-concept project: it is built **entirely by AI** for Dus
 - `docs/`: guides for non-technical editors
 - `scripts/includes.mjs`: copies the shared header and footer into demo pages (`npm run build`)
 - `scripts/site-404.mjs`: the deploy step's copy of `demo/404.html` as the site-wide 404 page
+- `lighthouserc.json`: Lighthouse CI pages and budgets (the budget table in `report.html` must match)
+- `scripts/performance-report.mjs`: fills `report.html` with the Lighthouse results in CI
 - `tests/pages.mjs`: the list of pages the checks visit; add every new page to it
 - `tests/accessibility.mjs`: axe checks
 - `tests/zoom.mjs`: 200% and 400% zoom, 200% text size and text-spacing checks
