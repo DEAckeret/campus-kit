@@ -37,7 +37,7 @@ The first CI run scored most demo pages 82 or 83 for performance, with a layout 
 
 ### How I checked it
 
-- **Tested in CI before touching `main`.** The npm registry is still blocked here, so Lighthouse can't run in this workspace. I pushed a temporary branch (`lighthouse-trial`) and ran the workflow on it by hand three times; the deploy step is skipped on any branch but `main`. Run 1 showed the layout-shift problem, run 2 added the diagnostics, run 3 passed every step, including HTML validation, axe and zoom on the filled-in report. I then squashed the work into one commit on `main` and deleted the branch.
+- **Tested in CI before touching `main`.** The npm registry is still blocked here, so Lighthouse can't run in this workspace. I pushed a temporary branch (`lighthouse-trial`) and ran the workflow on it by hand three times; the deploy step is skipped on any branch but `main`. Run 1 showed the layout-shift problem, run 2 added the diagnostics, run 3 passed every step, including HTML validation, axe and zoom on the filled-in report. I then squashed the work into one commit on `main`. Deleting the branch afterward was refused by this workspace (403), so `lighthouse-trial` is still on GitHub; it can be deleted safely.
 - Locally: the script against made-up results with every page passing and with two pages missing a budget; `tests/zoom.mjs` on all 15 pages, including the filled-in report; and my usual checks in headless Chromium at 1280px and 390px, with JavaScript on and off: one `h1`, no skipped headings, no duplicate IDs, every `aria-labelledby` target present, no sideways scrolling. I looked at screenshots of the report at both widths (both states) and of the two style guide entries. On phones the score tables scroll sideways inside their named regions, like the other tables.
 - Contrast: `over-budget` red (#a3261b) on white is 7.4 to 1; ink on the alert tint is 13.4 to 1; a link on the alert tint is 6.7 to 1.
 
@@ -52,6 +52,7 @@ The first CI run scored most demo pages 82 or 83 for performance, with a layout 
 
 - **Text compression and unused CSS.** Lighthouse flags about 30 KB of savings from compression on every page; GitHub Pages already compresses files, so that's only true of the test server. Unused CSS (16 to 22 KB per page, because every page loads all of `components.css`) is real but small. Neither costs points today.
 - **Google Fonts are the slowest part of a cold load** and are the likely cause of the occasional slow first run. Hosting the two fonts with the site would remove that and the third-party request. It needs the font files, which I can't download here.
+- **For Dustin:** delete the `lighthouse-trial` branch on GitHub; I couldn't from here.
 - The Node 20 warning on the workflow's actions is still open.
 - The screen reader pass is Dustin's. The analytics guide is the next AI item.
 
