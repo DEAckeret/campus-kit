@@ -116,6 +116,19 @@ const rows = runs
       const score = lhr.categories[id]?.score;
       scores[id] = typeof score === "number" ? Math.round(score * 100) : null;
     }
+    // For the CI log: what held each page's score back
+    const held = Object.values(lhr.audits)
+      .filter((a) => a.details?.type === "opportunity" || /^(first-contentful-paint|largest-contentful-paint|speed-index|total-blocking-time|cumulative-layout-shift)$/.test(a.id))
+      .filter((a) => typeof a.score === "number" && a.score < 0.9)
+      .map((a) => `${a.id} ${a.displayValue || a.score}`);
+    const failing = Object.entries(lhr.categories).flatMap(([cat, c]) =>
+      cat === "performance" ? [] : (c.auditRefs || []).filter((r) => r.weight > 0 && lhr.audits[r.id]?.score === 0).map((r) => `${cat}:${r.id}`)
+    );
+    console.log(`${path}: ${CATEGORIES.map(([id]) => `${id} ${Math.round((lhr.categories[id]?.score ?? 0) * 100)}`).join(", ")}`);
+    if (held.length) console.log(`  slow: ${held.join("; ")}`);
+    if (failing.length) console.log(`  failed audits: ${failing.join(", ")}`);
+    const blocking = lhr.audits["render-blocking-resources"]?.details?.items || [];
+    if (blocking.length) console.log(`  render-blocking: ${blocking.map((i) => `${i.url} ${Math.round(i.wastedMs)}ms`).join("; ")}`);
     return {
       path,
       name: pageName(path),
