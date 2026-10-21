@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Site performance report | Campus Kit</title>
+  <meta name="description" content="Lighthouse scores for speed, accessibility and search for the Campus Kit pages, checked automatically every time the site changes.">
+  <link rel="icon" href="assets/img/giant-mark.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;1,7..72,500&family=Public+Sans:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/kit-site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="sg-header">
+    <div class="wrap sg-header__inner">
+      <a class="sg-home" href="index.html">Campus Kit</a>
+      <nav aria-label="Project">
+        <ul>
+          <li><a href="demo/index.html">Demo site</a></li>
+          <li><a href="styleguide.html">Style guide</a></li>
+          <li><a href="report.html" aria-current="page">Performance report</a></li>
+          <li><a href="https://github.com/DEAckeret/campus-kit">Code on GitHub</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="page-header">
+      <div class="wrap">
+        <h1>Site performance report</h1>
+        <p class="lede">Every time the site changes, Lighthouse loads ten of its pages the way a phone on a slow connection would and scores them for speed, accessibility and search. If a page scores below its budget, the change isn't published. These are the scores for the version of the site you're looking at.</p>
+      </div>
+    </div>
+
+    <section class="section" aria-labelledby="results-title">
+      <div class="wrap">
+        <h2 id="results-title">Latest results</h2>
+        <!-- performance-results -->
+        <section class="callout" aria-labelledby="status-title">
+          <h3 id="status-title">Scores appear when the site is published</h3>
+          <p>This copy of the page hasn't been through the automated check. The check fills in this section each time the site is published. See the <a href="https://deackeret.github.io/campus-kit/report.html">latest report on the live site</a>.</p>
+        </section>
+        <!-- /performance-results -->
+      </div>
+    </section>
+
+    <section class="section section--mist" aria-labelledby="budgets-title">
+      <div class="wrap">
+        <h2 id="budgets-title">The budgets</h2>
+        <p>A budget is the lowest score a page is allowed. Lighthouse scores each page from 0 to 100 in four areas.</p>
+        <section class="table-wrap" tabindex="0" aria-labelledby="budgets-caption">
+          <table>
+            <caption id="budgets-caption">What each score checks, and the lowest score allowed</caption>
+            <thead>
+              <tr><th scope="col">Score</th><th scope="col">What it checks</th><th scope="col">Budget</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Performance</th><td>How quickly the page shows its content and responds to taps.</td><td data-budget="performance">90 or higher</td></tr>
+              <tr><th scope="row">Accessibility</th><td>Problems a computer can find that block people who use screen readers, keyboards or zoom, such as missing labels or low contrast.</td><td data-budget="accessibility">100</td></tr>
+              <tr><th scope="row">SEO</th><td>What search engines need to list the page well: a title, a description, links that say where they go, and permission to index the page.</td><td data-budget="seo">90 or higher</td></tr>
+              <tr><th scope="row">Best practices</th><td>Signs of a well-built page, such as no errors in the browser and images shown at the right shape.</td><td data-budget="best-practices">None, shown for reference</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="how-title">
+      <div class="wrap">
+        <h2 id="how-title">How the check works</h2>
+        <ul>
+          <li>The check runs in GitHub Actions on every change, using <a href="https://github.com/GoogleChrome/lighthouse-ci">Lighthouse CI</a>, Google's free tool for testing page quality.</li>
+          <li>Each page is loaded three times, and the tables show the middle run. Scores can move a few points from one run to the next.</li>
+          <li>The pages are loaded from the test machine, not from the live site, so the scores measure the pages themselves rather than the web host. Fonts load from Google Fonts, as they do on the live site.</li>
+          <li>A perfect accessibility score doesn't mean a page is fully accessible. Automated tools find only some problems. Campus Kit also checks every page with axe and at 200% and 400% zoom, but testing with people who use assistive technology is still needed.</li>
+          <li>To change a budget, edit <code>lighthouserc.json</code> and the table above. The check stops if the two don't match.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="site-footer__legal">Campus Kit is open source under the MIT license. College of the Sleeping Giant and everyone at it are fictional.</p>
+    </div>
+  </footer>
+</body>
+</html>

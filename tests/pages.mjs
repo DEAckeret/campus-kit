@@ -15,4 +15,5 @@ export const PAGES = [
   "demo/athletics/womens-soccer.html",
   "demo/give.html",
   "demo/404.html",
+  "report.html",
 ];

@@ -206,6 +206,25 @@
           </div>
         </article>
 
+        <article class="sg-component" aria-labelledby="c-number-table">
+          <h3 id="c-number-table">Number table</h3>
+          <p>For tables of scores, amounts or counts. Add <code>table--numbers</code> and every column after the first is right-aligned with digits of equal width, so the numbers line up. Put the row's name in a <code>&lt;th scope="row"&gt;</code>. When a number misses its target, wrap it in <code>&lt;strong class="over-budget"&gt;</code> and say the miss in words too ("82, below 90"), so it doesn't depend on the red.</p>
+          <div class="sg-example">
+<section class="table-wrap" tabindex="0" aria-labelledby="sg-scores-caption">
+  <table class="table--numbers">
+    <caption id="sg-scores-caption">Lighthouse scores by page, out of 100</caption>
+    <thead>
+      <tr><th scope="col">Page</th><th scope="col">Performance</th><th scope="col">SEO</th></tr>
+    </thead>
+    <tbody>
+      <tr><th scope="row">How to apply</th><td>98</td><td>100</td></tr>
+      <tr><th scope="row">Academic programs</th><td><strong class="over-budget">82, below 90</strong></td><td>100</td></tr>
+    </tbody>
+  </table>
+</section>
+          </div>
+        </article>
+
         <article class="sg-component" aria-labelledby="c-athletics">
           <h3 id="c-athletics">Athletics accents</h3>
           <p>Gold marks athletics. Add <code>facts--athletics</code>, <code>callout--athletics</code> or <code>page-header--athletics</code> on team pages. In a schedule, spell out each result ("Won," "Lost," "Tied") so it doesn't depend on color, and give the next game the <code>schedule__next</code> row.</p>
@@ -272,6 +291,20 @@
   <h2 id="callout-example">Talk with an advisor</h2>
   <p>Get a sample four-year plan built around your interests.</p>
   <p><a class="button" href="#">Request a meeting</a></p>
+</section>
+          </div>
+        </article>
+
+        <article class="sg-component" aria-labelledby="c-callout-alert">
+          <h3 id="c-callout-alert">Alert callout</h3>
+          <p>A callout for a problem the reader should act on, like a missed budget on the performance report. Add <code>callout--alert</code>. The heading says what's wrong in words, so the red edge is never the only signal. For campus-wide news like a closure, use the alert banner instead.</p>
+          <div class="sg-example">
+<section class="callout callout--alert" aria-labelledby="callout-alert-example">
+  <h4 id="callout-alert-example">1 page missed a budget</h4>
+  <ul>
+    <li>Academic programs: Performance 82</li>
+  </ul>
+  <p>This version of the site can't be published until the scores are back within budget.</p>
 </section>
           </div>
         </article>

@@ -26,6 +26,14 @@ jobs:
         run: npm run check:includes
       - run: npm install --no-fund --no-audit
       - run: npx playwright install --with-deps chromium
+      # Lighthouse runs first so the HTML, axe and zoom checks below also
+      # cover report.html with the new scores filled in
+      - name: Lighthouse (3 runs of 10 pages, phone settings)
+        run: npx lhci collect
+      - name: Save the Lighthouse results
+        run: npx lhci upload --target=filesystem --outputDir=lighthouse-results
+      - name: Fill in the performance report
+        run: node scripts/performance-report.mjs --results lighthouse-results
       - name: Validate HTML
         run: npm run lint:html
       - name: Accessibility (axe-core, WCAG 2.2 AA, desktop and phone)
@@ -38,6 +46,20 @@ jobs:
           fi
       - name: Zoom and text spacing (200% and 400% zoom, WCAG 1.4.12 spacing)
         run: npm run test:zoom
+      - name: Lighthouse budgets (performance, accessibility, SEO)
+        run: npx lhci assert
+      - name: Keep the filled-in report for the deploy
+        uses: actions/upload-artifact@v4
+        with:
+          name: performance-report
+          path: report.html
+      - name: Keep the full Lighthouse results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-results
+          path: lighthouse-results
+          if-no-files-found: ignore
 
   deploy:
     name: Publish to GitHub Pages
@@ -57,7 +79,14 @@ jobs:
       - name: Collect the site files
         run: |
           mkdir _site
-          cp -r index.html styleguide.html .nojekyll assets demo _site/
+          cp -r index.html styleguide.html report.html .nojekyll assets demo _site/
+      # The check job filled in report.html with this version's Lighthouse scores
+      - name: Get the filled-in performance report
+        uses: actions/download-artifact@v4
+        with:
+          name: performance-report
+          path: _performance
+      - run: cp _performance/report.html _site/report.html
       # GitHub Pages shows /404.html for every missing address, so copy the
       # demo's "page not found" page there with links that work from any folder
       - name: Add the site-wide "page not found" page

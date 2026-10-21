@@ -1,0 +1,29 @@
+{
+  "ci": {
+    "collect": {
+      "startServerCommand": "npx http-server . -p 8126 -c-1",
+      "startServerReadyPattern": "Available on",
+      "numberOfRuns": 3,
+      "url": [
+        "http://localhost:8126/index.html",
+        "http://localhost:8126/demo/index.html",
+        "http://localhost:8126/demo/programs.html",
+        "http://localhost:8126/demo/programs/biology.html",
+        "http://localhost:8126/demo/apply.html",
+        "http://localhost:8126/demo/events.html",
+        "http://localhost:8126/demo/athletics/womens-soccer.html",
+        "http://localhost:8126/demo/give.html",
+        "http://localhost:8126/demo/directory.html",
+        "http://localhost:8126/demo/news/article.html"
+      ]
+    },
+    "assert": {
+      "assertions": {
+        "categories:performance": ["error", { "minScore": 0.9, "aggregationMethod": "median-run" }],
+        "categories:accessibility": ["error", { "minScore": 1, "aggregationMethod": "median-run" }],
+        "categories:seo": ["error", { "minScore": 0.9, "aggregationMethod": "median-run" }],
+        "categories:best-practices": ["warn", { "minScore": 0.9, "aggregationMethod": "median-run" }]
+      }
+    }
+  }
+}

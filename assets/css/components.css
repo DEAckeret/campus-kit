@@ -381,8 +381,11 @@
   padding: var(--space-5);
 }
 .callout h2,
-.callout h3 { font-size: var(--step-1); font-family: var(--font-body); font-weight: 700; margin-bottom: var(--space-2); }
+.callout h3,
+.callout h4 { font-size: var(--step-1); font-family: var(--font-body); font-weight: 700; margin-bottom: var(--space-2); }
 .callout p:last-child { margin-bottom: 0; }
+/* For a problem the reader should act on, like a missed budget */
+.callout--alert { background: var(--color-alert-tint); border-left: 4px solid var(--color-alert); }
 
 /* ---- Contact block ------------------------------------------------------ */
 .contact { font-style: normal; }
@@ -390,6 +393,7 @@
 
 /* ---- Course table ------------------------------------------------------- */
 .table-wrap { overflow-x: auto; }
+.callout + .table-wrap { margin-top: var(--space-6); }
 table {
   width: 100%;
   border-collapse: collapse;
@@ -412,6 +416,16 @@ td {
 thead th { border-bottom: 2px solid var(--color-ink); }
 td:last-child,
 th:last-child { padding-right: 0; }
+
+/* Number table: scores, amounts, counts. Every column after the first is
+   right-aligned with figures of equal width, so the digits line up. */
+.table--numbers td,
+.table--numbers th:not(:first-child) {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+/* A number that misses its target: bold, red, and the miss said in words */
+.over-budget { color: var(--color-alert); font-weight: 700; }
 
 /* ---- Quote -------------------------------------------------------------- */
 .pull-quote {
