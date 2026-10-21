@@ -19,10 +19,10 @@
     },
     "assert": {
       "assertions": {
-        "categories:performance": ["error", { "minScore": 0.9, "aggregationMethod": "median-run" }],
-        "categories:accessibility": ["error", { "minScore": 1, "aggregationMethod": "median-run" }],
-        "categories:seo": ["error", { "minScore": 0.9, "aggregationMethod": "median-run" }],
-        "categories:best-practices": ["warn", { "minScore": 0.9, "aggregationMethod": "median-run" }]
+        "categories:performance": ["error", { "minScore": 0.9, "aggregationMethod": "median" }],
+        "categories:accessibility": ["error", { "minScore": 1, "aggregationMethod": "median" }],
+        "categories:seo": ["error", { "minScore": 0.9, "aggregationMethod": "median" }],
+        "categories:best-practices": ["warn", { "minScore": 0.9, "aggregationMethod": "median" }]
       }
     }
   }

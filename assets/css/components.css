@@ -137,8 +137,9 @@
   .main-nav { flex-basis: 100%; }
   .main-nav ul { flex-direction: column; gap: 0; }
   .main-nav a { padding-block: var(--space-3); border-bottom: 1px solid rgb(255 255 255 / 0.15); }
-  /* Collapsed only when JavaScript has run, so the menu still works without it */
-  .js .main-nav[data-open="false"] { display: none; }
+  /* Collapsed only when JavaScript is on, so the menu still works without it.
+     Each page adds the "js" class in its <head>, before the page is drawn. */
+  .js .main-nav:not([data-open="true"]) { display: none; }
 }
 
 /* ---- Ridgeline edge (signature motif) ----------------------------------- */

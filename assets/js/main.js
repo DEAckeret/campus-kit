@@ -4,6 +4,8 @@
    these scripts only make menus collapsible and lists filterable.
    ========================================================================== */
 
+// Each page also adds this class in its <head>, so the menu starts closed
+// without a jump; adding it here too keeps pages that leave that line out working.
 document.documentElement.classList.add("js");
 
 /* ---- Mobile menu -------------------------------------------------------- */

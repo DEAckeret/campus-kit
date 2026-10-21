@@ -77,7 +77,7 @@
         <h2 id="how-title">How the check works</h2>
         <ul>
           <li>The check runs in GitHub Actions on every change, using <a href="https://github.com/GoogleChrome/lighthouse-ci">Lighthouse CI</a>, Google's free tool for testing page quality.</li>
-          <li>Each page is loaded three times, and the tables show the middle run. Scores can move a few points from one run to the next.</li>
+          <li>Each page is loaded three times, because scores can move a few points from one run to the next. Each score is the middle of the three, and the speed figures come from the run with the middle performance score.</li>
           <li>The pages are loaded from the test machine, not from the live site, so the scores measure the pages themselves rather than the web host. Fonts load from Google Fonts, as they do on the live site.</li>
           <li>A perfect accessibility score doesn't mean a page is fully accessible. Automated tools find only some problems. Campus Kit also checks every page with axe and at 200% and 400% zoom, but testing with people who use assistive technology is still needed.</li>
           <li>To change a budget, edit <code>lighthouserc.json</code> and the table above. The check stops if the two don't match.</li>

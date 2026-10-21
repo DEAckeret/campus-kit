@@ -91,10 +91,6 @@ try {
   fail(`Couldn't read ${join(resultsDir, "manifest.json")}: ${error.message}`);
 }
 
-// Lighthouse CI marks the median run of each page as its representative run
-const runs = manifest.filter((entry) => entry.isRepresentativeRun);
-if (runs.length === 0) fail("The manifest has no representative runs.");
-
 const pages = config.ci.collect.url.map((url) => new URL(url).pathname.replace(/^\//, ""));
 
 function pageName(path) {
@@ -103,37 +99,62 @@ function pageName(path) {
   return title ? title[1].trim() : path;
 }
 
-const rows = runs
-  .map((entry) => {
-    const path = new URL(entry.url).pathname.replace(/^\//, "");
-    // jsonPath may be absolute or relative; the file is always in the results folder
-    const file = [resolve(entry.jsonPath), join(resultsDir, basename(entry.jsonPath))].find(existsSync);
-    if (!file) fail(`Couldn't find ${entry.jsonPath}.`);
-    const lhr = JSON.parse(readFileSync(file, "utf8"));
-    const audit = (id) => lhr.audits[id]?.numericValue;
+function loadRun(entry) {
+  // jsonPath may be absolute or relative; the file is always in the results folder
+  const file = [resolve(entry.jsonPath), join(resultsDir, basename(entry.jsonPath))].find(existsSync);
+  if (!file) fail(`Couldn't find ${entry.jsonPath}.`);
+  return JSON.parse(readFileSync(file, "utf8"));
+}
+
+const median = (values) => {
+  const sorted = values.filter((value) => typeof value === "number").sort((a, b) => a - b);
+  return sorted.length ? sorted[Math.floor((sorted.length - 1) / 2)] : null;
+};
+
+// Group the runs by page. Each score is the median of that page's runs, the
+// same number `lhci assert` checks ("aggregationMethod": "median"), so this
+// page and the check always agree. The speed figures come from the run with
+// the median performance score.
+const byPage = new Map();
+for (const entry of manifest) {
+  const path = new URL(entry.url).pathname.replace(/^\//, "");
+  if (!byPage.has(path)) byPage.set(path, []);
+  byPage.get(path).push(loadRun(entry));
+}
+if (byPage.size === 0) fail("The manifest lists no runs.");
+
+const rows = [...byPage]
+  .map(([path, lhrs]) => {
     const scores = {};
     for (const [id] of CATEGORIES) {
-      const score = lhr.categories[id]?.score;
-      scores[id] = typeof score === "number" ? Math.round(score * 100) : null;
+      const value = median(lhrs.map((lhr) => lhr.categories[id]?.score));
+      scores[id] = value === null ? null : Math.round(value * 100);
     }
-    // For the CI log: what held each page's score back
-    const held = Object.values(lhr.audits)
+    const middle = [...lhrs].sort((a, b) => (a.categories.performance?.score ?? 0) - (b.categories.performance?.score ?? 0))[
+      Math.floor((lhrs.length - 1) / 2)
+    ];
+    const audit = (id) => middle.audits[id]?.numericValue;
+
+    // For the CI log: what held each page back, so a failed budget is easy to trace
+    const held = Object.values(middle.audits)
       .filter((a) => a.details?.type === "opportunity" || /^(first-contentful-paint|largest-contentful-paint|speed-index|total-blocking-time|cumulative-layout-shift)$/.test(a.id))
       .filter((a) => typeof a.score === "number" && a.score < 0.9)
       .map((a) => `${a.id} ${a.displayValue || a.score}`);
-    const failing = Object.entries(lhr.categories).flatMap(([cat, c]) =>
-      cat === "performance" ? [] : (c.auditRefs || []).filter((r) => r.weight > 0 && lhr.audits[r.id]?.score === 0).map((r) => `${cat}:${r.id}`)
+    const failing = Object.entries(middle.categories).flatMap(([category, data]) =>
+      category === "performance"
+        ? []
+        : (data.auditRefs || []).filter((ref) => ref.weight > 0 && middle.audits[ref.id]?.score === 0).map((ref) => `${category}: ${ref.id}`)
     );
-    console.log(`${path}: ${CATEGORIES.map(([id]) => `${id} ${Math.round((lhr.categories[id]?.score ?? 0) * 100)}`).join(", ")}`);
-    if (held.length) console.log(`  slow: ${held.join("; ")}`);
+    const runScores = lhrs.map((lhr) => Math.round((lhr.categories.performance?.score ?? 0) * 100)).join(", ");
+    console.log(`${path}: ${CATEGORIES.map(([id]) => `${id} ${scores[id]}`).join(", ")} (performance by run: ${runScores})`);
+    if (held.length) console.log(`  held back by: ${held.join("; ")}`);
     if (failing.length) console.log(`  failed audits: ${failing.join(", ")}`);
-    const blocking = lhr.audits["render-blocking-resources"]?.details?.items || [];
-    if (blocking.length) console.log(`  render-blocking: ${blocking.map((i) => `${i.url} ${Math.round(i.wastedMs)}ms`).join("; ")}`);
+
     return {
       path,
       name: pageName(path),
-      fetchTime: lhr.fetchTime,
-      version: lhr.lighthouseVersion,
+      fetchTime: middle.fetchTime,
+      version: middle.lighthouseVersion,
       scores,
       fcp: audit("first-contentful-paint"),
       lcp: audit("largest-contentful-paint"),
