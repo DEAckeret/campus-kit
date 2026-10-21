@@ -25,6 +25,14 @@ The first CI run scored most demo pages 82 or 83 for performance, with a layout 
 - I reproduced it locally by delaying `main.js` in headless Chromium at 412px: layout shift was 0.311 on every demo page before and 0.001 to 0.011 after. The menu still opens and closes. In CI, every page now scores 99 or 100 for performance.
 - Trade-off: if `main.js` fails to load while JavaScript is on, the phone menu stays closed. That's the usual cost of this pattern.
 
+### Then the first run on `main` failed
+
+The trial branch passed with every page at 99 or 100, but the first run on `main`, with the same code, scored four pages 87 or 88. The log showed why: the time to first text went from under 2 seconds to 2.8 to 3.1 seconds. Nothing on the page had changed. The difference was the Google Fonts stylesheet, the one file that comes from another server. The browser waited for it before drawing anything, so however fast Google answered that day decided the score. Real visitors wait on it the same way.
+
+- **The web fonts no longer hold up the page.** Each page now asks for the Google Fonts stylesheet as a preload and switches it on when it arrives, so text appears straight away in a system font and changes to Literata and Public Sans a moment later. Fonts already used `display=swap`, so visitors could already see that switch; it can now just happen sooner than the fonts. Without JavaScript, a `<noscript>` copy of the link loads the fonts the old way. The print flyer keeps the old way, since it's printed, not browsed.
+- **The print styles no longer hold up the page either.** `print.css` is all print rules, so its link now says `media="print"` and the browser doesn't wait for it on screen.
+- I couldn't measure this here, because Google Fonts is blocked in this workspace. The run after this push is the test.
+
 ### What I decided and why
 
 - **Lighthouse runs in the existing check job, not a new one.** That way the page with real scores goes through the same HTML, axe and zoom checks as every other page, with no second copy of the setup. It adds about six minutes to each run.
