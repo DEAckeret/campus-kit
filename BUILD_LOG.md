@@ -4,6 +4,50 @@ Every AI work session on Campus Kit adds an entry here, newest first. Each entry
 
 ---
 
+## Session 10: October 23, 2026 (analytics guide)
+
+**Built by:** Claude (Opus 5.5), in a scheduled session with nobody watching, so decisions below are mine and open to Dustin's review.
+
+### What I built
+
+- **An analytics guide** at `analytics.html`, written for a college web and marketing team. It covers the three numbers worth watching (application starts, visit sign-ups, program searches) and what to do when each one moves; numbers to read with care (page views alone, time on page, bounce rate, news spikes); what to look for in a privacy-friendly tool; how buttons are marked, with rules for names; a table of every counted button on the demo; the code to connect a tool; and a 20-minute monthly check-in. It's linked from a new "Measures what matters" note on the project page, the style guide and the README.
+- **`data-track` names on the demo's key buttons and forms:** `apply-start` (Start your application), `visit-signup` (Visit campus on the home page, and a new "Sign up for the open house" link on the events page), `program-search` (the home page and 404 search boxes, and the program finder), `advisor-request` (Request a meeting, on the biology page and in the program template, with a comment telling editors to keep it), and `give-start` (both Give online buttons, told apart with `data-track-place="top"` and `"sidebar"`). Nothing reads them; no analytics code ships.
+- **A new check, `tests/tracking.mjs`** (`npm run check:tracking`, built-in Node modules only, runs first in CI). It fails if a page uses a `data-track` name that isn't in the guide's table, if the table lists a name no demo page uses, if a name isn't lowercase words joined by hyphens, or if any page loads a script from another server. That last one turns the "no third-party scripts" rule into something the build enforces. I checked each failure by breaking a page on purpose.
+- **A style guide entry,** "Counted buttons," next to the demo contact links.
+- Added the page to `tests/pages.mjs`, the deploy step's file list, the file map in `CLAUDE.md` and the README.
+
+### What I decided and why
+
+- **The guide is a published page, not a Markdown file in `docs/`.** The roadmap said "a doc," but the docs folder isn't published, and this guide is for the web and marketing team rather than faculty editing a page. As a page it goes through the same HTML, axe and zoom checks as everything else, and the table of names can be checked against the pages. It uses the project page's header, like the performance report.
+- **Three numbers, not a dashboard's worth.** The roadmap named apply clicks, visit sign-ups and program searches; I kept those as the main three and listed advisor requests and gift starts as extras that departments and Advancement will ask for.
+- **The tool section names tools as examples but makes no claims about them.** Plausible, Fathom, Simple Analytics, Matomo and GoatCounter are listed "to compare against this list," with the list of what to ask for. Vendors change their terms; the criteria don't. It also tells the reader to check with their privacy office and update the privacy notice.
+- **The code sample is in the guide only, and it works.** I pulled it out of the page and ran it on the demo in headless Chromium with `console.log` standing in for a tool. Each click sent one event with the right name and place; a program finder search for "pre-med" sent `found: 0`, which is the gap the guide tells people to look for; arriving at `programs.html?q=nursing` from the home page sent nothing extra; and typing a name in the directory search sent nothing.
+- **Program searches send the words, cut to 60 characters. Directory searches send nothing.** Program search words are the most useful thing in the report; directory search words are people's names. The guide says this as a rule.
+- **No "show the tracked buttons" mode on the demo.** It would make the attributes visible to someone browsing the demo, but it's more script for a demo-only feature. Listed below as an idea.
+
+### How I checked it
+
+- `tests/tracking.mjs` and the include check pass. `tests/zoom.mjs` passes on all 16 pages under all six conditions.
+- My usual checks in headless Chromium on the new page and every page I changed, at 1280px and 390px, with JavaScript on and off: one `h1`, no skipped heading levels, no duplicate IDs, every `aria-labelledby` target present, every in-page link has a target, no sideways scrolling.
+- I looked at screenshots of the guide at both widths, the style guide entry, the project page notes and the events page's new link. On phones the code samples and the table scroll inside their own focusable regions.
+- No new colors. The guide uses existing components (page header, sidebar, callout, table, `.sg-code`).
+
+### What went wrong
+
+- **Still no `npm test` here.** The npm registry is blocked in this workspace, so HTML validation and axe run only in CI. `http-server` wasn't installed either, so I ran the zoom test against a 20-line stand-in in the git-ignored `node_modules`.
+- **I first wrote that the giving page has a button "at the top and another in the sidebar."** Running the code sample showed the top button is hidden on wide screens (it's only for phones, where the sidebar falls to the bottom). The guide now says so.
+- **Event names broke at their hyphens on phones** (`apply-` / `start`) in the table. They now stay on one line and the table scrolls.
+- **Four notes on the project page left one alone on a row.** The notes grid now has wider columns, so it reads two by two on desktop.
+
+### Left for next time
+
+- **Idea for Dustin:** a "show counted buttons" view of the demo (for example `?show=tracking`) that outlines each marked button with its name, so reviewers can see the markup without reading the source.
+- The Node 20 warning on the workflow's actions is still open.
+- **For Dustin:** the `lighthouse-trial` branch from session 9 can still be deleted.
+- The screen reader pass is Dustin's. The program one-sheet for print is the next AI item.
+
+---
+
 ## Session 9: October 21, 2026 (site performance report)
 
 **Built by:** Claude (Opus 5.5), in a scheduled session with nobody watching, so decisions below are mine and open to Dustin's review.

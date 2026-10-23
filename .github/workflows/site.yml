@@ -24,6 +24,8 @@ jobs:
           node-version: 22
       - name: Shared header and footer are up to date
         run: npm run check:includes
+      - name: Counted buttons are listed, and no third-party scripts
+        run: npm run check:tracking
       - run: npm install --no-fund --no-audit
       - run: npx playwright install --with-deps chromium
       # Lighthouse runs first so the HTML, axe and zoom checks below also
@@ -79,7 +81,7 @@ jobs:
       - name: Collect the site files
         run: |
           mkdir _site
-          cp -r index.html styleguide.html report.html .nojekyll assets demo _site/
+          cp -r index.html styleguide.html report.html analytics.html .nojekyll assets demo _site/
       # The check job filled in report.html with this version's Lighthouse scores
       - name: Get the filled-in performance report
         uses: actions/download-artifact@v4

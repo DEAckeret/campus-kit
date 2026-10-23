@@ -28,6 +28,7 @@ Campus Kit is a proof-of-concept project: it is built **entirely by AI** for Dus
 - `index.html`: the project page recruiters land on
 - `styleguide.html`: every token and component, with copyable HTML
 - `report.html`: the site performance report; CI fills in its "Latest results" section
+- `analytics.html`: the analytics guide, with the list of every `data-track` name
 - `demo/`: the College of the Sleeping Giant demo site
 - `demo/programs/_template.html`: commented template for new program pages
 - `assets/css/tokens.css`: colors, type, spacing (the only file to change when rebranding)
@@ -41,4 +42,5 @@ Campus Kit is a proof-of-concept project: it is built **entirely by AI** for Dus
 - `tests/pages.mjs`: the list of pages the checks visit; add every new page to it
 - `tests/accessibility.mjs`: axe checks
 - `tests/zoom.mjs`: 200% and 400% zoom, 200% text size and text-spacing checks
+- `tests/tracking.mjs`: every `data-track` name is listed in `analytics.html`, and no page loads a third-party script
 - `.github/workflows/site.yml`: checks, then deploys to GitHub Pages from `main`

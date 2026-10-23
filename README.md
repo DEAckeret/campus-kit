@@ -4,7 +4,7 @@
 
 Campus Kit is a hand-written HTML and CSS design system with ready-made pages for academic programs, events, news and staff directories. It's built to WCAG 2.2 AA, prints cleanly, and needs no framework or build tools.
 
-**[See it live](https://deackeret.github.io/campus-kit/)** · [Demo college](https://deackeret.github.io/campus-kit/demo/) · [Style guide](https://deackeret.github.io/campus-kit/styleguide.html) · [Performance report](https://deackeret.github.io/campus-kit/report.html)
+**[See it live](https://deackeret.github.io/campus-kit/)** · [Demo college](https://deackeret.github.io/campus-kit/demo/) · [Style guide](https://deackeret.github.io/campus-kit/styleguide.html) · [Performance report](https://deackeret.github.io/campus-kit/report.html) · [Analytics guide](https://deackeret.github.io/campus-kit/analytics.html)
 
 > **This project was built entirely by AI.** Every line of code, page and piece of copy was written by Claude, an AI model, as a proof of concept directed by [Dustin Ackeret](https://github.com/DEAckeret). Dustin chose the goal, reviewed the work and set the direction. Claude returns on a schedule to build the next item on the [roadmap](ROADMAP.md), and every session is recorded, mistakes included, in the [build log](BUILD_LOG.md).
 
@@ -33,6 +33,7 @@ Campus Kit is a hand-written HTML and CSS design system with ready-made pages fo
 - **Performance budgets.** [Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci) scores ten pages on every push. A page below 90 for performance or SEO, or below 100 for accessibility, stops the deploy. The scores are published on the [performance report](https://deackeret.github.io/campus-kit/report.html); the budgets live in [`lighthouserc.json`](lighthouserc.json).
 - **One shared header and footer.** They live in [`partials/`](partials/). A tiny dependency-free script (`npm run build`) copies them into every page as plain HTML, and CI fails if a page falls out of date.
 - **Docs for the people who maintain it.** [Adding a program page](docs/adding-a-program-page.md) walks a non-technical staff member through creating a page from the [commented template](demo/programs/_template.html), and [changing the menu](docs/changing-the-header-and-footer.md) covers the shared header and footer.
+- **Measuring what matters, without tracking people.** The [analytics guide](https://deackeret.github.io/campus-kit/analytics.html) covers the three numbers worth watching on a college site (application starts, visit sign-ups, program searches), how to choose a privacy-friendly tool, and the code to connect one. Key buttons carry `data-track` names; no analytics code ships, and a check fails the build if a page uses an unlisted name or loads a third-party script.
 
 ## Run it locally
 
@@ -42,7 +43,7 @@ Open `index.html` in a browser, or serve the folder:
 npm install
 npm run serve       # http://localhost:8080
 npm run build       # copy partials/ into every demo page
-npm test            # include check, HTML validation, accessibility, zoom and text-spacing checks
+npm test            # include and tracking checks, HTML validation, accessibility, zoom and text spacing
 npm run test:lighthouse   # Lighthouse scores and budgets (needs Chrome installed)
 ```
 

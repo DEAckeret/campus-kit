@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Measuring what matters | Campus Kit</title>
+  <meta name="description" content="A guide for a college web team: the few numbers that show whether the site is working, how Campus Kit marks the buttons that matter, and how to count them without tracking people.">
+  <link rel="icon" href="assets/img/giant-mark.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- The web fonts load without holding up the page: text shows in a system
+       font first and switches when they arrive. Without JavaScript, <noscript> loads them. -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;1,7..72,500&family=Public+Sans:wght@400;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;1,7..72,500&family=Public+Sans:wght@400;600;700&display=swap"></noscript>
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/kit-site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="sg-header">
+    <div class="wrap sg-header__inner">
+      <a class="sg-home" href="index.html">Campus Kit</a>
+      <nav aria-label="Project">
+        <ul>
+          <li><a href="demo/index.html">Demo site</a></li>
+          <li><a href="styleguide.html">Style guide</a></li>
+          <li><a href="report.html">Performance report</a></li>
+          <li><a href="https://github.com/DEAckeret/campus-kit">Code on GitHub</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="page-header">
+      <div class="wrap">
+        <h1>Measuring what matters</h1>
+        <p class="lede">A guide for a college web and marketing team: the few numbers that show whether the website is doing its job, how Campus Kit marks the buttons behind them, and how to count those clicks without following anyone around the web.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="wrap with-sidebar">
+        <div>
+          <section aria-labelledby="numbers-title">
+            <h2 id="numbers-title">Three numbers worth watching</h2>
+            <p>A college website has a few jobs that matter more than the rest: getting students to apply, getting them to campus, and helping them find a program. Count those three things well before you count anything else.</p>
+
+            <h3>Application starts</h3>
+            <p>How many people click "Start your application." This is the number Admission cares about most, and the one the website can most directly change.</p>
+            <p>Compare each month with the same month last year, not with last month. Applications follow the deadline calendar, so a jump in November and a drop in December is normal.</p>
+
+            <h3>Visit sign-ups</h3>
+            <p>How many people click through to book a tour or sign up for an open house. A visit often comes months before an application, so a drop here is an early warning.</p>
+            <p>Read it next to the events calendar. If sign-ups fall in a month with no open house on the calendar, the fix is an event, not the website.</p>
+
+            <h3>Program searches</h3>
+            <p>What people type into the program search, and how many programs each search found. This is the one place visitors tell you, in their own words, what they're looking for.</p>
+            <p>A search that finds nothing is the most useful line in the report. It means you don't offer the program, or you call it something else. If people search for "pre-med" and the biology page says "pre-health track," add their words to the program's description so the search finds it.</p>
+          </section>
+
+          <section aria-labelledby="care-title">
+            <h2 id="care-title">Numbers to read with care</h2>
+            <ul>
+              <li><strong>Page views on their own.</strong> A busy page can mean people can't find what they need and keep coming back to it.</li>
+              <li><strong>Time on page.</strong> A long visit to the deadlines table might be confusion, not interest. A quick visit to a phone number is a success.</li>
+              <li><strong>Bounce rate.</strong> Someone who reads the tuition figure and leaves got their answer.</li>
+              <li><strong>Spikes after a news story.</strong> They're good for the newsroom but rarely move applications. Don't compare a month with a big story to one without.</li>
+            </ul>
+          </section>
+
+          <section aria-labelledby="tool-title">
+            <h2 id="tool-title">Choosing a privacy-friendly tool</h2>
+            <p>You don't need to know who a visitor is to count what they clicked. Many of the people using a college website are high school students, so collect as little as you can. A smaller tool also loads faster: every script added to a page counts against the <a href="report.html">performance budget</a>.</p>
+            <p>Look for a tool that:</p>
+            <ul>
+              <li>counts visits without cookies or an ID that follows people from site to site</li>
+              <li>doesn't store names, email addresses or full IP addresses</li>
+              <li>doesn't sell or share your data or use it for advertising</li>
+              <li>lets you choose how long data is kept, and delete it</li>
+              <li>can count named events, like the buttons listed below</li>
+              <li>has a dashboard you can share with Admission without setting up an account for each person</li>
+            </ul>
+            <p>Plausible, Fathom, Simple Analytics, Matomo and GoatCounter are examples to compare against this list. Some can run on the college's own server. Check each one yourself, ask your privacy or compliance office before adding any tool, and say what it collects in the site's privacy notice.</p>
+          </section>
+        </div>
+
+        <div class="sidebar">
+          <section class="callout" aria-labelledby="demo-title">
+            <h2 id="demo-title">Nothing is counted on this demo</h2>
+            <p>The demo college's buttons are marked so you can see how it works, but Campus Kit ships no analytics code. Nothing you click is sent anywhere.</p>
+          </section>
+
+          <section aria-labelledby="on-this-page">
+            <h2 id="on-this-page">On this page</h2>
+            <ul>
+              <li><a href="#numbers-title">Three numbers worth watching</a></li>
+              <li><a href="#tool-title">Choosing a tool</a></li>
+              <li><a href="#marking-title">How buttons are marked</a></li>
+              <li><a href="#events-title">Every counted button</a></li>
+              <li><a href="#connect-title">Connecting a tool</a></li>
+              <li><a href="#monthly-title">A monthly check-in</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <section class="section section--mist" aria-labelledby="marking-title">
+      <div class="wrap">
+        <h2 id="marking-title">How buttons are marked</h2>
+        <p>Every button or form worth counting has a <code>data-track</code> attribute that names the action. It doesn't change how the page looks or works. A small script, added once you've chosen a tool, reads the name and sends it.</p>
+        <pre class="sg-code sg-code--alone" tabindex="0" role="region" aria-label="Example: a counted button"><code>&lt;a class="button" href="#" data-track="apply-start"&gt;Start your application&lt;/a&gt;</code></pre>
+        <p>When one page has the same action twice, <code>data-track-place</code> says which one was used. The giving page has a "Give online" button at the top, shown on phones only, and another in the sidebar:</p>
+        <pre class="sg-code sg-code--alone" tabindex="0" role="region" aria-label="Example: the same action in two places"><code>&lt;a class="button" href="#" data-track="give-start" data-track-place="top"&gt;Give online&lt;/a&gt;
+&lt;a class="button" href="#" data-track="give-start" data-track-place="sidebar"&gt;Give online&lt;/a&gt;</code></pre>
+        <h3>Rules for names</h3>
+        <ul>
+          <li><strong>Say what the visitor did,</strong> in lowercase words joined by hyphens: <code>apply-start</code>, not <code>button-3</code> or <code>blue-cta</code>.</li>
+          <li><strong>Same action, same name, on every page.</strong> The tool already records which page a click happened on, so don't put the page in the name.</li>
+          <li><strong>Mark actions, not menus.</strong> A click on "Admission" in the menu is already counted as a view of the admission page.</li>
+          <li><strong>Never mark a field where people type a name or contact details.</strong> The staff directory search is left unmarked on purpose: what people type there is someone's name.</li>
+          <li><strong>Add every new name to the table below.</strong> The automated check stops the site from publishing if a page uses a name that isn't in the table, or the table lists one no page uses.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="events-title">
+      <div class="wrap">
+        <h2 id="events-title">Every counted button on the demo site</h2>
+        <section class="table-wrap" tabindex="0" aria-labelledby="events-caption">
+          <table class="event-names">
+            <caption id="events-caption">Names used in <code>data-track</code>, what each counts, and where it appears</caption>
+            <thead>
+              <tr><th scope="col">Name</th><th scope="col">What it counts</th><th scope="col">Where it appears</th></tr>
+            </thead>
+            <tbody>
+              <tr data-event="apply-start"><th scope="row"><code>apply-start</code></th><td>Clicks on "Start your application"</td><td><a href="demo/apply.html">How to apply</a></td></tr>
+              <tr data-event="visit-signup"><th scope="row"><code>visit-signup</code></th><td>Clicks through to book a campus tour or sign up for an open house</td><td><a href="demo/index.html">Home page</a> ("Visit campus"), <a href="demo/events.html">Events</a> (the fall open house)</td></tr>
+              <tr data-event="program-search"><th scope="row"><code>program-search</code></th><td>Searches for a program: the words typed and how many programs were found</td><td><a href="demo/index.html">Home page</a>, <a href="demo/programs.html">Program finder</a>, <a href="demo/404.html">Page not found</a></td></tr>
+              <tr data-event="advisor-request"><th scope="row"><code>advisor-request</code></th><td>Clicks on "Request a meeting" with a department's advisor</td><td><a href="demo/programs/biology.html">Biology</a> and every page made from the <a href="demo/programs/_template.html">program template</a></td></tr>
+              <tr data-event="give-start"><th scope="row"><code>give-start</code></th><td>Clicks on "Give online," with <code>top</code> or <code>sidebar</code> as the place</td><td><a href="demo/give.html">Giving page</a></td></tr>
+            </tbody>
+          </table>
+        </section>
+        <p class="note">Advisor requests and gift starts aren't among the three numbers above, but the department chairs and the Advancement office will ask for them.</p>
+      </div>
+    </section>
+
+    <section class="section section--mist" aria-labelledby="connect-title">
+      <div class="wrap">
+        <h2 id="connect-title">Connecting a tool</h2>
+        <p>This is a job for the web team, and it takes about an hour once a tool has been approved.</p>
+        <ol>
+          <li>Add the tool's script to the <code>&lt;head&gt;</code> of every page, following its instructions.</li>
+          <li>Add the code below to the end of <code>assets/js/main.js</code>, and replace the line inside <code>sendEvent</code> with your tool's own call for a named event. Every tool listed above has one.</li>
+          <li>Click each button in the table above and check that the event appears in the tool's live view.</li>
+          <li>Update the privacy notice to say what is counted.</li>
+        </ol>
+        <pre class="sg-code sg-code--alone" tabindex="0" role="region" aria-label="Code that sends the counted events"><code>// Counts the buttons and forms marked with data-track.
+// Not included in Campus Kit: add it only once a tool is approved.
+function sendEvent(name, details) {
+  // Replace this line with your tool's call for a named event
+  console.log("Would send", name, details);
+}
+
+// Buttons and links
+document.addEventListener("click", (event) =&gt; {
+  const target = event.target.closest("a[data-track], button[data-track]");
+  if (!target) return;
+  sendEvent(target.dataset.track, { place: target.dataset.trackPlace });
+});
+
+// Search boxes that open the program finder (home page, page not found)
+document.addEventListener("submit", (event) =&gt; {
+  const form = event.target.closest("form[data-track]");
+  if (!form) return;
+  const words = String(new FormData(form).get("q") || "").trim().slice(0, 60);
+  sendEvent(form.dataset.track, { words });
+});
+
+// The program finder's own search, which filters as people type.
+// "change" fires when they leave the box, so each search counts once.
+document.addEventListener("change", (event) =&gt; {
+  const form = event.target.closest("form[data-track][data-filter]");
+  if (!form || event.target.name !== "q") return;
+  const words = event.target.value.trim().slice(0, 60);
+  if (!words) return;
+  const list = document.getElementById(form.dataset.filter);
+  const found = list.querySelectorAll(":scope &gt; li:not([hidden])").length;
+  sendEvent(form.dataset.track, { words, found });
+});</code></pre>
+        <p>The search words are cut to 60 characters, so a long paste can't carry much. A search from the home page counts once, where it was typed: when the program finder opens with those words already filled in, nothing is sent.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="monthly-title">
+      <div class="wrap">
+        <h2 id="monthly-title">A monthly check-in</h2>
+        <p>Set aside 20 minutes in the first week of each month. Most months you'll make one small change, and that's the point.</p>
+        <ol>
+          <li>Compare application starts and visit sign-ups with the same month last year.</li>
+          <li>Read the 20 most common program searches, and every search that found nothing. Add missing words to program descriptions.</li>
+          <li>See which pages people were on when they clicked "Start your application." Make sure the pages that send the most people have a clear link to apply.</li>
+          <li>Send Admission three sentences: what went up, what went down, and the one change you're making this month.</li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="site-footer__legal">Campus Kit is open source under the MIT license. College of the Sleeping Giant and everyone at it are fictional.</p>
+    </div>
+  </footer>
+</body>
+</html>

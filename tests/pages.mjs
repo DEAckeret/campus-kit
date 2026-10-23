@@ -16,4 +16,5 @@ export const PAGES = [
   "demo/give.html",
   "demo/404.html",
   "report.html",
+  "analytics.html",
 ];
