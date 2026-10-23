@@ -148,9 +148,11 @@ pre {
 .ai-note h3 { font-family: var(--font-body); font-size: var(--step-1); font-weight: 700; }
 
 /* ---- Code samples outside the style guide (analytics guide) ------------- */
+/* A named, focusable <section> that scrolls, holding a <pre> */
 .sg-code--alone {
   margin-block: var(--space-4) var(--space-5);
   border-radius: var(--radius-large);
 }
+.sg-code--alone pre { margin: 0; }
 /* Keep each event name on one line; the table scrolls on narrow screens */
 .event-names th code { white-space: nowrap; }

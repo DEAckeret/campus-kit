@@ -113,10 +113,10 @@
       <div class="wrap">
         <h2 id="marking-title">How buttons are marked</h2>
         <p>Every button or form worth counting has a <code>data-track</code> attribute that names the action. It doesn't change how the page looks or works. A small script, added once you've chosen a tool, reads the name and sends it.</p>
-        <pre class="sg-code sg-code--alone" tabindex="0" role="region" aria-label="Example: a counted button"><code>&lt;a class="button" href="#" data-track="apply-start"&gt;Start your application&lt;/a&gt;</code></pre>
+        <section class="sg-code sg-code--alone" tabindex="0" aria-label="Example: a counted button"><pre><code>&lt;a class="button" href="#" data-track="apply-start"&gt;Start your application&lt;/a&gt;</code></pre></section>
         <p>When one page has the same action twice, <code>data-track-place</code> says which one was used. The giving page has a "Give online" button at the top, shown on phones only, and another in the sidebar:</p>
-        <pre class="sg-code sg-code--alone" tabindex="0" role="region" aria-label="Example: the same action in two places"><code>&lt;a class="button" href="#" data-track="give-start" data-track-place="top"&gt;Give online&lt;/a&gt;
-&lt;a class="button" href="#" data-track="give-start" data-track-place="sidebar"&gt;Give online&lt;/a&gt;</code></pre>
+        <section class="sg-code sg-code--alone" tabindex="0" aria-label="Example: the same action in two places"><pre><code>&lt;a class="button" href="#" data-track="give-start" data-track-place="top"&gt;Give online&lt;/a&gt;
+&lt;a class="button" href="#" data-track="give-start" data-track-place="sidebar"&gt;Give online&lt;/a&gt;</code></pre></section>
         <h3>Rules for names</h3>
         <ul>
           <li><strong>Say what the visitor did,</strong> in lowercase words joined by hyphens: <code>apply-start</code>, not <code>button-3</code> or <code>blue-cta</code>.</li>
@@ -160,7 +160,7 @@
           <li>Click each button in the table above and check that the event appears in the tool's live view.</li>
           <li>Update the privacy notice to say what is counted.</li>
         </ol>
-        <pre class="sg-code sg-code--alone" tabindex="0" role="region" aria-label="Code that sends the counted events"><code>// Counts the buttons and forms marked with data-track.
+        <section class="sg-code sg-code--alone" tabindex="0" aria-label="Code that sends the counted events"><pre><code>// Counts the buttons and forms marked with data-track.
 // Not included in Campus Kit: add it only once a tool is approved.
 function sendEvent(name, details) {
   // Replace this line with your tool's call for a named event
@@ -192,7 +192,7 @@ document.addEventListener("change", (event) =&gt; {
   const list = document.getElementById(form.dataset.filter);
   const found = list.querySelectorAll(":scope &gt; li:not([hidden])").length;
   sendEvent(form.dataset.track, { words, found });
-});</code></pre>
+});</code></pre></section>
         <p>The search words are cut to 60 characters, so a long paste can't carry much. A search from the home page counts once, where it was typed: when the program finder opens with those words already filled in, nothing is sent.</p>
       </div>
     </section>

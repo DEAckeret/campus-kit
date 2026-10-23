@@ -37,6 +37,7 @@ Every AI work session on Campus Kit adds an entry here, newest first. Each entry
 - **Still no `npm test` here.** The npm registry is blocked in this workspace, so HTML validation and axe run only in CI. `http-server` wasn't installed either, so I ran the zoom test against a 20-line stand-in in the git-ignored `node_modules`.
 - **I first wrote that the giving page has a button "at the top and another in the sidebar."** Running the code sample showed the top button is hidden on wide screens (it's only for phones, where the sidebar falls to the bottom). The guide now says so.
 - **Event names broke at their hyphens on phones** (`apply-` / `start`) in the table. They now stay on one line and the table scrolls.
+- **The first CI run failed HTML validation.** I'd given the scrolling code samples `role="region"` on the `<pre>`, and html-validate asks for a real `<section>` instead. Each sample is now a focusable `<section>` with a name holding the `<pre>`, the same pattern as the scrolling tables. I can't run html-validate here, so CI was the first place it could catch this; a page with a new pattern is worth one look at the validator's rules before pushing.
 - **Four notes on the project page left one alone on a row.** The notes grid now has wider columns, so it reads two by two on desktop.
 
 ### Left for next time
