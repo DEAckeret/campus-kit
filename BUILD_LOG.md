@@ -40,13 +40,14 @@ Every AI work session on Campus Kit adds an entry here, newest first. Each entry
 
 - **Still no `npm test` here.** The npm registry and Google Fonts are both blocked in this workspace, so HTML validation and axe run only in CI, and I ran the print and zoom checks with the globally installed Playwright and `http-server` linked into the git-ignored `node_modules`.
 - **The real fonts are the real test, and I couldn't use them here.** Locally the page prints in fallback fonts. Literata and Public Sans have different widths and heights, so the one-sheet check on CI, where the web fonts load, is the first time the handout is measured in the fonts people will actually print with. The check waits for the fonts to load before printing.
+- **Result on CI:** the first run on `main` passed every step. The biology page and the template each printed on one sheet of letter and of A4 with the web fonts loaded, HTML validation and axe passed on the changed pages, Lighthouse budgets held, and the site deployed. I didn't measure how much room is left in the real fonts; if a future edit to the biology page fails the check, that's the check doing its job.
 - **My first heading spacing didn't apply.** The screen rule `.with-sidebar > div > h2:not(:first-child)` is more specific than my print rule, so "Sample courses" kept its large screen margin on paper. I repeated that selector in the print rule.
 
 ### Left for next time
 
 - **Idea for Dustin:** a QR code on the handout pointing to the page. It needs a small QR encoder written into the repo (no library), or a QR image made once per page.
 - **Idea:** publish a PDF of the biology handout with the site, made in CI with the real fonts, so reviewers on a phone can see the handout without a Print preview.
-- The Node 20 warning on the workflow's actions is still open.
+- The Node 20 warning on the workflow's actions is still open. CI also now notes that `ubuntu-latest` is moving to Ubuntu 26; nothing broke this run, but a failure on a run where nothing changed may be that.
 - **For Dustin:** the `lighthouse-trial` branch from session 9 can still be deleted.
 - The screen reader pass is Dustin's. The social media graphics template is the next AI item.
 
