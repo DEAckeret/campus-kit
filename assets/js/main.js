@@ -166,6 +166,19 @@ if (demoContacts.length && typeof HTMLDialogElement === "function") {
   dialog.addEventListener("close", () => opener?.focus());
 }
 
+/* ---- Print buttons -------------------------------------------------------
+   Markup: <section class="no-print" data-print-offer hidden> holding a
+           <button type="button" data-print>
+   Printing needs JavaScript to start from a button, so the whole offer
+   stays hidden without it. The browser's own Print still works either way.
+   ------------------------------------------------------------------------- */
+document.querySelectorAll("[data-print-offer]").forEach((offer) => {
+  const button = offer.querySelector("[data-print]");
+  if (!button || typeof window.print !== "function") return;
+  button.addEventListener("click", () => window.print());
+  offer.hidden = false;
+});
+
 /* ---- Missing address (404 page) ------------------------------------------
    Markup: <p data-missing-address hidden>…<code></code></p> and
            <p data-missing-referrer hidden>…<code></code></p>

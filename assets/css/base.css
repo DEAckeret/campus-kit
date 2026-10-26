@@ -120,6 +120,11 @@ a:hover {
   border: 0;
 }
 
+/* Shows only on paper, like the "Learn more" block on a program handout */
+@media screen {
+  .print-only { display: none; }
+}
+
 /* Skip link: hidden until a keyboard user tabs to it */
 .skip-link {
   position: absolute;

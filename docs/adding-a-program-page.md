@@ -16,6 +16,7 @@ Have these ready in a document so you can paste them in:
 - Where graduates work or continue their studies
 - The department contact's name, title, office, email and phone
 - Optional: a short quote from a student or graduate, with their permission
+- A short web address for the printed handout, like `sleepinggiant.example/biology` (ask the web team to set one up)
 
 **Writing tip:** write for a high school senior. Use plain words, keep sentences short, and include one specific detail they can picture, like "you'll sample the river behind campus in your second week."
 
@@ -50,7 +51,19 @@ If you need a second table, copy everything from `<section class="table-wrap"` d
 
 Don't have a student quote? Delete everything from `<figure class="pull-quote">` down to `</figure>`, including those two lines.
 
-## Step 5: Add your program to the program list
+## Step 5: Check the printed handout
+
+Every program page prints as a one-page handout that the Admission office can take to college fairs. You don't need to make it separately: the page turns into the handout when someone prints it.
+
+1. Find the "Learn more" block near the end of the file. It shows only on paper. Replace `SHORT-ADDRESS` with your page's short web address, so someone holding the handout can find the page.
+2. Open your page in a browser and choose **Print**, then look at the preview (you don't need to actually print). It should fit on **one page**.
+3. If it runs onto a second page, shorten the text: trim a paragraph, cut a learning outcome, or list only the core courses. The page on screen gets shorter too, which usually helps there as well.
+
+As a rough guide, two short paragraphs, four or five learning outcomes and six to eight courses usually fit. The automated checks print every program page on US letter and A4 paper and fail if one needs a second sheet.
+
+Sections marked `class="no-print"` (the advisor box and the "On this page" links) appear only on screen, since you can't click a button on paper. Leave those markers in place.
+
+## Step 6: Add your program to the program list
 
 1. Open `demo/programs.html`.
 2. Find a program in the same school as yours and copy its whole block, from `<li` to the matching `</li>`.
@@ -63,7 +76,7 @@ Don't have a student quote? Delete everything from `<figure class="pull-quote">`
 
 The search and filters on the program list read `data-school` and `data-level`, so if those are missing your program won't show up when someone filters.
 
-## Step 6: Check your page
+## Step 7: Check your page
 
 Open your page in a web browser and check:
 
@@ -72,6 +85,7 @@ Open your page in a web browser and check:
 - [ ] Every link goes where it should
 - [ ] The program shows up on the program list, and when you filter by its school
 - [ ] The page looks right on your phone
+- [ ] Print preview shows one page
 
 If you're submitting your change through GitHub, the automatic checks will also test your page for accessibility problems, like a missing label or heading levels that skip. If a check fails, the error message says which page and which part to fix.
 

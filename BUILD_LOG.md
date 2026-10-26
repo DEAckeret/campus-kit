@@ -4,6 +4,54 @@ Every AI work session on Campus Kit adds an entry here, newest first. Each entry
 
 ---
 
+## Session 11: October 26, 2026 (program one-sheet for print)
+
+**Built by:** Claude (Opus 5.5), in a scheduled session with nobody watching, so decisions below are mine and open to Dustin's review.
+
+### What I built
+
+- **Every program page now prints as a one-page handout** for college fairs. Before, printing the biology page took three sheets with most of the third one blank. Now it's one sheet: the wordmark across the top, the program name and summary, the key facts, what you'll study, the course table, after graduation and the quote, and a row along the bottom with the department contact, related programs, and a "Learn more" block with a short web address and the Office of Admission's email and phone.
+- **How a page opts in:** `<body class="one-sheet">`. The rules are in a new section of `print.css`. Things meant for the screen (the breadcrumbs, the advisor box with its button, the "On this page" links) drop out; parts marked `print-only` appear only on paper. The biology page and the program template both have it, so new program pages get it by default.
+- **A "Print this page" box** at the end of the program page sidebar, with a "Print a one-page handout" button. It appears only when JavaScript is running, because a button can't start printing without it; the browser's own Print gives the same handout either way.
+- **A new check, `tests/print.mjs`** (`npm run test:print`, runs last in CI). It finds every page with the `one-sheet` class, prints it to PDF on US letter and on A4 the way Chrome's Print does, and fails if any copy needs a second sheet. I checked that it fails by making the type larger on purpose.
+- **A style guide entry,** "Program handout (print)," with the Learn more block (shown on screen there so readers can see it) and the print box.
+- **Docs:** a new step in [Adding a program page](docs/adding-a-program-page.md), "Check the printed handout," with what to do when it runs onto a second page, plus a line in the template's comments, the README, the project page and the file map in `CLAUDE.md`.
+
+### What I decided and why
+
+- **One root size scales the whole sheet.** Every size in the kit is in `rem`, so printing at a root size of 9pt (a new token, `--print-root-size`) shrinks the type scale and all the spacing together, keeping their proportions. Body text comes out at about 9.6pt. I tried bigger: at 9.5pt the biology page ran onto a second sheet.
+- **The sidebar becomes a row along the bottom, not a narrow right column.** My first version kept the two columns; the contact column was so narrow that `biology@sleepinggiant.example` broke in the middle and the web address broke across three lines. A full-width row reads like the footer of a handout, and the main text gets the whole width. The trade-off is long lines (about 110 characters) in the main text. A two-column layout for "What you'll study" would read better but needs more markup on every program page; I left it as an idea.
+- **A short web address on the handout,** `sleepinggiant.example/biology`, instead of the page's full path. That's what colleges print, and the long one broke awkwardly. The template's placeholder is `SHORT-ADDRESS`, and the guide tells editors to ask the web team for one.
+- **The handout's phone and email are still demo links** (`data-demo-contact`), per the contact link rule, even though they're mostly read on paper. On paper they print as plain text.
+- **No QR code.** A QR code pointing at the page would help at a college fair, but it needs a QR encoder: either a library (the npm registry is blocked here, and the rules say no third-party scripts) or a few hundred lines of hand-written encoding. Listed below.
+- **No page size in the CSS.** The sheet prints on whatever paper the printer has, and the check covers both letter and A4. Margins are 0.5 inch (other pages keep 0.6), written in `print.css` because custom properties don't work inside `@page`.
+- **The narrowest column in the bottom row** is a token too (`--print-column`), so the only sizes written outside `tokens.css` are the existing print margins.
+
+### How I checked it
+
+- `tests/print.mjs` passes for the biology page and the template on letter and A4. I also tried a copy of the biology page with two more courses and one more learning outcome: still one sheet. That's what the guide's "six to eight courses usually fit" is based on.
+- How much room is left: with the local fallback fonts, the biology page still fit at a 10pt root size on A4 but not on letter, so there's roughly 10% to spare.
+- I looked at the PDF of the biology page as an image, before (three sheets) and after.
+- On screen: screenshots of the program sidebar at 1280px and 390px, with JavaScript on (print box shows, button calls Print) and off (print box hidden, Learn more hidden), and of the style guide entry. One `h1`, no duplicate IDs, no sideways scrolling on the biology page or the style guide.
+- `tests/zoom.mjs` passes on all 16 pages under all six conditions. The include and tracking checks pass.
+- No new colors. The handout uses the ink, muted ink and line colors already in the tokens.
+
+### What went wrong
+
+- **Still no `npm test` here.** The npm registry and Google Fonts are both blocked in this workspace, so HTML validation and axe run only in CI, and I ran the print and zoom checks with the globally installed Playwright and `http-server` linked into the git-ignored `node_modules`.
+- **The real fonts are the real test, and I couldn't use them here.** Locally the page prints in fallback fonts. Literata and Public Sans have different widths and heights, so the one-sheet check on CI, where the web fonts load, is the first time the handout is measured in the fonts people will actually print with. The check waits for the fonts to load before printing.
+- **My first heading spacing didn't apply.** The screen rule `.with-sidebar > div > h2:not(:first-child)` is more specific than my print rule, so "Sample courses" kept its large screen margin on paper. I repeated that selector in the print rule.
+
+### Left for next time
+
+- **Idea for Dustin:** a QR code on the handout pointing to the page. It needs a small QR encoder written into the repo (no library), or a QR image made once per page.
+- **Idea:** publish a PDF of the biology handout with the site, made in CI with the real fonts, so reviewers on a phone can see the handout without a Print preview.
+- The Node 20 warning on the workflow's actions is still open.
+- **For Dustin:** the `lighthouse-trial` branch from session 9 can still be deleted.
+- The screen reader pass is Dustin's. The social media graphics template is the next AI item.
+
+---
+
 ## Session 10: October 23, 2026 (analytics guide)
 
 **Built by:** Claude (Opus 5.5), in a scheduled session with nobody watching, so decisions below are mine and open to Dustin's review.

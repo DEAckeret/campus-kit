@@ -60,6 +60,12 @@
   --page-max: 72rem;
   --gutter: clamp(1rem, 4vw, 2.5rem);
 
+  /* ---- Print --------------------------------------------------------- */
+  /* Program pages print as a one-page handout (print.css). The whole type
+     and space scale is in rem, so this one size shrinks it all to fit.   */
+  --print-root-size: 9pt;
+  --print-column: 11rem;      /* narrowest column in the handout's contact row */
+
   /* ---- The ridgeline: the kit's one signature motif -------------------- */
   /* A mountain-ridge edge used to close the hero and the footer.          */
   --ridge-height: clamp(28px, 4vw, 56px);

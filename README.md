@@ -23,13 +23,14 @@ Campus Kit is a hand-written HTML and CSS design system with ready-made pages fo
 | [News story](https://deackeret.github.io/campus-kit/demo/news/article.html) | Article layout with an accessible SVG chart |
 | [Page not found](https://deackeret.github.io/campus-kit/demo/404.html) | Program search, popular pages, and the address the visitor tried, ready to report. Shown at any [missing address](https://deackeret.github.io/campus-kit/demo/no-such-page.html) |
 | [Print flyer](https://deackeret.github.io/campus-kit/demo/flyer.html) | US letter event flyer built from the same tokens as the site |
+| Program handout | Print any program page (try [Biology](https://deackeret.github.io/campus-kit/demo/programs/biology.html)) and it comes out as a one-page handout for college fairs, on US letter or A4 |
 
 ## How it's built
 
 - **Design tokens.** All colors, type sizes and spacing live in [`assets/css/tokens.css`](assets/css/tokens.css). Rebranding the kit means editing one file.
 - **Progressive enhancement.** Every page works with JavaScript off. A small dependency-free script collapses the mobile menu and filters lists, announcing result counts to screen readers.
 - **Accessibility.** Skip link, visible focus on everything, labeled forms, real tables with captions and headers, a chart with a text description, and measured contrast (body text is 15.6 to 1).
-- **Automated checks.** Every push runs HTML validation, axe-core accessibility tests at desktop and phone widths, and zoom and text-spacing checks (200% and 400% zoom, WCAG 1.4.12 spacing) in GitHub Actions, then deploys to GitHub Pages only if they pass.
+- **Automated checks.** Every push runs HTML validation, axe-core accessibility tests at desktop and phone widths, zoom and text-spacing checks (200% and 400% zoom, WCAG 1.4.12 spacing), and a check that every program page prints on one sheet, in GitHub Actions, then deploys to GitHub Pages only if they pass.
 - **Performance budgets.** [Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci) scores ten pages on every push. A page below 90 for performance or SEO, or below 100 for accessibility, stops the deploy. The scores are published on the [performance report](https://deackeret.github.io/campus-kit/report.html); the budgets live in [`lighthouserc.json`](lighthouserc.json).
 - **One shared header and footer.** They live in [`partials/`](partials/). A tiny dependency-free script (`npm run build`) copies them into every page as plain HTML, and CI fails if a page falls out of date.
 - **Docs for the people who maintain it.** [Adding a program page](docs/adding-a-program-page.md) walks a non-technical staff member through creating a page from the [commented template](demo/programs/_template.html), and [changing the menu](docs/changing-the-header-and-footer.md) covers the shared header and footer.
@@ -43,7 +44,7 @@ Open `index.html` in a browser, or serve the folder:
 npm install
 npm run serve       # http://localhost:8080
 npm run build       # copy partials/ into every demo page
-npm test            # include and tracking checks, HTML validation, accessibility, zoom and text spacing
+npm test            # include and tracking checks, HTML validation, accessibility, zoom and text spacing, one-sheet printing
 npm run test:lighthouse   # Lighthouse scores and budgets (needs Chrome installed)
 ```
 

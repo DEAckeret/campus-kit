@@ -345,6 +345,28 @@
           </div>
         </article>
 
+        <article class="sg-component" aria-labelledby="c-handout">
+          <h3 id="c-handout">Program handout (print)</h3>
+          <p>Every program page prints as a one-page handout for college fairs, on US letter or A4 paper. Add <code>class="one-sheet"</code> to the page's <code>&lt;body&gt;</code>: when printed, the type shrinks to fit, the menu and breadcrumbs drop out, and the sidebar becomes a row of contacts along the bottom. Add <code>no-print</code> to anything that only makes sense on screen, like the "On this page" links and buttons. A <code>print-only</code> block appears only on paper; use it for a short web address and the admission office's contact. Below, it's shown so you can see it. The "Print this page" offer appears only when JavaScript is running, since a button can't start printing without it. To see a handout, open the <a href="demo/programs/biology.html">biology page</a> and use your browser's Print preview. The automated checks fail if a program page needs a second sheet.</p>
+          <div class="sg-example">
+<section class="print-only" aria-labelledby="learn-more-example">
+  <h2 id="learn-more-example">Learn more</h2>
+  <p>sleepinggiant.example/biology</p>
+  <address class="contact">
+    <strong>Office of Admission</strong>
+    <a href="#" data-demo-contact="email">admission@sleepinggiant.example</a><br>
+    <a href="#" data-demo-contact="phone">(406) 555-0125</a>
+  </address>
+</section>
+
+<section class="no-print" aria-labelledby="print-example" data-print-offer hidden>
+  <h2 id="print-example">Print this page</h2>
+  <p>It prints on one sheet of paper with the key facts, courses and contacts.</p>
+  <p><button class="button button--quiet" type="button" data-print>Print a one-page handout</button></p>
+</section>
+          </div>
+        </article>
+
         <article class="sg-component" aria-labelledby="c-demo-contact">
           <h3 id="c-demo-contact">Demo contact links</h3>
           <p>The demo school is fictional, so its phone numbers and email addresses don't go anywhere. Give each one <code>href="#"</code> and <code>data-demo-contact="phone"</code> or <code>"email"</code>. Clicking it opens a short note explaining what a real link would do. On a real college site, use <code>tel:</code> and <code>mailto:</code> links instead. Without JavaScript the link does nothing, and the number or address is still there to read. Long email addresses break onto a second line when space runs out, for example in a narrow column at 400% zoom, instead of making the page scroll sideways.</p>

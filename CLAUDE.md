@@ -32,7 +32,7 @@ Campus Kit is a proof-of-concept project: it is built **entirely by AI** for Dus
 - `demo/`: the College of the Sleeping Giant demo site
 - `demo/programs/_template.html`: commented template for new program pages
 - `assets/css/tokens.css`: colors, type, spacing (the only file to change when rebranding)
-- `assets/css/base.css`, `components.css`, `print.css`: site styles
+- `assets/css/base.css`, `components.css`, `print.css`: site styles (`print.css` also turns program pages into one-page handouts)
 - `assets/css/kit-site.css`, `assets/js/kit-site.js`: only for the project page and style guide
 - `docs/`: guides for non-technical editors
 - `scripts/includes.mjs`: copies the shared header and footer into demo pages (`npm run build`)
@@ -42,5 +42,6 @@ Campus Kit is a proof-of-concept project: it is built **entirely by AI** for Dus
 - `tests/pages.mjs`: the list of pages the checks visit; add every new page to it
 - `tests/accessibility.mjs`: axe checks
 - `tests/zoom.mjs`: 200% and 400% zoom, 200% text size and text-spacing checks
+- `tests/print.mjs`: every page with `<body class="one-sheet">` (the program pages) prints on one sheet of letter and A4 paper
 - `tests/tracking.mjs`: every `data-track` name is listed in `analytics.html`, and no page loads a third-party script
 - `.github/workflows/site.yml`: checks, then deploys to GitHub Pages from `main`

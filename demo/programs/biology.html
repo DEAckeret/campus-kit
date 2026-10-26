@@ -22,7 +22,7 @@
   <script src="../../assets/js/main.js" defer></script>
 </head>
 
-<body>
+<body class="one-sheet">
   <!-- include: header section="academics" -->
   <a class="skip-link" href="#main">Skip to main content</a>
 
@@ -131,13 +131,13 @@
         </div>
 
         <div class="sidebar">
-          <section class="callout" aria-labelledby="advisor-title">
+          <section class="callout no-print" aria-labelledby="advisor-title">
             <h2 id="advisor-title">Talk with an advisor</h2>
             <p>Get a sample four-year plan built around your interests.</p>
             <p><a class="button" href="#" data-track="advisor-request">Request a meeting</a></p>
           </section>
 
-          <section aria-labelledby="on-this-page">
+          <section class="no-print" aria-labelledby="on-this-page">
             <h2 id="on-this-page">On this page</h2>
             <ul>
               <li><a href="#overview">What you'll study</a></li>
@@ -164,6 +164,21 @@
               <li><a href="#">Chemistry</a></li>
               <li><a href="#">Public health</a></li>
             </ul>
+          </section>
+          <section class="print-only" aria-labelledby="learn-more-title">
+            <h2 id="learn-more-title">Learn more</h2>
+            <p>sleepinggiant.example/biology</p>
+            <address class="contact">
+              <strong>Office of Admission</strong>
+              <a href="#" data-demo-contact="email">admission@sleepinggiant.example</a><br>
+              <a href="#" data-demo-contact="phone">(406) 555-0125</a>
+            </address>
+          </section>
+
+          <section class="no-print" aria-labelledby="print-title" data-print-offer hidden>
+            <h2 id="print-title">Print this page</h2>
+            <p>It prints on one sheet of paper with the key facts, courses and contacts.</p>
+            <p><button class="button button--quiet" type="button" data-print>Print a one-page handout</button></p>
           </section>
         </div>
       </div>

@@ -41,3 +41,84 @@
     color: #444;
   }
 }
+
+/* ---- Program one-sheet ---------------------------------------------------
+   A page with <body class="one-sheet"> (every program page) prints as a
+   one-page handout for college fairs, on US letter or A4: the type scale
+   shrinks, the sidebar becomes a row of contacts at the bottom, and
+   everything meant for the screen drops out. Mark screen-only parts with .no-print and paper-only
+   parts with .print-only. tests/print.mjs fails if a program page needs
+   a second sheet.
+   ------------------------------------------------------------------------- */
+@media print {
+  /* Every size in the kit is in rem, so one root size scales them all */
+  :root:has(.one-sheet) { font-size: var(--print-root-size); }
+  /* Narrower margins than other pages, still inside what home printers reach.
+     (Custom properties don't work inside @page, so the size is written here.) */
+  @page one-sheet { margin: 0.5in; }
+  .one-sheet {
+    page: one-sheet;
+    font-size: var(--step-0);
+    line-height: var(--leading-tight);
+  }
+  .one-sheet main { line-height: 1.4; }
+  .one-sheet .wrap { max-width: none; padding-inline: 0; }
+  .one-sheet .section { padding-block: 0; }
+  .one-sheet .breadcrumbs { display: none; }
+
+  /* Wordmark across the top, with a rule under it */
+  .one-sheet .site-header__main {
+    padding-block: 0 var(--space-3);
+    border-bottom: 1px solid var(--color-line);
+  }
+  .one-sheet .page-header {
+    background: none;
+    border: 0;
+    padding-block: var(--space-4);
+  }
+  .one-sheet .page-header h1 { font-size: var(--step-5); margin-bottom: var(--space-1); }
+  .one-sheet .page-header .lede { color: var(--color-ink-muted); max-width: none; }
+
+  /* The sidebar becomes a band of contacts across the bottom of the sheet */
+  .one-sheet .with-sidebar { grid-template-columns: minmax(0, 1fr); gap: var(--space-5); }
+  .one-sheet .sidebar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--print-column), 1fr));
+    gap: var(--space-5);
+    border-top: 1px solid var(--color-line);
+    padding-top: var(--space-4);
+    break-inside: avoid;
+  }
+  .one-sheet .sidebar > * + * { margin-top: 0; }
+  .one-sheet .sidebar > section:not(.callout) h2 {
+    font-size: var(--step-0);
+    margin: 0 0 var(--space-1);
+  }
+  .one-sheet .sidebar ul { list-style: none; padding: 0; }
+
+  .one-sheet .facts { gap: var(--space-4); margin-bottom: var(--space-4); }
+  .one-sheet .facts dd { font-size: var(--step-1); }
+  .one-sheet h2,
+  .one-sheet .facts + h2,
+  .one-sheet .with-sidebar > div > h2:not(:first-child) {
+    font-size: var(--step-2);
+    margin: var(--space-4) 0 var(--space-2);
+  }
+  .one-sheet h3 { font-size: var(--step-0); margin: var(--space-3) 0 var(--space-1); }
+  .one-sheet p,
+  .one-sheet ul { margin-bottom: var(--space-3); max-width: none; }
+  .one-sheet li + li { margin-top: var(--space-1); }
+
+  .one-sheet table { margin-bottom: 0; }
+  .one-sheet caption { font-size: var(--step--1); padding-bottom: var(--space-1); }
+  .one-sheet th,
+  .one-sheet td { padding: var(--space-1) var(--space-3) var(--space-1) 0; }
+  .one-sheet thead th { border-bottom-width: 1px; }
+  .one-sheet .table-wrap { break-inside: avoid; }
+
+  .one-sheet .pull-quote { margin: var(--space-4) 0 0; }
+  .one-sheet .pull-quote p { font-size: var(--step-1); }
+
+  /* Links are just text on paper */
+  .one-sheet main a { color: inherit; text-decoration: none; }
+}

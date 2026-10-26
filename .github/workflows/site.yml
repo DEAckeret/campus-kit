@@ -48,6 +48,8 @@ jobs:
           fi
       - name: Zoom and text spacing (200% and 400% zoom, WCAG 1.4.12 spacing)
         run: npm run test:zoom
+      - name: Program pages print on one sheet (US letter and A4)
+        run: npm run test:print
       - name: Lighthouse budgets (performance, accessibility, SEO)
         run: npx lhci assert
       - name: Keep the filled-in report for the deploy

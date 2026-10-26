@@ -13,7 +13,8 @@
     "lint:html": "html-validate \"*.html\" \"demo/**/*.html\"",
     "test:a11y": "node tests/accessibility.mjs",
     "test:zoom": "node tests/zoom.mjs",
-    "test": "npm run check:includes && npm run check:tracking && npm run lint:html && npm run test:a11y && npm run test:zoom",
+    "test:print": "node tests/print.mjs",
+    "test": "npm run check:includes && npm run check:tracking && npm run lint:html && npm run test:a11y && npm run test:zoom && npm run test:print",
     "test:lighthouse": "lhci collect && lhci assert"
   },
   "devDependencies": {
