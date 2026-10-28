@@ -3,7 +3,8 @@
 // is drawn at 1080px wide and saved in demo/social/ under that name.
 // The export stops with a message (and exits with an error) if a graphic
 // isn't exactly 1080 x 1080 or 1080 x 1920, which happens when the text is
-// too long to fit, or if a story's text runs into the bands the apps cover.
+// too long to fit, if a word is too wide for its line, or if a story's text
+// runs into the bands the apps cover.
 // Usage: npm run social                       (demo/social.html)
 //        npm run social -- demo/social-open-house.html
 //        npm run social -- --out some/folder  (save somewhere else)
@@ -77,6 +78,28 @@ for (const path of pages) {
     if (width !== size.width || height !== size.height) {
       failures += 1;
       problem(path, `${file} would be ${width} x ${height} pixels instead of ${size.width} x ${size.height}. The text is too long to fit: shorten the title or the details.`);
+      continue;
+    }
+
+    // A word too long for its line would run into the side margin or past
+    // the edge. Measure each line of text, not the boxes around it.
+    const tooWide = await graphic.evaluate((el) => {
+      const margin = parseFloat(getComputedStyle(el.querySelector(".social-graphic__bottom")).marginRight) || 0;
+      const limit = el.getBoundingClientRect().right - margin + 1;
+      const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+      for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+        if (!node.textContent.trim()) continue;
+        const range = document.createRange();
+        range.selectNodeContents(node);
+        for (const rect of range.getClientRects()) {
+          if (rect.width && rect.right > limit) return node.textContent.trim().slice(0, 40);
+        }
+      }
+      return null;
+    });
+    if (tooWide) {
+      failures += 1;
+      problem(path, `${file}: "${tooWide}" is too wide for the graphic. Shorten it or split it with a space.`);
       continue;
     }
 

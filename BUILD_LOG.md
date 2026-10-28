@@ -28,7 +28,7 @@ Every AI work session on Campus Kit adds an entry here, newest first. Each entry
 
 ### How I checked it
 
-- `npm run social` saves both graphics at exactly 1080 × 1080 and 1080 × 1920. I looked at both PNGs. I also checked that it fails: before I fixed a CSS mistake (below) the square came out 1080 × 1133, and the script refused it with the "too long to fit" message.
+- `npm run social` saves both graphics at exactly 1080 × 1080 and 1080 × 1920, and HTML validation and axe passed on CI for the new page and the style guide. I looked at both PNGs. I also checked that it fails: before I fixed a CSS mistake (below) the square came out 1080 × 1133, and the script refused it with the "too long to fit" message.
 - The style guide example also exports cleanly (`npm run social -- styleguide.html --out` a scratch folder).
 - Screenshots of `demo/social.html` at 1280px and 390px, with JavaScript on and off, and of the style guide entry at both widths. One `h1`, no duplicate IDs, no sideways scrolling.
 - `tests/zoom.mjs` passes on all 17 pages under all six conditions, including the new page. The include and tracking checks pass.
@@ -38,6 +38,7 @@ Every AI work session on Campus Kit adds an entry here, newest first. Each entry
 - **Still no `npm test` here.** The npm registry and Google Fonts are blocked in this workspace, so HTML validation, axe and the export in the real fonts run only in CI. I ran the zoom check and the export with the globally installed Playwright and `http-server` linked into the git-ignored `node_modules`.
 - **My first margin reset beat the layout.** I reset margins with `.social-graphic dl`, which is more specific than `.social-graphic__details`, so the details lost their side margin and sat flush against the left edge. Switching the reset to `:where()` made it too weak to beat `base.css`'s `p` margin, and the square grew to 1133 pixels tall. The fix is `.social-graphic :where(p, dl, dd)`, which sits between the two.
 - **Text on the small preview is small.** At a 390px phone width the labels on the preview are about 11 pixels tall, and the preview doesn't grow with the browser's text size setting, because it's a faithful copy of an image. Everything on it is also in the alt text box below, in normal page text.
+- **The first CI run failed the zoom check,** and it was my mistake. With the real web fonts and the WCAG text-spacing overrides at 390px, the square preview came out 9px wider than the window and the page scrolled sideways. A graphic is a one-column grid, and a grid column grows to fit its longest word unless told otherwise, so one wide word in the wider Literata pushed the whole preview out. The fallback fonts here are narrower, so my local run passed. I reproduced it by raising the letter spacing until it broke (0.2em did it), then gave the graphic a column that can shrink (`minmax(0, 1fr)`) and let long words break on screen. In the PNG, words still never break in the middle: the export now measures each line of text and stops if a word runs into the side margin. I checked that with a made-up 39-letter place name, which it refused.
 - **Result on CI:** RESULT_PENDING
 
 ### Left for next time

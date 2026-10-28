@@ -789,7 +789,11 @@ tbody th { font-weight: 600; }
 .social-graphic {
   display: grid;
   grid-template-rows: auto 1fr auto;
+  /* One column that can shrink below its longest word, so a long word
+     breaks instead of pushing the graphic wider than the page */
+  grid-template-columns: minmax(0, 1fr);
   aspect-ratio: var(--social-square);
+  overflow-wrap: anywhere;
   background: var(--color-paper);
   color: var(--color-ink);
   font-family: var(--font-body);
@@ -876,7 +880,8 @@ tbody th { font-weight: 600; }
 
 /* While the export script takes its pictures */
 .social-export .social-preview { width: var(--social-width); max-width: none; }
-.social-export .social-graphic { outline: none; }
+/* No breaking words in the middle in the PNG: the export stops instead */
+.social-export .social-graphic { outline: none; overflow-wrap: normal; }
 
 /* ---- Small fixes for nested lists and sidebars -------------------------- */
 .tag-list li + li { margin: 0; }
