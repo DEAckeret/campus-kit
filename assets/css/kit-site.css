@@ -94,6 +94,7 @@ pre {
   border-radius: var(--radius-large) var(--radius-large) 0 0;
 }
 .sg-example > *:last-child { margin-bottom: 0; }
+.sg-example .social-preview { margin-bottom: var(--space-4); }
 /* Paper-only blocks are shown in the style guide so readers can see them */
 .sg-example .print-only { display: block; margin-bottom: var(--space-6); }
 .sg-example .print-only h2,

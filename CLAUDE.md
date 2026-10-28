@@ -35,6 +35,8 @@ Campus Kit is a proof-of-concept project: it is built **entirely by AI** for Dus
 - `assets/css/base.css`, `components.css`, `print.css`: site styles (`print.css` also turns program pages into one-page handouts)
 - `assets/css/kit-site.css`, `assets/js/kit-site.js`: only for the project page and style guide
 - `docs/`: guides for non-technical editors
+- `demo/social.html`: social media graphics for one event (copy it for another event)
+- `scripts/social-graphics.mjs`: saves those graphics as PNG files in `demo/social/` (`npm run social`); CI runs it and publishes the PNGs
 - `scripts/includes.mjs`: copies the shared header and footer into demo pages (`npm run build`)
 - `scripts/site-404.mjs`: the deploy step's copy of `demo/404.html` as the site-wide 404 page
 - `lighthouserc.json`: Lighthouse CI pages and budgets (the budget table in `report.html` must match)

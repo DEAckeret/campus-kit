@@ -3,3 +3,5 @@ node_modules/
 *.log
 .lighthouseci/
 lighthouse-results/
+# PNG files made by npm run social (CI makes them for the live site)
+demo/social/

@@ -775,6 +775,109 @@ tbody th { font-weight: 600; }
 /* ---- Note: small print under a table or figures ------------------------- */
 .note { font-size: var(--step--1); color: var(--color-ink-muted); }
 
+/* ---- Social media graphic: square post and story ------------------------ */
+/* The preview box sets the graphic's width. Everything inside is sized in
+   cqi (a share of that width), so a 28rem preview is an exact small copy
+   of the 1080px PNG that scripts/social-graphics.mjs exports. The box keeps
+   its shape but grows taller instead of cutting text off, for example when
+   someone turns on extra text spacing; the export fails if that happens.  */
+.social-preview {
+  container-type: inline-size;
+  width: 100%;
+  max-width: var(--social-preview-max);
+}
+.social-graphic {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  aspect-ratio: var(--social-square);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  line-height: var(--leading-tight);
+  outline: 1px solid var(--color-line);
+}
+.social-graphic :where(p, dl, dd) { margin: 0; max-width: none; }
+
+.social-graphic__top {
+  --ridge-height: var(--social-ridge);
+  --ridge-color: var(--color-paper);
+  background: var(--color-spruce);
+  color: var(--color-paper);
+  padding: var(--social-pad) var(--social-pad) calc(var(--social-pad) * 0.4 + var(--social-ridge));
+}
+.social-graphic__series {
+  font-size: var(--social-label);
+  font-weight: 600;
+  color: var(--color-gold-tint);
+  margin-bottom: var(--social-gap);
+}
+.social-graphic__title {
+  font-family: var(--font-display);
+  font-size: var(--social-title);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.social-graphic__details {
+  display: grid;
+  align-self: center;
+  gap: calc(var(--social-gap) * 0.75);
+  margin: calc(var(--social-gap) * 0.5) var(--social-pad);
+  padding-left: var(--social-gap);
+  border-left: var(--social-rule) solid var(--color-violet);
+}
+.social-graphic__details dt {
+  font-size: var(--social-label);
+  color: var(--color-ink-muted);
+}
+.social-graphic__details dd {
+  font-family: var(--font-display);
+  font-size: var(--social-text);
+  font-weight: 600;
+}
+
+.social-graphic__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--social-gap);
+  margin: 0 var(--social-pad);
+  padding: var(--social-gap) 0 calc(var(--social-pad) * 0.8);
+  border-top: 1px solid var(--color-line);
+  font-size: var(--social-small);
+}
+/* The wordmark keeps one shape at every preview size (the site's version
+   stacks on phones), so the preview always matches the PNG */
+.social-graphic .wordmark {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--social-gap);
+  max-width: none;
+  font-size: var(--social-small);
+  line-height: 1.1;
+  color: var(--color-spruce);
+}
+.social-graphic .wordmark img { width: var(--social-mark); height: auto; }
+
+/* Story: taller, a larger title, and text kept out of the bands that the
+   apps cover with the profile name (top) and the reply box (bottom) */
+.social-graphic--story { aspect-ratio: var(--social-story); }
+.social-graphic--story .social-graphic__top { padding-top: var(--social-safe-top); }
+.social-graphic--story .social-graphic__title { font-size: var(--social-title-story); }
+.social-graphic--story .social-graphic__details { gap: calc(var(--social-gap) * 2); }
+.social-graphic--story .social-graphic__details dd { font-size: var(--social-text-story); }
+.social-graphic--story .social-graphic__bottom {
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom: var(--social-safe-bottom);
+}
+
+/* While the export script takes its pictures */
+.social-export .social-preview { width: var(--social-width); max-width: none; }
+.social-export .social-graphic { outline: none; }
+
 /* ---- Small fixes for nested lists and sidebars -------------------------- */
 .tag-list li + li { margin: 0; }
 .sidebar > section:not(.callout) h2 {

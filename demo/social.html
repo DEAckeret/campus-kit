@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Social media graphics: Fall choir concert | College of the Sleeping Giant</title>
+  <meta name="description" content="A square post and a story graphic for one event, built from the website's colors and type and exported as PNG files.">
+  <link rel="icon" href="../assets/img/giant-mark.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- The graphics wait for the web fonts, so the PNG files are always made in them -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;1,7..72,500&family=Public+Sans:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <style>
+    /* Page layout only. The graphics' own styles are in components.css. */
+    body { background: var(--color-mist); }
+    .social-toolbar { padding-block: var(--space-4); font-size: var(--step--1); color: var(--color-ink-muted); }
+    .social-toolbar p { margin: 0; }
+    .social-page { padding-bottom: var(--space-8); }
+    .social-page h2 { margin-top: var(--space-7); }
+    .social-pair {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: var(--space-6);
+    }
+    .social-pair figure { margin: 0; flex: 1 1 18rem; max-width: var(--social-preview-max); }
+    .social-pair h2 { margin-top: 0; font-size: var(--step-2); }
+    .social-pair figcaption { margin-top: var(--space-3); font-size: var(--step--1); color: var(--color-ink-muted); }
+    .social-pair figcaption p { margin-bottom: var(--space-2); }
+    .social-alt {
+      background: var(--color-paper);
+      border-left: 3px solid var(--color-violet);
+      padding: var(--space-4) var(--space-5);
+    }
+    /* While the export script takes its pictures: one graphic under another */
+    .social-export .social-pair { display: block; }
+    .social-export .social-pair figure { max-width: none; margin-bottom: var(--space-6); }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="social-toolbar wrap">
+    <p><a href="events.html">Back to events</a>. These graphics use the same colors and type as the website. See also the <a href="flyer.html">print flyer</a>.</p>
+  </header>
+
+  <main id="main" class="social-page wrap">
+    <h1>Social media graphics: Fall choir concert</h1>
+    <p class="lede">A square post for Instagram and Facebook feeds and a tall story, both for one event. Each one is saved as a PNG file, ready to upload.</p>
+
+    <!--
+      TO MAKE GRAPHICS FOR ANOTHER EVENT
+      1. Copy this file and name it after the event, for example social-open-house.html.
+      2. Change the text in BOTH graphics below (series, title, When, Where, Cost),
+         the alt text, and the two data-file names.
+      3. Run: npm run social -- demo/social-open-house.html
+         The PNG files are saved in demo/social/.
+      Keep the title under about 30 characters. The export stops with a message
+      if any text doesn't fit.
+    -->
+    <div class="social-pair">
+      <figure aria-labelledby="square-title">
+        <h2 id="square-title">Square post</h2>
+        <div class="social-preview">
+          <div class="social-graphic" data-graphic="square" data-file="fall-choir-concert-square.png" role="img" aria-labelledby="alt-text">
+            <div class="social-graphic__top has-ridge">
+              <p class="social-graphic__series">Music at the Giant</p>
+              <p class="social-graphic__title">Fall choir concert</p>
+            </div>
+            <dl class="social-graphic__details">
+              <div><dt>When</dt><dd>Saturday, November 1, 7:30 p.m.</dd></div>
+              <div><dt>Where</dt><dd>St. Brigid Chapel</dd></div>
+              <div><dt>Cost</dt><dd>Free tickets at the door</dd></div>
+            </dl>
+            <div class="social-graphic__bottom">
+              <span class="wordmark"><img src="../assets/img/giant-mark.svg" alt="" width="64" height="24">College of the Sleeping Giant</span>
+              <span>sleepinggiant.example/events</span>
+            </div>
+          </div>
+        </div>
+        <figcaption>
+          <p>1080 by 1080 pixels, for feed posts.</p>
+          <p><a href="social/fall-choir-concert-square.png" download>Download the square PNG</a></p>
+        </figcaption>
+      </figure>
+
+      <figure aria-labelledby="story-title">
+        <h2 id="story-title">Story</h2>
+        <div class="social-preview">
+          <div class="social-graphic social-graphic--story" data-graphic="story" data-file="fall-choir-concert-story.png" role="img" aria-labelledby="alt-text">
+            <div class="social-graphic__top has-ridge">
+              <p class="social-graphic__series">Music at the Giant</p>
+              <p class="social-graphic__title">Fall choir concert</p>
+            </div>
+            <dl class="social-graphic__details">
+              <div><dt>When</dt><dd>Saturday, November 1<br>7:30 p.m.</dd></div>
+              <div><dt>Where</dt><dd>St. Brigid Chapel</dd></div>
+              <div><dt>Cost</dt><dd>Free tickets at the door</dd></div>
+            </dl>
+            <div class="social-graphic__bottom">
+              <span class="wordmark"><img src="../assets/img/giant-mark.svg" alt="" width="64" height="24">College of the Sleeping Giant</span>
+              <span>sleepinggiant.example/events</span>
+            </div>
+          </div>
+        </div>
+        <figcaption>
+          <p>1080 by 1920 pixels, for stories. The top and bottom of a story are covered by the account name and the reply box, so all the text sits between them.</p>
+          <p><a href="social/fall-choir-concert-story.png" download>Download the story PNG</a></p>
+        </figcaption>
+      </figure>
+    </div>
+
+    <h2 id="alt-title">Alt text to post with them</h2>
+    <p>People who use screen readers hear this instead of seeing the graphic. Paste it into the alt text field when you upload either image.</p>
+    <div class="social-alt">
+      <p id="alt-text">Fall choir concert, part of Music at the Giant. Saturday, November 1, at 7:30 p.m. in St. Brigid Chapel. Free tickets at the door. College of the Sleeping Giant, sleepinggiant.example/events.</p>
+    </div>
+
+    <h2>Before you post</h2>
+    <ul>
+      <li>Write the date, time and place in the post itself, too. Many people scroll past the image, and search can't read it.</li>
+      <li>Add the alt text above. It should say everything the graphic says.</li>
+      <li>Use one graphic per event. A graphic that lists several events is hard to read on a phone.</li>
+      <li>Keep the title short: three lines on the square post at most. The export stops if the text doesn't fit.</li>
+    </ul>
+
+    <h2>Make graphics for another event</h2>
+    <p>Someone on the web team makes them from a copy of this page.</p>
+    <ol>
+      <li>Copy <code>demo/social.html</code> and name the copy after the event, for example <code>social-open-house.html</code>.</li>
+      <li>Change the text in both graphics: the series, the title, and When, Where and Cost. Then change the alt text and the two file names (<code>data-file</code>).</li>
+      <li>Run <code>npm run social -- demo/social-open-house.html</code>. It saves a square and a story PNG in <code>demo/social/</code>.</li>
+      <li>Open both PNG files and check them before you post.</li>
+    </ol>
+    <p>The PNG files above are made each time the site is published, in the same web fonts as the site.</p>
+  </main>
+</body>
+</html>

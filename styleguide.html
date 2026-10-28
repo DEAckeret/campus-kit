@@ -367,6 +367,31 @@
           </div>
         </article>
 
+        <article class="sg-component" aria-labelledby="c-social">
+          <h3 id="c-social">Social media graphic</h3>
+          <p>An event graphic for social media, saved as a PNG file. Everything inside is sized as a share of the box's width, so the preview here is an exact small copy of the 1080-pixel file. Add <code>social-graphic--story</code> for a 1080 by 1920 story; its text stays clear of the top and bottom bands that the apps cover. Give each graphic a <code>data-graphic</code> (<code>square</code> or <code>story</code>) and a <code>data-file</code> name, then run <code>npm run social</code> to save it. The graphic is marked as an image and labeled with its alt text, which should say everything the graphic says. The export stops if the text is too long to fit. See the <a href="demo/social.html">social media graphics page</a> for a square post and a story side by side.</p>
+          <div class="sg-example">
+<div class="social-preview">
+  <div class="social-graphic" data-graphic="square" data-file="open-house-square.png" role="img" aria-labelledby="sg-social-alt">
+    <div class="social-graphic__top has-ridge">
+      <p class="social-graphic__series">Office of Admission</p>
+      <p class="social-graphic__title">Fall open house</p>
+    </div>
+    <dl class="social-graphic__details">
+      <div><dt>When</dt><dd>Tuesday, October 14, 9 a.m.</dd></div>
+      <div><dt>Where</dt><dd>Admission Center</dd></div>
+      <div><dt>Cost</dt><dd>Free, with lunch</dd></div>
+    </dl>
+    <div class="social-graphic__bottom">
+      <span class="wordmark"><img src="assets/img/giant-mark.svg" alt="" width="64" height="24">College of the Sleeping Giant</span>
+      <span>sleepinggiant.example/visit</span>
+    </div>
+  </div>
+</div>
+<p class="note">Alt text: <span id="sg-social-alt">Fall open house from the Office of Admission. Tuesday, October 14, at 9 a.m. in the Admission Center. Free, with lunch. College of the Sleeping Giant, sleepinggiant.example/visit.</span></p>
+          </div>
+        </article>
+
         <article class="sg-component" aria-labelledby="c-demo-contact">
           <h3 id="c-demo-contact">Demo contact links</h3>
           <p>The demo school is fictional, so its phone numbers and email addresses don't go anywhere. Give each one <code>href="#"</code> and <code>data-demo-contact="phone"</code> or <code>"email"</code>. Clicking it opens a short note explaining what a real link would do. On a real college site, use <code>tel:</code> and <code>mailto:</code> links instead. Without JavaScript the link does nothing, and the number or address is still there to read. Long email addresses break onto a second line when space runs out, for example in a narrow column at 400% zoom, instead of making the page scroll sideways.</p>

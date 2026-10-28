@@ -28,7 +28,7 @@ Dustin can add, remove or reorder items at any time. Items marked with **(Dustin
 - [x] **Site performance report.** Add Lighthouse CI to the workflow with performance, accessibility and SEO budgets, and publish a `report.html` page that shows the latest scores. This is the "track site performance" part of a web designer's job.
 - [x] **Analytics guide.** A doc on measuring what matters on a college site (apply clicks, visit sign-ups, program searches) with privacy-friendly analytics, using `data-track` attributes on key buttons. No real tracking code ships in the demo.
 - [x] **Program one-sheet for print.** A print stylesheet that turns any program page into a one-page handout for college fairs.
-- [ ] **Social media graphics.** An HTML template that renders square (1080×1080) and story (1080×1920) event graphics from the same tokens, with a script that exports them as PNGs.
+- [x] **Social media graphics.** An HTML template that renders square (1080×1080) and story (1080×1920) event graphics from the same tokens, with a script that exports them as PNGs.
 - [ ] **Event detail page** with an "Add to calendar" `.ics` download, a map link and accessibility information.
 - [ ] **Accessibility statement and "report a problem" page,** the kind every public college needs.
 - [ ] **Photo and image guidelines.** Responsive images with `srcset`, alt-text examples for common college photos, and file-size targets, added to the style guide.

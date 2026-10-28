@@ -4,6 +4,52 @@ Every AI work session on Campus Kit adds an entry here, newest first. Each entry
 
 ---
 
+## Session 12: October 28, 2026 (social media graphics)
+
+**Built by:** Claude (Opus 5.5), in a scheduled session with nobody watching, so decisions below are mine and open to Dustin's review.
+
+### What I built
+
+- **A social media graphics page,** [`demo/social.html`](demo/social.html), for one event (the fall choir concert from the events page): a square post (1080 × 1080) and a story (1080 × 1920) side by side, the alt text to paste in when posting, a short "Before you post" list, and steps for making graphics for another event. The events page links to it from the concert listing.
+- **An export script,** `scripts/social-graphics.mjs` (`npm run social`, or `npm run social -- demo/some-other-page.html`). It opens the page, draws every element marked `data-graphic="square"` or `"story"` at 1080 pixels wide, and saves each as a PNG named by its `data-file`, in `demo/social/` (git-ignored). It refuses to save, with a plain message, if a graphic comes out the wrong size (the text is too long to fit) or if any text on a story sits in the top 250 or bottom 340 pixels, where Instagram and Facebook cover a story with the account name and reply box.
+- **CI runs the export** after the print check, so every push proves the graphics still fit, and the deploy publishes the PNGs made there. The page's "Download the square PNG" and "Download the story PNG" links point at those files.
+- **A new component,** `.social-graphic` in `components.css`, with its sizes as new `--social-*` tokens, and a style guide entry with a live square example (the fall open house) and its HTML.
+- Listed on the project page, the README and the file map in `CLAUDE.md`.
+
+### What I decided and why
+
+- **The preview is the picture.** Everything inside a graphic is sized in `cqi` units (a share of the preview box's width), so the 28rem preview on screen is an exact small copy of the PNG, and the script only has to widen the box to 1080 pixels before taking the picture. The other way, a fixed 1080-pixel graphic scaled down with `transform` or `zoom`, would need JavaScript to fit the preview to a phone.
+- **Playwright as the exporter, not a canvas in the browser.** Turning HTML into a PNG in the browser without a library means an SVG `foreignObject` trick that loses the web fonts. Playwright is already a dev dependency, so the script adds nothing new. The cost: making a PNG takes `npm run social` on a computer with the repo, which is a web team job, not something a staff member does from the page. The page says so.
+- **Each graphic is marked `role="img"` and labeled by the visible alt text.** A screen reader hears the graphic once, the way people will meet the posted image, instead of reading the square and the story's text one after the other. Writing the alt text on the page also makes it part of the deliverable.
+- **The text is written twice,** once in each graphic, so the page works with JavaScript off and the HTML reads plainly. Editing one event means changing both; the comment at the top of the graphics and the steps on the page say so. A version that fills both from one set of fields is listed below.
+- **No outline in the PNG.** The thin border that frames the preview on screen is an outline, which doesn't change the size and is switched off for the export.
+- **Room to spare on the square.** My first layout left about 20 pixels free with the local fallback fonts. Literata is wider than the fallback, so a date that fits here could wrap on CI and fail. I tightened the spacing to leave about 130 pixels, enough for one extra line, and checked it by adding letter spacing until it broke: it still fit at 0.04em extra.
+- **Text stays in Literata and Public Sans on paper and spruce,** with no gold text. Measured contrast: white on spruce 7.8 to 1, the gold tint series name on spruce 7.0 to 1, the muted labels on white 7.6 to 1.
+
+### How I checked it
+
+- `npm run social` saves both graphics at exactly 1080 × 1080 and 1080 × 1920. I looked at both PNGs. I also checked that it fails: before I fixed a CSS mistake (below) the square came out 1080 × 1133, and the script refused it with the "too long to fit" message.
+- The style guide example also exports cleanly (`npm run social -- styleguide.html --out` a scratch folder).
+- Screenshots of `demo/social.html` at 1280px and 390px, with JavaScript on and off, and of the style guide entry at both widths. One `h1`, no duplicate IDs, no sideways scrolling.
+- `tests/zoom.mjs` passes on all 17 pages under all six conditions, including the new page. The include and tracking checks pass.
+
+### What went wrong
+
+- **Still no `npm test` here.** The npm registry and Google Fonts are blocked in this workspace, so HTML validation, axe and the export in the real fonts run only in CI. I ran the zoom check and the export with the globally installed Playwright and `http-server` linked into the git-ignored `node_modules`.
+- **My first margin reset beat the layout.** I reset margins with `.social-graphic dl`, which is more specific than `.social-graphic__details`, so the details lost their side margin and sat flush against the left edge. Switching the reset to `:where()` made it too weak to beat `base.css`'s `p` margin, and the square grew to 1133 pixels tall. The fix is `.social-graphic :where(p, dl, dd)`, which sits between the two.
+- **Text on the small preview is small.** At a 390px phone width the labels on the preview are about 11 pixels tall, and the preview doesn't grow with the browser's text size setting, because it's a faithful copy of an image. Everything on it is also in the alt text box below, in normal page text.
+- **Result on CI:** RESULT_PENDING
+
+### Left for next time
+
+- **Idea:** a small form on the page that fills both graphics from one set of fields (with JavaScript on), and a script option that takes the same fields, so nobody edits the text twice.
+- **Idea:** an athletics version with the gold accents, and a landscape size (1200 × 630) for link previews and X.
+- **For Dustin:** the PNGs on the live page are made by CI in the web fonts, so they're the ones to judge; the ones I looked at used fallback fonts.
+- Still open from earlier: the QR code idea for the program handout, the Node 20 warning on the workflow's actions, and the `lighthouse-trial` branch from session 9, which Dustin can delete.
+- The screen reader pass is Dustin's. The event detail page is the next AI item.
+
+---
+
 ## Session 11: October 26, 2026 (program one-sheet for print)
 
 **Built by:** Claude (Opus 5.5), in a scheduled session with nobody watching, so decisions below are mine and open to Dustin's review.

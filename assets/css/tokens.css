@@ -66,6 +66,30 @@
   --print-root-size: 9pt;
   --print-column: 11rem;      /* narrowest column in the handout's contact row */
 
+  /* ---- Social media graphics ------------------------------------------ */
+  /* Graphics are exported at 1080px wide (demo/social.html). Sizes inside
+     are in cqi, 1% of the graphic's width, so the on-screen preview is an
+     exact small copy of the PNG. 1cqi = 10.8px in the exported file.     */
+  --social-width: 1080px;
+  --social-square: 1 / 1;          /* 1080 x 1080 posts */
+  --social-story: 9 / 16;          /* 1080 x 1920 stories */
+  --social-pad: 7.5cqi;            /* 81px edge margin */
+  --social-gap: 3cqi;
+  --social-ridge: 7cqi;
+  --social-label: 3.7cqi;          /* 40px: series name, "When" labels */
+  --social-text: 4.6cqi;           /* 50px: date, time, place */
+  --social-text-story: 5.6cqi;     /* 60px: the same on stories */
+  --social-title: 10.2cqi;         /* 110px event title */
+  --social-title-story: 12cqi;     /* 130px event title on stories */
+  --social-small: 3.3cqi;          /* 36px: wordmark and web address */
+  --social-mark: 10cqi;            /* width of the giant mark */
+  --social-rule: 0.5cqi;           /* the violet rule beside the details */
+  /* Instagram and Facebook cover the top 250px and bottom 340px of a story
+     with the profile name and reply box. Keep text out of those bands.  */
+  --social-safe-top: 23.2cqi;      /* 250px */
+  --social-safe-bottom: 31.5cqi;   /* 340px */
+  --social-preview-max: 28rem;     /* widest on-screen preview */
+
   /* ---- The ridgeline: the kit's one signature motif -------------------- */
   /* A mountain-ridge edge used to close the hero and the footer.          */
   --ridge-height: clamp(28px, 4vw, 56px);

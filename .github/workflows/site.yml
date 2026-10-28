@@ -50,6 +50,10 @@ jobs:
         run: npm run test:zoom
       - name: Program pages print on one sheet (US letter and A4)
         run: npm run test:print
+      # Saves each graphic as a PNG in the web fonts, and fails if any text
+      # doesn't fit or sits where the apps cover a story
+      - name: Social media graphics fit and export (1080 x 1080 and 1080 x 1920)
+        run: npm run social
       - name: Lighthouse budgets (performance, accessibility, SEO)
         run: npx lhci assert
       - name: Keep the filled-in report for the deploy
@@ -57,6 +61,12 @@ jobs:
         with:
           name: performance-report
           path: report.html
+      - name: Keep the social media graphics for the deploy
+        uses: actions/upload-artifact@v4
+        with:
+          name: social-graphics
+          path: demo/social
+          if-no-files-found: error
       - name: Keep the full Lighthouse results
         if: always()
         uses: actions/upload-artifact@v4
@@ -91,6 +101,12 @@ jobs:
           name: performance-report
           path: _performance
       - run: cp _performance/report.html _site/report.html
+      # The PNG files the social media graphics page links to
+      - name: Get the social media graphics
+        uses: actions/download-artifact@v4
+        with:
+          name: social-graphics
+          path: _site/demo/social
       # GitHub Pages shows /404.html for every missing address, so copy the
       # demo's "page not found" page there with links that work from any folder
       - name: Add the site-wide "page not found" page
