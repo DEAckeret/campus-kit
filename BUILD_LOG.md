@@ -35,7 +35,7 @@ Every AI work session on Campus Kit adds an entry here, newest first. Each entry
 - **Still no axe or HTML validation here** (the npm registry is blocked), so those run first in CI.
 - **The zoom check's phone-menu step would have timed out.** It clicks the menu button, which can't be clicked behind an open pop-up. I found this while planning the tests rather than from a failure: the checks now close the note before visiting each page, and skip the menu step for the visit with the note open.
 - **Lighthouse now measures first visits with the note open** on the eight demo pages it scores. That's what a new visitor sees, so I left it that way. If it moves the performance scores, the report will show it.
-- **Result on CI:** RESULT_PENDING
+- **Result on CI:** the first run passed every step: HTML validation, axe on every page plus the open note at desktop and phone sizes, zoom and text spacing, the one-sheet print check, the social graphics export, and the Lighthouse budgets with the note open. The site deployed.
 
 ### Left for Dustin
 
