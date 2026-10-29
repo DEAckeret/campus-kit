@@ -758,6 +758,7 @@ tbody th { font-weight: 600; }
 /* The note's heading takes focus when it opens, so it reads from the top.
    It isn't a control, so it needs no focus ring. */
 .demo-dialog h2:focus { outline: none; }
+.demo-dialog__more { margin: var(--space-4) 0 0; font-size: var(--step--1); }
 
 /* ---- Missing address (404 page) ----------------------------------------- */
 /* A long web address breaks anywhere instead of widening the page */

@@ -17,7 +17,8 @@
   .filters,
   .finder,
   .site-footer,
-  .no-print { display: none !important; }
+  .no-print,
+  [data-demo-welcome] { display: none !important; }
 
   .site-header,
   .hero { background: none; color: #000; }

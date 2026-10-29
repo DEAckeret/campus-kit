@@ -3,7 +3,7 @@
 import httpServer from "http-server";
 import { chromium } from "playwright";
 import AxeBuilder from "@axe-core/playwright";
-import { PAGES } from "./pages.mjs";
+import { PAGES, SKIP_WELCOME, WELCOME_PAGE } from "./pages.mjs";
 
 const PORT = 8123;
 const IN_CI = Boolean(process.env.GITHUB_ACTIONS);
@@ -32,12 +32,16 @@ let failures = 0;
 for (const viewport of VIEWPORTS) {
   // axe-core/playwright requires pages created from a browser context
   const context = await browser.newContext({ viewport });
+  await context.addInitScript(SKIP_WELCOME);
   const page = await context.newPage();
   const errors = [];
   page.on("pageerror", (error) => errors.push(error.message));
 
-  for (const path of PAGES) {
+  for (const path of [...PAGES, WELCOME_PAGE]) {
     await page.goto(`http://localhost:${PORT}/${path}`, { waitUntil: "load" });
+    if (path === WELCOME_PAGE && !(await page.locator("dialog[data-demo-welcome][open]").count())) {
+      errors.push("the welcome note didn't open on a first visit");
+    }
     const results = await new AxeBuilder({ page })
       .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa", "best-practice"])
       .analyze();

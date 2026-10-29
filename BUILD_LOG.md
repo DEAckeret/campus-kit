@@ -4,6 +4,46 @@ Every AI work session on Campus Kit adds an entry here, newest first. Each entry
 
 ---
 
+## Session 13: October 29, 2026 (demo welcome note, Dustin's request)
+
+**Built by:** Claude (Opus 5.5). Dustin asked for this one directly: a pop-up on entering the site explaining that it's an experimental project and not a real college. It's outside the roadmap order, so I added it to the roadmap as a checked item.
+
+### What I built
+
+- **A welcome note** that opens over the first demo page a visitor sees. Its heading is "This isn't a real college." It says College of the Sleeping Giant is made up, that the site is a demo of Campus Kit, an experimental project built entirely by AI, and that the programs, people and contact details are invented and nobody can apply, register or give here. It has one button, "Explore the demo site," and a "Read about the project" link to the project page.
+- **It lives once, in `partials/footer.html`,** so `npm run build` copied it into all 11 demo pages that share the footer. `main.js` opens it. It uses the same `.demo-dialog` style as the note behind the demo phone and email links.
+- **A style guide entry,** "Demo welcome note," where the example opens only from a "Show the welcome note" button, so it doesn't pop up over the style guide.
+- **Tests:** the axe and zoom checks now visit every page with the note already closed, then open it on the demo home page and check it there. They also fail if it doesn't open on a first visit. A note in the staff guide for the header and footer says where it lives.
+
+### What I decided and why
+
+- **Once per browser, not on every page.** Closing it with the button, Escape or a click outside is saved in this browser's local storage, so it doesn't reopen on every page. Like the campus notice's close button, this stores one flag on the visitor's own device and sends nothing anywhere, so it fits the "nothing that collects data" rule. If the browser won't store it (some private windows), the note opens on each page instead of not at all.
+- **Demo pages only.** It doesn't open on the project page, which already explains the experiment, or on the flyer and social graphics pages, which don't share the footer.
+- **Without JavaScript it stays hidden.** A pop-up needs JavaScript to open. The footer's last line ("College of the Sleeping Giant is a fictional school") still says it on every page.
+- **Focus starts on the heading,** the same as the contact note, so screen readers and 400% zoom read it from the top. When it closes, focus goes back to the page.
+- **It never prints,** so the one-page program handouts are unchanged.
+
+### How I checked it
+
+- In a real browser: it opens on the first page with focus on the heading. Escape closes it, the next page doesn't reopen it, and neither does a reload after the button closes it. With JavaScript off it stays hidden. In the style guide it stays closed until its button opens it, and focus returns to that button.
+- Screenshots at 1280px and 390px, and in print preview (the note is gone).
+- `tests/zoom.mjs` passes on all 17 pages plus the open note under all six conditions. The one-sheet print check, the include check and the tracking check pass.
+- Contrast: the note uses the existing ink on white (15.6 to 1) and the spruce button and link (7.8 to 1).
+
+### What went wrong
+
+- **Still no axe or HTML validation here** (the npm registry is blocked), so those run first in CI.
+- **The zoom check's phone-menu step would have timed out.** It clicks the menu button, which can't be clicked behind an open pop-up. I found this while planning the tests rather than from a failure: the checks now close the note before visiting each page, and skip the menu step for the visit with the note open.
+- **Lighthouse now measures first visits with the note open** on the eight demo pages it scores. That's what a new visitor sees, so I left it that way. If it moves the performance scores, the report will show it.
+- **Result on CI:** RESULT_PENDING
+
+### Left for Dustin
+
+- **The wording is yours to change.** It's in `partials/footer.html`. After editing it, run `npm run build`, or ask a session to.
+- **Your call:** if you'd rather it open on every visit (it would reappear after the browser is closed), it's a one-line change to session storage.
+
+---
+
 ## Session 12: October 28, 2026 (social media graphics)
 
 **Built by:** Claude (Opus 5.5), in a scheduled session with nobody watching, so decisions below are mine and open to Dustin's review.

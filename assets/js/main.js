@@ -166,6 +166,59 @@ if (demoContacts.length && typeof HTMLDialogElement === "function") {
   dialog.addEventListener("close", () => opener?.focus());
 }
 
+/* ---- Demo welcome note ---------------------------------------------------
+   Markup (in partials/footer.html):
+     <dialog class="demo-dialog" data-demo-welcome aria-labelledby="...">
+       <h2 tabindex="-1">…</h2> … <form method="dialog"><button>…</button></form>
+     </dialog>
+   Opens once, over the first demo page a visitor sees, to say the college
+   is fictional. Closing it (the button, Escape, or a click outside) is
+   remembered in this browser, so it doesn't open on every page. If the
+   browser won't store that (some private windows), it opens on each page.
+   In the style guide the example opens only from its "Show" button.
+   ------------------------------------------------------------------------- */
+const welcome = document.querySelector("[data-demo-welcome]");
+if (welcome && typeof HTMLDialogElement === "function" && typeof welcome.showModal === "function") {
+  const key = "campus-kit:demo-welcome-closed";
+  const isExample = Boolean(welcome.closest(".sg-example"));
+  const heading = welcome.querySelector("h2");
+  const open = () => {
+    welcome.showModal();
+    // Start at the heading so the note reads from the top
+    heading?.focus();
+  };
+
+  welcome.addEventListener("click", (event) => {
+    if (event.target === welcome) welcome.close();
+  });
+
+  if (isExample) {
+    const button = document.querySelector("[data-demo-welcome-open]");
+    if (button) {
+      button.hidden = false;
+      button.addEventListener("click", open);
+      welcome.addEventListener("close", () => button.focus());
+    }
+  } else {
+    let seen = false;
+    try {
+      seen = window.localStorage.getItem(key) === "1";
+    } catch {
+      /* storage unavailable: show the note */
+    }
+    if (!seen) {
+      welcome.addEventListener("close", () => {
+        try {
+          window.localStorage.setItem(key, "1");
+        } catch {
+          /* it closes for this page view only */
+        }
+      });
+      open();
+    }
+  }
+}
+
 /* ---- Print buttons -------------------------------------------------------
    Markup: <section class="no-print" data-print-offer hidden> holding a
            <button type="button" data-print>

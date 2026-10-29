@@ -3,7 +3,7 @@
 Every page on the demo site shares one header (the campus notice, quick links and main menu) and one footer. Each lives in its own file, so a change is made once instead of on every page.
 
 - `partials/header.html`: the campus notice, quick links and main menu
-- `partials/footer.html`: the address, footer links and the legal line
+- `partials/footer.html`: the address, footer links, the legal line, and the welcome note that tells first-time visitors the college isn't real (a real college site would delete the note)
 
 You don't need to know how to code, but you will run one command. If you've never used the command line, ask the web team to run it for you after you've made your edit. It takes a few seconds.
 

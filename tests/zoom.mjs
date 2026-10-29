@@ -10,7 +10,7 @@
 // Usage: npm run test:zoom   (starts its own local server)
 import httpServer from "http-server";
 import { chromium } from "playwright";
-import { PAGES } from "./pages.mjs";
+import { PAGES, SKIP_WELCOME, WELCOME_PAGE } from "./pages.mjs";
 
 const PORT = 8124;
 const IN_CI = Boolean(process.env.GITHUB_ACTIONS);
@@ -83,21 +83,29 @@ let failures = 0;
 
 for (const condition of CONDITIONS) {
   const context = await browser.newContext({ viewport: { width: condition.width, height: condition.height } });
+  await context.addInitScript(SKIP_WELCOME);
   const page = await context.newPage();
   const cdp = await context.newCDPSession(page);
   await cdp.send("Page.enable");
 
-  for (const path of PAGES) {
+  for (const path of [...PAGES, WELCOME_PAGE]) {
     if (condition.fontSize) {
       // The same setting as "Font size" in the browser's settings
       await cdp.send("Page.setFontSizes", { fontSizes: { standard: condition.fontSize, fixed: Math.round(condition.fontSize * 0.8125) } });
     }
     await page.goto(`http://localhost:${PORT}/${path}`, { waitUntil: "load" });
     if (condition.css) await page.addStyleTag({ content: condition.css });
+    if (path === WELCOME_PAGE && !(await page.locator("dialog[data-demo-welcome][open]").count())) {
+      failures += 1;
+      console.log(`  FAIL  ${path} (${condition.name}): the welcome note didn't open on a first visit`);
+      annotate(`${path} (${condition.name}): the welcome note didn't open on a first visit`);
+      continue;
+    }
 
     const states = [{ label: "", open: false }];
     const toggle = page.locator("[data-nav-toggle]");
-    if ((await toggle.count()) && (await toggle.first().isVisible())) states.push({ label: ", menu open", open: true });
+    // The menu can't be opened behind the welcome note
+    if (path !== WELCOME_PAGE && (await toggle.count()) && (await toggle.first().isVisible())) states.push({ label: ", menu open", open: true });
 
     for (const state of states) {
       if (state.open) await toggle.first().click();

@@ -29,6 +29,7 @@ Dustin can add, remove or reorder items at any time. Items marked with **(Dustin
 - [x] **Analytics guide.** A doc on measuring what matters on a college site (apply clicks, visit sign-ups, program searches) with privacy-friendly analytics, using `data-track` attributes on key buttons. No real tracking code ships in the demo.
 - [x] **Program one-sheet for print.** A print stylesheet that turns any program page into a one-page handout for college fairs.
 - [x] **Social media graphics.** An HTML template that renders square (1080×1080) and story (1080×1920) event graphics from the same tokens, with a script that exports them as PNGs.
+- [x] **Demo welcome note** (Dustin's request). A pop-up on a visitor's first demo page saying College of the Sleeping Giant is fictional and the site is an AI-built experiment.
 - [ ] **Event detail page** with an "Add to calendar" `.ics` download, a map link and accessibility information.
 - [ ] **Accessibility statement and "report a problem" page,** the kind every public college needs.
 - [ ] **Photo and image guidelines.** Responsive images with `srcset`, alt-text examples for common college photos, and file-size targets, added to the style guide.
