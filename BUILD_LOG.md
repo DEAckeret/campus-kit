@@ -4,6 +4,37 @@ Every AI work session on Campus Kit adds an entry here, newest first. Each entry
 
 ---
 
+## Session 15: October 30, 2026 (welcome note: every visit, with a "Don't show this again" box)
+
+**Built by:** Claude (Opus 5.5), at Dustin's request: the welcome note should come back on every visit, with a checkbox so visitors can turn it off.
+
+### What I changed
+
+- **The note now opens on the first demo page of every visit.** Closing it keeps it closed while the visitor moves between pages. It comes back after they close the tab or browser and return. Before, closing it once hid it for good.
+- **A "Don't show this again" checkbox** sits above the "Explore the demo site" button. If it's ticked when the note closes (by the button, Escape or a click outside), the note stays closed in that browser for good.
+- The style guide entry, the comments in `partials/footer.html` and `main.js`, and the test helper in `tests/pages.mjs` describe the new behavior. `npm run build` copied the footer into the 12 demo pages.
+
+### What I decided and why
+
+- **"Every visit" means each new browser session, not every page.** A pop-up on every page would block the whole site. Closing it is stored in session storage, which the browser clears when the tab closes. Ticking the box adds a flag to local storage, which stays. Both are one flag on the visitor's own device, and nothing is sent anywhere.
+- **The label is "Don't show this again,"** not "click to not see again." It's the usual wording for this kind of checkbox, says what happens, and doesn't tell people how to use it (they might tap it or press the space bar).
+- **The checkbox comes first in the note's keyboard order,** before the button, so people who want it find it before they close the note. Focus still starts on the heading so screen readers read the note from the top.
+- **People who closed the old version see it again once.** The "never again" flag has a new name, so the old flag no longer hides it. They now get the checkbox to choose.
+
+### How I checked it
+
+- In a real browser: the note opens on the first visit, stays closed on the next page, and opens again in a new tab. After ticking the box and pressing Escape, it stays closed in a new tab. The first Tab key press lands on the checkbox.
+- Screenshots at 1280px and 390px.
+- `tests/zoom.mjs` passes on every page and on the open note under all six conditions. The print, include and tracking checks pass.
+- The checkbox's label is real text in a `<label>`. The box is 24px square, the target size WCAG 2.2 asks for, and is drawn in spruce when ticked.
+
+### What went wrong
+
+- Nothing broke. Axe and HTML validation still run only in CI.
+- **Result on CI:** RESULT_PENDING
+
+---
+
 ## Session 14: October 30, 2026 (event detail page)
 
 **Built by:** Claude (Opus 5.5), in a scheduled session with nobody watching, so decisions below are mine and open to Dustin's review.

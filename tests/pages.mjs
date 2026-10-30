@@ -28,10 +28,15 @@ export const WELCOME_PAGE = "demo/index.html#welcome";
 
 // Add to each browser context with context.addInitScript(SKIP_WELCOME)
 export function SKIP_WELCOME() {
-  const key = "campus-kit:demo-welcome-closed";
+  const visitKey = "campus-kit:demo-welcome-closed";
+  const foreverKey = "campus-kit:demo-welcome-hidden";
   try {
-    if (window.location.hash === "#welcome") window.localStorage.removeItem(key);
-    else window.localStorage.setItem(key, "1");
+    if (window.location.hash === "#welcome") {
+      window.sessionStorage.removeItem(visitKey);
+      window.localStorage.removeItem(foreverKey);
+    } else {
+      window.sessionStorage.setItem(visitKey, "1");
+    }
   } catch {
     /* no storage: the note opens on every page */
   }

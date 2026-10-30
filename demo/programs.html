@@ -221,16 +221,19 @@
   </footer>
 
   <!--
-    Welcome note: opens over the first demo page a visitor sees, to say the
-    college isn't real. main.js opens it and remembers in this browser once
-    it's closed. Without JavaScript it stays hidden; the line above still says
+    Welcome note: opens over the first demo page of each visit, to say the
+    college isn't real. main.js opens it. Ticking "Don't show this again"
+    stops it for good in this browser. Without JavaScript it stays hidden; the line above still says
     the school is fictional. A real college site would delete this dialog.
   -->
   <dialog class="demo-dialog" data-demo-welcome aria-labelledby="demo-welcome-title">
     <h2 id="demo-welcome-title" tabindex="-1">This isn't a real college</h2>
     <p>College of the Sleeping Giant is a made-up school. This website is a demo of Campus Kit, an experimental project built entirely by AI to show what a small college's website could look like.</p>
     <p>The programs, people, events, phone numbers and email addresses are all invented. You can't apply, register or give here.</p>
-    <form method="dialog"><button class="button" type="submit">Explore the demo site</button></form>
+    <form method="dialog">
+      <p class="demo-dialog__check"><input type="checkbox" id="demo-welcome-hide" data-demo-welcome-hide> <label for="demo-welcome-hide">Don't show this again</label></p>
+      <button class="button" type="submit">Explore the demo site</button>
+    </form>
     <p class="demo-dialog__more"><a href="../index.html">Read about the project</a></p>
   </dialog>
   <!-- /include -->

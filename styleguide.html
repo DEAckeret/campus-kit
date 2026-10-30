@@ -428,14 +428,17 @@
 
         <article class="sg-component" aria-labelledby="c-welcome">
           <h3 id="c-welcome">Demo welcome note</h3>
-          <p>Opens over the first demo page a visitor sees, to say College of the Sleeping Giant isn't a real school. It lives once, in <code>partials/footer.html</code>, so every demo page has it. Once a visitor closes it, with the button, the Escape key or a click outside, it stays closed in that browser. It needs JavaScript; without it the note stays hidden and the footer's last line still says the school is fictional. It never prints. A real college site would delete it. Here it opens only from the button.</p>
+          <p>Opens over the first demo page a visitor sees, to say College of the Sleeping Giant isn't a real school. It lives once, in <code>partials/footer.html</code>, so every demo page has it. It opens again on each new visit (after the browser or tab is closed), but not on every page. Ticking "Don't show this again" before closing it keeps it closed in that browser for good. In this example the box does nothing. It needs JavaScript; without it the note stays hidden and the footer's last line still says the school is fictional. It never prints. A real college site would delete it. Here it opens only from the button.</p>
           <div class="sg-example">
 <p><button class="button button--quiet" type="button" data-demo-welcome-open hidden>Show the welcome note</button></p>
 <dialog class="demo-dialog" data-demo-welcome aria-labelledby="sg-welcome-title">
   <h2 id="sg-welcome-title" tabindex="-1">This isn't a real college</h2>
   <p>College of the Sleeping Giant is a made-up school. This website is a demo of Campus Kit, an experimental project built entirely by AI to show what a small college's website could look like.</p>
   <p>The programs, people, events, phone numbers and email addresses are all invented. You can't apply, register or give here.</p>
-  <form method="dialog"><button class="button" type="submit">Explore the demo site</button></form>
+  <form method="dialog">
+    <p class="demo-dialog__check"><input type="checkbox" id="sg-welcome-hide" data-demo-welcome-hide> <label for="sg-welcome-hide">Don't show this again</label></p>
+    <button class="button" type="submit">Explore the demo site</button>
+  </form>
   <p class="demo-dialog__more"><a href="index.html">Read about the project</a></p>
 </dialog>
           </div>
