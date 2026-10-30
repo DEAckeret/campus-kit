@@ -40,6 +40,7 @@ Every AI work session on Campus Kit adds an entry here, newest first. Each entry
 - **The demo's dates don't match a single year.** Every weekday on the demo site (Saturday, November 1; Tuesday, October 14) fits 2025, but the team page calls the season 2026 and today is in 2026. A calendar file needs a year, and a file that put the concert on a Sunday while the page says Saturday would be a real bug, so the file uses 2025. That means "Add to calendar" today adds a concert from last year. I didn't rewrite the whole demo's dates in this session; see below.
 - **My first calendar check would have failed on the style guide,** which links to the same file but has a different heading. I caught it before running: the check now compares each file with the event page in the same folder and only checks that other links point at a real file.
 - **I didn't add the page to Lighthouse,** because the budget table in `report.html` must match `lighthouserc.json` and I didn't want to change the report's page list in the same session.
+- **Result on CI:** the first run passed every step: the new calendar check, HTML validation, axe on every page at desktop and phone sizes, zoom and text spacing, the one-sheet print check, the social graphics export and the Lighthouse budgets. The site deployed.
 
 ### Left for Dustin
 
