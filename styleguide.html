@@ -176,6 +176,31 @@
           </div>
         </article>
 
+        <article class="sg-component" aria-labelledby="c-event-summary">
+          <h3 id="c-event-summary">Event summary</h3>
+          <p>The top of an event page: when, where, cost and tickets as labeled rows, then the page's actions. Write the start and end in <code>&lt;time datetime&gt;</code> too. "Add to calendar" links to a calendar file (<code>.ics</code>) with the <code>download</code> attribute; <code>npm run check:calendar</code> fails if the file's times don't match the page. Copy <code>demo/events/fall-choir-concert.ics</code> for a new event and change every line except the first five. The map link is a demo link (<code>data-demo-contact="map"</code>), because the campus isn't on any map; on a real site, link to the building on the campus map. The rows stack on phones.</p>
+          <div class="sg-example">
+<dl class="event-summary">
+  <div>
+    <dt>When</dt>
+    <dd><time datetime="2025-11-01T19:30-06:00">Saturday, November 1, 7:30</time> to <time datetime="2025-11-01T21:00-06:00">9 p.m.</time> Doors open at 7.</dd>
+  </div>
+  <div>
+    <dt>Where</dt>
+    <dd>St. Brigid Chapel, 410 Chapel Lane</dd>
+  </div>
+  <div>
+    <dt>Cost</dt>
+    <dd>Free</dd>
+  </div>
+</dl>
+<div class="event-actions">
+  <a class="button" href="demo/events/fall-choir-concert.ics" download data-track="calendar-add">Add to calendar</a>
+  <a class="button button--quiet" href="#" data-demo-contact="map" data-place="St. Brigid Chapel">See it on the campus map</a>
+</div>
+          </div>
+        </article>
+
         <article class="sg-component" aria-labelledby="c-steps">
           <h3 id="c-steps">Steps</h3>
           <p>For a process that has to happen in order, like applying or registering. It's a real numbered list, so screen readers announce how many steps there are. Keep it to five steps or fewer, and start each heading with a verb.</p>

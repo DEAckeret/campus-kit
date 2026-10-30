@@ -8,6 +8,7 @@ export const PAGES = [
   "demo/programs/biology.html",
   "demo/programs/_template.html",
   "demo/events.html",
+  "demo/events/fall-choir-concert.html",
   "demo/directory.html",
   "demo/news/article.html",
   "demo/flyer.html",

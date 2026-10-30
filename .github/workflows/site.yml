@@ -26,6 +26,8 @@ jobs:
         run: npm run check:includes
       - name: Counted buttons are listed, and no third-party scripts
         run: npm run check:tracking
+      - name: Calendar files are valid and match their event pages
+        run: npm run check:calendar
       - run: npm install --no-fund --no-audit
       - run: npx playwright install --with-deps chromium
       # Lighthouse runs first so the HTML, axe and zoom checks below also

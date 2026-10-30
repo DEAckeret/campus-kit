@@ -58,6 +58,7 @@
   --radius-small: 3px;   /* inputs, tags */
   --radius-large: 10px;  /* media, callouts */
   --page-max: 72rem;
+  --label-column: 6.5rem;   /* label column in the event summary */
   --gutter: clamp(1rem, 4vw, 2.5rem);
 
   /* ---- Print --------------------------------------------------------- */

@@ -122,6 +122,9 @@ document.querySelectorAll("[data-filter]").forEach((form) => {
    and clicking one opens a short note explaining what a real link would do.
    On a real site, use href="tel:+1..." and href="mailto:..." instead and
    leave out data-demo-contact.
+   Map links work the same way, because the campus doesn't exist on any map:
+     <a href="#" data-demo-contact="map" data-place="St. Brigid Chapel">…</a>
+   On a real site, link to the building on the campus map instead.
    ------------------------------------------------------------------------- */
 const demoContacts = document.querySelectorAll("[data-demo-contact]");
 if (demoContacts.length && typeof HTMLDialogElement === "function") {
@@ -145,6 +148,11 @@ if (demoContacts.length && typeof HTMLDialogElement === "function") {
         title.textContent = "This email address is just for the demo";
         text.textContent = `On a real college website, this link would open your email app with a new message to ${contact}.`;
         why.textContent = "College of the Sleeping Giant is a fictional school, so there's no inbox to reach.";
+      } else if (link.dataset.demoContact === "map") {
+        const place = link.dataset.place || "this place";
+        title.textContent = "This map link is just for the demo";
+        text.textContent = `On a real college website, this link would open the campus map with ${place} marked, so you could get directions on your phone.`;
+        why.textContent = "College of the Sleeping Giant is a fictional school, so it isn't on any map. The directions on the page say how to get there.";
       } else {
         title.textContent = "This phone number is just for the demo";
         text.textContent = `On a real college website, tapping this link on a phone would call ${contact}.`;

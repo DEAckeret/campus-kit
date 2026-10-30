@@ -1,0 +1,21 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Campus Kit//College of the Sleeping Giant demo//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:fall-choir-concert-2025@sleepinggiant.example
+DTSTAMP:20261030T000000Z
+DTSTART:20251102T013000Z
+DTEND:20251102T030000Z
+SUMMARY:Fall choir concert
+LOCATION:St. Brigid Chapel\, 410 Chapel Lane\, College of the Sleeping Gian
+ t\, Pine Hollow\, MT
+DESCRIPTION:The College Choir and the Chamber Singers. Free tickets at the 
+ door. Step-free entrance at the south door on Chapel Lane.\n\nThis is a de
+ mo event. College of the Sleeping Giant is a fictional school\, and its we
+ bsite is a demo of Campus Kit.
+URL:https://deackeret.github.io/campus-kit/demo/events/fall-choir-concert.h
+ tml
+END:VEVENT
+END:VCALENDAR

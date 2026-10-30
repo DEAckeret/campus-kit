@@ -4,6 +4,52 @@ Every AI work session on Campus Kit adds an entry here, newest first. Each entry
 
 ---
 
+## Session 14: October 30, 2026 (event detail page)
+
+**Built by:** Claude (Opus 5.5), in a scheduled session with nobody watching, so decisions below are mine and open to Dustin's review.
+
+### What I built
+
+- **An event page for the fall choir concert,** [`demo/events/fall-choir-concert.html`](demo/events/fall-choir-concert.html). It opens with the four things people check before they go (when, where, cost, tickets) as labeled rows, then two actions: "Add to calendar" and "See it on the campus map." Below that: what the concert is, what you'll hear, getting there (parking, drop-off, walking directions), and an accessibility section. The sidebar has a Disability Services contact for accommodations, the music department's contact, a link to the concert's social media graphics, and more events.
+- **The accessibility section is specific,** because "the venue is accessible" doesn't help anyone plan: which door is step-free and which has steps, where the wheelchair and companion seats are and how long they're held, the hearing loop, the deadline for ASL and braille requests, the accessible restroom, lighting (no strobe or haze), how loud and echoing it gets, a quiet room, and service animals.
+- **A calendar file,** `demo/events/fall-choir-concert.ics`, downloaded by "Add to calendar." It opens in Apple Calendar and Outlook, and can be imported into Google Calendar. Its description says it's a demo event at a fictional school, so nobody mistakes it for a real one in their calendar.
+- **A new check, `tests/calendar.mjs`** (`npm run check:calendar`, runs in CI before `npm install`, with built-in Node modules only). For every `.ics` file a page links to, it checks the format calendar apps need (CRLF line endings, lines folded at 75 bytes, one event with UID, DTSTAMP, start, end and title, times in UTC), that the link has the `download` attribute, and that the file's start, end and title match the page's `<time datetime>` elements and `h1`. I checked that it fails by moving the end time half an hour.
+- **A new component,** `.event-summary` and `.event-actions` in `components.css`, with the label column as a new token (`--label-column`). It's in the style guide as "Event summary," with a working calendar link and map link.
+- **Map links are demo links,** `data-demo-contact="map"` with a `data-place` name. `main.js` opens the same note as the demo phone and email links, saying what a real map link would do.
+- **Other changes:** the concert in the events list now links to the page, the social graphics page links back to it, `calendar-add` is listed in the analytics guide's counted buttons, and the page is on the project page, the README, the file map in `CLAUDE.md`, and the list of pages the checks visit. A new `.gitattributes` keeps the `.ics` file's CRLF line endings on every computer.
+
+### What I decided and why
+
+- **The choir concert,** because it already has social graphics and a flyer-style event listing, so the page joins up with existing work, and a chapel concert has real accessibility questions (steps, seating, sound).
+- **A downloadable file only, no "Add to Google Calendar" link.** That link would send visitors to a third-party site with the event in the address. The `.ics` file works everywhere without it.
+- **Times in the file are UTC.** Writing the Montana time zone would need a block of time zone rules in the file; UTC times are simpler and every calendar app shows them in the visitor's own time. The page says 7:30 p.m. Mountain time in its `datetime`, and the check confirms the two agree.
+- **The map link goes nowhere,** like the phone numbers. A link to a real map service would look up a town that doesn't exist. The page has written directions, which are more useful to many people than a map anyway.
+- **The accommodation contact appears twice:** in the sidebar callout and in the first paragraph of the accessibility section. On phones the sidebar ends up below everything, a long way from the list that prompts the question.
+- **No new decoration.** The page uses rows, lists and the existing callout; the only new styling is the summary rows and the button row.
+
+### How I checked it
+
+- `tests/zoom.mjs` passes on all 18 pages under all six conditions (200% and 400% zoom, 200% text size, and the text-spacing overrides at desktop and 320px), including the new page with its menu open. The include, tracking, calendar and one-sheet print checks pass.
+- Screenshots at 1280px and 390px, plus the open map note, JavaScript off, and the style guide entry at both widths. One `h1`, headings in order, no duplicate IDs, no sideways scrolling. At 390px the summary rows stack and the buttons go full width.
+- In a real browser: "Add to calendar" downloads `fall-choir-concert.ics`; the map link opens the note with focus on its heading, and Escape returns focus to the link.
+- Contrast: all text uses existing token pairs: ink on white 15.6 to 1, the muted note text 7.6 to 1, the spruce buttons and links 7.8 to 1, ink on the violet tint callout (unchanged from other pages).
+
+### What went wrong
+
+- **Still no axe or HTML validation here** (the npm registry is blocked in this workspace), so those run first in CI. I ran the zoom and print checks with the globally installed Playwright linked into the git-ignored `node_modules`.
+- **The demo's dates don't match a single year.** Every weekday on the demo site (Saturday, November 1; Tuesday, October 14) fits 2025, but the team page calls the season 2026 and today is in 2026. A calendar file needs a year, and a file that put the concert on a Sunday while the page says Saturday would be a real bug, so the file uses 2025. That means "Add to calendar" today adds a concert from last year. I didn't rewrite the whole demo's dates in this session; see below.
+- **My first calendar check would have failed on the style guide,** which links to the same file but has a different heading. I caught it before running: the check now compares each file with the event page in the same folder and only checks that other links point at a real file.
+- **I didn't add the page to Lighthouse,** because the budget table in `report.html` must match `lighthouserc.json` and I didn't want to change the report's page list in the same session.
+
+### Left for Dustin
+
+- **Your call: move the demo's dates to 2026?** That means new weekdays across the events page, home page, team schedule, social graphics, flyer and this page's calendar file. One session can do it if you want it.
+- **Idea:** the event summary could become a template (like the program template) so staff can add events without copying a whole page.
+- Still open from earlier: the QR code idea for the program handout, the Node 20 warning on the workflow's actions, and the `lighthouse-trial` branch from session 9, which Dustin can delete.
+- The screen reader pass is Dustin's. The accessibility statement and "report a problem" page is the next AI item.
+
+---
+
 ## Session 13: October 29, 2026 (demo welcome note, Dustin's request)
 
 **Built by:** Claude (Opus 5.5). Dustin asked for this one directly: a pop-up on entering the site explaining that it's an experimental project and not a real college. It's outside the roadmap order, so I added it to the roadmap as a checked item.

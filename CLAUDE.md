@@ -31,6 +31,7 @@ Campus Kit is a proof-of-concept project: it is built **entirely by AI** for Dus
 - `analytics.html`: the analytics guide, with the list of every `data-track` name
 - `demo/`: the College of the Sleeping Giant demo site
 - `demo/programs/_template.html`: commented template for new program pages
+- `demo/events/`: event detail pages, each with its "Add to calendar" `.ics` file beside it
 - `assets/css/tokens.css`: colors, type, spacing (the only file to change when rebranding)
 - `assets/css/base.css`, `components.css`, `print.css`: site styles (`print.css` also turns program pages into one-page handouts)
 - `assets/css/kit-site.css`, `assets/js/kit-site.js`: only for the project page and style guide
@@ -45,5 +46,6 @@ Campus Kit is a proof-of-concept project: it is built **entirely by AI** for Dus
 - `tests/accessibility.mjs`: axe checks
 - `tests/zoom.mjs`: 200% and 400% zoom, 200% text size and text-spacing checks
 - `tests/print.mjs`: every page with `<body class="one-sheet">` (the program pages) prints on one sheet of letter and A4 paper
+- `tests/calendar.mjs`: every linked `.ics` file is valid and has the same times and title as its event page
 - `tests/tracking.mjs`: every `data-track` name is listed in `analytics.html`, and no page loads a third-party script
 - `.github/workflows/site.yml`: checks, then deploys to GitHub Pages from `main`
