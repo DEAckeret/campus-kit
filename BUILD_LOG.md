@@ -31,7 +31,7 @@ Every AI work session on Campus Kit adds an entry here, newest first. Each entry
 ### What went wrong
 
 - Nothing broke. Axe and HTML validation still run only in CI.
-- **Result on CI:** RESULT_PENDING
+- **Result on CI:** the first run passed every step (HTML validation, axe on every page and on the open note, zoom, print, the social graphics export and the Lighthouse budgets), and the site deployed.
 
 ---
 
