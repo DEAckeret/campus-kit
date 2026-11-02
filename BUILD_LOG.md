@@ -4,6 +4,51 @@ Every AI work session on Campus Kit adds an entry here, newest first. Each entry
 
 ---
 
+## Session 16: November 2, 2026 (accessibility statement and "report a problem" page)
+
+**Built by:** Claude (Opus 5.5), in a scheduled session with nobody watching, so decisions below are mine and open to Dustin's review.
+
+### What I built
+
+- **An accessibility statement,** [`demo/accessibility.html`](demo/accessibility.html): the standard the site aims for (WCAG 2.2 AA, explained in one sentence), what visitors can expect (keyboard, 400% zoom, contrast, labels, reduced motion, works without JavaScript), how the site is checked, a "Known problems" list with what to do instead, how to get information in another format, the ADA coordinator for when a fix doesn't come, and the date it was last reviewed. A comment at the top tells staff to keep the known problems and the review date current.
+- **A "Report a website problem" page,** [`demo/report-a-problem.html`](demo/report-a-problem.html): a short form (kind of problem, page, what happened, what you were using, name and email, with only "What happened?" required), a "What happens next" sequence using the existing steps component, the web team's email and phone, and a pointer to Disability Services for problems that aren't about the website.
+- **The footer's "Accessibility" and "Report a website problem" links now go to these pages** on all 14 demo pages (`partials/footer.html`, then `npm run build`). The "page not found" page's report box links to the form too.
+- **A new component, "Form and thank-you message"** (`.form`, `.field__hint`, textarea styles, a red border on a required field left empty, and `.form-sent`), in `components.css` using existing tokens only, with a live example in the style guide.
+- **`main.js`** fills in "Which page is it on?" with the page the visitor came from (only a page on this site), and moves focus to the thank-you message after sending.
+- Both pages are on the project page, the README, the file map in `CLAUDE.md`, and in `tests/pages.mjs`, so axe, HTML validation and the zoom checks visit them.
+
+### What I decided and why
+
+- **Two pages, not one,** because the footer already had two separate links waiting for them, and someone looking for the form shouldn't have to scroll past the whole statement.
+- **The demo form can't send anything, even with JavaScript off.** Its fields have no `name` attributes, so the browser has nothing to submit. "Send report" reloads the page at `#report-sent`, and CSS (`:target`) shows the thank-you message, which says plainly that nothing left the browser. This keeps the "nothing that collects data" rule without breaking the no-JavaScript rule. A comment in the page and the style guide entry say what to change on a real site (names, `action`, `method="post"`).
+- **The statement is honest about this site.** Its "How we check" section describes the real CI checks, and it says in bold that nobody has gone through the site with a screen reader yet, because that's true (it's Dustin's roadmap item). The known problems are real too: map links go nowhere, the social graphics are pictures of text, and there's no video. I didn't invent problems to fill the list.
+- **A dropdown, not radio buttons, for the kind of problem.** Radio buttons need a shared `name` to work as a group, and a name would put the choice in the address when the form is sent. The first option is short ("I can't use part of a page") with a hint that says what it covers; my first wording was cut off in the dropdown at 390px.
+- **Optional fields say "(optional)"** rather than starring the required one, since five of the six are optional.
+- **No federal agency named or linked** in the complaints section. Which office handles disability complaints against colleges, and how, can change; the statement says the ADA coordinator can explain how to file inside the college or with the federal government.
+- **The thank-you message has no focus ring** when focus moves to it, like the demo note's heading: it isn't a control.
+
+### How I checked it
+
+- Screenshots at 1280px and 390px of both pages, the sent state and the style guide entry. One `h1` each, headings in order, no duplicate IDs, no sideways scrolling.
+- In a real browser: sending with "What happened?" empty stays on the page and the browser asks for it; sending with it filled in goes to `?#report-sent`, shows the message and puts focus on it. With JavaScript off the message is hidden at first and shows after sending. Arriving from the giving page's footer link fills in that page's address.
+- `tests/zoom.mjs` passes on all 20 pages under all six conditions, menus open and closed. The include, tracking, calendar and one-sheet print checks pass.
+- Contrast: only existing token pairs (ink on white 15.6 to 1, muted hint text 7.6 to 1, spruce links and button 7.8 to 1, ink on the violet tint callout). The green bar on the thank-you message is decoration, not text.
+
+### What went wrong
+
+- **Still no axe or HTML validation here** (the npm registry is blocked in this workspace), so those run first in CI. If html-validate objects to fields without names, that's the likeliest failure.
+- **My first thank-you message showed a thick violet focus ring** when focus moved to it, which looked like an error state. I removed it after looking at the screenshot.
+- **The first dropdown option was cut off at 390px** ("Something I can't use with my screen r…"). Shortened, with the detail moved to a hint.
+- I didn't add either page to Lighthouse, for the same reason as the event page: the budget table in `report.html` must match `lighthouserc.json`.
+
+### Left for Dustin
+
+- **The statement names a fictional ADA coordinator, Maren Holt,** and promises reply times (one working day for access barriers, two otherwise, three for other formats). Change them if you'd rather show different numbers.
+- **When you do the screen reader pass,** remove the bold "We haven't yet gone through the site with a screen reader" sentence from the statement (or ask a session to) and add anything you find to its known problems.
+- Still open: moving the demo's dates to 2026, the QR code idea for the program handout, the Node 20 warning on the workflow's actions, and the `lighthouse-trial` branch. The photo and image guidelines are the next AI item.
+
+---
+
 ## Session 15: October 30, 2026 (welcome note: every visit, with a "Don't show this again" box)
 
 **Built by:** Claude (Opus 5.5), at Dustin's request: the welcome note should come back on every visit, with a checkbox so visitors can turn it off.

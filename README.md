@@ -23,6 +23,8 @@ Campus Kit is a hand-written HTML and CSS design system with ready-made pages fo
 | [Staff directory](https://deackeret.github.io/campus-kit/demo/directory.html) | Search by name, title or department |
 | [News story](https://deackeret.github.io/campus-kit/demo/news/article.html) | Article layout with an accessible SVG chart |
 | [Page not found](https://deackeret.github.io/campus-kit/demo/404.html) | Program search, popular pages, and the address the visitor tried, ready to report. Shown at any [missing address](https://deackeret.github.io/campus-kit/demo/no-such-page.html) |
+| [Accessibility statement](https://deackeret.github.io/campus-kit/demo/accessibility.html) | The standard the site meets, how it's checked, known problems with what to do instead, other formats, and the ADA coordinator |
+| [Report a website problem](https://deackeret.github.io/campus-kit/demo/report-a-problem.html) | A short, labeled form with hints, a thank-you message that works without JavaScript, and what happens next. The demo form sends nothing |
 | [Print flyer](https://deackeret.github.io/campus-kit/demo/flyer.html) | US letter event flyer built from the same tokens as the site |
 | [Social media graphics](https://deackeret.github.io/campus-kit/demo/social.html) | A square post (1080 × 1080) and a story (1080 × 1920) for one event, from the same tokens, with alt text. `npm run social` saves them as PNG files |
 | Program handout | Print any program page (try [Biology](https://deackeret.github.io/campus-kit/demo/programs/biology.html)) and it comes out as a one-page handout for college fairs, on US letter or A4 |

@@ -31,7 +31,7 @@ Dustin can add, remove or reorder items at any time. Items marked with **(Dustin
 - [x] **Social media graphics.** An HTML template that renders square (1080×1080) and story (1080×1920) event graphics from the same tokens, with a script that exports them as PNGs.
 - [x] **Demo welcome note** (Dustin's request). A pop-up at the start of each visit to the demo saying College of the Sleeping Giant is fictional and the site is an AI-built experiment, with a "Don't show this again" checkbox.
 - [x] **Event detail page** with an "Add to calendar" `.ics` download, a map link and accessibility information.
-- [ ] **Accessibility statement and "report a problem" page,** the kind every public college needs.
+- [x] **Accessibility statement and "report a problem" page,** the kind every public college needs.
 - [ ] **Photo and image guidelines.** Responsive images with `srcset`, alt-text examples for common college photos, and file-size targets, added to the style guide.
 - [ ] **Web editor training page.** A one-page quick reference that a web designer would hand faculty and staff after a training session: the five components they'll use most and the mistakes to avoid.
 - [ ] **Site search page** that searches page titles and descriptions from a generated JSON index.

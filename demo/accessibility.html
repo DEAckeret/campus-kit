@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Accessibility | College of the Sleeping Giant</title>
+  <meta name="description" content="How we make this website work for everyone, what we know doesn't work yet, how to ask for something in another format, and how to report a problem.">
+  <link rel="icon" href="../assets/img/giant-mark.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- The web fonts load without holding up the page: text shows in a system
+       font first and switches when they arrive. Without JavaScript, <noscript> loads them. -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;1,7..72,500&family=Public+Sans:wght@400;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;1,7..72,500&family=Public+Sans:wght@400;600;700&display=swap"></noscript>
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/print.css" media="print">
+  <!-- Marks the page as having JavaScript before it is drawn, so the phone menu
+       starts closed instead of closing (and moving the page) once main.js loads -->
+  <script>document.documentElement.classList.add("js");</script>
+  <script src="../assets/js/main.js" defer></script>
+</head>
+
+<!--
+  Accessibility statement.
+  Every public college website needs one. Keep it honest and current:
+  - Update "Known problems" whenever one is fixed or found. Say what to do
+    instead until it's fixed.
+  - Review the whole page each semester and change the date at the bottom.
+  - The ADA coordinator's name and contact details must match the directory.
+-->
+<body>
+  <!-- include: header -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <section class="alert-banner" aria-label="Campus notice" data-dismissible>
+    <div class="wrap alert-banner__inner">
+      <p>Spring registration opens November 3. <a href="events.html">See advising sessions</a>.</p>
+      <button class="alert-banner__close" type="button" hidden>
+        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span class="visually-hidden">Close this notice</span>
+      </button>
+    </div>
+  </section>
+
+  <header class="site-header">
+    <nav class="site-header__utility" aria-label="Quick links">
+      <ul class="wrap">
+        <li><a href="directory.html">Directory</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="#">Library</a></li>
+        <li><a href="#">Students</a></li>
+        <li><a href="#">Faculty &amp; staff</a></li>
+      </ul>
+    </nav>
+    <div class="site-header__main wrap">
+      <a class="wordmark" href="index.html">
+        <img src="../assets/img/giant-mark.svg" alt="" width="64" height="24">
+        College of the Sleeping Giant
+      </a>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="main-nav">Menu</button>
+      <nav class="main-nav" id="main-nav" aria-label="Main">
+        <ul>
+          <li><a href="programs.html">Academics</a></li>
+          <li><a href="apply.html">Admission</a></li>
+          <li><a href="#">Cost &amp; aid</a></li>
+          <li><a href="#">Campus life</a></li>
+          <li><a href="athletics/womens-soccer.html">Athletics</a></li>
+          <li><a href="give.html">Give</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!-- /include -->
+
+  <main id="main">
+    <div class="page-header">
+      <div class="wrap">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="accessibility.html" aria-current="page">Accessibility</a></li>
+          </ol>
+        </nav>
+        <h1>Accessibility</h1>
+        <p class="lede">We want everyone to be able to use this website, including people who use a screen reader, magnification, voice control or only a keyboard. This page says how we build and check it, what doesn't work yet, and how to get help.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="wrap with-sidebar">
+        <div>
+          <h2 id="goal">Our goal</h2>
+          <p>We build this website to meet the Web Content Accessibility Guidelines (WCAG) 2.2 at level AA. WCAG is the international standard for accessible websites, and level AA is the level that colleges and public bodies are expected to meet.</p>
+
+          <h2 id="expect">What you can expect</h2>
+          <ul>
+            <li>Every page works with a keyboard alone, and you can always see where you are on the page. The first link on each page skips straight to the main content.</li>
+            <li>You can zoom to 400% without text being cut off or the page scrolling sideways. You can also change the text spacing in your browser.</li>
+            <li>Text stands out from its background by at least the contrast WCAG asks for (4.5 to 1), and color is never the only way something is shown.</li>
+            <li>Every form field has a label, and every table has a title and column headings.</li>
+            <li>Nothing flashes. If you've asked your device to reduce motion, the site does.</li>
+            <li>Pages work with JavaScript turned off.</li>
+            <li>Event pages say how to get in without steps, where accessible seating is, and how to ask for an interpreter or other help.</li>
+          </ul>
+
+          <h2 id="checks">How we check</h2>
+          <p>Every change to the site is checked automatically before it goes live. The checks test each page for HTML errors and common accessibility problems at desktop and phone sizes, at 200% and 400% zoom, and with wider text spacing. A change that fails any of them doesn't go live.</p>
+          <p>Automated checks find only some of the problems people run into. We also try each new page with a keyboard alone. <strong>We haven't yet gone through the site with a screen reader,</strong> and that's the next thing we'll do.</p>
+
+          <h2 id="known">Known problems</h2>
+          <p>These are the problems we know about, with what to do until they're fixed.</p>
+          <ul>
+            <li><strong>Campus map links don't open a map yet.</strong> Event pages give written directions and say which entrance has no steps.</li>
+            <li><strong>Our social media graphics are pictures of text.</strong> Each one is posted with alt text that gives the same information, and the event page has it all as text.</li>
+            <li><strong>The site has no video yet.</strong> When we add video, it will have captions and a transcript from the day it goes up.</li>
+          </ul>
+          <p>Found something else? <a href="report-a-problem.html">Report it</a> and we'll add it here until it's fixed.</p>
+
+          <h2 id="formats">Getting information in another format</h2>
+          <p>If you need anything on this site in another format, such as large print, plain text or braille, email the web team at <a href="#" data-demo-contact="email">web@sleepinggiant.example</a>. Tell us the page and the format. We'll send it within three working days.</p>
+          <p>For help with a class, an event or a campus building, contact Disability Services at <a href="#" data-demo-contact="email">access@sleepinggiant.example</a> or <a href="#" data-demo-contact="phone">(406) 555-0163</a>.</p>
+
+          <h2 id="complaints">If we haven't fixed it</h2>
+          <p>If you've reported a problem and you're not happy with our answer, contact the college's ADA coordinator, Maren Holt. She makes sure the college meets its duties under the Americans with Disabilities Act and Section 504, and she can tell you how to make a formal complaint, inside the college or to the federal government.</p>
+          <address class="contact">
+            <strong>Maren Holt, ADA coordinator</strong>
+            Brennan Hall 210<br>
+            <a href="#" data-demo-contact="email">ada@sleepinggiant.example</a><br>
+            <a href="#" data-demo-contact="phone">(406) 555-0168</a>
+          </address>
+
+          <h2 id="about-statement">About this statement</h2>
+          <p>The web team reviews this page every semester. It was last reviewed on <time datetime="2026-11-02">November 2, 2026</time>.</p>
+        </div>
+
+        <div class="sidebar">
+          <section class="callout" aria-labelledby="report-title">
+            <h2 id="report-title">Something not working?</h2>
+            <p>Tell the web team about anything on this site that's broken or hard to use. Problems that keep you from using a page come first.</p>
+            <p><a class="button" href="report-a-problem.html">Report a problem</a></p>
+          </section>
+
+          <section aria-labelledby="access-contact-title">
+            <h2 id="access-contact-title">Ask for an accommodation</h2>
+            <p>For a class, an event or a campus building, contact Disability Services.</p>
+            <address class="contact">
+              <strong>Disability Services</strong>
+              <a href="#" data-demo-contact="email">access@sleepinggiant.example</a><br>
+              <a href="#" data-demo-contact="phone">(406) 555-0163</a>
+            </address>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- include: footer -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="site-footer__grid">
+        <div>
+          <h2>College of the Sleeping Giant</h2>
+          <address class="contact">
+            1200 College Avenue<br>
+            Pine Hollow, MT 59000<br>
+            <a href="#" data-demo-contact="phone">(406) 555-0100</a>
+          </address>
+        </div>
+        <nav aria-labelledby="footer-explore">
+          <h2 id="footer-explore">Explore</h2>
+          <ul>
+            <li><a href="programs.html">Academic programs</a></li>
+            <li><a href="apply.html">How to apply</a></li>
+            <li><a href="events.html">Events and athletics</a></li>
+            <li><a href="directory.html">Faculty and staff directory</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="footer-help">
+          <h2 id="footer-help">Help</h2>
+          <ul>
+            <li><a href="accessibility.html">Accessibility</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="report-a-problem.html">Report a website problem</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="site-footer__legal">College of the Sleeping Giant is a fictional school. This site is a demo of <a href="../index.html">Campus Kit</a>.</p>
+    </div>
+  </footer>
+
+  <!--
+    Welcome note: opens over the first demo page of each visit, to say the
+    college isn't real. main.js opens it. Ticking "Don't show this again"
+    stops it for good in this browser. Without JavaScript it stays hidden; the line above still says
+    the school is fictional. A real college site would delete this dialog.
+  -->
+  <dialog class="demo-dialog" data-demo-welcome aria-labelledby="demo-welcome-title">
+    <h2 id="demo-welcome-title" tabindex="-1">This isn't a real college</h2>
+    <p>College of the Sleeping Giant is a made-up school. This website is a demo of Campus Kit, an experimental project built entirely by AI to show what a small college's website could look like.</p>
+    <p>The programs, people, events, phone numbers and email addresses are all invented. You can't apply, register or give here.</p>
+    <form method="dialog">
+      <p class="demo-dialog__check"><input type="checkbox" id="demo-welcome-hide" data-demo-welcome-hide> <label for="demo-welcome-hide">Don't show this again</label></p>
+      <button class="button" type="submit">Explore the demo site</button>
+    </form>
+    <p class="demo-dialog__more"><a href="../index.html">Read about the project</a></p>
+  </dialog>
+  <!-- /include -->
+</body>
+</html>

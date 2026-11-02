@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Report a website problem | College of the Sleeping Giant</title>
+  <meta name="description" content="Tell the web team about anything on our website that's broken, wrong or hard to use, including problems with a screen reader, keyboard or zoom.">
+  <link rel="icon" href="../assets/img/giant-mark.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- The web fonts load without holding up the page: text shows in a system
+       font first and switches when they arrive. Without JavaScript, <noscript> loads them. -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;1,7..72,500&family=Public+Sans:wght@400;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;1,7..72,500&family=Public+Sans:wght@400;600;700&display=swap"></noscript>
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/print.css" media="print">
+  <!-- Marks the page as having JavaScript before it is drawn, so the phone menu
+       starts closed instead of closing (and moving the page) once main.js loads -->
+  <script>document.documentElement.classList.add("js");</script>
+  <script src="../assets/js/main.js" defer></script>
+</head>
+
+<!--
+  "Report a website problem" page.
+  The form is a demo: its fields have no name attributes, so nothing typed
+  into them is ever sent, even without JavaScript. Pressing "Send report"
+  reloads the page at #report-sent, which shows the thank-you message
+  (CSS :target), and main.js moves focus to it.
+  On a real site: give each field a name, set the form's action and
+  method="post" to your form service, and keep the thank-you message.
+-->
+<body>
+  <!-- include: header -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <section class="alert-banner" aria-label="Campus notice" data-dismissible>
+    <div class="wrap alert-banner__inner">
+      <p>Spring registration opens November 3. <a href="events.html">See advising sessions</a>.</p>
+      <button class="alert-banner__close" type="button" hidden>
+        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span class="visually-hidden">Close this notice</span>
+      </button>
+    </div>
+  </section>
+
+  <header class="site-header">
+    <nav class="site-header__utility" aria-label="Quick links">
+      <ul class="wrap">
+        <li><a href="directory.html">Directory</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="#">Library</a></li>
+        <li><a href="#">Students</a></li>
+        <li><a href="#">Faculty &amp; staff</a></li>
+      </ul>
+    </nav>
+    <div class="site-header__main wrap">
+      <a class="wordmark" href="index.html">
+        <img src="../assets/img/giant-mark.svg" alt="" width="64" height="24">
+        College of the Sleeping Giant
+      </a>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="main-nav">Menu</button>
+      <nav class="main-nav" id="main-nav" aria-label="Main">
+        <ul>
+          <li><a href="programs.html">Academics</a></li>
+          <li><a href="apply.html">Admission</a></li>
+          <li><a href="#">Cost &amp; aid</a></li>
+          <li><a href="#">Campus life</a></li>
+          <li><a href="athletics/womens-soccer.html">Athletics</a></li>
+          <li><a href="give.html">Give</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!-- /include -->
+
+  <main id="main">
+    <div class="page-header">
+      <div class="wrap">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="accessibility.html">Accessibility</a></li>
+            <li><a href="report-a-problem.html" aria-current="page">Report a website problem</a></li>
+          </ol>
+        </nav>
+        <h1>Report a website problem</h1>
+        <p class="lede">Tell the web team about anything on our website that's broken, wrong or hard to use. If a problem keeps you from using a page, we'll reply within one working day.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="wrap with-sidebar">
+        <div>
+          <section class="callout form-sent" id="report-sent" tabindex="-1" aria-labelledby="report-sent-title" data-form-sent>
+            <h2 id="report-sent-title">Thanks for telling us</h2>
+            <p>On a real college website, your report would now be with the web team, and you'd hear back within two working days.</p>
+            <p>College of the Sleeping Giant is a fictional school, so this demo form doesn't send anything. What you typed never left your browser.</p>
+          </section>
+
+          <h2 id="form-title">Tell us what went wrong</h2>
+          <p>Only the description is required. The more you can tell us, the faster we can fix it.</p>
+          <form class="form" action="#report-sent" method="get" aria-labelledby="form-title" data-report-form>
+            <div class="field">
+              <label for="report-kind">What kind of problem is it?</label>
+              <p class="field__hint" id="report-kind-hint">Choose "I can't use part of a page" for anything that doesn't work with your screen reader, keyboard, zoom or other setup. We fix those first.</p>
+              <select id="report-kind" aria-describedby="report-kind-hint">
+                <option>I can't use part of a page</option>
+                <option>A broken link or a page that won't load</option>
+                <option>Wrong or out-of-date information</option>
+                <option>Something else</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="report-page">Which page is it on? (optional)</label>
+              <p class="field__hint" id="report-page-hint">Paste the page's address, or describe it, like "the soccer schedule."</p>
+              <input id="report-page" type="text" aria-describedby="report-page-hint" data-report-page>
+            </div>
+
+            <div class="field">
+              <label for="report-what">What happened?</label>
+              <p class="field__hint" id="report-what-hint">What were you trying to do, and what went wrong?</p>
+              <textarea id="report-what" rows="6" required aria-describedby="report-what-hint"></textarea>
+            </div>
+
+            <div class="field">
+              <label for="report-setup">What were you using? (optional)</label>
+              <p class="field__hint" id="report-setup-hint">For example, "iPhone with VoiceOver" or "Windows laptop, Chrome, zoomed to 200%."</p>
+              <input id="report-setup" type="text" aria-describedby="report-setup-hint">
+            </div>
+
+            <div class="field">
+              <label for="report-name">Your name (optional)</label>
+              <input id="report-name" type="text" autocomplete="name">
+            </div>
+
+            <div class="field">
+              <label for="report-email">Your email address (optional)</label>
+              <p class="field__hint" id="report-email-hint">Only if you'd like a reply. We use it to answer this report and nothing else.</p>
+              <input id="report-email" type="email" autocomplete="email" aria-describedby="report-email-hint">
+            </div>
+
+            <button class="button" type="submit">Send report</button>
+          </form>
+          <p class="note">This is a demo form. Nothing you type is sent anywhere.</p>
+
+          <h2 id="next-title">What happens next</h2>
+          <ol class="steps">
+            <li>
+              <h3>We reply</h3>
+              <p>Within one working day if the problem keeps you from using a page, and within two for everything else. If you didn't leave an email address, we can't reply, but we still read every report.</p>
+            </li>
+            <li>
+              <h3>We get you what you need</h3>
+              <p>If you can't use a page, we'll send you its information another way, by email or in large print, while we fix it.</p>
+            </li>
+            <li>
+              <h3>We fix it and tell you</h3>
+              <p>Until it's fixed, we list it under <a href="accessibility.html#known">known problems</a> on our accessibility page.</p>
+            </li>
+          </ol>
+        </div>
+
+        <div class="sidebar">
+          <section class="callout" aria-labelledby="other-ways-title">
+            <h2 id="other-ways-title">Other ways to reach us</h2>
+            <p>Email or call the web team, Monday to Friday, 8 a.m. to 5 p.m. Mountain time.</p>
+            <address class="contact">
+              <strong>Web team</strong>
+              <a href="#" data-demo-contact="email">web@sleepinggiant.example</a><br>
+              <a href="#" data-demo-contact="phone">(406) 555-0129</a>
+            </address>
+          </section>
+
+          <section aria-labelledby="access-contact-title">
+            <h2 id="access-contact-title">Not a website problem?</h2>
+            <p>For help with a class, an event or a campus building, contact Disability Services.</p>
+            <address class="contact">
+              <strong>Disability Services</strong>
+              <a href="#" data-demo-contact="email">access@sleepinggiant.example</a><br>
+              <a href="#" data-demo-contact="phone">(406) 555-0163</a>
+            </address>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- include: footer -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="site-footer__grid">
+        <div>
+          <h2>College of the Sleeping Giant</h2>
+          <address class="contact">
+            1200 College Avenue<br>
+            Pine Hollow, MT 59000<br>
+            <a href="#" data-demo-contact="phone">(406) 555-0100</a>
+          </address>
+        </div>
+        <nav aria-labelledby="footer-explore">
+          <h2 id="footer-explore">Explore</h2>
+          <ul>
+            <li><a href="programs.html">Academic programs</a></li>
+            <li><a href="apply.html">How to apply</a></li>
+            <li><a href="events.html">Events and athletics</a></li>
+            <li><a href="directory.html">Faculty and staff directory</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="footer-help">
+          <h2 id="footer-help">Help</h2>
+          <ul>
+            <li><a href="accessibility.html">Accessibility</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="report-a-problem.html">Report a website problem</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="site-footer__legal">College of the Sleeping Giant is a fictional school. This site is a demo of <a href="../index.html">Campus Kit</a>.</p>
+    </div>
+  </footer>
+
+  <!--
+    Welcome note: opens over the first demo page of each visit, to say the
+    college isn't real. main.js opens it. Ticking "Don't show this again"
+    stops it for good in this browser. Without JavaScript it stays hidden; the line above still says
+    the school is fictional. A real college site would delete this dialog.
+  -->
+  <dialog class="demo-dialog" data-demo-welcome aria-labelledby="demo-welcome-title">
+    <h2 id="demo-welcome-title" tabindex="-1">This isn't a real college</h2>
+    <p>College of the Sleeping Giant is a made-up school. This website is a demo of Campus Kit, an experimental project built entirely by AI to show what a small college's website could look like.</p>
+    <p>The programs, people, events, phone numbers and email addresses are all invented. You can't apply, register or give here.</p>
+    <form method="dialog">
+      <p class="demo-dialog__check"><input type="checkbox" id="demo-welcome-hide" data-demo-welcome-hide> <label for="demo-welcome-hide">Don't show this again</label></p>
+      <button class="button" type="submit">Explore the demo site</button>
+    </form>
+    <p class="demo-dialog__more"><a href="../index.html">Read about the project</a></p>
+  </dialog>
+  <!-- /include -->
+</body>
+</html>

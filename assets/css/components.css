@@ -539,6 +539,47 @@ th:last-child { padding-right: 0; }
 .field { max-width: 100%; }
 .result-count { font-size: var(--step--1); color: var(--color-ink-muted); }
 
+/* ---- Form (report a website problem) ------------------------------------ */
+/* Fields stacked one above the other, full width up to a readable line
+   length. A hint goes between the label and the field, linked to the field
+   with aria-describedby so screen readers read it too. */
+.form { max-width: var(--measure); margin-bottom: var(--space-4); }
+.form .field { margin-bottom: var(--space-5); }
+.form .field label { font-size: var(--step-0); }
+.field__hint {
+  margin: 0 0 var(--space-2);
+  font-size: var(--step--1);
+  color: var(--color-ink-muted);
+}
+.form .field input,
+.form .field select,
+.form .field textarea {
+  display: block;
+  width: 100%;
+  min-width: 0;
+}
+.field textarea {
+  font: inherit;
+  line-height: var(--leading-body);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-ink-muted);
+  border-radius: var(--radius-small);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  max-width: 100%;
+  resize: vertical;
+}
+/* A required field left empty, after the visitor has tried to send the form */
+.field :user-invalid { border: 2px solid var(--color-alert); }
+
+/* The thank-you message after a form is sent. It shows when the address
+   ends in its id (#report-sent), so it works without JavaScript. */
+.form-sent { display: none; border-left: 4px solid var(--color-success); margin-bottom: var(--space-6); }
+.form-sent:target { display: block; }
+/* It takes focus so screen readers read it first. It isn't a control, so
+   it needs no focus ring (the same as the demo note's heading). */
+.form-sent:focus { outline: none; }
+
 /* ---- People directory --------------------------------------------------- */
 .people {
   display: grid;

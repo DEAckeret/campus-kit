@@ -36,6 +36,7 @@ Campus Kit is a proof-of-concept project: it is built **entirely by AI** for Dus
 - `assets/css/base.css`, `components.css`, `print.css`: site styles (`print.css` also turns program pages into one-page handouts)
 - `assets/css/kit-site.css`, `assets/js/kit-site.js`: only for the project page and style guide
 - `docs/`: guides for non-technical editors
+- `demo/accessibility.html` and `demo/report-a-problem.html`: the accessibility statement (update its known problems and review date) and the website problem form (a demo: its fields have no names, so it sends nothing)
 - `demo/social.html`: social media graphics for one event (copy it for another event)
 - `scripts/social-graphics.mjs`: saves those graphics as PNG files in `demo/social/` (`npm run social`); CI runs it and publishes the PNGs
 - `scripts/includes.mjs`: copies the shared header and footer into demo pages (`npm run build`)

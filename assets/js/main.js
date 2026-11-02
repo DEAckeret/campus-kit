@@ -270,3 +270,24 @@ showAddress("[data-missing-address]", window.location.href);
 if (document.referrer.startsWith(`${window.location.origin}/`)) {
   showAddress("[data-missing-referrer]", document.referrer);
 }
+
+/* ---- Report form (report-a-problem.html) ---------------------------------
+   Markup: <form data-report-form> with <input data-report-page>, and
+           <section id="report-sent" tabindex="-1" data-form-sent>
+   The page the visitor came from fills in "Which page is it on?", if it's a
+   page on this site. After the form is sent, the page reloads at
+   #report-sent; CSS shows the thank-you message and this moves focus to it,
+   so screen readers read it first. Nothing is sent anywhere: the demo
+   form's fields have no names.
+   ------------------------------------------------------------------------- */
+const reportPage = document.querySelector("[data-report-form] [data-report-page]");
+if (
+  reportPage &&
+  !reportPage.value &&
+  document.referrer.startsWith(`${window.location.origin}/`) &&
+  new URL(document.referrer).pathname !== window.location.pathname
+) {
+  reportPage.value = document.referrer;
+}
+const sent = document.querySelector("[data-form-sent]");
+if (sent && window.location.hash === `#${sent.id}`) sent.focus();

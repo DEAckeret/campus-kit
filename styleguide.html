@@ -159,6 +159,30 @@
           </div>
         </article>
 
+        <article class="sg-component" aria-labelledby="c-form">
+          <h3 id="c-form">Form and thank-you message</h3>
+          <p>For short forms, like "Report a website problem." Fields stack one above the other. Every field has a visible label; say "(optional)" in the label rather than marking the required ones. Put a hint between the label and the field and link it with <code>aria-describedby</code>. A required field left empty gets a red border after the visitor tries to send the form, and the browser says what's missing.</p>
+          <p>The thank-you message stays hidden until the address ends in its <code>id</code>, so point the form's <code>action</code> at it and it works without JavaScript. With JavaScript, focus moves to it so screen readers read it first. In the demo the fields have no <code>name</code>, so nothing is sent; on a real site, add names and point <code>action</code> at your form service with <code>method="post"</code>. <a href="#sg-form-sent">Show the thank-you message</a>.</p>
+          <div class="sg-example">
+<section class="callout form-sent" id="sg-form-sent" tabindex="-1" aria-labelledby="sg-form-sent-title" data-form-sent>
+  <h4 id="sg-form-sent-title">Thanks for telling us</h4>
+  <p>We'll reply within two working days.</p>
+</section>
+<form class="form" action="#sg-form-sent" method="get" aria-label="Example form">
+  <div class="field">
+    <label for="sg-form-what">What happened?</label>
+    <p class="field__hint" id="sg-form-what-hint">What were you trying to do, and what went wrong?</p>
+    <textarea id="sg-form-what" rows="4" required aria-describedby="sg-form-what-hint"></textarea>
+  </div>
+  <div class="field">
+    <label for="sg-form-email">Your email address (optional)</label>
+    <input id="sg-form-email" type="email" autocomplete="email">
+  </div>
+  <button class="button" type="submit">Send report</button>
+</form>
+          </div>
+        </article>
+
         <article class="sg-component" aria-labelledby="c-events">
           <h3 id="c-events">Event</h3>
           <p>Add <code>event--athletics</code> to give game days a gold date block. The <code>data-category</code> value controls which filter shows the event.</p>
