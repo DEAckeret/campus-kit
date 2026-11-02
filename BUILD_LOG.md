@@ -40,6 +40,7 @@ Every AI work session on Campus Kit adds an entry here, newest first. Each entry
 - **My first thank-you message showed a thick violet focus ring** when focus moved to it, which looked like an error state. I removed it after looking at the screenshot.
 - **The first dropdown option was cut off at 390px** ("Something I can't use with my screen r…"). Shortened, with the detail moved to a hint.
 - I didn't add either page to Lighthouse, for the same reason as the event page: the budget table in `report.html` must match `lighthouserc.json`.
+- **Result on CI:** the first run passed every step: HTML validation (fields without names were fine), axe on every page at desktop and phone sizes, zoom and text spacing, the one-sheet print check, the social graphics export and the Lighthouse budgets. The site deployed.
 
 ### Left for Dustin
 
