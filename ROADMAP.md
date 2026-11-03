@@ -37,11 +37,18 @@ Dustin can add, remove or reorder items at any time. Items marked with **(Dustin
 - [ ] **Site search page** that searches page titles and descriptions from a generated JSON index.
 - [ ] **Content audit checklist.** A doc and spreadsheet template for reviewing a department's pages each semester.
 - [ ] **Rebrand demo.** Prove the "one file to rebrand" claim: a second token file for a different fictional school, and a style-guide toggle that swaps between them.
+- [ ] **Event page template.** Turn the fall choir concert page into a commented template (like the program template), with a short guide, so staff can add an event without copying a whole page.
+- [ ] **Faculty profile page template.** A profile for one faculty member: photo, title, department, courses taught, research or interests, and office hours, linked from the directory.
+- [ ] **Emergency alert banner from one file.** Switch the campus notice on and off, and set its text and urgency, from a single JSON file, so a closure notice goes up without editing every page.
+- [ ] **QR code on the program handout.** A QR code on the printed one-sheet that opens the program page, from a small encoder written into the repo (no library).
+- [ ] **One form for the social graphics.** Fill in an event's details once and see both graphics update, so nobody types the text twice. The page must still work with JavaScript off.
+- [ ] **Spanish-language page.** A Spanish version of one page (such as how to apply) to show `lang` attributes, a language switcher, and how translated pages are organized.
+- [ ] **Dark mode tokens.** A dark set of color tokens that follows the visitor's system setting, with every text color measured for contrast again.
 
 ## Ideas, not scheduled yet
 
-- Dark mode tokens
-- A Spanish-language version of one page, to show `lang` attributes and translation structure
-- Emergency alert banner that can be switched on from a single JSON file
-- Faculty profile page template
 - **(Dustin)** A custom domain for the GitHub Pages site
+
+## Decisions
+
+- **Node 20 warning on the workflow's actions:** leave it until it actually causes a failure (Dustin, November 3, 2026). Sessions don't need to raise it.
