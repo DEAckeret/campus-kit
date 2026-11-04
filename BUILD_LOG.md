@@ -40,6 +40,7 @@ Every AI work session on Campus Kit adds an entry here, newest first. Each entry
 - **A careless find-and-replace** that turned the alt examples' `h4` headings into `h5` also changed four `h4` headings in the steps and giving-levels examples. I caught it in the diff and put them back before testing.
 - **My first draft of the sizes note claimed photos at these targets keep a page "well inside the performance budget."** The Lighthouse budgets are scores, not byte limits, so I couldn't back that up and rewrote it.
 - I dropped the 1920-pixel version of the stand-in photo: the guide's in-text row stops at 1440, and an unused file would contradict it.
+- **Result on CI:** the first run passed every step: the new image check, HTML validation (the multi-line `srcset` values were fine), axe on every page at desktop and phone sizes, zoom and text spacing, the one-sheet print check, the social graphics export and the Lighthouse budgets. The site deployed.
 
 ### Left for Dustin
 
