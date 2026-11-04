@@ -615,6 +615,26 @@ th:last-child { padding-right: 0; }
 .article figure { margin: var(--space-6) 0; }
 .article figcaption { font-size: var(--step--1); color: var(--color-ink-muted); margin-top: var(--space-2); }
 
+/* ---- Photo with caption ------------------------------------------------ */
+/* A <figure> with a responsive <picture>. The width and height on the <img>
+   save its space while it loads; this CSS scales it to the column. */
+.photo {
+  margin: 0 0 var(--space-6);
+  max-width: var(--photo-column);
+}
+.photo img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-large);
+  background: var(--color-mist); /* shows until the photo arrives */
+}
+.photo figcaption {
+  margin-top: var(--space-2);
+  font-size: var(--step--1);
+  color: var(--color-ink-muted);
+}
+.photo__credit { display: block; }
+
 /* ---- Site footer -------------------------------------------------------- */
 .site-footer {
   --ridge-color: var(--color-ink);

@@ -59,6 +59,8 @@
   --radius-large: 10px;  /* media, callouts */
   --page-max: 72rem;
   --label-column: 6.5rem;   /* label column in the event summary */
+  --photo-column: 44rem;    /* widest a photo in the text gets; the image
+                               sizes in the style guide are based on it */
   --gutter: clamp(1rem, 4vw, 2.5rem);
 
   /* ---- Print --------------------------------------------------------- */

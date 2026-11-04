@@ -39,6 +39,7 @@ Campus Kit is a proof-of-concept project: it is built **entirely by AI** for Dus
 - `demo/accessibility.html` and `demo/report-a-problem.html`: the accessibility statement (update its known problems and review date) and the website problem form (a demo: its fields have no names, so it sends nothing)
 - `demo/social.html`: social media graphics for one event (copy it for another event)
 - `scripts/social-graphics.mjs`: saves those graphics as PNG files in `demo/social/` (`npm run social`); CI runs it and publishes the PNGs
+- `assets/img/photos/`: the stand-in photo for the style guide's "Photos and images" section, at each width as JPEG and WebP (`npm run sample-photo` redraws it with `scripts/sample-photo.mjs`)
 - `scripts/includes.mjs`: copies the shared header and footer into demo pages (`npm run build`)
 - `scripts/site-404.mjs`: the deploy step's copy of `demo/404.html` as the site-wide 404 page
 - `lighthouserc.json`: Lighthouse CI pages and budgets (the budget table in `report.html` must match)
@@ -48,5 +49,6 @@ Campus Kit is a proof-of-concept project: it is built **entirely by AI** for Dus
 - `tests/zoom.mjs`: 200% and 400% zoom, 200% text size and text-spacing checks
 - `tests/print.mjs`: every page with `<body class="one-sheet">` (the program pages) prints on one sheet of letter and A4 paper
 - `tests/calendar.mjs`: every linked `.ics` file is valid and has the same times and title as its event page
+- `tests/images.mjs`: every image has alt text, a width and a height, and every file in a `srcset` exists, is the width it claims and is under 250 KB
 - `tests/tracking.mjs`: every `data-track` name is listed in `analytics.html`, and no page loads a third-party script
 - `.github/workflows/site.yml`: checks, then deploys to GitHub Pages from `main`

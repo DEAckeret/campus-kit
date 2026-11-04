@@ -4,6 +4,51 @@ Every AI work session on Campus Kit adds an entry here, newest first. Each entry
 
 ---
 
+## Session 17: November 4, 2026 (photo and image guidelines)
+
+**Built by:** Claude (Opus 5.5), in a scheduled session with nobody watching, so decisions below are mine and open to Dustin's review.
+
+### What I built
+
+- **A "Photos and images" section in the style guide** ([`styleguide.html#photos`](styleguide.html#photos)), with a "Photos" link in its menu. It has four parts:
+  - **Photo with caption,** a new component (`.photo` in `components.css`): a `<figure>` with a `<picture>` that offers WebP files and falls back to JPEG, a `srcset` at 480, 960 and 1440 pixels wide, a `sizes` attribute, `width` and `height`, lazy loading, and a caption with a credit line. A short list explains each attribute in plain words, including when to leave lazy loading off.
+  - **Writing alt text:** five questions that decide what the alt text should be (mood only, shows something new, has words in it, only thing in a link, a chart), plus rules of thumb, and seven weak-versus-better examples from a college site: commencement, a lab, a campus building, a banner behind a heading, a faculty headshot, a game photo and an event poster.
+  - **Sizes to save:** a table of widths and file-size targets for a full-width banner, a photo in the text, a half-width photo, a headshot and a logo, with format advice (JPEG at 70 to 80, WebP at 75, PNG only for screenshots).
+  - **Before you upload a photo:** a checklist (photo release, crop, sizes, removing location data, file names, no text in photos, alt text and caption written).
+- **A stand-in photo,** `assets/img/photos/giant-from-willow-lake-*.jpg` and `.webp`, drawn by a new script, `scripts/sample-photo.mjs` (`npm run sample-photo`). It paints the Sleeping Giant ridge above a lake at sunset in a browser canvas and saves it at each width. The files are committed; CI doesn't redraw them.
+- **A new check, `tests/images.mjs`** (`npm run check:images`, runs in CI before `npm install`, built-in Node modules only). On every page in `tests/pages.mjs`, each `<img>` must have an `alt` attribute, a `width` and a `height`, and an existing `src`. Each file in a `srcset` must exist, be exactly as wide as its `w` number (it reads the width from the JPEG, PNG, GIF or WebP header), weigh 250 KB or less, and sit on an element with `sizes`. The `width` and `height` must have the same shape as the largest file. I checked that it fails by changing a `w` number and a `height`.
+- `--photo-column` (44rem, the article column) is a new token. The README, the file map in `CLAUDE.md` and the workflow list the new check.
+
+### What I decided and why
+
+- **A drawing, not a stock photo.** The college is fictional, and a real photo would need a license and might show a real campus or real people. The caption and credit say it's an illustration made by a script, and its alt text says "a drawing." It has film grain added so it compresses like a photo and the file sizes in the guide are realistic (85 KB JPEG and 53 KB WebP at 1440 wide).
+- **In the style guide, not a separate page,** as the roadmap item says. The section comes after Components, on the mist background, because most of it is guidance rather than a component.
+- **The headshot example recommends `alt=""`** when the name and title are right beside the photo, so screen readers don't read the name twice. Some teams prefer the name as alt text; both pass WCAG, and the example explains the reason.
+- **Alt-text examples are rows, not cards,** with "Weak" and "Better" as text labels, so nothing depends on color. Their styles are in `kit-site.css` because only the style guide uses them.
+- **One 250 KB limit in the check,** matching the largest target in the table (banners). Checking each photo against its own row's target would need staff to mark which kind each photo is; the table is guidance and the check is the backstop.
+- **I didn't add photos to demo pages.** The roadmap asks for guidelines in the style guide. Putting a photo on, say, the news story would change pages the Lighthouse budgets score, and that's better as its own decision.
+
+### How I checked it
+
+- `npm run check:images` passes: 19 images on 20 pages, 6 `srcset` files. The include, tracking and calendar checks pass, `tests/zoom.mjs` passes on all 20 pages under all six conditions, and the one-sheet print check passes.
+- Screenshots of the new section at 1280px and 390px. One `h1`, headings in order (h2, h3, h4 for the examples list, h5 for each example), no duplicate IDs, no sideways scrolling. The browser picked the 960-pixel WebP at 1280px wide and the 480-pixel WebP at 390px, as intended.
+- Contrast: only existing token pairs (ink and muted ink on mist, spruce links).
+
+### What went wrong
+
+- **Still no axe or HTML validation here** (the npm registry is blocked in this workspace), so those run first in CI. The multi-line `srcset` values are the likeliest thing for html-validate to question.
+- **A careless find-and-replace** that turned the alt examples' `h4` headings into `h5` also changed four `h4` headings in the steps and giving-levels examples. I caught it in the diff and put them back before testing.
+- **My first draft of the sizes note claimed photos at these targets keep a page "well inside the performance budget."** The Lighthouse budgets are scores, not byte limits, so I couldn't back that up and rewrote it.
+- I dropped the 1920-pixel version of the stand-in photo: the guide's in-text row stops at 1440, and an unused file would contradict it.
+
+### Left for Dustin
+
+- **The guidance is general practice, not a legal review.** The photo release item says to ask the marketing office; a real college would link its own release form there.
+- **Idea:** a later session could add a photo to the news story or the faculty profile template (already on the roadmap), using this component, and add that page's photo to the Lighthouse run.
+- Still open from earlier: moving the demo's dates to 2026, and the `lighthouse-trial` branch. The web editor training page is the next AI item.
+
+---
+
 ## Session 16: November 2, 2026 (accessibility statement and "report a problem" page)
 
 **Built by:** Claude (Opus 5.5), in a scheduled session with nobody watching, so decisions below are mine and open to Dustin's review.

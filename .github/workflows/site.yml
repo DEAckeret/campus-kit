@@ -28,6 +28,8 @@ jobs:
         run: npm run check:tracking
       - name: Calendar files are valid and match their event pages
         run: npm run check:calendar
+      - name: Images have alt text and a size, and their files are the right width and weight
+        run: npm run check:images
       - run: npm install --no-fund --no-audit
       - run: npx playwright install --with-deps chromium
       # Lighthouse runs first so the HTML, axe and zoom checks below also

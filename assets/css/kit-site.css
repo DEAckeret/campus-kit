@@ -110,6 +110,34 @@ pre {
   max-width: none;
 }
 
+/* ---- Alt text examples (style guide, "Photos and images") -------------- */
+.alt-examples {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-6);
+  max-width: var(--measure);
+  border-top: 1px solid var(--color-line);
+}
+.alt-examples > li {
+  margin: 0;
+  padding-block: var(--space-4);
+  border-bottom: 1px solid var(--color-line);
+}
+.alt-examples h5 { margin-top: 0; font-family: var(--font-body); font-weight: 700; font-size: var(--step-0); margin-bottom: var(--space-1); }
+.alt-examples p { margin: 0 0 var(--space-2); color: var(--color-ink-muted); }
+.alt-examples dl { margin: 0; }
+.alt-examples dl div {
+  display: grid;
+  grid-template-columns: var(--label-column) minmax(0, 1fr);
+  gap: var(--space-4);
+  padding-block: var(--space-1);
+}
+.alt-examples dt { font-weight: 700; }
+.alt-examples dd { margin: 0; }
+@media (max-width: 30rem) {
+  .alt-examples dl div { grid-template-columns: minmax(0, 1fr); gap: 0; }
+}
+
 /* ---- Project landing page ----------------------------------------------- */
 .kit-hero {
   background: var(--color-spruce);

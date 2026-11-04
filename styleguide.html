@@ -34,6 +34,7 @@
           <li><a href="#color">Color</a></li>
           <li><a href="#type">Type</a></li>
           <li><a href="#components">Components</a></li>
+          <li><a href="#photos">Photos</a></li>
           <li><a href="demo/index.html">Demo site</a></li>
         </ul>
       </nav>
@@ -491,6 +492,151 @@
 </section>
           </div>
         </article>
+      </div>
+    </section>
+    <section class="section section--mist" id="photos" aria-labelledby="photos-title">
+      <div class="wrap">
+        <h2 id="photos-title">Photos and images</h2>
+        <p>Photos are often the first thing a visitor looks at and the heaviest thing on the page. Every photo needs three things: alt text that does the photo's job for people who can't see it, a file sized for the screen it's shown on, and a file small enough to load quickly on a phone.</p>
+
+        <article class="sg-component" aria-labelledby="c-photo">
+          <h3 id="c-photo">Photo with caption</h3>
+          <p>A photo in the text of a page, with a caption and credit. Save the photo at the widths in <a href="#photo-sizes-title">Sizes to save</a> and list them all in the HTML. The browser downloads only the one it needs.</p>
+          <ul>
+            <li><code>srcset</code> lists the same photo at each width you saved, followed by its width in pixels (<code>960w</code>).</li>
+            <li><code>sizes</code> tells the browser how wide the photo shows on the page: here, 44rem on wide screens and the full screen width on phones. The browser picks the smallest file that will look sharp, including on high-resolution screens.</li>
+            <li><code>&lt;source type="image/webp"&gt;</code> offers the WebP files, which are smaller. Browsers that can't show WebP use the JPEG files in the <code>&lt;img&gt;</code>.</li>
+            <li><code>width</code> and <code>height</code> are the size of the largest file. They let the browser save the space before the photo arrives, so the text doesn't jump. The photo still shrinks to fit the column.</li>
+            <li><code>loading="lazy"</code> waits to download the photo until the visitor scrolls near it. Leave it off a photo at the top of the page, so that one appears as fast as possible.</li>
+          </ul>
+          <p>This "photo" is a drawing made by <code>scripts/sample-photo.mjs</code>, because the college is fictional and has no photos. <code>npm run check:images</code> checks every page: each file in a <code>srcset</code> exists, is the width it claims and weighs under 250 KB, and every image has alt text, a width and a height.</p>
+          <div class="sg-example">
+<figure class="photo">
+  <picture>
+    <source type="image/webp" sizes="(min-width: 48rem) 44rem, 100vw"
+      srcset="assets/img/photos/giant-from-willow-lake-480.webp 480w,
+              assets/img/photos/giant-from-willow-lake-960.webp 960w,
+              assets/img/photos/giant-from-willow-lake-1440.webp 1440w">
+    <img src="assets/img/photos/giant-from-willow-lake-960.jpg"
+      srcset="assets/img/photos/giant-from-willow-lake-480.jpg 480w,
+              assets/img/photos/giant-from-willow-lake-960.jpg 960w,
+              assets/img/photos/giant-from-willow-lake-1440.jpg 1440w"
+      sizes="(min-width: 48rem) 44rem, 100vw"
+      width="1440" height="960" loading="lazy" decoding="async"
+      alt="A drawing of a long, dark ridge shaped like a person lying on their back, reflected in a still lake under an orange sunset sky.">
+  </picture>
+  <figcaption>The Sleeping Giant from Willow Lake at sunset. <span class="photo__credit">Illustration: drawn by a script in Campus Kit</span></figcaption>
+</figure>
+          </div>
+        </article>
+
+        <section class="sg-component" aria-labelledby="alt-title">
+          <h3 id="alt-title">Writing alt text</h3>
+          <p>Screen readers read the alt text in place of the photo, and browsers show it when a photo doesn't load. Ask what the photo adds to the page, then write that.</p>
+          <ul>
+            <li><strong>It only sets a mood, and the text says everything:</strong> use empty alt text, <code>alt=""</code>. Screen readers skip the photo. Never leave <code>alt</code> out, or some screen readers read the file name.</li>
+            <li><strong>It shows something the text doesn't:</strong> describe that in one sentence, the way you would to someone on the phone.</li>
+            <li><strong>It has words in it,</strong> like a poster or a sign: put the words in the alt text, or in the text beside it.</li>
+            <li><strong>It's the only thing inside a link:</strong> say where the link goes, not what the photo looks like.</li>
+            <li><strong>It's a chart:</strong> say what it shows in the alt text, and give the numbers in a table or the text, like the <a href="demo/news/article.html">news story</a> does.</li>
+          </ul>
+          <p>Don't start with "Image of" or "Photo of"; screen readers already say it's an image. Say "drawing" or "painting" only when that matters. Keep it to a sentence or two, and put anything longer in the caption or the text. Describe people by what they're doing, and mention how someone looks only when it matters to the page. Name people only when the page is about them.</p>
+
+          <h4 id="alt-examples-title">Examples from a college site</h4>
+          <ul class="alt-examples">
+            <li>
+              <h5>Commencement</h5>
+              <p>In a news story about graduation day.</p>
+              <dl>
+                <div><dt>Weak</dt><dd><code>alt="Commencement"</code></dd></div>
+                <div><dt>Better</dt><dd><code>alt="Graduates in green gowns throw their caps in the air on the quad."</code></dd></div>
+              </dl>
+            </li>
+            <li>
+              <h5>Students in a lab</h5>
+              <p>On the biology program page, next to a paragraph about field research.</p>
+              <dl>
+                <div><dt>Weak</dt><dd><code>alt="Image of students in a lab"</code></dd></div>
+                <div><dt>Better</dt><dd><code>alt="Two students test water samples from Willow Creek at a lab bench."</code></dd></div>
+              </dl>
+            </li>
+            <li>
+              <h5>A campus building</h5>
+              <p>On the campus visit page, under the heading "Where you'll start your tour."</p>
+              <dl>
+                <div><dt>Weak</dt><dd><code>alt="Building"</code></dd></div>
+                <div><dt>Better</dt><dd><code>alt="The Admission Center, a two-story stone building with a red door, across from the main parking lot."</code></dd></div>
+              </dl>
+            </li>
+            <li>
+              <h5>A banner behind a heading</h5>
+              <p>A wide view of campus at the top of the giving page. The heading and text say everything.</p>
+              <dl>
+                <div><dt>Weak</dt><dd><code>alt="Beautiful view of our campus with mountains at sunset"</code></dd></div>
+                <div><dt>Better</dt><dd><code>alt=""</code>, because it sets a mood and adds no information.</dd></div>
+              </dl>
+            </li>
+            <li>
+              <h5>A faculty headshot</h5>
+              <p>In the directory, right beside the person's name and title.</p>
+              <dl>
+                <div><dt>Weak</dt><dd><code>alt="Headshot"</code></dd></div>
+                <div><dt>Better</dt><dd><code>alt=""</code>, because the name is right beside it. Alt text with the name would make screen readers say it twice.</dd></div>
+              </dl>
+            </li>
+            <li>
+              <h5>A game photo</h5>
+              <p>In a recap of the soccer team's win.</p>
+              <dl>
+                <div><dt>Weak</dt><dd><code>alt="Soccer"</code></dd></div>
+                <div><dt>Better</dt><dd><code>alt="Forward Delaney Ruiz heads the ball past a Copper Basin defender."</code></dd></div>
+              </dl>
+            </li>
+            <li>
+              <h5>An event poster</h5>
+              <p>On the events page, as the only information about the event.</p>
+              <dl>
+                <div><dt>Weak</dt><dd><code>alt="Open house poster"</code></dd></div>
+                <div><dt>Better</dt><dd><code>alt="Fall open house. Tuesday, October 14, at 9 a.m. in the Admission Center. Free, with lunch."</code></dd></div>
+              </dl>
+            </li>
+          </ul>
+        </section>
+
+        <section class="sg-component" aria-labelledby="photo-sizes-title">
+          <h3 id="photo-sizes-title">Sizes to save</h3>
+          <p>A photo straight from a camera or phone is 4,000 to 6,000 pixels wide and several megabytes, which can take seconds to load on a phone. Save each photo at the widths below. The largest is twice as wide as the photo appears, so it stays sharp on high-resolution screens.</p>
+          <section class="table-wrap" tabindex="0" aria-labelledby="photo-sizes-caption">
+            <table>
+              <caption id="photo-sizes-caption">Widths to save each photo at, and the most the largest file should weigh</caption>
+              <thead>
+                <tr><th scope="col">Where the photo goes</th><th scope="col">Shape</th><th scope="col">Widths in pixels</th><th scope="col">Largest file under</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Full-width banner at the top of a page</td><td>Wide, 2 to 1 or 16 to 9</td><td>960, 1440, 1920, 2560</td><td>250 KB</td></tr>
+                <tr><td>In the text of a page or story</td><td>3 to 2</td><td>480, 960, 1440</td><td>150 KB</td></tr>
+                <tr><td>Beside the text, half the column wide</td><td>3 to 2 or 4 to 3</td><td>480, 960</td><td>80 KB</td></tr>
+                <tr><td>Headshot in the directory or a profile</td><td>Square</td><td>240, 480</td><td>40 KB</td></tr>
+                <tr><td>Logo, icon or simple drawing</td><td>Any</td><td>Save as SVG, not a photo file</td><td>10 KB</td></tr>
+              </tbody>
+            </table>
+          </section>
+          <p>Save photos as JPEG at a quality of 70 to 80, and as WebP at 75 if your editing tool can. WebP is usually a third smaller: the drawing above is 85 KB as a JPEG and 53 KB as a WebP at 1440 pixels wide. Use PNG only for screenshots.</p>
+          <p class="note">Heavy photos are the most common reason a page loads slowly. The <a href="report.html">performance report</a> shows each page's speed score, and <code>npm run check:images</code> stops any photo file over 250 KB.</p>
+        </section>
+
+        <section class="sg-component" aria-labelledby="photo-upload-title">
+          <h3 id="photo-upload-title">Before you upload a photo</h3>
+          <ul>
+            <li>Everyone who can be recognized in it has signed the college's photo release. Ask the marketing office if you're not sure.</li>
+            <li>It's cropped to the shape in the table, with nothing important right at the edge.</li>
+            <li>It's saved at each width in the table, and the largest file is under its target.</li>
+            <li>Location data is removed. Phones record where a photo was taken; most "Export" or "Save for web" options remove it.</li>
+            <li>The file name uses words, lowercase letters and hyphens, and ends with the width: <code>biology-field-lab-960.jpg</code>.</li>
+            <li>There's no text in the photo. Put words on the page instead, where everyone can read, search, zoom and translate them.</li>
+            <li>The alt text and caption are written.</li>
+          </ul>
+        </section>
       </div>
     </section>
   </main>
