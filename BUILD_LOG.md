@@ -38,6 +38,7 @@ Every AI work session on Campus Kit adds an entry here, newest first. Each entry
 - **My first draft printed on two and a half sheets' worth** (about 1,580 of 960 pixels). I'd written it as a screen page first. It took two rounds of cutting copy and code, a two-column print layout and the smaller print size to fit.
 - **The smaller print size didn't apply at first:** my rule in `kit-site.css` had the same specificity as the one in `print.css`, which loads later and won. I made it more specific (`:root:has(.one-sheet .quick-ref)`).
 - **The "Web designers" note sat right against the lede** in the first screenshot; I added space above it.
+- **Result on CI:** the first run passed every step: HTML validation, axe on every page at desktop and phone sizes, zoom and text spacing, the one-sheet print check (the quick reference fit on letter and A4 in the web fonts), the social graphics export and the Lighthouse budgets. The site deployed.
 
 ### Left for Dustin
 
