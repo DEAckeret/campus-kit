@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Web editor quick reference | Campus Kit</title>
+  <meta name="description" content="A one-page quick reference for faculty and staff who edit a college website: the five pieces they'll use most, the mistakes to avoid, and a check before publishing. Prints on one sheet.">
+  <link rel="icon" href="assets/img/giant-mark.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- The web fonts load without holding up the page: text shows in a system
+       font first and switches when they arrive. Without JavaScript, <noscript> loads them. -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;1,7..72,500&family=Public+Sans:wght@400;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;1,7..72,500&family=Public+Sans:wght@400;600;700&display=swap"></noscript>
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/kit-site.css">
+  <link rel="stylesheet" href="assets/css/print.css">
+  <!-- main.js opens the note for the demo email address and phone number -->
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body class="one-sheet">
+  <!-- one-sheet: prints as a single page on US letter or A4 (print.css and
+       kit-site.css). tests/print.mjs fails if it needs a second sheet, so
+       shorten something before adding anything. -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="sg-header">
+    <div class="wrap sg-header__inner">
+      <a class="sg-home" href="index.html">Campus Kit</a>
+      <nav aria-label="Project">
+        <ul>
+          <li><a href="demo/index.html">Demo site</a></li>
+          <li><a href="styleguide.html">Style guide</a></li>
+          <li><a href="report.html">Performance report</a></li>
+          <li><a href="https://github.com/DEAckeret/campus-kit">Code on GitHub</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="page-header">
+      <div class="wrap">
+        <h1>Web editor quick reference</h1>
+        <p class="lede">For faculty and staff who update their department's pages: the five pieces you'll use most, the mistakes the web team fixes most often, and what to check before you publish.</p>
+        <p class="note no-print">Web designers: hand this out at the end of a training session. Choose Print in your browser and it fits on one sheet of letter or A4 paper.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="wrap with-sidebar">
+        <div>
+          <h2 id="pieces-title">The five pieces you'll use most</h2>
+          <p class="no-print">Copy the HTML, then change only the words between the tags. The <a href="styleguide.html#components">style guide</a> shows how each one looks.</p>
+          <ul class="quick-ref" aria-labelledby="pieces-title">
+            <li>
+              <h3 id="ref-headings">Headings</h3>
+              <p>Break the page into sections people can scan. The page title is the only heading 1, sections get a heading 2, and their parts a heading 3. Choose by the outline, not the size, and never skip a level.</p>
+              <section class="sg-code sg-code--alone" tabindex="0" aria-labelledby="ref-headings"><pre><code>&lt;h2&gt;What you'll study&lt;/h2&gt;
+&lt;h3&gt;First year&lt;/h3&gt;
+&lt;p&gt;Every biology student starts with…&lt;/p&gt;</code></pre></section>
+            </li>
+            <li>
+              <h3 id="ref-links">Links</h3>
+              <p>The link's words say where it goes, so they make sense on their own. For a list of pages, use a link list.</p>
+              <section class="sg-code sg-code--alone" tabindex="0" aria-labelledby="ref-links"><pre><code>&lt;p&gt;Read the &lt;a href="apply.html"&gt;steps to apply&lt;/a&gt;.&lt;/p&gt;
+&lt;ul class="link-list"&gt;
+  &lt;li&gt;&lt;a href="apply.html"&gt;How to apply&lt;/a&gt;
+    &lt;p&gt;Four steps and the deadlines.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre></section>
+            </li>
+            <li>
+              <h3 id="ref-buttons">Buttons</h3>
+              <p>For the main thing you want visitors to do: one solid button per page, quiet ones for the rest. Say what happens: "Request a meeting," not "Submit."</p>
+              <section class="sg-code sg-code--alone" tabindex="0" aria-labelledby="ref-buttons"><pre><code>&lt;a class="button" href="advising.html"&gt;Request a meeting&lt;/a&gt;
+&lt;a class="button button--quiet" href="events.html"&gt;All events&lt;/a&gt;</code></pre></section>
+            </li>
+            <li>
+              <h3 id="ref-tables">Tables</h3>
+              <p>For things people compare across rows, like courses, never for layout. Keep the caption and column headers. Each caption needs its own <code>id</code>, repeated in the wrapper's <code>aria-labelledby</code>.</p>
+              <section class="sg-code sg-code--alone" tabindex="0" aria-labelledby="ref-tables"><pre><code>&lt;section class="table-wrap" tabindex="0" aria-labelledby="core-caption"&gt;
+  &lt;table&gt;
+    &lt;caption id="core-caption"&gt;Core courses&lt;/caption&gt;
+    &lt;thead&gt;&lt;tr&gt;&lt;th scope="col"&gt;Course&lt;/th&gt;&lt;th scope="col"&gt;Title&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+    &lt;tbody&gt;&lt;tr&gt;&lt;td&gt;BIO 230&lt;/td&gt;&lt;td&gt;Genetics&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/section&gt;</code></pre></section>
+            </li>
+            <li>
+              <h3 id="ref-callout">Callout</h3>
+              <p>A shaded box for the one next step you want visitors to take. Use one per page: if everything stands out, nothing does.</p>
+              <section class="sg-code sg-code--alone" tabindex="0" aria-labelledby="ref-callout"><pre><code>&lt;section class="callout" aria-labelledby="advisor"&gt;
+  &lt;h2 id="advisor"&gt;Talk with an advisor&lt;/h2&gt;
+  &lt;p&gt;Get a sample four-year plan.&lt;/p&gt;
+  &lt;p&gt;&lt;a class="button" href="advising.html"&gt;Request a meeting&lt;/a&gt;&lt;/p&gt;
+&lt;/section&gt;</code></pre></section>
+            </li>
+          </ul>
+
+          <h2 id="mistakes-title">Mistakes to avoid</h2>
+          <section class="table-wrap" tabindex="0" aria-labelledby="mistakes-caption">
+            <table class="mistakes">
+              <caption id="mistakes-caption">Common mistakes, and what to do instead</caption>
+              <thead>
+                <tr><th scope="col">Instead of</th><th scope="col">Do this</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">"Click here" or "Read more" links</th><td>Name the page in the link: "See the <a href="demo/programs/biology.html">biology courses</a>."</td></tr>
+                <tr><th scope="row">Pasting from Word or Google Docs</th><td>Paste as plain text: Ctrl+Shift+V, or Cmd+Shift+Option+V on a Mac.</td></tr>
+                <tr><th scope="row">Words in a picture, like a flyer</th><td>Type the words on the page, where screen readers and search can find them.</td></tr>
+                <tr><th scope="row">A PDF in place of a page</th><td>Put it on the page. Link a PDF only for a form to print: "Housing form (PDF)."</td></tr>
+                <tr><th scope="row">A photo straight from your phone</th><td>Send it to the web team to resize, with alt text that says what it adds.</td></tr>
+                <tr><th scope="row">Color alone to mark something</th><td>Say it in words too: "Required" or "Due October 1."</td></tr>
+                <tr><th scope="row">"This fall" or "next Friday"</th><td>Write the date. Pages stay up long after you write them.</td></tr>
+              </tbody>
+            </table>
+          </section>
+        </div>
+
+        <div class="sidebar">
+          <section aria-labelledby="publish-title">
+            <h2 id="publish-title">Before you publish</h2>
+            <ul>
+              <li>Read the page on your phone.</li>
+              <li>Press Tab to move through it: you reach every link and button, and can see where you are.</li>
+              <li>Links go where they say.</li>
+              <li>Photos have alt text.</li>
+              <li>Names, dates and rooms are right.</li>
+            </ul>
+          </section>
+
+          <section class="callout" aria-labelledby="help-title">
+            <h2 id="help-title">Stuck? Ask the web team</h2>
+            <p>Send the page's address and what you were trying to do.</p>
+            <p><a href="#" data-demo-contact="email">web@sleepinggiant.example</a><br>
+            <a href="#" data-demo-contact="phone">(406) 555-0129</a></p>
+          </section>
+
+          <section class="no-print" aria-labelledby="more-title">
+            <h2 id="more-title">Going further</h2>
+            <ul>
+              <li><a href="https://github.com/DEAckeret/campus-kit/blob/main/docs/adding-a-program-page.md">Adding a program page</a>, step by step</li>
+              <li><a href="styleguide.html#photos">Photos and alt text</a></li>
+              <li><a href="https://github.com/DEAckeret/campus-kit/blob/main/docs/changing-the-header-and-footer.md">Changing the menu</a> (the web team does this)</li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="site-footer__legal">Campus Kit is open source under the MIT license. College of the Sleeping Giant and everyone at it are fictional.</p>
+    </div>
+  </footer>
+</body>
+</html>

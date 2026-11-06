@@ -1,4 +1,5 @@
-// Checks that every program page prints as a one-page handout.
+// Checks that every program page, and the web editor quick reference,
+// prints as a one-page handout.
 // A page opts in with <body class="one-sheet"> (see print.css). Each one is
 // printed to PDF on US letter and on A4, the way a browser's Print would,
 // and the check fails if any copy needs a second sheet.
@@ -41,7 +42,7 @@ for (const path of sheets) {
       console.log(`ok    ${path} (${format})`);
     } else {
       failures += 1;
-      const message = `${path} prints on ${sheetsUsed} sheets of ${format} paper instead of one. Shorten the text, or remove a course row, until Print preview shows one page.`;
+      const message = `${path} prints on ${sheetsUsed} sheets of ${format} paper instead of one. Shorten the text (on a program page, remove a course row) until Print preview shows one page.`;
       console.log(`FAIL  ${message}`);
       if (IN_CI) console.log(`::error file=${path}::${message}`);
     }
@@ -55,4 +56,4 @@ if (failures > 0) {
   console.log(`\n${failures} handout check(s) failed.`);
   process.exit(1);
 }
-console.log(`\nAll ${sheets.length} program pages print on one sheet of letter and A4 paper.`);
+console.log(`\nAll ${sheets.length} one-sheet pages print on one sheet of letter and A4 paper.`);

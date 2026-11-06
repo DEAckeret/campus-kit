@@ -52,7 +52,7 @@ jobs:
           fi
       - name: Zoom and text spacing (200% and 400% zoom, WCAG 1.4.12 spacing)
         run: npm run test:zoom
-      - name: Program pages print on one sheet (US letter and A4)
+      - name: Program pages and the quick reference print on one sheet (US letter and A4)
         run: npm run test:print
       # Saves each graphic as a PNG in the web fonts, and fails if any text
       # doesn't fit or sits where the apps cover a story
@@ -97,7 +97,7 @@ jobs:
       - name: Collect the site files
         run: |
           mkdir _site
-          cp -r index.html styleguide.html report.html analytics.html .nojekyll assets demo _site/
+          cp -r index.html styleguide.html report.html analytics.html training.html .nojekyll assets demo _site/
       # The check job filled in report.html with this version's Lighthouse scores
       - name: Get the filled-in performance report
         uses: actions/download-artifact@v4

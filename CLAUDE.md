@@ -29,12 +29,13 @@ Campus Kit is a proof-of-concept project: it is built **entirely by AI** for Dus
 - `styleguide.html`: every token and component, with copyable HTML
 - `report.html`: the site performance report; CI fills in its "Latest results" section
 - `analytics.html`: the analytics guide, with the list of every `data-track` name
+- `training.html`: the web editor quick reference for faculty and staff; prints on one sheet (`body class="one-sheet"`)
 - `demo/`: the College of the Sleeping Giant demo site
 - `demo/programs/_template.html`: commented template for new program pages
 - `demo/events/`: event detail pages, each with its "Add to calendar" `.ics` file beside it
 - `assets/css/tokens.css`: colors, type, spacing (the only file to change when rebranding)
 - `assets/css/base.css`, `components.css`, `print.css`: site styles (`print.css` also turns program pages into one-page handouts)
-- `assets/css/kit-site.css`, `assets/js/kit-site.js`: only for the project page and style guide
+- `assets/css/kit-site.css`, `assets/js/kit-site.js`: only for the project's own pages (project page, style guide, guides)
 - `docs/`: guides for non-technical editors
 - `demo/accessibility.html` and `demo/report-a-problem.html`: the accessibility statement (update its known problems and review date) and the website problem form (a demo: its fields have no names, so it sends nothing)
 - `demo/social.html`: social media graphics for one event (copy it for another event)
@@ -47,7 +48,7 @@ Campus Kit is a proof-of-concept project: it is built **entirely by AI** for Dus
 - `tests/pages.mjs`: the list of pages the checks visit; add every new page to it
 - `tests/accessibility.mjs`: axe checks
 - `tests/zoom.mjs`: 200% and 400% zoom, 200% text size and text-spacing checks
-- `tests/print.mjs`: every page with `<body class="one-sheet">` (the program pages) prints on one sheet of letter and A4 paper
+- `tests/print.mjs`: every page with `<body class="one-sheet">` (the program pages and the quick reference) prints on one sheet of letter and A4 paper
 - `tests/calendar.mjs`: every linked `.ics` file is valid and has the same times and title as its event page
 - `tests/images.mjs`: every image has alt text, a width and a height, and every file in a `srcset` exists, is the width it claims and is under 250 KB
 - `tests/tracking.mjs`: every `data-track` name is listed in `analytics.html`, and no page loads a third-party script

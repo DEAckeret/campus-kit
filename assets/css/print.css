@@ -44,7 +44,8 @@
 }
 
 /* ---- Program one-sheet ---------------------------------------------------
-   A page with <body class="one-sheet"> (every program page) prints as a
+   A page with <body class="one-sheet"> (every program page, and the web
+   editor quick reference, whose own print rules are in kit-site.css) prints as a
    one-page handout for college fairs, on US letter or A4: the type scale
    shrinks, the sidebar becomes a row of contacts at the bottom, and
    everything meant for the screen drops out. Mark screen-only parts with .no-print and paper-only

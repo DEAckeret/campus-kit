@@ -21,6 +21,7 @@ export const PAGES = [
   "demo/report-a-problem.html",
   "report.html",
   "analytics.html",
+  "training.html",
 ];
 
 // The demo's welcome note (main.js) opens over the first page a visitor

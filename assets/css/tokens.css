@@ -67,6 +67,8 @@
   /* Program pages print as a one-page handout (print.css). The whole type
      and space scale is in rem, so this one size shrinks it all to fit.   */
   --print-root-size: 9pt;
+  --print-root-size-dense: 8pt; /* the web editor quick reference, which
+                                   packs more onto its one sheet */
   --print-column: 11rem;      /* narrowest column in the handout's contact row */
 
   /* ---- Social media graphics ------------------------------------------ */

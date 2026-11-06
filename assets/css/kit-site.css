@@ -189,3 +189,57 @@ pre {
 .sg-code--alone pre { margin: 0; }
 /* Keep each event name on one line; the table scrolls on narrow screens */
 .event-names th code { white-space: nowrap; }
+
+/* ---- Web editor quick reference (training.html) ------------------------- */
+/* One row per piece: what it's for, then the HTML to copy */
+.quick-ref {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-7);
+  max-width: none;
+  border-top: 1px solid var(--color-line);
+}
+.quick-ref > li {
+  margin: 0;
+  padding-block: var(--space-5);
+  border-bottom: 1px solid var(--color-line);
+}
+.quick-ref h3 { font-family: var(--font-body); font-weight: 700; font-size: var(--step-1); margin: 0 0 var(--space-2); }
+.quick-ref p { margin-bottom: var(--space-3); }
+.quick-ref .sg-code--alone { margin: 0; }
+.page-header .lede + .note { margin: var(--space-4) 0 0; }
+.mistakes th[scope="row"] { font-weight: 700; width: 34%; }
+
+@media print {
+  /* The handout: project menu and screen-only notes drop out, the pieces
+     sit in two columns, and code is ink on paper (browsers drop the dark
+     background, which would leave light text on white) */
+  :root:has(.one-sheet .quick-ref) { font-size: var(--print-root-size-dense); }
+  .one-sheet .sg-header,
+  .one-sheet .site-footer { display: none; }
+  .one-sheet .page-header h1 { font-size: var(--step-4); }
+  .one-sheet .quick-ref {
+    columns: 2;
+    column-gap: var(--space-5);
+    margin-bottom: var(--space-3);
+    border-top: 0;
+  }
+  .one-sheet .quick-ref > li { padding-block: 0 var(--space-3); border-bottom: 0; break-inside: avoid; }
+  .one-sheet .quick-ref h3 { margin: 0 0 var(--space-1); }
+  .one-sheet .quick-ref p { margin-bottom: var(--space-2); }
+  .one-sheet .sg-code {
+    background: none;
+    color: var(--color-ink);
+    border: 1px solid var(--color-line);
+    padding: var(--space-2);
+    line-height: var(--leading-tight);
+    overflow: visible;
+  }
+  .one-sheet .sg-code pre { white-space: pre-wrap; }
+  /* The heading above says the same thing on paper */
+  .one-sheet .mistakes caption { display: none; }
+  .one-sheet .mistakes th,
+  .one-sheet .mistakes td { vertical-align: top; }
+  .one-sheet .sidebar .callout { padding: var(--space-3) var(--space-4); }
+  .one-sheet .sidebar .callout p { margin-bottom: var(--space-1); }
+}

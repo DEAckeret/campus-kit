@@ -4,6 +4,48 @@ Every AI work session on Campus Kit adds an entry here, newest first. Each entry
 
 ---
 
+## Session 18: November 6, 2026 (web editor quick reference)
+
+**Built by:** Claude (Opus 5.5), in a scheduled session with nobody watching, so decisions below are mine and open to Dustin's review.
+
+### What I built
+
+- **A web editor quick reference,** [`training.html`](training.html): the one-page handout a web designer gives faculty and staff after a training session. It has three parts:
+  - **The five pieces you'll use most:** headings, links (including the link list), buttons, tables and the callout. Each has one short paragraph on when to use it and the rule people most often break, then the HTML to copy.
+  - **Mistakes to avoid,** as a two-column table ("Instead of" and "Do this"): "Click here" links, pasting from Word or Google Docs, words in a picture, a PDF in place of a page, a photo straight from a phone, color alone to mark something, and "this fall" instead of a date.
+  - **Before you publish,** a five-item check, and a "Stuck? Ask the web team" callout with the web team's demo email and phone (the same ones as the report-a-problem page, as `data-demo-contact` links).
+- **It prints on one sheet of letter or A4 paper.** The page uses `<body class="one-sheet">`, so `tests/print.mjs` checks it with the program pages. Its own print rules in `kit-site.css` drop the project menu and footer, put the five pieces in two columns, print code as ink on paper with a thin border, and hide the table's caption (the heading above it says the same thing). A new token, `--print-root-size-dense` (8pt, against 9pt for program pages), sets its print size.
+- **Links to it** from the style guide's introduction, the project page's "Easy to hand off" note, the README and the file map in `CLAUDE.md`. It's in `tests/pages.mjs`, and the deploy step copies it to the site. The print check's messages now say "one-sheet pages" instead of "program pages."
+
+### What I decided and why
+
+- **A page on the project site, not a doc in `docs/`.** The roadmap asks for something to hand out, and an HTML page can be printed, linked and checked by CI. It sits next to the analytics guide and uses the same header.
+- **Which five.** Faculty and staff mostly update existing department pages, so I picked what they touch every time: headings, links, buttons, tables and the callout. Photos are the obvious sixth; their markup is too long for a handout, so the "photo from your phone" row sends them to the web team and the page links to the style guide's photo section.
+- **Code only, no live examples.** Live examples would double the length and break the one-sheet print. The page links to the style guide to show how each piece looks. The code samples are shorter than the style guide's (a one-row table, `thead` on one line) so they fit on paper.
+- **No new school-site component, so no new style guide entry.** The page reuses the table, callout and code-sample styles. Its only new styles (`.quick-ref` rows and the print layout) are in `kit-site.css`, which is just for the project's own pages, like the alt-text examples last session.
+- **8pt on paper.** At the program pages' 9pt it needed about 1.1 sheets even after I cut the copy twice. 8pt body text is normal for a quick-reference card, and it left room: with the local fonts it uses about 890 of the 960 pixels letter paper allows, and still fits with 0.06em of extra letter spacing added to stand in for wider fonts.
+- **I dropped two mistakes to make it fit:** "bold text in place of a heading" (the headings piece already says it) and capitals for emphasis.
+
+### How I checked it
+
+- Screenshots at 1280px and 390px, and of the print layout at A4 width. One `h1`, headings in order (h2, h3), no duplicate IDs, every `aria-labelledby` points at an element that exists, no sideways scrolling (the code samples scroll inside their own focusable boxes on phones, like the analytics guide's). Clicking the demo email opens the demo note.
+- `tests/print.mjs`: the quick reference, the biology page and the template each print on one sheet of letter and A4. `tests/zoom.mjs` passes on all 21 pages under all six conditions. The include, tracking, calendar and image checks pass.
+- Contrast: only existing token pairs (ink on white, muted ink for the note, spruce links, the light code text on ink that the analytics guide already uses, ink on the violet tint callout).
+
+### What went wrong
+
+- **Still no axe or HTML validation here** (the npm registry and Google Fonts are blocked in this workspace), so those run first in CI, and the print check in the real fonts does too.
+- **My first draft printed on two and a half sheets' worth** (about 1,580 of 960 pixels). I'd written it as a screen page first. It took two rounds of cutting copy and code, a two-column print layout and the smaller print size to fit.
+- **The smaller print size didn't apply at first:** my rule in `kit-site.css` had the same specificity as the one in `print.css`, which loads later and won. I made it more specific (`:root:has(.one-sheet .quick-ref)`).
+- **The "Web designers" note sat right against the lede** in the first screenshot; I added space above it.
+
+### Left for Dustin
+
+- **The mistakes list is my pick of the most common ones** from general practice, not from a real web team's tickets. Swap any you'd rather show.
+- Still open from earlier: moving the demo's dates to 2026, and the `lighthouse-trial` branch. The site search page is the next AI item.
+
+---
+
 ## Session 17: November 4, 2026 (photo and image guidelines)
 
 **Built by:** Claude (Opus 5.5), in a scheduled session with nobody watching, so decisions below are mine and open to Dustin's review.
