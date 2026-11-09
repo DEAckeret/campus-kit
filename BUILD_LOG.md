@@ -4,6 +4,52 @@ Every AI work session on Campus Kit adds an entry here, newest first. Each entry
 
 ---
 
+## Session 19: November 9, 2026 (site search page)
+
+**Built by:** Claude (Opus 5.5), in a scheduled session with nobody watching, so decisions below are mine and open to Dustin's review.
+
+### What I built
+
+- **A site search page,** [`demo/search.html`](demo/search.html). Visitors type a word or two and get the matching pages as rows (the existing link list), with matched words marked, a status line that says how many pages matched (read out by screen readers), and the search kept in the address (`search.html?q=apply`) so other pages can link to one. When nothing matches, it offers the program finder with the same words, the directory and the problem form. A sidebar points people looking for a program or a person to the program finder and the directory, since those aren't pages this search can find.
+- **A generated index,** [`demo/search-index.json`](demo/search-index.json), made by a new dependency-free script, `scripts/search-index.mjs`. It reads the `<title>` (the part before " | ") and `<meta name="description">` of every demo page with the shared header, skipping pages marked `noindex` (the search page and "page not found") and templates (file names starting with `_`). 12 pages are in it. The same script writes the list of every page into the search page, between `<!-- search-index: list -->` markers.
+- **`npm run build` now runs it** after the header and footer script, and a new check, `npm run check:search`, fails CI if the index or the list doesn't match the pages (it runs before `npm install`, like the include check). It's in `npm test` too.
+- **Search in the header:** a "Search" link at the end of the quick links on every demo page (`partials/header.html`), marked as the current page on the search page. The "page not found" page has a line under its program search: "Looking for something else? Search every page on the site."
+- **A new style guide component, "Site search,"** with a live example that searches the real index (try "soccer"). New styles in `components.css` (`.site-search`, `.finder__note`) use existing tokens only.
+- **`site-search`** is a new `data-track` name, listed in the analytics guide; the guide's example code already counts form submissions, and I updated its comment. The search page is in `tests/pages.mjs`, on the project page, in the README, the file map in `CLAUDE.md`, and in the program-page guide (a paragraph on how the description feeds search, and a checklist item).
+
+### What I decided and why
+
+- **Every word that matters must match, not any word.** With only titles and descriptions to go on, "any word" returned half the site for most searches. Small words like "how," "to" and "what" are dropped first, so "how to apply" searches for "apply." A word in the title counts more than one in the description, and more again at the start of a word in the title.
+- **Without JavaScript, the box is hidden and the list of every page does the job.** A search box that reloads the page and finds nothing would be worse than no box. The page says "Searching needs JavaScript" and the full list (12 rows) is right there. On a real site with hundreds of pages, that list would be long; a team could swap it for a link to a site map.
+- **The list and the index are made by the same script,** so they can't disagree, and both are committed, so the site still has no build step: CI only checks they're current.
+- **Search runs on "Search" (or Enter), not on every keystroke** like the program finder. Announcing a new count after every letter is noisy with a screen reader, and this search covers whole pages rather than one visible list.
+- **The home page is listed as "Home page,"** not its title ("College of the Sleeping Giant"), which wouldn't tell anyone what the page is.
+- **Matched words are marked in the gold tint** with a thin gold underline. Text keeps its own color on it: spruce links 6.95 to 1, muted ink 6.73 to 1 (measured). The marking is extra help, not the only way to see a match.
+- **The flyer and the social graphics page aren't in the index:** they're staff tools without the site header, not pages for visitors.
+- **The search page is `noindex`,** like "page not found": search engines don't need a copy of a search page.
+
+### How I checked it
+
+- Screenshots at 1280px and 390px of the search page with results, with no results, with JavaScript off, and at 320px; the style guide example at 1280px and 390px; and the "page not found" page. One `h1`, headings in order (the style guide example uses `h4` under its `h3`), no sideways scrolling at any width.
+- In a real browser: "how to apply," "cost," "soccer schedule" and "give campaign" each find the right page; "nursing" finds nothing and the program finder link becomes `programs.html?q=nursing`; links in the style guide's results go to `demo/…` correctly; the style guide's example doesn't change the style guide's own address.
+- `tests/zoom.mjs` passes on all 22 pages under all six conditions, menus open and closed. The include, search index, tracking, calendar, image and one-sheet print checks pass. The site-wide 404 copy rewrites the new search link to `/campus-kit/demo/search.html`.
+
+### What went wrong
+
+- **Still no axe or HTML validation here** (the npm registry is blocked in this workspace), so those run first in CI. If html-validate objects to `role="search"` on the form (it prefers native elements for some roles), that's the likeliest failure.
+- **My first version only worked on the search page:** it looked up the status line and results anywhere in the document and linked results relative to the page, so the style guide's copy would have linked to `programs.html` at the top of the site, which doesn't exist. I grouped each search in a `data-search` box and made result links relative to the index file.
+- **The style guide example also wrote `?q=soccer` into the style guide's address** after a search, and would have read it back on the next visit. Only the search page keeps the search in its address now.
+- I first hid the status line when empty (`display: none`), which can stop some screen readers from reading it when it fills in. It stays in the page with no margin instead.
+- **Result on CI:** not known yet when this entry was written; see the next commit.
+
+### Left for Dustin
+
+- **Search only knows titles and descriptions,** as the roadmap item says, so "nursing" or a professor's name finds nothing (the no-results message points to the program finder and directory). A later item could add each page's headings, or the program list, to the index.
+- **The "Search" link sits at the end of the quick links** rather than as a box in the header, to keep the header as it is. Say if you'd rather have a box.
+- Still open from earlier: moving the demo's dates to 2026, and the `lighthouse-trial` branch. The content audit checklist is the next AI item.
+
+---
+
 ## Session 18: November 6, 2026 (web editor quick reference)
 
 **Built by:** Claude (Opus 5.5), in a scheduled session with nobody watching, so decisions below are mine and open to Dustin's review.

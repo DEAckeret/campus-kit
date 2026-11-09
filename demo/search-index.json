@@ -1,0 +1,65 @@
+{
+  "note": "Made by scripts/search-index.mjs from each page's title and description. Don't edit by hand: run npm run build.",
+  "pages": [
+    {
+      "title": "Academic programs",
+      "description": "Browse majors, minors and certificates at College of the Sleeping Giant.",
+      "url": "programs.html"
+    },
+    {
+      "title": "Accessibility",
+      "description": "How we make this website work for everyone, what we know doesn't work yet, how to ask for something in another format, and how to report a problem.",
+      "url": "accessibility.html"
+    },
+    {
+      "title": "Biology",
+      "description": "Study biology at College of the Sleeping Giant, from cells to watersheds, with research from the first year.",
+      "url": "programs/biology.html"
+    },
+    {
+      "title": "Events and athletics",
+      "description": "Upcoming events, performances and games at College of the Sleeping Giant.",
+      "url": "events.html"
+    },
+    {
+      "title": "Faculty and staff directory",
+      "description": "Find contact information for College of the Sleeping Giant faculty and staff.",
+      "url": "directory.html"
+    },
+    {
+      "title": "Fall choir concert",
+      "description": "The College Choir and Chamber Singers in St. Brigid Chapel, Saturday, November 1, at 7:30 p.m. Free. Add it to your calendar and plan your visit.",
+      "url": "events/fall-choir-concert.html"
+    },
+    {
+      "title": "Give",
+      "description": "Give to College of the Sleeping Giant: progress on the Open Doors scholarship campaign, what each giving level pays for, and other ways to give.",
+      "url": "give.html"
+    },
+    {
+      "title": "Home page",
+      "description": "College of the Sleeping Giant is a fictional small liberal arts college used to demonstrate the Campus Kit design system.",
+      "url": "index.html"
+    },
+    {
+      "title": "How to apply",
+      "description": "Apply to College of the Sleeping Giant in four steps: deadlines, what it costs, and how to start your application.",
+      "url": "apply.html"
+    },
+    {
+      "title": "Report a website problem",
+      "description": "Tell the web team about anything on our website that's broken, wrong or hard to use, including problems with a screen reader, keyboard or zoom.",
+      "url": "report-a-problem.html"
+    },
+    {
+      "title": "Students track river health",
+      "description": "Six years of student-collected river data at College of the Sleeping Giant.",
+      "url": "news/article.html"
+    },
+    {
+      "title": "Women's soccer",
+      "description": "Schedule, results and roster for the 2026 College of the Sleeping Giant women's soccer team.",
+      "url": "athletics/womens-soccer.html"
+    }
+  ]
+}

@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Search | College of the Sleeping Giant</title>
+  <meta name="description" content="Search every page on the College of the Sleeping Giant website by its title and description, or browse the list of every page.">
+  <!-- Search engines don't need a copy of the search page in their results -->
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="../assets/img/giant-mark.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- The web fonts load without holding up the page: text shows in a system
+       font first and switches when they arrive. Without JavaScript, <noscript> loads them. -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;1,7..72,500&family=Public+Sans:wght@400;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;1,7..72,500&family=Public+Sans:wght@400;600;700&display=swap"></noscript>
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/print.css" media="print">
+  <!-- Marks the page as having JavaScript before it is drawn, so the phone menu
+       starts closed instead of closing (and moving the page) once main.js loads -->
+  <script>document.documentElement.classList.add("js");</script>
+  <script src="../assets/js/main.js" defer></script>
+</head>
+
+<!--
+  Site search page.
+  main.js loads search-index.json (the title, description and address of
+  every page) and searches it in the visitor's browser. Nothing typed here
+  is sent anywhere.
+
+  Don't edit the list of every page or search-index.json by hand. Both are
+  made from each page's <title> and <meta name="description"> by
+  scripts/search-index.mjs: edit the page, then run `npm run build`.
+
+  Without JavaScript the search box is hidden (it couldn't search), and the
+  list of every page does the job instead.
+-->
+<body>
+  <!-- include: header section="search" -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <section class="alert-banner" aria-label="Campus notice" data-dismissible>
+    <div class="wrap alert-banner__inner">
+      <p>Spring registration opens November 3. <a href="events.html">See advising sessions</a>.</p>
+      <button class="alert-banner__close" type="button" hidden>
+        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span class="visually-hidden">Close this notice</span>
+      </button>
+    </div>
+  </section>
+
+  <header class="site-header">
+    <nav class="site-header__utility" aria-label="Quick links">
+      <ul class="wrap">
+        <li><a href="directory.html">Directory</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="#">Library</a></li>
+        <li><a href="#">Students</a></li>
+        <li><a href="#">Faculty &amp; staff</a></li>
+        <li><a href="search.html" aria-current="page">Search</a></li>
+      </ul>
+    </nav>
+    <div class="site-header__main wrap">
+      <a class="wordmark" href="index.html">
+        <img src="../assets/img/giant-mark.svg" alt="" width="64" height="24">
+        College of the Sleeping Giant
+      </a>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="main-nav">Menu</button>
+      <nav class="main-nav" id="main-nav" aria-label="Main">
+        <ul>
+          <li><a href="programs.html">Academics</a></li>
+          <li><a href="apply.html">Admission</a></li>
+          <li><a href="#">Cost &amp; aid</a></li>
+          <li><a href="#">Campus life</a></li>
+          <li><a href="athletics/womens-soccer.html">Athletics</a></li>
+          <li><a href="give.html">Give</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!-- /include -->
+
+  <main id="main">
+    <div class="page-header">
+      <div class="wrap">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="search.html" aria-current="page">Search</a></li>
+          </ol>
+        </nav>
+        <h1>Search this site</h1>
+        <p class="lede">Find a page by what it's called or what it covers. Every page is also listed below.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="wrap with-sidebar">
+        <div class="site-search" data-search>
+          <form class="finder finder--light site-search__form" action="search.html" method="get" role="search" aria-label="Site" data-search-form data-search-index="search-index.json" data-track="site-search">
+            <label for="search-q">Search for a page</label>
+            <div class="finder__row">
+              <input id="search-q" name="q" type="search" placeholder="Try “deadlines” or “soccer”" autocomplete="off">
+              <button class="button" type="submit">Search</button>
+            </div>
+          </form>
+          <p class="site-search__no-js">Searching needs JavaScript, which is off in your browser. Every page on the site is listed below.</p>
+          <!-- main.js writes "3 pages match" here; screen readers read it out -->
+          <p class="site-search__status" role="status" data-search-status></p>
+
+          <section class="site-search__results" aria-labelledby="results-title" data-search-results hidden>
+            <h2 id="results-title">Search results</h2>
+            <ul class="link-list" data-search-list></ul>
+            <div data-search-none hidden>
+              <p>Try one word, or check the spelling. You can also:</p>
+              <ul>
+                <li><a href="programs.html" data-search-programs>Look for a program in the program finder</a></li>
+                <li><a href="directory.html">Find a person in the directory</a></li>
+                <li><a href="report-a-problem.html">Tell the web team what you couldn't find</a></li>
+              </ul>
+            </div>
+          </section>
+
+          <h2 id="all-pages-title">Every page on this site</h2>
+          <!-- search-index: list -->
+          <ul class="link-list" id="all-pages-list">
+            <li>
+              <a href="programs.html">Academic programs</a>
+              <p>Browse majors, minors and certificates at College of the Sleeping Giant.</p>
+            </li>
+            <li>
+              <a href="accessibility.html">Accessibility</a>
+              <p>How we make this website work for everyone, what we know doesn't work yet, how to ask for something in another format, and how to report a problem.</p>
+            </li>
+            <li>
+              <a href="programs/biology.html">Biology</a>
+              <p>Study biology at College of the Sleeping Giant, from cells to watersheds, with research from the first year.</p>
+            </li>
+            <li>
+              <a href="events.html">Events and athletics</a>
+              <p>Upcoming events, performances and games at College of the Sleeping Giant.</p>
+            </li>
+            <li>
+              <a href="directory.html">Faculty and staff directory</a>
+              <p>Find contact information for College of the Sleeping Giant faculty and staff.</p>
+            </li>
+            <li>
+              <a href="events/fall-choir-concert.html">Fall choir concert</a>
+              <p>The College Choir and Chamber Singers in St. Brigid Chapel, Saturday, November 1, at 7:30 p.m. Free. Add it to your calendar and plan your visit.</p>
+            </li>
+            <li>
+              <a href="give.html">Give</a>
+              <p>Give to College of the Sleeping Giant: progress on the Open Doors scholarship campaign, what each giving level pays for, and other ways to give.</p>
+            </li>
+            <li>
+              <a href="index.html">Home page</a>
+              <p>College of the Sleeping Giant is a fictional small liberal arts college used to demonstrate the Campus Kit design system.</p>
+            </li>
+            <li>
+              <a href="apply.html">How to apply</a>
+              <p>Apply to College of the Sleeping Giant in four steps: deadlines, what it costs, and how to start your application.</p>
+            </li>
+            <li>
+              <a href="report-a-problem.html">Report a website problem</a>
+              <p>Tell the web team about anything on our website that's broken, wrong or hard to use, including problems with a screen reader, keyboard or zoom.</p>
+            </li>
+            <li>
+              <a href="news/article.html">Students track river health</a>
+              <p>Six years of student-collected river data at College of the Sleeping Giant.</p>
+            </li>
+            <li>
+              <a href="athletics/womens-soccer.html">Women's soccer</a>
+              <p>Schedule, results and roster for the 2026 College of the Sleeping Giant women's soccer team.</p>
+            </li>
+          </ul>
+          <!-- /search-index -->
+        </div>
+
+        <div class="sidebar">
+          <section class="callout" aria-labelledby="programs-title">
+            <h2 id="programs-title">Looking for a program?</h2>
+            <p>This search finds pages. To find a major, minor or certificate, use the <a href="programs.html">program finder</a>.</p>
+          </section>
+
+          <section aria-labelledby="people-title">
+            <h2 id="people-title">Looking for a person?</h2>
+            <p>Search the <a href="directory.html">faculty and staff directory</a> by name or department.</p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- include: footer -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="site-footer__grid">
+        <div>
+          <h2>College of the Sleeping Giant</h2>
+          <address class="contact">
+            1200 College Avenue<br>
+            Pine Hollow, MT 59000<br>
+            <a href="#" data-demo-contact="phone">(406) 555-0100</a>
+          </address>
+        </div>
+        <nav aria-labelledby="footer-explore">
+          <h2 id="footer-explore">Explore</h2>
+          <ul>
+            <li><a href="programs.html">Academic programs</a></li>
+            <li><a href="apply.html">How to apply</a></li>
+            <li><a href="events.html">Events and athletics</a></li>
+            <li><a href="directory.html">Faculty and staff directory</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="footer-help">
+          <h2 id="footer-help">Help</h2>
+          <ul>
+            <li><a href="accessibility.html">Accessibility</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="report-a-problem.html">Report a website problem</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="site-footer__legal">College of the Sleeping Giant is a fictional school. This site is a demo of <a href="../index.html">Campus Kit</a>.</p>
+    </div>
+  </footer>
+
+  <!--
+    Welcome note: opens over the first demo page of each visit, to say the
+    college isn't real. main.js opens it. Ticking "Don't show this again"
+    stops it for good in this browser. Without JavaScript it stays hidden; the line above still says
+    the school is fictional. A real college site would delete this dialog.
+  -->
+  <dialog class="demo-dialog" data-demo-welcome aria-labelledby="demo-welcome-title">
+    <h2 id="demo-welcome-title" tabindex="-1">This isn't a real college</h2>
+    <p>College of the Sleeping Giant is a made-up school. This website is a demo of Campus Kit, an experimental project built entirely by AI to show what a small college's website could look like.</p>
+    <p>The programs, people, events, phone numbers and email addresses are all invented. You can't apply, register or give here.</p>
+    <form method="dialog">
+      <p class="demo-dialog__check"><input type="checkbox" id="demo-welcome-hide" data-demo-welcome-hide> <label for="demo-welcome-hide">Don't show this again</label></p>
+      <button class="button" type="submit">Explore the demo site</button>
+    </form>
+    <p class="demo-dialog__more"><a href="../index.html">Read about the project</a></p>
+  </dialog>
+  <!-- /include -->
+</body>
+</html>

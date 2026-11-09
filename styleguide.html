@@ -152,6 +152,36 @@
           </div>
         </article>
 
+        <article class="sg-component" aria-labelledby="c-site-search">
+          <h3 id="c-site-search">Site search</h3>
+          <p>For the search page. It searches the title and description of every page, from <code>demo/search-index.json</code>, here in the browser; nothing typed is sent anywhere. Every word that matters has to appear in a page's title or description, and matched words are marked. Pages whose title matches come first. A status line says how many pages matched, and screen readers read it out. When nothing matches, it offers the program finder with the same words. Try "apply" or "soccer."</p>
+          <p>The index is made from each page's <code>&lt;title&gt;</code> and <code>&lt;meta name="description"&gt;</code> by <code>npm run build</code>, so to change how a page shows up, edit those two lines. Without JavaScript the box is hidden, because it couldn't search, and the search page's list of every page does the job instead. Set <code>data-search-index</code> to the index's address from the page.</p>
+          <div class="sg-example">
+<div class="site-search" data-search>
+  <form class="finder finder--light site-search__form" action="demo/search.html" method="get" role="search" aria-label="Site" data-search-form data-search-index="demo/search-index.json">
+    <label for="sg-site-q">Search for a page</label>
+    <div class="finder__row">
+      <input id="sg-site-q" name="q" type="search" autocomplete="off">
+      <button class="button" type="submit">Search</button>
+    </div>
+  </form>
+  <p class="site-search__no-js">Searching needs JavaScript, which is off in your browser. Use the <a href="demo/search.html">list of every page</a> instead.</p>
+  <p class="site-search__status" role="status" data-search-status></p>
+  <section class="site-search__results" aria-labelledby="sg-results-title" data-search-results hidden>
+    <h4 id="sg-results-title">Search results</h4>
+    <ul class="link-list" data-search-list></ul>
+    <div data-search-none hidden>
+      <p>Try one word, or check the spelling. You can also:</p>
+      <ul>
+        <li><a href="demo/programs.html" data-search-programs>Look for a program in the program finder</a></li>
+        <li><a href="demo/directory.html">Find a person in the directory</a></li>
+      </ul>
+    </div>
+  </section>
+</div>
+          </div>
+        </article>
+
         <article class="sg-component" aria-labelledby="c-missing">
           <h3 id="c-missing">Missing address</h3>
           <p>For the "page not found" page. With JavaScript on, the first line shows the address the visitor tried, and the second shows the page on this site that linked to it, so they can copy both into a report. Nothing is sent anywhere. Without JavaScript, or when there's nothing to show, the lines stay hidden. Long addresses break anywhere instead of widening the page.</p>

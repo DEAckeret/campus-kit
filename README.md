@@ -25,6 +25,7 @@ Campus Kit is a hand-written HTML and CSS design system with ready-made pages fo
 | [Page not found](https://deackeret.github.io/campus-kit/demo/404.html) | Program search, popular pages, and the address the visitor tried, ready to report. Shown at any [missing address](https://deackeret.github.io/campus-kit/demo/no-such-page.html) |
 | [Accessibility statement](https://deackeret.github.io/campus-kit/demo/accessibility.html) | The standard the site meets, how it's checked, known problems with what to do instead, other formats, and the ADA coordinator |
 | [Report a website problem](https://deackeret.github.io/campus-kit/demo/report-a-problem.html) | A short, labeled form with hints, a thank-you message that works without JavaScript, and what happens next. The demo form sends nothing |
+| [Site search](https://deackeret.github.io/campus-kit/demo/search.html) | Searches every page's title and description from a generated JSON index, in the browser, with matched words marked. Without JavaScript it's a list of every page |
 | [Print flyer](https://deackeret.github.io/campus-kit/demo/flyer.html) | US letter event flyer built from the same tokens as the site |
 | [Social media graphics](https://deackeret.github.io/campus-kit/demo/social.html) | A square post (1080 × 1080) and a story (1080 × 1920) for one event, from the same tokens, with alt text. `npm run social` saves them as PNG files |
 | Program handout | Print any program page (try [Biology](https://deackeret.github.io/campus-kit/demo/programs/biology.html)) and it comes out as a one-page handout for college fairs, on US letter or A4 |
@@ -38,6 +39,7 @@ Campus Kit is a hand-written HTML and CSS design system with ready-made pages fo
 - **Performance budgets.** [Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci) scores ten pages on every push. A page below 90 for performance or SEO, or below 100 for accessibility, stops the deploy. The scores are published on the [performance report](https://deackeret.github.io/campus-kit/report.html); the budgets live in [`lighthouserc.json`](lighthouserc.json).
 - **Photo guidelines.** The [style guide's photo section](https://deackeret.github.io/campus-kit/styleguide.html#photos) shows a responsive photo (`srcset`, `sizes` and WebP with a JPEG fallback), alt-text examples for common college photos, and the widths and file sizes to save. `npm run check:images` fails the build if an image has no alt text, width or height, or if a listed file is missing, the wrong width or over 250 KB.
 - **One shared header and footer.** They live in [`partials/`](partials/). A tiny dependency-free script (`npm run build`) copies them into every page as plain HTML, and CI fails if a page falls out of date.
+- **Site search without a search service.** `npm run build` also reads every demo page's title and description into [`demo/search-index.json`](demo/search-index.json) and writes the same list into the search page for visitors without JavaScript. Nothing typed is sent anywhere, and CI fails if the index falls out of date.
 - **Docs for the people who maintain it.** [Adding a program page](docs/adding-a-program-page.md) walks a non-technical staff member through creating a page from the [commented template](demo/programs/_template.html), and [changing the menu](docs/changing-the-header-and-footer.md) covers the shared header and footer. The [web editor quick reference](https://deackeret.github.io/campus-kit/training.html) is a one-page handout for the end of a training session: the five components staff use most, the mistakes to avoid and a check before publishing. It prints on one sheet, and CI checks that it does.
 - **Measuring what matters, without tracking people.** The [analytics guide](https://deackeret.github.io/campus-kit/analytics.html) covers the three numbers worth watching on a college site (application starts, visit sign-ups, program searches), how to choose a privacy-friendly tool, and the code to connect one. Key buttons carry `data-track` names; no analytics code ships, and a check fails the build if a page uses an unlisted name or loads a third-party script.
 
@@ -48,7 +50,7 @@ Open `index.html` in a browser, or serve the folder:
 ```bash
 npm install
 npm run serve       # http://localhost:8080
-npm run build       # copy partials/ into every demo page
+npm run build       # copy partials/ into every demo page, and update the search index
 npm test            # include and tracking checks, HTML validation, accessibility, zoom and text spacing, one-sheet printing
 npm run test:lighthouse   # Lighthouse scores and budgets (needs Chrome installed)
 ```

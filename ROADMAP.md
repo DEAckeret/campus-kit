@@ -34,7 +34,7 @@ Dustin can add, remove or reorder items at any time. Items marked with **(Dustin
 - [x] **Accessibility statement and "report a problem" page,** the kind every public college needs.
 - [x] **Photo and image guidelines.** Responsive images with `srcset`, alt-text examples for common college photos, and file-size targets, added to the style guide.
 - [x] **Web editor training page.** A one-page quick reference that a web designer would hand faculty and staff after a training session: the five components they'll use most and the mistakes to avoid.
-- [ ] **Site search page** that searches page titles and descriptions from a generated JSON index.
+- [x] **Site search page** that searches page titles and descriptions from a generated JSON index.
 - [ ] **Content audit checklist.** A doc and spreadsheet template for reviewing a department's pages each semester.
 - [ ] **Rebrand demo.** Prove the "one file to rebrand" claim: a second token file for a different fictional school, and a style-guide toggle that swaps between them.
 - [ ] **Event page template.** Turn the fall choir concert page into a commented template (like the program template), with a short guide, so staff can add an event without copying a whole page.

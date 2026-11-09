@@ -24,6 +24,8 @@ jobs:
           node-version: 22
       - name: Shared header and footer are up to date
         run: npm run check:includes
+      - name: Site search index matches the pages' titles and descriptions
+        run: npm run check:search
       - name: Counted buttons are listed, and no third-party scripts
         run: npm run check:tracking
       - name: Calendar files are valid and match their event pages

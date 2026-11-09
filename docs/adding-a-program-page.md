@@ -76,6 +76,8 @@ Sections marked `class="no-print"` (the advisor box and the "On this page" links
 
 The search and filters on the program list read `data-school` and `data-level`, so if those are missing your program won't show up when someone filters.
 
+The site's search page finds pages by their title and description (the `<title>` and `<meta name="description">` lines at the top of your page). Write the description as one plain sentence with the words a student would search for. The search picks up your page when `npm run build` runs; if you're submitting your change through GitHub and nobody has run it, a check fails and says so.
+
 ## Step 7: Check your page
 
 Open your page in a web browser and check:
@@ -84,6 +86,7 @@ Open your page in a web browser and check:
 - [ ] No CAPITAL-LETTER placeholders are left
 - [ ] Every link goes where it should
 - [ ] The program shows up on the program list, and when you filter by its school
+- [ ] The page shows up on the search page when you search for the program's name
 - [ ] The page looks right on your phone
 - [ ] Print preview shows one page
 

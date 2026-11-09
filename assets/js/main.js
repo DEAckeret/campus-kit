@@ -291,3 +291,147 @@ if (
 }
 const sent = document.querySelector("[data-form-sent]");
 if (sent && window.location.hash === `#${sent.id}`) sent.focus();
+
+/* ---- Site search (search.html) -------------------------------------------
+   Markup, all inside one <div data-search>:
+           <form data-search-form data-search-index="search-index.json">
+             with <input name="q">
+           <p role="status" data-search-status>
+           <section data-search-results hidden> holding
+             <ul data-search-list> and <div data-search-none hidden>
+   Loads the index (made by scripts/search-index.mjs from each page's title
+   and description) and searches it here in the browser; nothing is sent
+   anywhere. Every word that matters must appear in a page's title or
+   description. Title matches come first. The search is kept in the address
+   (search.html?q=cost), so other pages can link to one.
+   ------------------------------------------------------------------------- */
+document.querySelectorAll("[data-search-form]").forEach((searchForm) => {
+  const box = searchForm.closest("[data-search]") || document;
+  const input = searchForm.elements.namedItem("q");
+  const status = box.querySelector("[data-search-status]");
+  const results = box.querySelector("[data-search-results]");
+  const list = results?.querySelector("[data-search-list]");
+  const none = results?.querySelector("[data-search-none]");
+  const programsLink = results?.querySelector("[data-search-programs]");
+  if (!input || !status || !list || !none) return;
+  // Addresses in the index are relative to the index file, so results link
+  // correctly from any folder (the style guide's example too)
+  const indexAddress = new URL(searchForm.dataset.searchIndex, window.location.href);
+  const programsAddress = programsLink && new URL(programsLink.getAttribute("href"), window.location.href);
+  // Small words that would match almost every page, so they don't count
+  const SKIP = new Set(
+    "a an and are at be can do does for from how i in is it me my of on or the to what when where who with you your".split(" ")
+  );
+  // Lowercase, and "café" matches "cafe"
+  const fold = (text) => text.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+
+  const wordsOf = (query) => {
+    const all = fold(query).split(/[^a-z0-9]+/).filter((word) => word.length > 1);
+    const kept = all.filter((word) => !SKIP.has(word));
+    return kept.length ? kept : all;
+  };
+
+  const score = (page, words) => {
+    const title = fold(page.title);
+    const description = fold(page.description);
+    let total = 0;
+    for (const word of words) {
+      if (title.includes(word)) total += new RegExp(`(^|[^a-z0-9])${word}`).test(title) ? 5 : 3;
+      else if (description.includes(word)) total += 1;
+      else return 0;
+    }
+    return total;
+  };
+
+  // Wraps each matched word in <mark>, building text nodes so nothing in the
+  // index is ever read as HTML
+  const highlight = (element, text, words) => {
+    const folded = fold(text);
+    const marks = [];
+    for (const word of words) {
+      let from = folded.indexOf(word);
+      while (from !== -1) {
+        marks.push([from, from + word.length]);
+        from = folded.indexOf(word, from + word.length);
+      }
+    }
+    marks.sort((a, b) => a[0] - b[0]);
+    let at = 0;
+    for (const [start, end] of marks) {
+      if (start < at) continue;
+      element.append(text.slice(at, start));
+      const mark = document.createElement("mark");
+      mark.textContent = text.slice(start, end);
+      element.append(mark);
+      at = end;
+    }
+    element.append(text.slice(at));
+  };
+
+  const show = (pages, query) => {
+    const words = wordsOf(query);
+    list.replaceChildren();
+    if (!words.length) {
+      results.hidden = true;
+      status.textContent = query ? "Type a word or two to search." : "";
+      return;
+    }
+    const found = pages
+      .map((page) => ({ page, points: score(page, words) }))
+      .filter((match) => match.points > 0)
+      .sort((a, b) => b.points - a.points || a.page.title.localeCompare(b.page.title));
+
+    for (const { page } of found) {
+      const item = document.createElement("li");
+      const link = document.createElement("a");
+      link.href = new URL(page.url, indexAddress).href;
+      highlight(link, page.title, words);
+      const about = document.createElement("p");
+      highlight(about, page.description, words);
+      item.append(link, about);
+      list.append(item);
+    }
+    list.hidden = found.length === 0;
+    none.hidden = found.length > 0;
+    if (programsLink) {
+      programsAddress.searchParams.set("q", query);
+      programsLink.href = programsAddress.href;
+      programsLink.textContent = `Look for “${query}” in the program finder`;
+    }
+    results.hidden = false;
+    status.textContent =
+      found.length === 0
+        ? `No pages match “${query}”.`
+        : `${found.length} ${found.length === 1 ? "page matches" : "pages match"} “${query}”.`;
+  };
+
+  // Only the search page itself keeps the search in its address (the style
+  // guide's example doesn't)
+  const ownPage = new URL(searchForm.action).pathname === window.location.pathname;
+  const query = (ownPage && new URLSearchParams(window.location.search).get("q")) || "";
+  input.value = query;
+
+  fetch(indexAddress)
+    .then((response) => {
+      if (!response.ok) throw new Error(response.statusText);
+      return response.json();
+    })
+    .then(({ pages }) => {
+      show(pages, query.trim());
+      searchForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const typed = input.value.trim();
+        const address = typed ? `?q=${encodeURIComponent(typed)}` : window.location.pathname;
+        if (ownPage) window.history.replaceState(null, "", address);
+        show(pages, typed);
+      });
+    })
+    .catch(() => {
+      // Opened straight from disk, or the index is missing: hide the box
+      // and point at the list of every page instead
+      searchForm.hidden = true;
+      status.textContent = box.querySelector("#all-pages-list")
+        ? "Search isn't working right now. Every page on the site is listed below."
+        : "Search isn't working right now.";
+    });
+});

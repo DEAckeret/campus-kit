@@ -19,6 +19,7 @@ export const PAGES = [
   "demo/404.html",
   "demo/accessibility.html",
   "demo/report-a-problem.html",
+  "demo/search.html",
   "report.html",
   "analytics.html",
   "training.html",

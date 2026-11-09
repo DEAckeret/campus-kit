@@ -198,6 +198,7 @@
   background: var(--color-paper);
 }
 .finder--light { margin-block: 0 var(--space-7); }
+.finder__note { margin: var(--space-3) 0 0; }
 @media (max-width: 30rem) {
   /* Stack the box and button when the row gets too narrow for both */
   .finder--light .finder__row { flex-wrap: wrap; }
@@ -579,6 +580,30 @@ th:last-child { padding-right: 0; }
 /* It takes focus so screen readers read it first. It isn't a control, so
    it needs no focus ring (the same as the demo note's heading). */
 .form-sent:focus { outline: none; }
+
+/* ---- Site search (search.html) ------------------------------------------ */
+/* The search box on a light background (.finder--light), a status line
+   that screen readers read out, and results as a .link-list. Matched words
+   are marked: ink-colored text keeps its own color on the gold tint
+   (spruce links 6.9 to 1, muted ink 6.7 to 1), and the gold underline is
+   decoration only. */
+.site-search__form { margin-bottom: var(--space-3); }
+/* Without JavaScript the box couldn't search, so it's hidden and a note
+   points at the list of every page instead */
+html:not(.js) .site-search__form { display: none; }
+.js .site-search__no-js { display: none; }
+.site-search__status {
+  margin-bottom: var(--space-6);
+  font-weight: 600;
+}
+.site-search__status:empty { margin: 0; } /* stays in the page, so it's read out when filled */
+.site-search__results { margin-bottom: var(--space-7); }
+.site-search__results [hidden] { display: none; }
+.site-search mark {
+  background: var(--color-gold-tint);
+  box-shadow: inset 0 -2px 0 var(--color-gold);
+  color: inherit;
+}
 
 /* ---- People directory --------------------------------------------------- */
 .people {

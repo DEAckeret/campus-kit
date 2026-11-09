@@ -7,10 +7,11 @@
   "type": "module",
   "scripts": {
     "serve": "http-server . -p 8080 -c-1 --silent",
-    "build": "node scripts/includes.mjs",
+    "build": "node scripts/includes.mjs && node scripts/search-index.mjs",
     "social": "node scripts/social-graphics.mjs",
     "sample-photo": "node scripts/sample-photo.mjs",
     "check:includes": "node scripts/includes.mjs --check",
+    "check:search": "node scripts/search-index.mjs --check",
     "check:tracking": "node tests/tracking.mjs",
     "check:calendar": "node tests/calendar.mjs",
     "check:images": "node tests/images.mjs",
@@ -18,7 +19,7 @@
     "test:a11y": "node tests/accessibility.mjs",
     "test:zoom": "node tests/zoom.mjs",
     "test:print": "node tests/print.mjs",
-    "test": "npm run check:includes && npm run check:tracking && npm run check:calendar && npm run check:images && npm run lint:html && npm run test:a11y && npm run test:zoom && npm run test:print && npm run social",
+    "test": "npm run check:includes && npm run check:search && npm run check:tracking && npm run check:calendar && npm run check:images && npm run lint:html && npm run test:a11y && npm run test:zoom && npm run test:print && npm run social",
     "test:lighthouse": "lhci collect && lhci assert"
   },
   "devDependencies": {
