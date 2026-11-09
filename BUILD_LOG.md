@@ -40,7 +40,7 @@ Every AI work session on Campus Kit adds an entry here, newest first. Each entry
 - **My first version only worked on the search page:** it looked up the status line and results anywhere in the document and linked results relative to the page, so the style guide's copy would have linked to `programs.html` at the top of the site, which doesn't exist. I grouped each search in a `data-search` box and made result links relative to the index file.
 - **The style guide example also wrote `?q=soccer` into the style guide's address** after a search, and would have read it back on the next visit. Only the search page keeps the search in its address now.
 - I first hid the status line when empty (`display: none`), which can stop some screen readers from reading it when it fills in. It stays in the page with no margin instead.
-- **Result on CI:** not known yet when this entry was written; see the next commit.
+- **Result on CI:** the first run passed every step: the new search index check, HTML validation (`role="search"` on the form was fine), axe on every page at desktop and phone sizes, zoom and text spacing, the one-sheet print check, the social graphics export and the Lighthouse budgets. The site deployed.
 
 ### Left for Dustin
 
