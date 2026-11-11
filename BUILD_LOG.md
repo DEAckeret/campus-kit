@@ -4,6 +4,57 @@ Every AI work session on Campus Kit adds an entry here, newest first. Each entry
 
 ---
 
+## Session 20: November 11, 2026 (content audit checklist)
+
+**Built by:** Claude (Opus 5.5), in a scheduled session with nobody watching, so decisions below are mine and open to Dustin's review.
+
+### What I built
+
+- **A content audit checklist,** [`audit.html`](audit.html), on the project site next to the quick reference and the analytics guide. It's for a department's web editor reviewing their pages once a semester:
+  - **How the audit works,** five steps: list the pages (the web team can send the list with visits), read each one with the checklist, decide what happens to it, say who fixes what by when, send the spreadsheet back.
+  - **The checklist:** five checks (Correct, Still needed, Clear, Accessible, Works), each with three to five lines that must all be true for the page to pass.
+  - **Deciding what happens to a page:** a table of the four decisions (Keep, Update, Combine, Remove), when to choose each and what happens next, with a note that few visits alone isn't a reason to remove a page.
+  - **What each column means,** a table of the spreadsheet's 15 columns.
+  - A sidebar with when to audit (October 15 and March 15), where the finished example is, the web team's demo contact links and related guides.
+- **A spreadsheet template,** [`assets/downloads/content-audit.xlsx`](assets/downloads/content-audit.xlsx) (7 KB), with three tabs: **Pages** (blank, header row frozen, filters on, drop-down lists for the five checks and the decision, date and number checks on those columns, prints landscape on one page wide), **Example** (the biology department's fall 2026 audit: six fictional pages covering all four decisions) and **How to use**. Also [`content-audit.csv`](assets/downloads/content-audit.csv), just the column headings, for tools that won't open .xlsx.
+- **A dependency-free script that writes both,** `scripts/content-audit.mjs` (`npm run audit-sheet`). It holds the list of columns and writes the spreadsheet, the CSV, the column table in `audit.html` (between `<!-- content-audit: columns -->` markers) and the file size on the download button. The header row's colors come from `tokens.css`, so a rebrand reaches the spreadsheet too. `npm run check:audit` fails CI if any of them is out of date; it runs before `npm install`, like the other file checks.
+- **A new component, the checklist** (`.checklist` in `components.css`): a list with a drawn empty box before each item. It's in the style guide after Steps, with a live example.
+- Links to the page from the project page, the quick reference's "Going further" list, the README and the file map in `CLAUDE.md`. It's in `tests/pages.mjs`, and the deploy step copies it.
+
+### What I decided and why
+
+- **"A doc" became a page on the project site, not a Markdown file in `docs/`,** like the quick reference: it can be linked, printed and checked by CI, and the download buttons sit right on it.
+- **A real .xlsx, written by hand, plus a CSV.** Drop-down lists, a frozen header and an example tab are what make a template quicker than a blank sheet, and CSV can't hold any of them. An .xlsx is a zip of XML files, so the script writes the XML and a small zip itself rather than adding a library. Google Sheets, Numbers and LibreOffice all open .xlsx, so I didn't make a separate Google Sheets version.
+- **The CI check compares what's inside the spreadsheet, not its bytes.** Another Node version's zlib could pack the same XML slightly differently and fail the check for no reason. The CSV and the page are compared byte for byte.
+- **Five checks, not one column per checklist line.** Twenty-odd yes/no columns would make the sheet too wide to use. Each check is one column; the details go in "What to change."
+- **"Yes" or "Needs work," not "Yes" or "No,"** so a filter on "Needs work" shows the to-do list.
+- **The checklist boxes are drawn, not form checkboxes.** Ticking boxes on screen would be lost on reload (the page stores nothing), and the spreadsheet is where answers go. Drawn boxes read as a plain list to screen readers and print ready to tick by hand.
+- **The column table is two columns,** with how to fill each column in (such as "Choose Yes or Needs work") on a second, muted line. My first version had three columns and squeezed the descriptions to one or two words a line at 390px.
+- **The audit dates (October 15, March 15) are my choice,** set before fall visit days and spring course registration. A real college would pick its own.
+
+### How I checked it
+
+- The spreadsheet opens in openpyxl (three tabs, frozen header, 10 drop-down and value checks on each audit tab) and in LibreOffice, which I used to save it as a PDF and looked at each page: the header colors, dates shown as "Mar 12, 2026" and the How to use tab are right.
+- Screenshots of `audit.html` at 1280px and 390px, and of the style guide's checklist example at 390px. One `h1`, headings in order (h2, h3), no duplicate IDs, every `aria-labelledby` points at something that exists, no sideways scrolling at 1280 or 390.
+- `tests/zoom.mjs` passes on all 23 pages under all six conditions, and the one-sheet print check still passes (the quick reference's new link is screen-only). The include, search index, tracking, calendar, image and new audit checks pass. I made the audit check fail on purpose by changing one column description, then put it back.
+- Contrast: only existing token pairs (ink and muted ink on white, white on spruce for the button and the spreadsheet header, spruce links).
+
+### What went wrong
+
+- **Still no axe or HTML validation here** (the npm registry is blocked in this workspace; I ran the zoom and print checks with a small local stand-in for `http-server` that isn't committed). Those run first in CI.
+- **I first used `.page-header__action` for the download buttons,** forgetting it hides itself on wide screens (it's for the giving page's phone-only button). I gave the buttons their own row style.
+- **I first wrote a code block under the style guide example by hand.** The style guide makes those from the example itself (`kit-site.js`), so there would have been two. I removed mine.
+- **The download button wrapped "7 KB" across two lines** at 390px; it's a non-breaking space now.
+- The choice wording first read "Choose Keep or Update or Combine or Remove"; it's "Choose one: Keep, Update, Combine, Remove" now.
+
+### Left for Dustin
+
+- **The checklist is my pick from general practice,** not from a real web team's audits. Swap in anything your team checks.
+- **The spreadsheet hasn't been opened in Excel itself,** only in LibreOffice and a Python reader. If you have Excel, opening it once would be worth it.
+- Still open from earlier: moving the demo's dates to 2026, and the `lighthouse-trial` branch. The rebrand demo is the next AI item.
+
+---
+
 ## Session 19: November 9, 2026 (site search page)
 
 **Built by:** Claude (Opus 5.5), in a scheduled session with nobody watching, so decisions below are mine and open to Dustin's review.

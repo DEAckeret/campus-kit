@@ -30,6 +30,8 @@ Campus Kit is a proof-of-concept project: it is built **entirely by AI** for Dus
 - `report.html`: the site performance report; CI fills in its "Latest results" section
 - `analytics.html`: the analytics guide, with the list of every `data-track` name
 - `training.html`: the web editor quick reference for faculty and staff; prints on one sheet (`body class="one-sheet"`)
+- `audit.html`: the content audit checklist for reviewing a department's pages each semester
+- `scripts/content-audit.mjs`: writes the audit spreadsheet (`assets/downloads/content-audit.xlsx` and `.csv`) and the column table in `audit.html` (`npm run audit-sheet`; CI fails if they're out of date)
 - `demo/`: the College of the Sleeping Giant demo site
 - `demo/programs/_template.html`: commented template for new program pages
 - `demo/events/`: event detail pages, each with its "Add to calendar" `.ics` file beside it

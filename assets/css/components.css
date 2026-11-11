@@ -746,6 +746,32 @@ html:not(.js) .site-search__form { display: none; }
 .steps h4 { font-family: var(--font-display); font-weight: 600; font-size: var(--step-1); margin-bottom: var(--space-2); padding-top: var(--space-2); }
 .steps p:last-child { margin-bottom: 0; }
 
+/* ---- Checklist -------------------------------------------------------- */
+/* Things to check off, each with an empty box. The boxes are only drawn,
+   not form fields, so the list reads as plain text and prints with boxes
+   to tick by hand. Name the list with aria-labelledby on its heading.     */
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-6);
+}
+.checklist > li {
+  position: relative;
+  padding-left: calc(var(--space-5) + var(--space-3));
+  margin: 0 0 var(--space-3);
+}
+.checklist > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+  width: var(--space-5);
+  height: var(--space-5);
+  border: 2px solid var(--color-ink-muted);
+  border-radius: var(--radius-small);
+  background: var(--color-paper);
+}
+
 /* ---- Athletics accents -------------------------------------------------- */
 /* Gold marks athletics across the kit (game-day dates, team pages).
    Gold is never used for text on white; it's only borders and tints. */

@@ -274,6 +274,19 @@
           </div>
         </article>
 
+        <article class="sg-component" aria-labelledby="c-checklist">
+          <h3 id="c-checklist">Checklist</h3>
+          <p>For things to check off, in any order, like what to bring to orientation or the <a href="audit.html">content audit checklist</a>. Each item gets an empty box. The boxes are only drawn, not checkboxes in a form, so screen readers read a plain list and the page prints with boxes to tick by hand. Put a heading right above it and point <code>aria-labelledby</code> at the heading's <code>id</code>, so the list has a name. Write each item as something that's true when it's done. If the order matters, use steps instead.</p>
+          <div class="sg-example">
+<h4 id="sg-checklist-title">Before you leave the lab</h4>
+<ul class="checklist" aria-labelledby="sg-checklist-title">
+  <li>Turn off the gas at the bench valve.</li>
+  <li>Put samples back in the cold room, labeled with your name and the date.</li>
+  <li>Wipe down the bench and wash your hands.</li>
+</ul>
+          </div>
+        </article>
+
         <article class="sg-component" aria-labelledby="c-table">
           <h3 id="c-table">Table</h3>
           <p>For information people compare across rows, like courses or deadlines. Always give the table a <code>&lt;caption&gt;</code> and column headers. The <code>&lt;section class="table-wrap"&gt;</code> wrapper scrolls sideways when the table is wider than a phone screen. <code>tabindex="0"</code> lets keyboard users scroll it, and <code>aria-labelledby</code> pointing at the caption's <code>id</code> makes it a named region, so screen readers announce "Required core courses, region" instead of an unnamed group. Each caption needs its own <code>id</code>.</p>

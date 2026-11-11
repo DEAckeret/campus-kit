@@ -32,6 +32,8 @@ jobs:
         run: npm run check:calendar
       - name: Images have alt text and a size, and their files are the right width and weight
         run: npm run check:images
+      - name: Content audit spreadsheet and its column table are up to date
+        run: npm run check:audit
       - run: npm install --no-fund --no-audit
       - run: npx playwright install --with-deps chromium
       # Lighthouse runs first so the HTML, axe and zoom checks below also
@@ -99,7 +101,7 @@ jobs:
       - name: Collect the site files
         run: |
           mkdir _site
-          cp -r index.html styleguide.html report.html analytics.html training.html .nojekyll assets demo _site/
+          cp -r index.html styleguide.html report.html analytics.html training.html audit.html .nojekyll assets demo _site/
       # The check job filled in report.html with this version's Lighthouse scores
       - name: Get the filled-in performance report
         uses: actions/download-artifact@v4

@@ -243,3 +243,14 @@ pre {
   .one-sheet .sidebar .callout { padding: var(--space-3) var(--space-4); }
   .one-sheet .sidebar .callout p { margin-bottom: var(--space-1); }
 }
+
+/* ---- Content audit checklist (audit.html) ------------------------------- */
+.audit-downloads { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-6); }
+.audit-downloads + .note { margin-top: var(--space-4); }
+.decisions th[scope="row"],
+.audit-columns th[scope="row"] { font-weight: 700; vertical-align: top; }
+.decisions td,
+.audit-columns td { vertical-align: top; }
+.audit-columns th[scope="row"] { width: 30%; }
+/* How to fill in the column, on its own line under what goes in it */
+.audit-columns__kind { display: block; margin-top: var(--space-1); font-size: var(--step--1); color: var(--color-ink-muted); }
