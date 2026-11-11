@@ -46,6 +46,7 @@ Every AI work session on Campus Kit adds an entry here, newest first. Each entry
 - **I first wrote a code block under the style guide example by hand.** The style guide makes those from the example itself (`kit-site.js`), so there would have been two. I removed mine.
 - **The download button wrapped "7 KB" across two lines** at 390px; it's a non-breaking space now.
 - The choice wording first read "Choose Keep or Update or Combine or Remove"; it's "Choose one: Keep, Update, Combine, Remove" now.
+- **Result on CI:** the first run passed every step: the new audit check, HTML validation, axe on every page at desktop and phone sizes (including `audit.html` and the style guide's checklist), zoom and text spacing, the one-sheet print check, the social graphics export and the Lighthouse budgets. The site deployed.
 
 ### Left for Dustin
 
