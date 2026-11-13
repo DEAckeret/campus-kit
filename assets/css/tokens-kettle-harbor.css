@@ -1,0 +1,113 @@
+/* ==========================================================================
+   Campus Kit — design tokens for Kettle Harbor College
+   A second, fictional school, to prove the kit rebrands from one file.
+   This file is a drop-in replacement for tokens.css: it sets every token
+   tokens.css sets, with the same names, and only the values differ.
+   To see it, use the brand switch at the top of the style guide, or point
+   a page's tokens.css link at this file.
+
+   The color names (spruce, violet, gold) are the kit's names for each
+   role, not descriptions: here "spruce" is harbor navy, "violet" is sea
+   teal and "gold" is buoy coral. Every pair the components use is
+   measured by `npm run check:tokens`.
+   ========================================================================== */
+
+/* This school's fonts. Pages also link Literata and Public Sans in their
+   <head>; a real rebrand changes that link too (docs/rebranding.md). */
+@import url("https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,500;0,600;1,500&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap");
+
+:root {
+  /* ---- Color: brand ---------------------------------------------------- */
+  --color-spruce: #1d3f6e;        /* primary (harbor navy): links, buttons, header */
+  --color-spruce-dark: #132b4d;   /* hover / pressed states */
+  --color-violet: #0b6b73;        /* accent (sea teal): highlights, focus ring */
+  --color-violet-tint: #e1f1f2;
+  --color-gold: #f4845f;          /* highlight (buoy coral): athletics + "new" markers; never for text on white */
+  --color-gold-tint: #fde8df;
+
+  /* ---- Color: neutrals ------------------------------------------------- */
+  --color-ink: #18202d;           /* body text — 16.3:1 on white */
+  --color-ink-muted: #4a5463;     /* secondary text — 7.6:1 on white */
+  --color-line: #d3dae4;
+  --color-mist: #f3f5f8;          /* quiet section background */
+  --color-paper: #ffffff;
+  --color-sky: #dde6f3;
+
+  /* ---- Color: feedback ------------------------------------------------- */
+  --color-alert: #a8241c;
+  --color-alert-tint: #fbe8e6;
+  --color-success: #1d6a3c;
+
+  /* ---- Type ------------------------------------------------------------ */
+  --font-display: "Bitter", Rockwell, Georgia, serif;
+  --font-body: "Atkinson Hyperlegible", "Segoe UI", Roboto, Arial, sans-serif;
+
+  /* Modular scale, ratio 1.25 (major third), fluid at the top end */
+  --step--1: 0.875rem;
+  --step-0: 1.0625rem;  /* 17px body */
+  --step-1: 1.25rem;
+  --step-2: 1.5625rem;
+  --step-3: clamp(1.75rem, 1.4rem + 1.4vw, 1.95rem);
+  --step-4: clamp(2rem, 1.5rem + 2.2vw, 2.45rem);
+  --step-5: clamp(2.4rem, 1.6rem + 3.6vw, 3.6rem);
+
+  --leading-tight: 1.15;
+  --leading-body: 1.6;
+  --measure: 66ch;      /* comfortable line length for body copy */
+
+  /* ---- Space (4px base) ------------------------------------------------ */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+  --space-9: 6rem;
+
+  /* ---- Shape ----------------------------------------------------------- */
+  --radius-small: 6px;   /* inputs, tags */
+  --radius-large: 16px;  /* media, callouts */
+  --page-max: 72rem;
+  --label-column: 6.5rem;   /* label column in the event summary */
+  --photo-column: 44rem;    /* widest a photo in the text gets; the image
+                               sizes in the style guide are based on it */
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+
+  /* ---- Print --------------------------------------------------------- */
+  /* Program pages print as a one-page handout (print.css). The whole type
+     and space scale is in rem, so this one size shrinks it all to fit.   */
+  --print-root-size: 9pt;
+  --print-root-size-dense: 8pt; /* the web editor quick reference, which
+                                   packs more onto its one sheet */
+  --print-column: 11rem;      /* narrowest column in the handout's contact row */
+
+  /* ---- Social media graphics ------------------------------------------ */
+  /* Graphics are exported at 1080px wide (demo/social.html). Sizes inside
+     are in cqi, 1% of the graphic's width, so the on-screen preview is an
+     exact small copy of the PNG. 1cqi = 10.8px in the exported file.     */
+  --social-width: 1080px;
+  --social-square: 1 / 1;          /* 1080 x 1080 posts */
+  --social-story: 9 / 16;          /* 1080 x 1920 stories */
+  --social-pad: 7.5cqi;            /* 81px edge margin */
+  --social-gap: 3cqi;
+  --social-ridge: 7cqi;
+  --social-label: 3.7cqi;          /* 40px: series name, "When" labels */
+  --social-text: 4.6cqi;           /* 50px: date, time, place */
+  --social-text-story: 5.6cqi;     /* 60px: the same on stories */
+  --social-title: 10.2cqi;         /* 110px event title */
+  --social-title-story: 12cqi;     /* 130px event title on stories */
+  --social-small: 3.3cqi;          /* 36px: wordmark and web address */
+  --social-mark: 10cqi;            /* width of the giant mark */
+  --social-rule: 0.5cqi;           /* the violet rule beside the details */
+  /* Instagram and Facebook cover the top 250px and bottom 340px of a story
+     with the profile name and reply box. Keep text out of those bands.  */
+  --social-safe-top: 23.2cqi;      /* 250px */
+  --social-safe-bottom: 31.5cqi;   /* 340px */
+  --social-preview-max: 28rem;     /* widest on-screen preview */
+
+  /* ---- The ridgeline: the kit's one signature motif -------------------- */
+  /* A mountain-ridge edge used to close the hero and the footer.          */
+  --ridge-height: clamp(28px, 4vw, 56px);
+}

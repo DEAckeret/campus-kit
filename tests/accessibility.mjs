@@ -22,6 +22,10 @@ process.on("unhandledRejection", (error) => {
 const VIEWPORTS = [
   { name: "desktop", width: 1280, height: 900 },
   { name: "phone", width: 390, height: 844 },
+  // Every page again with the second school's tokens served in place of
+  // tokens.css, to prove the rebrand keeps every page passing (contrast
+  // above all), not just the style guide that shows it
+  { name: "desktop, Kettle Harbor tokens", width: 1280, height: 900, tokens: "assets/css/tokens-kettle-harbor.css" },
 ];
 
 const server = httpServer.createServer({ root: ".", cache: -1, silent: true });
@@ -31,7 +35,12 @@ let failures = 0;
 
 for (const viewport of VIEWPORTS) {
   // axe-core/playwright requires pages created from a browser context
-  const context = await browser.newContext({ viewport });
+  const context = await browser.newContext({ viewport: { width: viewport.width, height: viewport.height } });
+  if (viewport.tokens) {
+    await context.route("**/assets/css/tokens.css", (route) =>
+      route.fulfill({ path: viewport.tokens, contentType: "text/css" })
+    );
+  }
   await context.addInitScript(SKIP_WELCOME);
   const page = await context.newPage();
   const errors = [];

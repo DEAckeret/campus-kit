@@ -32,7 +32,7 @@ Campus Kit is a hand-written HTML and CSS design system with ready-made pages fo
 
 ## How it's built
 
-- **Design tokens.** All colors, type sizes and spacing live in [`assets/css/tokens.css`](assets/css/tokens.css). Rebranding the kit means editing one file.
+- **Design tokens.** All colors, type sizes and spacing live in [`assets/css/tokens.css`](assets/css/tokens.css). Rebranding the kit means editing one file. To prove it, [`tokens-kettle-harbor.css`](assets/css/tokens-kettle-harbor.css) is a second fictional school's brand, and the [style guide](https://deackeret.github.io/campus-kit/styleguide.html?brand=kettle-harbor) has a switch between the two. CI measures every color pair in both brands and runs the axe checks on every page in the second brand too. The [rebranding guide](docs/rebranding.md) covers the steps, including the font link and logo that sit outside the token file.
 - **Progressive enhancement.** Every page works with JavaScript off. A small dependency-free script collapses the mobile menu and filters lists, announcing result counts to screen readers.
 - **Accessibility.** Skip link, visible focus on everything, labeled forms, real tables with captions and headers, a chart with a text description, and measured contrast (body text is 15.6 to 1).
 - **Automated checks.** Every push runs HTML validation, axe-core accessibility tests at desktop and phone widths, zoom and text-spacing checks (200% and 400% zoom, WCAG 1.4.12 spacing), a check that every program page and the quick reference print on one sheet, and an export of the social media graphics that fails if text doesn't fit, in GitHub Actions, then deploys to GitHub Pages only if they pass.

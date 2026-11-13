@@ -34,6 +34,8 @@ jobs:
         run: npm run check:images
       - name: Content audit spreadsheet and its column table are up to date
         run: npm run check:audit
+      - name: Every brand's tokens are complete and pass contrast
+        run: npm run check:tokens
       - run: npm install --no-fund --no-audit
       - run: npx playwright install --with-deps chromium
       # Lighthouse runs first so the HTML, axe and zoom checks below also
@@ -46,7 +48,7 @@ jobs:
         run: node scripts/performance-report.mjs --results lighthouse-results
       - name: Validate HTML
         run: npm run lint:html
-      - name: Accessibility (axe-core, WCAG 2.2 AA, desktop and phone)
+      - name: Accessibility (axe-core, WCAG 2.2 AA, desktop and phone, and desktop in the second brand)
         run: |
           set -o pipefail
           if ! npm run test:a11y 2>&1 | tee a11y.log; then

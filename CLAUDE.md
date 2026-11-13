@@ -36,6 +36,7 @@ Campus Kit is a proof-of-concept project: it is built **entirely by AI** for Dus
 - `demo/programs/_template.html`: commented template for new program pages
 - `demo/events/`: event detail pages, each with its "Add to calendar" `.ics` file beside it
 - `assets/css/tokens.css`: colors, type, spacing (the only file to change when rebranding)
+- `assets/css/tokens-kettle-harbor.css`: the same tokens for a second fictional school, Kettle Harbor College; the style guide's brand switch swaps to it. Add any new token to both files
 - `assets/css/base.css`, `components.css`, `print.css`: site styles (`print.css` also turns program pages into one-page handouts)
 - `assets/css/kit-site.css`, `assets/js/kit-site.js`: only for the project's own pages (project page, style guide, guides)
 - `docs/`: guides for non-technical editors
@@ -49,7 +50,8 @@ Campus Kit is a proof-of-concept project: it is built **entirely by AI** for Dus
 - `lighthouserc.json`: Lighthouse CI pages and budgets (the budget table in `report.html` must match)
 - `scripts/performance-report.mjs`: fills `report.html` with the Lighthouse results in CI
 - `tests/pages.mjs`: the list of pages the checks visit; add every new page to it
-- `tests/accessibility.mjs`: axe checks
+- `tests/accessibility.mjs`: axe checks (every page at desktop and phone sizes, and again at desktop with the Kettle Harbor tokens)
+- `tests/tokens.mjs`: every brand's token file sets the same tokens, and every color pair the components use passes contrast (`npm run check:tokens`)
 - `tests/zoom.mjs`: 200% and 400% zoom, 200% text size and text-spacing checks
 - `tests/print.mjs`: every page with `<body class="one-sheet">` (the program pages and the quick reference) prints on one sheet of letter and A4 paper
 - `tests/calendar.mjs`: every linked `.ics` file is valid and has the same times and title as its event page

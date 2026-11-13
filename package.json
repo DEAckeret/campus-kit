@@ -17,11 +17,12 @@
     "check:calendar": "node tests/calendar.mjs",
     "check:images": "node tests/images.mjs",
     "check:audit": "node scripts/content-audit.mjs --check",
+    "check:tokens": "node tests/tokens.mjs",
     "lint:html": "html-validate \"*.html\" \"demo/**/*.html\"",
     "test:a11y": "node tests/accessibility.mjs",
     "test:zoom": "node tests/zoom.mjs",
     "test:print": "node tests/print.mjs",
-    "test": "npm run check:includes && npm run check:search && npm run check:tracking && npm run check:calendar && npm run check:images && npm run check:audit && npm run lint:html && npm run test:a11y && npm run test:zoom && npm run test:print && npm run social",
+    "test": "npm run check:includes && npm run check:search && npm run check:tracking && npm run check:calendar && npm run check:images && npm run check:audit && npm run check:tokens && npm run lint:html && npm run test:a11y && npm run test:zoom && npm run test:print && npm run social",
     "test:lighthouse": "lhci collect && lhci assert"
   },
   "devDependencies": {

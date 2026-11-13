@@ -12,7 +12,7 @@
        font first and switches when they arrive. Without JavaScript, <noscript> loads them. -->
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;1,7..72,500&family=Public+Sans:wght@400;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;1,7..72,500&family=Public+Sans:wght@400;600;700&display=swap"></noscript>
-  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/tokens.css" data-brand-tokens>
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/kit-site.css">
@@ -33,6 +33,7 @@
         <ul>
           <li><a href="#color">Color</a></li>
           <li><a href="#type">Type</a></li>
+          <li><a href="#rebrand">Rebrand</a></li>
           <li><a href="#components">Components</a></li>
           <li><a href="#photos">Photos</a></li>
           <li><a href="demo/index.html">Demo site</a></li>
@@ -47,6 +48,13 @@
         <h1>Style guide</h1>
         <p class="lede">The building blocks of every Campus Kit page. Each example shows the HTML underneath it, so you can copy a component into a new page and it will look right.</p>
         <p>Training faculty and staff? The <a href="training.html">web editor quick reference</a> covers the five components they'll use most and prints on one sheet.</p>
+        <fieldset class="brand-switch" data-brand-switch hidden>
+          <legend>Show this guide in the brand of</legend>
+          <label><input type="radio" name="brand" value="sleeping-giant" data-file="tokens.css" checked> <span>College of the Sleeping Giant <code>tokens.css</code></span></label>
+          <label><input type="radio" name="brand" value="kettle-harbor" data-file="tokens-kettle-harbor.css"> <span>Kettle Harbor College <code>tokens-kettle-harbor.css</code></span></label>
+          <p class="brand-switch__note">Only the token file changes. Every color, font and corner on this page comes from it. <a href="#rebrand">How to rebrand</a></p>
+          <p class="visually-hidden" role="status" data-brand-status></p>
+        </fieldset>
       </div>
     </div>
 
@@ -55,14 +63,14 @@
         <h2 id="color-title">Color</h2>
         <p>Colors are set once in <code>assets/css/tokens.css</code>. To rebrand the kit, change the values there and every page updates. Contrast ratios are measured against white.</p>
         <ul class="swatches">
-          <li><span class="swatch" style="background: var(--color-spruce)"></span><strong>Spruce</strong><code>--color-spruce</code><span>#1f5c4a, 7.8:1. Links, buttons, header.</span></li>
-          <li><span class="swatch" style="background: var(--color-violet)"></span><strong>Violet</strong><code>--color-violet</code><span>#4f43c2, 7.2:1. Focus rings and accents.</span></li>
-          <li><span class="swatch" style="background: var(--color-gold)"></span><strong>Gold</strong><code>--color-gold</code><span>#e8b23a. Athletics and highlights. Never use for text on white.</span></li>
-          <li><span class="swatch" style="background: var(--color-ink)"></span><strong>Ink</strong><code>--color-ink</code><span>#1b2430, 15.6:1. Body text.</span></li>
-          <li><span class="swatch" style="background: var(--color-ink-muted)"></span><strong>Ink, muted</strong><code>--color-ink-muted</code><span>#4a5564, 7.6:1. Captions and secondary text.</span></li>
-          <li><span class="swatch swatch--light" style="background: var(--color-sky)"></span><strong>Sky</strong><code>--color-sky</code><span>#dce8f2. Tags and soft fills.</span></li>
-          <li><span class="swatch swatch--light" style="background: var(--color-mist)"></span><strong>Mist</strong><code>--color-mist</code><span>#f2f4f7. Quiet section backgrounds.</span></li>
-          <li><span class="swatch swatch--light" style="background: var(--color-violet-tint)"></span><strong>Violet tint</strong><code>--color-violet-tint</code><span>#ecebfa. Callout boxes.</span></li>
+          <li><span class="swatch" style="background: var(--color-spruce)"></span><strong>Primary</strong><code>--color-spruce</code><span><span data-token="--color-spruce" data-contrast>#1f5c4a, 7.8 to 1</span>. Links, buttons, header.</span></li>
+          <li><span class="swatch" style="background: var(--color-violet)"></span><strong>Accent</strong><code>--color-violet</code><span><span data-token="--color-violet" data-contrast>#4f43c2, 7.2 to 1</span>. Focus rings and accents.</span></li>
+          <li><span class="swatch" style="background: var(--color-gold)"></span><strong>Highlight</strong><code>--color-gold</code><span><span data-token="--color-gold">#e8b23a</span>. Athletics and highlights. Never use for text on white.</span></li>
+          <li><span class="swatch" style="background: var(--color-ink)"></span><strong>Ink</strong><code>--color-ink</code><span><span data-token="--color-ink" data-contrast>#1b2430, 15.6 to 1</span>. Body text.</span></li>
+          <li><span class="swatch" style="background: var(--color-ink-muted)"></span><strong>Ink, muted</strong><code>--color-ink-muted</code><span><span data-token="--color-ink-muted" data-contrast>#4a5564, 7.5 to 1</span>. Captions and secondary text.</span></li>
+          <li><span class="swatch swatch--light" style="background: var(--color-sky)"></span><strong>Soft fill</strong><code>--color-sky</code><span><span data-token="--color-sky">#dce8f2</span>. Tags and soft fills.</span></li>
+          <li><span class="swatch swatch--light" style="background: var(--color-mist)"></span><strong>Quiet background</strong><code>--color-mist</code><span><span data-token="--color-mist">#f2f4f7</span>. Quiet section backgrounds.</span></li>
+          <li><span class="swatch swatch--light" style="background: var(--color-violet-tint)"></span><strong>Accent tint</strong><code>--color-violet-tint</code><span><span data-token="--color-violet-tint">#ecebfa</span>. Callout boxes.</span></li>
         </ul>
       </div>
     </section>
@@ -70,7 +78,7 @@
     <section class="section section--mist" id="type" aria-labelledby="type-title">
       <div class="wrap">
         <h2 id="type-title">Type</h2>
-        <p>Headings use <strong>Literata</strong>, a book serif designed for long reading on screens. Body text uses <strong>Public Sans</strong>, a neutral sans-serif built for government and public-service sites. Sizes follow a 1.25 ratio.</p>
+        <p>Headings use <strong data-font="--font-display">Literata</strong>, a serif made for reading on screens. Body text uses <strong data-font="--font-body">Public Sans</strong>, a plain sans-serif. Both are free from Google Fonts. Sizes follow a 1.25 ratio.</p>
         <div class="type-scale">
           <p class="type-sample"><span class="type-sample__label">Heading 1, step 5</span><span style="font-family: var(--font-display); font-size: var(--step-5); font-weight: 500; line-height: 1.1">Learn by doing</span></p>
           <p class="type-sample"><span class="type-sample__label">Heading 2, step 4</span><span style="font-family: var(--font-display); font-size: var(--step-4); font-weight: 500; line-height: 1.1">What you'll study</span></p>
@@ -79,6 +87,32 @@
           <p class="type-sample"><span class="type-sample__label">Body, step 0 (17px)</span><span>Body copy is set at 17 pixels with generous line spacing, and lines stop at about 66 characters so they stay easy to read.</span></p>
           <p class="type-sample"><span class="type-sample__label">Small, step −1</span><span style="font-size: var(--step--1)">Captions, dates and metadata.</span></p>
         </div>
+      </div>
+    </section>
+
+    <section class="section" id="rebrand" aria-labelledby="rebrand-title">
+      <div class="wrap">
+        <h2 id="rebrand-title">Rebranding for another school</h2>
+        <p>Every color, font, corner and space on these pages comes from one file of tokens. To prove it, the kit has a second school: <a href="assets/css/tokens-kettle-harbor.css">Kettle Harbor College's tokens</a>, a harbor navy, sea teal and buoy coral brand set in Bitter and Atkinson Hyperlegible, with rounder corners. Use the switch at the top of this page (it needs JavaScript) to see the whole guide in it. Kettle Harbor College is fictional too.</p>
+        <ol class="steps">
+          <li>
+            <h3>Copy the token file</h3>
+            <p>Copy <code>assets/css/tokens.css</code> and change only the values. Keep every token name, even where it no longer fits: in Kettle Harbor's file, <code>--color-spruce</code> is navy. The components look each color up by its name, so a renamed token breaks them.</p>
+          </li>
+          <li>
+            <h3>Check the contrast</h3>
+            <p>Run <code>npm run check:tokens</code>. It measures every color pair the components use, in every brand, and fails if text falls under 4.5 to 1 or a focus ring under 3 to 1. It also fails if the new file is missing a token.</p>
+          </li>
+          <li>
+            <h3>Change the font link</h3>
+            <p>Each page loads its web fonts in its <code>&lt;head&gt;</code>. Swap that link for the new school's fonts, so visitors don't download fonts the page no longer uses.</p>
+          </li>
+          <li>
+            <h3>Replace the logo and name</h3>
+            <p>The wordmark, the giant mark and the school's name are content, not tokens. Change them in <code>partials/header.html</code> and <code>partials/footer.html</code>, then run <code>npm run build</code>.</p>
+          </li>
+        </ol>
+        <p>The full walkthrough is in the <a href="https://github.com/DEAckeret/campus-kit/blob/main/docs/rebranding.md">rebranding guide</a>.</p>
       </div>
     </section>
 
@@ -217,7 +251,7 @@
 
         <article class="sg-component" aria-labelledby="c-events">
           <h3 id="c-events">Event</h3>
-          <p>Add <code>event--athletics</code> to give game days a gold date block. The <code>data-category</code> value controls which filter shows the event.</p>
+          <p>Add <code>event--athletics</code> to give game days a date block in the highlight color. The <code>data-category</code> value controls which filter shows the event.</p>
           <div class="sg-example">
 <ul class="event-list">
   <li class="event event--athletics" data-category="athletics">
@@ -327,7 +361,7 @@
 
         <article class="sg-component" aria-labelledby="c-athletics">
           <h3 id="c-athletics">Athletics accents</h3>
-          <p>Gold marks athletics. Add <code>facts--athletics</code>, <code>callout--athletics</code> or <code>page-header--athletics</code> on team pages. In a schedule, spell out each result ("Won," "Lost," "Tied") so it doesn't depend on color, and give the next game the <code>schedule__next</code> row.</p>
+          <p>The highlight color (<code>--color-gold</code>) marks athletics. Add <code>facts--athletics</code>, <code>callout--athletics</code> or <code>page-header--athletics</code> on team pages. In a schedule, spell out each result ("Won," "Lost," "Tied") so it doesn't depend on color, and give the next game the <code>schedule__next</code> row.</p>
           <div class="sg-example">
 <dl class="facts facts--athletics">
   <div><dt>Overall record</dt><dd>7–2–1</dd></div>

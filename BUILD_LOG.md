@@ -4,6 +4,52 @@ Every AI work session on Campus Kit adds an entry here, newest first. Each entry
 
 ---
 
+## Session 21: November 13, 2026 (rebrand demo)
+
+**Built by:** Claude (Opus 5.5), in a scheduled session with nobody watching, so decisions below are mine and open to Dustin's review.
+
+### What I built
+
+- **A second fictional school's tokens,** [`assets/css/tokens-kettle-harbor.css`](assets/css/tokens-kettle-harbor.css), for **Kettle Harbor College**: harbor navy, sea teal and buoy coral, Bitter for headings, Atkinson Hyperlegible for body text, and rounder corners (6px and 16px). It's a drop-in replacement for `tokens.css`: the same 63 tokens, only the values differ.
+- **A brand switch at the top of the style guide** (`kit-site.js`, styles in `kit-site.css`): two radio buttons, one per school, with each one's file name. Choosing one loads that token file in place of `tokens.css`, and every swatch, type sample and component example on the page changes. The choice goes in the address (`styleguide.html?brand=kettle-harbor`), so it can be linked, and a status line tells screen reader users which brand is showing. Without JavaScript the switch stays hidden.
+- **Swatches that read their values from the tokens.** The color list now names each color by its job (Primary, Accent, Highlight, Ink…) with the token beneath, and the script fills in each hex value and its contrast with white from whichever file is loaded. The Type section names the fonts from the tokens the same way.
+- **A "Rebranding for another school" section** in the style guide (in its top menu as "Rebrand"): four steps using the existing Steps component, and a longer [rebranding guide](docs/rebranding.md) in `docs/` with a table of what each school sets, the color rules the components rely on, and a checklist.
+- **A new check, `npm run check:tokens`** (`tests/tokens.mjs`, built-in Node only, runs in CI before `npm install`). It fails if a brand file is missing a token `tokens.css` sets, or sets one it doesn't, and it measures 28 color pairs the components actually use, in both brands: 4.5 to 1 for text, 3 to 1 for focus rings and the gold button on the header. It prints every ratio, so the log doubles as a contrast table.
+- **The axe checks now run a third pass:** every page at desktop size with `tokens.css` served as Kettle Harbor's file, so the rebrand is checked on the whole demo site, not only on the style guide.
+- The project page's "One file to rebrand" note links to the style guide in the second brand. README, the file map in `CLAUDE.md` and the workflow step names are updated.
+
+### What I decided and why
+
+- **The switch swaps the file, not a class.** Scoping the second brand under something like `[data-brand="kettle"]` would have been simpler to switch, but it wouldn't prove the claim: the point is that a whole file can be replaced and nothing else changes. The script loads the new file next to the old one and removes the old one only once the new one is in, so the page never shows without tokens.
+- **Token names stay the same, even when they no longer fit.** In Kettle Harbor's file, `--color-spruce` is navy. Renaming would mean editing every component, which is the opposite of a one-file rebrand. The style guide now labels colors by their job, and the guide explains why the names stay. Renaming the tokens to roles (`--color-primary`) is a bigger change for Dustin to decide on.
+- **Kettle Harbor's file loads its own fonts with an `@import`,** so the switch can show them. That's fine for a demo but slower than a `<link>` in the `<head>`, and the pages still load Literata and Public Sans in their `<head>` either way. The guide tells a real rebrand to change the font link instead (step 3).
+- **Contrast in the style guide is rounded down,** so a color never reads better than it measures. That changed muted ink from "7.6:1" to "7.5 to 1" (it's 7.57). The token file's own comments still round to the nearest.
+- **"Kettle Harbor College"** returned no matches in a web search for the exact name. Like Sleeping Giant, it has no address, people or logo here.
+- **No second logo.** The giant mark is an SVG with its own gold written into it, so Kettle Harbor's demo pages still show a gold mark in the header. Logos are content, not tokens; the guide says so.
+
+### How I checked it
+
+- `npm run check:tokens` passes for both brands (lowest pairs: gold on spruce 4.04 and 4.18 to 1, both above the 3 to 1 needed). I made it fail on purpose twice: by deleting a token from Kettle Harbor's file, and by lightening its navy, which failed eight pairs. Then I put the file back.
+- Screenshots at 1280px and 390px of the style guide in both brands, with the switch used and with `?brand=kettle-harbor` in the address, plus the demo home page and the women's soccer page with the Kettle Harbor file served in place of `tokens.css`. The swatches showed Kettle Harbor's values (navy 10.5 to 1, ink 16.3 to 1), the status line read "Showing Kettle Harbor College's brand," and nothing scrolled sideways. With JavaScript off, the switch is hidden.
+- `tests/zoom.mjs` passes on all 23 pages under all six conditions, the one-sheet print check passes, and the include, search index, tracking, calendar, image and audit checks pass.
+- Fonts: Google Fonts is blocked in this workspace, so my screenshots show the fallback fonts for both schools. I haven't seen Bitter or Atkinson Hyperlegible on the page myself.
+
+### What went wrong
+
+- **The switch first refused to change brand at all** in this workspace: with Google Fonts blocked, the `@import` failed and the browser reported an error on the whole style sheet, even though the tokens had loaded, so my script put the old brand back. The same thing would happen to anyone with a blocker or on a strict school network. The script now checks whether the style sheet itself loaded instead of trusting the event.
+- **The switch made the style guide scroll sideways** at 320px with the text-spacing overrides, 34px too wide. Fieldsets don't shrink below their content by default, and I had stopped the file names from wrapping. Both fixed.
+- **My first wording contradicted itself:** the style guide said the token names "say what each color does, not what it looks like," right after calling one `--color-spruce`. They don't; the text now says why the names stay.
+- **Still no axe or HTML validation here** (the npm registry is blocked in this workspace; I ran the zoom and print checks with a small local stand-in for `http-server` that isn't committed). The new third axe pass runs for the first time in CI.
+- A few translucent colors in `components.css` are still written as `rgb()` values based on Sleeping Giant's ink (the dialog backdrop, hover shading, lines on the header). They're close enough on Kettle Harbor's navy-black ink that nothing looks wrong, but they aren't tokens.
+
+### Left for Dustin
+
+- **Token names:** keep the color names (`spruce`, `violet`, `gold`), or rename them to roles (`primary`, `accent`, `highlight`) in a later session? Roles read better in a rebrand; the names are what every page uses today.
+- **The switch is on the style guide only.** The demo site can't be browsed in the second brand except by the test. Carrying `?brand=` across the demo is possible but would add a script to every demo page.
+- Still open from earlier: moving the demo's dates to 2026, and the `lighthouse-trial` branch. The event page template is the next AI item.
+
+---
+
 ## Session 20: November 11, 2026 (content audit checklist)
 
 **Built by:** Claude (Opus 5.5), in a scheduled session with nobody watching, so decisions below are mine and open to Dustin's review.
