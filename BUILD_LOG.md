@@ -40,6 +40,7 @@ Every AI work session on Campus Kit adds an entry here, newest first. Each entry
 - **The switch made the style guide scroll sideways** at 320px with the text-spacing overrides, 34px too wide. Fieldsets don't shrink below their content by default, and I had stopped the file names from wrapping. Both fixed.
 - **My first wording contradicted itself:** the style guide said the token names "say what each color does, not what it looks like," right after calling one `--color-spruce`. They don't; the text now says why the names stay.
 - **Still no axe or HTML validation here** (the npm registry is blocked in this workspace; I ran the zoom and print checks with a small local stand-in for `http-server` that isn't committed). The new third axe pass runs for the first time in CI.
+- **Result on CI:** the first run passed every step: the new token check, HTML validation, axe on every page at desktop and phone sizes and again at desktop with Kettle Harbor's tokens, zoom and text spacing, the one-sheet print check, the social graphics export and the Lighthouse budgets. The site deployed.
 - A few translucent colors in `components.css` are still written as `rgb()` values based on Sleeping Giant's ink (the dialog backdrop, hover shading, lines on the header). They're close enough on Kettle Harbor's navy-black ink that nothing looks wrong, but they aren't tokens.
 
 ### Left for Dustin
